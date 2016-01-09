@@ -1,9 +1,19 @@
-# COP290
+# COP 290
 
-COP 290 Projects are maintained here!
+These assignments are part of course work for *COP 290: Design Practices* in II Semester of Session 2015-16.
 
-##Developers
+### Important Links
 
-Yash Kumar Bansal
-Sauhard Gupta
-Prabhu Prasad Panda
+- [IITD Moodle] (http://moodle.iitd.ac.in/course/view.php?id=1186)
+
+- [Course Web Page] (https://docs.google.com/document/d/1UDYSaeB0RJVeDF-_ZYYH_Zi9Gl9iqICKlaO1-wf4mNg/pub)
+
+- [Piazza Discussion] (https://piazza.com/class/iittmiu867f2r3)
+
+###Developers
+
+* [Yash Kumar Bansal] (mailto:yash.me113@mech.iitd.ac.in)
+
+* [Sauhard Gupta] (mailto:me1130117@mech.iitd.ac.in)
+
+* [Prabhu Prasad Panda] (mailto:me1130859@mech.iitd.ac.in)
