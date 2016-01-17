@@ -16,10 +16,13 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -54,37 +57,134 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    EditText name1txt, name2txt,name3txt,entrynumber1txt,entrynumber2txt,entrynumber3txt,teamNametxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        // Set up the login form.
-//        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-//        populateAutoComplete();
-//
-//        mPasswordView = (EditText) findViewById(R.id.password);
-//        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-//                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-//                    attemptLogin();
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
-//
-//        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-//        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                attemptLogin();
-//            }
-//        });
-//
-//        mLoginFormView = findViewById(R.id.login_form);
-//        mProgressView = findViewById(R.id.login_progress);
+
+        name1txt=(EditText) findViewById(R.id.txtNAME1);
+
+        name2txt=(EditText) findViewById(R.id.txtNAME2);
+        name3txt=(EditText) findViewById(R.id.txtNAME3);
+        entrynumber1txt=(EditText) findViewById(R.id.txtENTRYNUMBER1);
+        entrynumber2txt=(EditText) findViewById(R.id.txtENTRYNUMBER2);
+        entrynumber3txt=(EditText) findViewById(R.id.txtENTRYNUMBER3);
+        teamNametxt=(EditText) findViewById(R.id.txtTEAM_NAME);
+
+        final Button btn = (Button) findViewById(R.id.btnSUBMIT);
+        name1txt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
+                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
+                             &&(String.valueOf(name2txt.getText()).trim().length()>0)
+                           &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+        name2txt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
+                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(name2txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+        entrynumber1txt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
+                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(name2txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+        entrynumber2txt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
+                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(name2txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+        teamNametxt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
+                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(name2txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+
+
+
+
+
+
     }
 
     private void populateAutoComplete() {

@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="spycoders.cop290registration.MainActivity"
-    >
+    android:background="@drawable/wood1">
 
     <!-- Login progress -->
     <ProgressBar
@@ -29,7 +29,8 @@
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -53,7 +54,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView"
+                android:id="@+id/txtNAME1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="NAME 1"
@@ -63,7 +64,7 @@
                 android:layout_marginTop="20dp" />
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView2"
+                android:id="@+id/txtENTRYNUMBER1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ENTRY NUMBER 1"
@@ -73,7 +74,7 @@
                 android:layout_marginTop="10dp" />
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView3"
+                android:id="@+id/txtNAME2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="NAME 2"
@@ -83,7 +84,7 @@
                 android:layout_marginTop="20dp" />
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView4"
+                android:id="@+id/txtENTRYNUMBER2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ENTRY NUMBER 2"
@@ -92,7 +93,7 @@
                 android:singleLine="true" />
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView5"
+                android:id="@+id/txtNAME3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="NAME 3"
@@ -102,7 +103,7 @@
                 android:layout_marginTop="20dp" />
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView6"
+                android:id="@+id/txtENTRYNUMBER3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ENTRY NUMBER 3"
@@ -111,7 +112,7 @@
                 android:singleLine="true" />
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/btnSUBMIT"
                 style="?android:textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,7 +120,11 @@
                 android:text="SUBMIT"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_marginLeft="115dp" />
+                android:layout_marginLeft="115dp"
+                android:enabled="false"
+                android:visibility="visible"
+                android:background="@android:color/transparent"
+                android:clickable="true" />
 
         </LinearLayout>
     </ScrollView>
