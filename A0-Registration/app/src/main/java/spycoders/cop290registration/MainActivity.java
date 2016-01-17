@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -25,8 +26,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         name1txt=(EditText) findViewById(R.id.txtNAME1);
 
         name2txt=(EditText) findViewById(R.id.txtNAME2);
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
         teamNametxt=(EditText) findViewById(R.id.txtTEAM_NAME);
 
         final Button btn = (Button) findViewById(R.id.btnSUBMIT);
+        btn.setOnClickListener(onBut);
         name1txt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -103,11 +107,11 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
-                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
-                        &&(String.valueOf(name2txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
@@ -126,11 +130,11 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 name2txt.setVisibility(View.VISIBLE);
                 entrynumber2txt.setVisibility(View.VISIBLE);
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
-                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
-                        &&(String.valueOf(name2txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber2txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
@@ -191,6 +195,62 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
 
 
 
+    }
+
+    private View.OnClickListener onBut=new View.OnClickListener() {
+        public void onClick(View v) {
+
+            String url= "http://agni.iitd.ernet.in/cop290/assign0/register/";
+            try{
+                URL myURL = new URL(url);
+                HttpURLConnection conn= (HttpURLConnection)myURL.openConnection();
+                conn.setRequestMethod("POST");
+
+                //Snippet from http://stackoverflow.com/questions/10500775/parse-json-from-httpurlconnection-object
+                Map<String,Object> params= new LinkedHashMap<>();
+                params.put("teamname",teamNametxt.getText().toString());
+                params.put("entry1", entrynumber1txt.getText().toString());
+                params.put("name1",name1txt.getText().toString());
+                params.put("entry2", entrynumber2txt.getText().toString());
+                params.put("name2",name2txt.getText().toString());
+                params.put("entry3", entrynumber3txt.getText().toString());
+                params.put("name3",name3txt.getText().toString());
+
+                StringBuilder postData = new StringBuilder();
+                for (Map.Entry<String,Object> param : params.entrySet()) {
+                    if (postData.length() != 0) postData.append('&');
+                    postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+                    postData.append('=');
+                    postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+                }
+                byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+
+                conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+                conn.setDoOutput(true);
+
+                enableStrictMode();
+                conn.getOutputStream().write(postDataBytes);
+
+                Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                String result=new String("");
+                for ( int c = in.read(); c != -1; c = in.read() )
+                   result=result.concat(Character.toString((char)c));
+                //The String result contains the result of the submission.
+                //Proper notifications to be added later.
+            }
+            catch(Exception e){System.out.println(e.toString());}
+
+
+
+        }
+    };
+
+    public void enableStrictMode()
+    {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
     }
 
     private void populateAutoComplete() {
