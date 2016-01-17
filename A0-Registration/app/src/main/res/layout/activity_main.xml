@@ -61,7 +61,8 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:visibility="invisible" />
 
             <AutoCompleteTextView
                 android:id="@+id/txtENTRYNUMBER1"
@@ -71,7 +72,8 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:visibility="invisible" />
 
             <AutoCompleteTextView
                 android:id="@+id/txtNAME2"
@@ -81,7 +83,8 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:visibility="invisible" />
 
             <AutoCompleteTextView
                 android:id="@+id/txtENTRYNUMBER2"
@@ -90,7 +93,8 @@
                 android:hint="ENTRY NUMBER 2"
                 android:inputType="text"
                 android:maxLines="1"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:visibility="invisible" />
 
             <AutoCompleteTextView
                 android:id="@+id/txtNAME3"
@@ -100,7 +104,8 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:visibility="invisible" />
 
             <AutoCompleteTextView
                 android:id="@+id/txtENTRYNUMBER3"
@@ -109,7 +114,8 @@
                 android:hint="ENTRY NUMBER 3"
                 android:inputType="text"
                 android:maxLines="1"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/btnSUBMIT"

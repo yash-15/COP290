@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
                 btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
                         &&(String.valueOf(name1txt.getText()).trim().length()>0)
                              &&(String.valueOf(name2txt.getText()).trim().length()>0)
-                           &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
+                           &&(String.valueOf(entrynumber2txt.getText()).trim().length()>0)
                         &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
             }
 
@@ -124,10 +124,12 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                name2txt.setVisibility(View.VISIBLE);
+                entrynumber2txt.setVisibility(View.VISIBLE);
                 btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
                         &&(String.valueOf(name1txt.getText()).trim().length()>0)
                         &&(String.valueOf(name2txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber2txt.getText()).trim().length()>0)
                         &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
             }
 
@@ -145,10 +147,12 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                name3txt.setVisibility(View.VISIBLE);
+                entrynumber3txt.setVisibility(View.VISIBLE);
                 btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
                         &&(String.valueOf(name1txt.getText()).trim().length()>0)
                         &&(String.valueOf(name2txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
+                        &&(String.valueOf(entrynumber2txt.getText()).trim().length()>0)
                         &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
             }
 
@@ -166,11 +170,13 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
-                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
-                        &&(String.valueOf(name2txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+                name1txt.setVisibility(View.VISIBLE);
+                entrynumber1txt.setVisibility(View.VISIBLE);
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
