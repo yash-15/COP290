@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="action_settings">Settings</string>
+    <string name="welcomestr">Mike Testing</string>
+    <string name="fieldname1">Name1</string>
+    <string name="field_entry_no1">Entry No. 1</string>
+    <string name="fieldname2">Name2</string>
+    <string name="fieldentryno2">Entry No. 2</string>
+    <string name="fieldname3">Name3</string>
+    <string name="buttonsubmit">Submit</string>
+    <string name="title_activity_button_click">button_click</string>
+</resources>
