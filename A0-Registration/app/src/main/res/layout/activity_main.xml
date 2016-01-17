@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="spycoders.cop290registration.MainActivity">
+    tools:context="spycoders.cop290registration.MainActivity"
+    >
 
     <!-- Login progress -->
     <ProgressBar
@@ -35,13 +36,13 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/email"
+                    android:id="@+id/txtTEAM_NAME"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress"
+                    android:hint="TEAM NAME"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -49,28 +50,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
-                    android:imeActionId="@+id/login"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
             </android.support.design.widget.TextInputLayout>
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="NAME 1"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:layout_marginTop="20dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ENTRY NUMBER 1"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:layout_marginTop="10dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="NAME 2"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:layout_marginTop="20dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ENTRY NUMBER 2"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="NAME 3"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:layout_marginTop="20dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ENTRY NUMBER 3"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true" />
 
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:layout_marginTop="20dp"
+                android:text="SUBMIT"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginLeft="115dp" />
 
         </LinearLayout>
     </ScrollView>
