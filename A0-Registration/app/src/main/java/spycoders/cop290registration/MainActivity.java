@@ -3,6 +3,7 @@ package spycoders.cop290registration;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Loader;
@@ -233,8 +234,17 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
         }
     }
 
+    public void PopoutWindow() {
+        final Dialog wind = new Dialog(this);
+        wind.setContentView(R.layout.window);
+        wind.setTitle("SUCCESS");
+        wind.show();
+    }
+
     private View.OnClickListener onBut=new View.OnClickListener() {
         public void onClick(View v) {
+
+            PopoutWindow();
 
             String url= "http://agni.iitd.ernet.in/cop290/assign0/register/";
             try{
