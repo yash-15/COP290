@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            >
+            android:visibility="visible">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -117,6 +117,17 @@
                 android:singleLine="true"
                 android:visibility="invisible" />
 
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="THIRD MEMBER"
+                android:id="@+id/checkBoxAddThirdMember"
+                android:textColor="#5a1313"
+                android:textStyle="bold|italic"
+                android:textSize="15dp"
+                android:onClick="Select"
+                android:visibility="invisible" />
+
             <Button
                 android:id="@+id/btnSUBMIT"
                 style="?android:textAppearanceSmall"
@@ -126,12 +137,18 @@
                 android:text="SUBMIT"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_marginLeft="115dp"
+                android:layout_marginLeft="250dp"
                 android:enabled="false"
                 android:visibility="visible"
                 android:background="@android:color/transparent"
-                android:clickable="true" />
+                android:clickable="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/final_result"/>
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

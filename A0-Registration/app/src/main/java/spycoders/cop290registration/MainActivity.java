@@ -24,11 +24,19 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -59,7 +67,9 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    EditText name1txt, name2txt,name3txt,entrynumber1txt,entrynumber2txt,entrynumber3txt,teamNametxt;
+    EditText name1txt, name2txt, name3txt, entrynumber1txt, entrynumber2txt, entrynumber3txt, teamNametxt;
+    public CheckBox CBTM;
+    //View t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,17 +77,22 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
         setContentView(R.layout.activity_main);
 
 
-        name1txt=(EditText) findViewById(R.id.txtNAME1);
+        name1txt = (EditText) findViewById(R.id.txtNAME1);
 
-        name2txt=(EditText) findViewById(R.id.txtNAME2);
-        name3txt=(EditText) findViewById(R.id.txtNAME3);
-        entrynumber1txt=(EditText) findViewById(R.id.txtENTRYNUMBER1);
-        entrynumber2txt=(EditText) findViewById(R.id.txtENTRYNUMBER2);
-        entrynumber3txt=(EditText) findViewById(R.id.txtENTRYNUMBER3);
-        teamNametxt=(EditText) findViewById(R.id.txtTEAM_NAME);
+        name2txt = (EditText) findViewById(R.id.txtNAME2);
+        name3txt = (EditText) findViewById(R.id.txtNAME3);
+        entrynumber1txt = (EditText) findViewById(R.id.txtENTRYNUMBER1);
+        entrynumber2txt = (EditText) findViewById(R.id.txtENTRYNUMBER2);
+        entrynumber3txt = (EditText) findViewById(R.id.txtENTRYNUMBER3);
+        teamNametxt = (EditText) findViewById(R.id.txtTEAM_NAME);
+        CBTM=(CheckBox)findViewById(R.id.checkBoxAddThirdMember);
+
 
         final Button btn = (Button) findViewById(R.id.btnSUBMIT);
+
         btn.setOnClickListener(onBut);
+
+
         name1txt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -86,11 +101,11 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
-                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
-                             &&(String.valueOf(name2txt.getText()).trim().length()>0)
-                           &&(String.valueOf(entrynumber2txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
@@ -151,13 +166,14 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                name3txt.setVisibility(View.VISIBLE);
-                entrynumber3txt.setVisibility(View.VISIBLE);
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length()>0)
-                        &&(String.valueOf(name1txt.getText()).trim().length()>0)
-                        &&(String.valueOf(name2txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber2txt.getText()).trim().length()>0)
-                        &&(String.valueOf(entrynumber1txt.getText()).trim().length()>0));
+
+                CBTM.setVisibility(View.VISIBLE);
+
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
@@ -195,6 +211,26 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
 
 
 
+    }
+    public void Select(View t) {
+
+        boolean checked = ((CheckBox) t).isChecked();
+
+
+        switch(t.getId()) {
+            case R.id.checkBoxAddThirdMember:
+                if (checked)
+                {name3txt.setVisibility(View.VISIBLE);
+                    entrynumber3txt.setVisibility(View.VISIBLE);}
+                else
+                {
+                    name3txt.setVisibility(View.INVISIBLE);
+                    entrynumber3txt.setVisibility(View.INVISIBLE);
+                }
+
+                    break;
+
+        }
     }
 
     private View.OnClickListener onBut=new View.OnClickListener() {
