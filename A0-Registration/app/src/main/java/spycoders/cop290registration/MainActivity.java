@@ -27,8 +27,9 @@ import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity  {
-
+    //initial declaration
     EditText name1txt, name2txt, name3txt, entrynumber1txt, entrynumber2txt, entrynumber3txt, teamNametxt;
+    Button btn;
     CheckBox CBTM;
     String result=new String("");
 
@@ -62,11 +63,12 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+                activate();
+//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
@@ -83,11 +85,12 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+               activate();
+//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
@@ -106,11 +109,12 @@ public class MainActivity extends AppCompatActivity  {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 name2txt.setVisibility(View.VISIBLE);
                 entrynumber2txt.setVisibility(View.VISIBLE);
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+                activate();
+//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
@@ -129,12 +133,12 @@ public class MainActivity extends AppCompatActivity  {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 CBTM.setVisibility(View.VISIBLE);
-
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+                activate();
+//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
@@ -153,11 +157,12 @@ public class MainActivity extends AppCompatActivity  {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 name1txt.setVisibility(View.VISIBLE);
                 entrynumber1txt.setVisibility(View.VISIBLE);
-                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
-                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+                activate();
+//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
             }
 
             @Override
@@ -172,6 +177,14 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
+    }
+
+    public void activate(){
+        btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
     }
     public void Select(View t) {
 
@@ -214,9 +227,11 @@ public class MainActivity extends AppCompatActivity  {
                 params.put("name1",name1txt.getText().toString());
                 params.put("entry2", entrynumber2txt.getText().toString());
                 params.put("name2",name2txt.getText().toString());
-                params.put("entry3", entrynumber3txt.getText().toString());
-                params.put("name3",name3txt.getText().toString());
-
+                //ensures that is there just two members then the information of third member is not sent
+                if(CBTM.isChecked()) {
+                    params.put("entry3", entrynumber3txt.getText().toString());
+                    params.put("name3", name3txt.getText().toString());
+                }
                 StringBuilder postData = new StringBuilder();
                 for (Map.Entry<String,Object> param : params.entrySet()) {
                     if (postData.length() != 0) postData.append('&');
@@ -279,20 +294,20 @@ public class MainActivity extends AppCompatActivity  {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState){
             AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
-            builder.setMessage("The connection to the server failed!")
-                    .setPositiveButton("Back",new DialogInterface.OnClickListener(){
+            builder.setMessage("THE CONNECTION TO THE SERVER HAS FAILED!")
+                    .setPositiveButton("BACK",new DialogInterface.OnClickListener(){
                         public void onClick(DialogInterface dialog, int id){
                             //Just exits the dialog box
                             result="";
                         }
                     })
-                    .setNeutralButton("Retry", new DialogInterface.OnClickListener() {
+                    .setNeutralButton("RETRY", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Resends the request
                             onBut.onClick(getView());
                         }
                     })
-                    .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                    .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Exits the app
                             System.exit(0);
@@ -331,10 +346,17 @@ public class MainActivity extends AppCompatActivity  {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("success_message")
-                    .setPositiveButton("new_team", new DialogInterface.OnClickListener() {
+            builder.setMessage("YOU HAVE SUCCESSFULLY REGISTERED YOUR TEAM")
+                    .setPositiveButton("REGISTER NEW TEAM", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Reset the form and start afresh
+                            teamNametxt.setText("");
+                            name1txt.setText("");
+                            name2txt.setText("");
+                            name3txt.setText("");
+                            entrynumber1txt.setText("");
+                            entrynumber2txt.setText("");
+                            entrynumber3txt.setText("");
                             result="";
                         }
                     })
