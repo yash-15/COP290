@@ -12,5 +12,13 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
+    <string name="success_message">"The new team was added successfully!"</string>
+    <string name="exists_message">"One or more users already exists!"</string>
+    <string name="incomplete_message">"One or more required fields are missing!"</string>
+    <string name="conn_fail_message">"Connection to the server failed!"</string>
+    <string name="exit">"Exit"</string>
+    <string name="edit">"Edit"</string>
+    <string name="new_team">"New Team" </string>
+    <string name="retry">"Retry"</string>
     </string>
 </resources>

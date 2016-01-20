@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="You have successfully submitted the form."
         android:textColor="#0026ff"
         android:textSize="20dp" />
 
@@ -19,15 +18,15 @@
         android:layout_below="@id/dialog_info">
 
         <Button
-            android:id="@+id/dialog_cancel"
+            android:id="@+id/btn_exit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.50"
             android:background="#c51919"
-            android:text="Cancel"/>
+            android:text="EXIT"/>
 
         <Button
-            android:id="@+id/dialog_ok"
+            android:id="@+id/btn_another"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.50"
