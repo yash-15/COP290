@@ -11,9 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity  {
     Button btn;
     CheckBox CBTM;
     String result=new String("");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +67,13 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                activate();
-//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+//                activate();
+                Toast.makeText(getApplicationContext(), "Enter Entry number 1", Toast.LENGTH_SHORT).show();
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0) && (!CBTM.isChecked()));
             }
 
             @Override
@@ -85,12 +90,13 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-               activate();
-//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+//               activate();
+                Toast.makeText(getApplicationContext(), "Entry number 2", Toast.LENGTH_SHORT).show();
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)&&(!CBTM.isChecked()));
             }
 
             @Override
@@ -107,14 +113,17 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Toast.makeText(getApplicationContext(), "Enter Name2", Toast.LENGTH_SHORT).show();
                 name2txt.setVisibility(View.VISIBLE);
                 entrynumber2txt.setVisibility(View.VISIBLE);
-                activate();
-//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+                name2txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                entrynumber2txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+//                activate();
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)&&(!CBTM.isChecked()));
             }
 
             @Override
@@ -133,12 +142,15 @@ public class MainActivity extends AppCompatActivity  {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 CBTM.setVisibility(View.VISIBLE);
-                activate();
-//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+                CBTM.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                //activate();
+                Toast.makeText(getApplicationContext(), "Check to add Third Member " +
+                        "or SUBMIT", Toast.LENGTH_SHORT).show();
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)&&(!CBTM.isChecked()));
             }
 
             @Override
@@ -157,12 +169,70 @@ public class MainActivity extends AppCompatActivity  {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 name1txt.setVisibility(View.VISIBLE);
                 entrynumber1txt.setVisibility(View.VISIBLE);
-                activate();
-//                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
-//                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+                name1txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                entrynumber1txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                Toast.makeText(getApplicationContext(), "Enter Name1", Toast.LENGTH_SHORT).show();
+//                activate();
+               btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)
+               &&(!CBTM.isChecked()));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+        entrynumber3txt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                Toast.makeText(getApplicationContext(), "SUBMIT", Toast.LENGTH_SHORT).show();
+//                activate();
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                        && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)
+                        && (String.valueOf(name3txt.getText()).trim().length() > 0)
+                        && (String.valueOf(entrynumber3txt.getText()).trim().length() > 0)
+                        );
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+        name3txt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                Toast.makeText(getApplicationContext(), "SUBMIT", Toast.LENGTH_SHORT).show();
+//                activate();
+                btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+                                && (String.valueOf(name1txt.getText()).trim().length() > 0)
+                                && (String.valueOf(name2txt.getText()).trim().length() > 0)
+                                && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+                                && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)
+                                && (String.valueOf(name3txt.getText()).trim().length() > 0)
+                                && (String.valueOf(entrynumber3txt.getText()).trim().length() > 0)
+                        &&(CBTM.isChecked()));
             }
 
             @Override
@@ -177,15 +247,20 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
+
+
+
+
+
     }
 
-    public void activate(){
-        btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
-                && (String.valueOf(name1txt.getText()).trim().length() > 0)
-                && (String.valueOf(name2txt.getText()).trim().length() > 0)
-                && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
-                && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
-    }
+//    public void activate(){
+//        btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+//                && (String.valueOf(name1txt.getText()).trim().length() > 0)
+//                && (String.valueOf(name2txt.getText()).trim().length() > 0)
+//                && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
+//                && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0));
+//    }
     public void Select(View t) {
 
         boolean checked = ((CheckBox) t).isChecked();
@@ -194,8 +269,14 @@ public class MainActivity extends AppCompatActivity  {
         switch(t.getId()) {
             case R.id.checkBoxAddThirdMember:
                 if (checked)
-                {name3txt.setVisibility(View.VISIBLE);
-                    entrynumber3txt.setVisibility(View.VISIBLE);}
+                {
+                    name3txt.setVisibility(View.VISIBLE);
+                    entrynumber3txt.setVisibility(View.VISIBLE);
+
+                    name3txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                    entrynumber3txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                    Toast.makeText(getApplicationContext(), "Enter Name3", Toast.LENGTH_SHORT).show();
+                }
                 else
                 {
                     name3txt.setVisibility(View.INVISIBLE);
@@ -294,6 +375,10 @@ public class MainActivity extends AppCompatActivity  {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState){
             AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
+            builder.setTitle("ERROR!");
+//            LayoutInflater inflater = getLayoutInflater();
+//            View dialoglayout = inflater.inflate(R.layout.window, (ViewGroup) getCurrentFocus());
+//            builder.setView(dialoglayout);
             builder.setMessage("THE CONNECTION TO THE SERVER HAS FAILED!")
                     .setPositiveButton("BACK",new DialogInterface.OnClickListener(){
                         public void onClick(DialogInterface dialog, int id){
@@ -322,6 +407,7 @@ public class MainActivity extends AppCompatActivity  {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState){
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("ERROR!");
             builder.setMessage("One or more users are already registered!")
                     .setPositiveButton("Edit",new DialogInterface.OnClickListener(){
                         public void onClick(DialogInterface dialog, int id){
@@ -346,6 +432,7 @@ public class MainActivity extends AppCompatActivity  {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("SUCCESS");
             builder.setMessage("YOU HAVE SUCCESSFULLY REGISTERED YOUR TEAM")
                     .setPositiveButton("REGISTER NEW TEAM", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
