@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                Toast.makeText(getApplicationContext(), "SUBMIT", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Enter EntryNumber3", Toast.LENGTH_SHORT).show();
 //                activate();
                 btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
                                 && (String.valueOf(name1txt.getText()).trim().length() > 0)

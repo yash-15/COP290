@@ -155,7 +155,7 @@
                 android:textStyle="bold|italic"
                 android:textSize="15dp"
                 android:onClick="Select"
-                android:visibility="invisible" />
+                android:visibility="visible" />
 
 
             <Button
