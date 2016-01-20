@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity  {
 
 
         name1txt = (EditText) findViewById(R.id.txtNAME1);
-
         name2txt = (EditText) findViewById(R.id.txtNAME2);
         name3txt = (EditText) findViewById(R.id.txtNAME3);
         entrynumber1txt = (EditText) findViewById(R.id.txtENTRYNUMBER1);
@@ -47,11 +47,32 @@ public class MainActivity extends AppCompatActivity  {
         entrynumber3txt = (EditText) findViewById(R.id.txtENTRYNUMBER3);
         teamNametxt = (EditText) findViewById(R.id.txtTEAM_NAME);
         CBTM=(CheckBox)findViewById(R.id.checkBoxAddThirdMember);
-
-
         final Button btn = (Button) findViewById(R.id.btnSUBMIT);
 
         btn.setOnClickListener(onBut);
+
+
+
+        name1txt.setVisibility(View.INVISIBLE);
+        name1txt.setText("");
+        entrynumber1txt .setVisibility(View.INVISIBLE);
+        entrynumber1txt.setText("");
+        name2txt.setVisibility(View.INVISIBLE);
+        name2txt.setText("");
+        entrynumber2txt.setVisibility(View.INVISIBLE);
+        entrynumber2txt.setText("");
+        name3txt.setVisibility(View.INVISIBLE);
+        name3txt.setText("");
+        entrynumber3txt.setVisibility(View.INVISIBLE);
+        entrynumber3txt.setText("");
+        btn.setEnabled(false);
+
+        teamNametxt.requestFocus();
+        teamNametxt.setText("");
+
+
+
+
 
 
         name1txt.addTextChangedListener(new TextWatcher() {
@@ -214,9 +235,15 @@ public class MainActivity extends AppCompatActivity  {
                 params.put("name1",name1txt.getText().toString());
                 params.put("entry2", entrynumber2txt.getText().toString());
                 params.put("name2",name2txt.getText().toString());
-                params.put("entry3", entrynumber3txt.getText().toString());
-                params.put("name3",name3txt.getText().toString());
-
+                if (CBTM.isChecked()) {
+                    params.put("entry3", entrynumber3txt.getText().toString());
+                    params.put("name3", name3txt.getText().toString());
+                }
+                else
+                {
+                    params.put("entry3", "");
+                    params.put("name3", "");
+                }
                 StringBuilder postData = new StringBuilder();
                 for (Map.Entry<String,Object> param : params.entrySet()) {
                     if (postData.length() != 0) postData.append('&');
@@ -289,7 +316,9 @@ public class MainActivity extends AppCompatActivity  {
                     .setNeutralButton("Retry", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Resends the request
-                            onBut.onClick(getView());
+                            result="";
+                            dialog.dismiss();
+                            onBut.onClick(findViewById(R.layout.activity_main) );
                         }
                     })
                     .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
@@ -312,6 +341,7 @@ public class MainActivity extends AppCompatActivity  {
                         public void onClick(DialogInterface dialog, int id){
                             //Just exits the dialog box
                             result="";
+                            teamNametxt.requestFocus();
                         }
                     })
                     .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
@@ -331,11 +361,16 @@ public class MainActivity extends AppCompatActivity  {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("success_message")
+            builder.setMessage("Team \""+teamNametxt.getText().toString() +"\" was successfully registered!")
                     .setPositiveButton("new_team", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Reset the form and start afresh
                             result="";
+                            //Snippet from stackoverflow.com
+                            Intent i = getBaseContext().getPackageManager()
+                                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
                         }
                     })
                     .setNegativeButton("exit", new DialogInterface.OnClickListener() {
