@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </android.support.design.widget.TextInputLayout>
+
 
             <AutoCompleteTextView
                 android:id="@+id/txtNAME1"
@@ -63,6 +63,11 @@
                 android:singleLine="true"
                 android:layout_marginTop="20dp"
                 android:visibility="invisible" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <AutoCompleteTextView
                 android:id="@+id/txtENTRYNUMBER1"
@@ -75,6 +80,12 @@
                 android:layout_marginTop="10dp"
                 android:visibility="invisible" />
 
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
             <AutoCompleteTextView
                 android:id="@+id/txtNAME2"
                 android:layout_width="match_parent"
@@ -85,6 +96,11 @@
                 android:singleLine="true"
                 android:layout_marginTop="20dp"
                 android:visibility="invisible" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <AutoCompleteTextView
                 android:id="@+id/txtENTRYNUMBER2"
@@ -95,6 +111,11 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:visibility="invisible" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <AutoCompleteTextView
                 android:id="@+id/txtNAME3"
@@ -106,6 +127,11 @@
                 android:singleLine="true"
                 android:layout_marginTop="20dp"
                 android:visibility="invisible" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <AutoCompleteTextView
                 android:id="@+id/txtENTRYNUMBER3"
@@ -116,6 +142,9 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:visibility="invisible" />
+            </android.support.design.widget.TextInputLayout>
+
+
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -126,7 +155,8 @@
                 android:textStyle="bold|italic"
                 android:textSize="15dp"
                 android:onClick="Select"
-                android:visibility="invisible" />
+                android:visibility="visible" />
+
 
             <Button
                 android:id="@+id/btnSUBMIT"
@@ -137,7 +167,7 @@
                 android:text="SUBMIT"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_marginLeft="250dp"
+                android:layout_marginLeft="240dp"
                 android:enabled="false"
                 android:visibility="visible"
                 android:background="@android:color/transparent"
