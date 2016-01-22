@@ -173,10 +173,6 @@
                 android:background="@android:color/transparent"
                 android:clickable="true"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/final_result"/>
 
         </LinearLayout>
     </ScrollView>
