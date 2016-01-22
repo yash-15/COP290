@@ -374,179 +374,228 @@ public class MainActivity extends AppCompatActivity  {
             else {
 
 
-                String url1 = "http://ldap1.iitd.ernet.in/LDAP/courses/COP290.shtml"; //Mailing List site
-                String url2 = "http://agni.iitd.ernet.in/cop290/assign0/register/"; //Registration site
+                //Checks whether any Entry Number has been repeated in the form
 
-                URL myURL;
-                HttpURLConnection conn;
+                index=0;
+                if(entrynumber1txt.getText().toString().equals(entrynumber2txt.getText().toString()))
+                {
+                    index=2;
+                }
+                else if (CBTM.isChecked() && ((entrynumber1txt.getText().toString().equals(entrynumber3txt.getText().toString()))
+                        ||(entrynumber2txt.getText().toString().equals(entrynumber3txt.getText().toString()))))
+                {
+                    index=3;
+                }
 
-                //Checking whether the entered name of each team member corresponds to the entered
-                //entry no.
+                if (index!=0)
+                {
+                    EntryNoRepeatDialogFragment entryrepeatmsg = new EntryNoRepeatDialogFragment();
+                    entryrepeatmsg.show(getFragmentManager(),"Entry No. repeat!" );
+                }
 
-                try{
+                else {
 
-                    result="";
-                    myURL=new URL(url1);
-                    conn=(HttpURLConnection) myURL.openConnection();
-                    enableStrictMode() ;
-                    BufferedReader in = new BufferedReader(new InputStreamReader(
-                            conn.getInputStream()));
-                    String inputLine;// reads one line at a time from the BufferedReader
-                    String[] stemp ={entrynumber1txt.getText().toString().toLowerCase()
-                            , entrynumber2txt.getText() .toString().toLowerCase()
-                            ,CBTM.isChecked()?entrynumber3txt.getText() .toString().toLowerCase():"abcdefghijk" };
+                    //Requires Internet Connection
 
-                    String[] searchString={stemp[0].substring(4,7).concat(stemp[0].substring(2,4)).concat(stemp[0].substring(7,11)),
-                                        stemp[1].substring(4,7).concat(stemp[1].substring(2,4)).concat(stemp[1].substring(7,11)),
-                                        stemp[2].substring(4,7).concat(stemp[2].substring(2,4)).concat(stemp[2].substring(7,11))};
+                    String url1 = "http://ldap1.iitd.ernet.in/LDAP/courses/COP290.shtml"; //Mailing List site
+                    String url2 = "http://agni.iitd.ernet.in/cop290/assign0/register/"; //Registration site
 
-                    boolean[] found=new boolean[3];
-                    if (CBTM.isChecked()) found[2]=true;
-                    boolean justfound=false,compatible=true;
+                    URL myURL;
+                    HttpURLConnection conn;
 
-                    while ((inputLine = in.readLine()) != null)
-                    {
-                        if (justfound)
-                        {
-                            String temp1=inputLine.substring(4, inputLine.length()-5);
-                            String temp2;
-                            switch(index)
-                            {
-                                case 1: temp2=name1txt.getText().toString();break;
-                                case 2: temp2=name2txt.getText().toString();break;
-                                case 3: temp2=name3txt.getText().toString();break;
-                                default:temp2="";
+                    //Checking whether the entered name of each team member corresponds to the entered
+                    //entry no.
+
+                    try {
+
+                        result = "";
+                        myURL = new URL(url1);
+                        conn = (HttpURLConnection) myURL.openConnection();
+                        System.out.println("tsrdytfuy");
+                        enableStrictMode();
+                        BufferedReader in = new BufferedReader(new InputStreamReader(
+                                conn.getInputStream()));
+                        String inputLine;// reads one line at a time from the BufferedReader
+                        String[] stemp = {entrynumber1txt.getText().toString().toLowerCase()
+                                , entrynumber2txt.getText().toString().toLowerCase()
+                                , CBTM.isChecked() ? entrynumber3txt.getText().toString().toLowerCase() : "abcdefghijk"};
+
+                        String[] searchString = {stemp[0].substring(4, 7).concat(stemp[0].substring(2, 4)).concat(stemp[0].substring(7, 11)),
+                                stemp[1].substring(4, 7).concat(stemp[1].substring(2, 4)).concat(stemp[1].substring(7, 11)),
+                                stemp[2].substring(4, 7).concat(stemp[2].substring(2, 4)).concat(stemp[2].substring(7, 11))};
+
+                        boolean[] found = new boolean[3];
+                        if (!(CBTM.isChecked())) found[2] = true;
+                        boolean justfound = false, compatible = true;
+
+                        while ((inputLine = in.readLine()) != null) {
+                            if (justfound) {
+                                String temp1 = inputLine.substring(4, inputLine.length() - 5);
+                                String temp2;
+                                switch (index) {
+                                    case 1:
+                                        temp2 = name1txt.getText().toString();
+                                        break;
+                                    case 2:
+                                        temp2 = name2txt.getText().toString();
+                                        break;
+                                    case 3:
+                                        temp2 = name3txt.getText().toString();
+                                        break;
+                                    default:
+                                        temp2 = "";
+                                }
+                                if (temp1.toLowerCase().equals(temp2.toLowerCase())) {
+                                    found[index - 1] = true;
+                                    justfound = false;
+                                } else {
+                                    compatible = false;
+                                }
+                                if (!(compatible) || (found[0] && found[1] && found[2])) break;
+                            } else if (inputLine.equals("<TR><TD ALIGN=LEFT>" + searchString[0] + "</TD>")) {
+                                justfound = true;
+                                index = 1;
+                            } else if (inputLine.equals("<TR><TD ALIGN=LEFT>" + searchString[1] + "</TD>")) {
+                                justfound = true;
+                                index = 2;
+                            } else if (inputLine.equals("<TR><TD ALIGN=LEFT>" + searchString[2] + "</TD>")) {
+                                justfound = true;
+                                index = 3;
+                            } else {
+                                justfound = false;
                             }
-                            if (temp1.equals(temp2))
-                            {
-                                found[index-1]=true;
-                                justfound=false;
-                            }
-                            else
-                            {
-                                compatible=false;
-                            }
-                            if(!(compatible) || (found[0] && found[1] && found[2])) break;
                         }
-                        else if (inputLine.equals("<TR><TD ALIGN=LEFT>"+searchString[0]+"</TD>"))
-                        {
-                            justfound=true;index=1;
-                        }
-                        else if (inputLine.equals("<TR><TD ALIGN=LEFT>"+searchString[1]+"</TD>"))
-                        {
-                            justfound=true;index=2;
-                        }
-                        else if (inputLine.equals("<TR><TD ALIGN=LEFT>"+searchString[2]+"</TD>"))
-                        {
-                            justfound=true;index=3;
-                        }
-                        else
-                        {
-                            justfound=false;
-                        }
-                    }
-                    in.close();
+                        in.close();
 
-                    if (!compatible)
-                    {
-                        NameEntryMismatchDialogFragment mismatchdiafragment=new NameEntryMismatchDialogFragment() ;
-                        mismatchdiafragment.show(getFragmentManager(),"Name Entry Mismatch" );
-                    }
-                    else if (found[0] && found[1] && found[2])
-                    {
-                        //Posting the form entries to the server @ url2
-                        try {
-                            result="";
-                            myURL = new URL(url2);
-                            conn = (HttpURLConnection) myURL.openConnection();
-                            conn.setRequestMethod("POST");
+                        if (!compatible) {
+                            NameEntryMismatchDialogFragment mismatchdiafragment = new NameEntryMismatchDialogFragment();
+                            mismatchdiafragment.show(getFragmentManager(), "Name Entry Mismatch");
+                        } else if (found[0] && found[1] && found[2]) {
+                            //Posting the form entries to the server @ url2
+                            try {
+                                result = "";
+                                myURL = new URL(url2);
+                                conn = (HttpURLConnection) myURL.openConnection();
+                                conn.setRequestMethod("POST");
 
-                            //Snippet from http://stackoverflow.com/questions/10500775/parse-json-from-httpurlconnection-object
-                            Map<String, Object> params = new LinkedHashMap<>();
-                            params.put("teamname", teamNametxt.getText().toString());
-                            params.put("entry1", entrynumber1txt.getText().toString());
-                            params.put("name1", name1txt.getText().toString());
-                            params.put("entry2", entrynumber2txt.getText().toString());
-                            params.put("name2", name2txt.getText().toString());
-                            //If the third member checkbox is unchecked then the information of third member is not sent
-                            if (CBTM.isChecked()) {
-                                params.put("entry3", entrynumber3txt.getText().toString());
-                                params.put("name3", name3txt.getText().toString());
-                            }
-                            //I don't know whether this is reqd. or not but for safety I have included this
-                            // Anyways this is not going to do any harm
-                            else {
-                                params.put("entry3", "");
-                                params.put("name3", "");
-                            }
+                                //Snippet from http://stackoverflow.com/questions/10500775/parse-json-from-httpurlconnection-object
+                                Map<String, Object> params = new LinkedHashMap<>();
+                                params.put("teamname", teamNametxt.getText().toString());
+                                params.put("entry1", entrynumber1txt.getText().toString());
+                                params.put("name1", name1txt.getText().toString());
+                                params.put("entry2", entrynumber2txt.getText().toString());
+                                params.put("name2", name2txt.getText().toString());
+                                //If the third member checkbox is unchecked then the information of third member is not sent
+                                if (CBTM.isChecked()) {
+                                    params.put("entry3", entrynumber3txt.getText().toString());
+                                    params.put("name3", name3txt.getText().toString());
+                                }
+                                //I don't know whether this is reqd. or not but for safety I have included this
+                                // Anyways this is not going to do any harm
+                                else {
+                                    params.put("entry3", "");
+                                    params.put("name3", "");
+                                }
 
-                            StringBuilder postData = new StringBuilder();
-                            for (Map.Entry<String, Object> param : params.entrySet()) {
-                                if (postData.length() != 0) postData.append('&');
-                                postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
-                                postData.append('=');
-                                postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
-                            }
-                            byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+                                StringBuilder postData = new StringBuilder();
+                                for (Map.Entry<String, Object> param : params.entrySet()) {
+                                    if (postData.length() != 0) postData.append('&');
+                                    postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+                                    postData.append('=');
+                                    postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+                                }
+                                byte[] postDataBytes = postData.toString().getBytes("UTF-8");
 
-                            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-                            conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
-                            conn.setDoOutput(true);
+                                conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                                conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+                                conn.setDoOutput(true);
 
-                            enableStrictMode();
-                            conn.getOutputStream().write(postDataBytes);
+                                enableStrictMode();
+                                conn.getOutputStream().write(postDataBytes);
 
-                            in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-                            for (int c = in.read(); c != -1; c = in.read())
-                                result = result.concat(Character.toString((char) c));
-                            //The String result contains the result of the submission.
+                                in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                                for (int c = in.read(); c != -1; c = in.read())
+                                    result = result.concat(Character.toString((char) c));
+                                //The String result contains the result of the submission.
 
-                        } catch (Exception e) {
-                            result = e.toString();
-                        } finally {
-                            //For an already registered user
-                            if (result.equals("{\"RESPONSE_SUCCESS\": 0, \"RESPONSE_MESSAGE\": \"User already registered\"}")) {
-                                UserExistsDialogFragment existmsgbox = new UserExistsDialogFragment();
-                                existmsgbox.show(getFragmentManager(), "Already Exists");
-                            }
+                            } catch (Exception e) {
+                                result = e.toString();
+                            } finally {
+                                //For an already registered user
+                                if (result.equals("{\"RESPONSE_SUCCESS\": 0, \"RESPONSE_MESSAGE\": \"User already registered\"}")) {
+                                    UserExistsDialogFragment existmsgbox = new UserExistsDialogFragment();
+                                    existmsgbox.show(getFragmentManager(), "Already Exists");
+                                }
 
-                            //Upon the successful addition of an entry
-                            else if (result.equals("{\"RESPONSE_SUCCESS\": 1, \"RESPONSE_MESSAGE\": \"Registration completed\"}")) {
-                                SuccMsgDialogFragment succmsgbox = new SuccMsgDialogFragment();
-                                succmsgbox.show(getFragmentManager(), "Successful Response");
-                            } else if (result.equals("{\"RESPONSE_SUCCESS\": 0, \"RESPONSE_MESSAGE\": \"Data not posted!\"}")) {
+                                //Upon the successful addition of an entry
+                                else if (result.equals("{\"RESPONSE_SUCCESS\": 1, \"RESPONSE_MESSAGE\": \"Registration completed\"}")) {
+                                    SuccMsgDialogFragment succmsgbox = new SuccMsgDialogFragment();
+                                    succmsgbox.show(getFragmentManager(), "Successful Response");
+                                } else if (result.equals("{\"RESPONSE_SUCCESS\": 0, \"RESPONSE_MESSAGE\": \"Data not posted!\"}")) {
                     /*
                         *This case should not arise in real
                         * Because this is the case when incomplete information is sent to the server
                         * But our pre-check after clicking the submit button would never allow to post such incomplete info.
                     */
+                                }
+
+                                //Any other value of the string result implies a connection failure
+                                else {
+                                    ConnFailDialogFragment connfailmsg = new ConnFailDialogFragment();
+                                    connfailmsg.show(getFragmentManager(), "Connection Failed");
+                                }
+
+
                             }
-
-                            //Any other value of the string result implies a connection failure
-                            else {
-                                ConnFailDialogFragment connfailmsg = new ConnFailDialogFragment();
-                                connfailmsg.show(getFragmentManager(), "Connection Failed");
-                            }
-
-
+                        } else {
+                            index = found[2] ? (byte) index : 3;
+                            index = found[1] ? (byte) index : 2;
+                            index = found[0] ? (byte) index : 1;
+                            NotRegCourseDialogFragment notregdiafragment = new NotRegCourseDialogFragment();
+                            notregdiafragment.show(getFragmentManager(), "Not registered for course");
                         }
-                    }
-                    else
-                    {
-                        index=found[2]?(byte) index:3;
-                        index=found[1]?(byte)index:2;
-                        index=found[0]?(byte)index:1;
-                        NotRegCourseDialogFragment notregdiafragment = new NotRegCourseDialogFragment() ;
-                        notregdiafragment.show(getFragmentManager(),"Not registered for course" );
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        ConnFailDialogFragment connfailmsg = new ConnFailDialogFragment();
+                        connfailmsg.show(getFragmentManager(), "Connection Failed");
                     }
                 }
-                catch(Exception e){System.out.println(e);}
-
 
             }
 
         }
     };
+
+
+    //Entry Number Repeat Dialog Box
+    public class EntryNoRepeatDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
+            builder.setTitle("ENTRY NUMBER REPEAT");
+            builder.setMessage("The Entry Number you entered for team member "+index+" has already been entered for another member!")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //Just exits the dialog box
+                            result = "";
+                            dialog.dismiss();
+                            switch (index) {
+                                case 1:
+                                    entrynumber1txt.requestFocus();
+                                    break;
+                                case 2:
+                                    entrynumber2txt.requestFocus();
+                                    break;
+                                case 3:
+                                    entrynumber3txt.requestFocus();
+                                    break;
+                            }
+                        }
+                    });
+            return builder.create();
+
+        }
+    }
 
 
     //Name Entry Number Mismatch Dialog Box
