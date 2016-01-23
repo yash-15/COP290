@@ -1,3 +1,36 @@
+/*************************************************************************************************
+ * ================================
+ * COP290 TEAM REGISTRATION APP
+ * ================================
+ *
+ * DEVELOPING TEAM
+ * ------------------
+ * SPYCODERS
+ *
+ * DEVELOPERS
+ * -------------
+ * SAUHARD GUPTA          S      2013ME10117
+ * PRABHU PRASAD PANDA    P      2013ME10859
+ * YASH KUMAR BANSAL      Y      2013ME10742
+ *                        C
+ *                        O
+ *                        D
+ *                        E
+ *                        R
+ *                        S
+ *
+ * GUIDED BY
+ * ------------
+ * PROF. VINAY JOSEPH RIBEIRO
+ *
+ * SPECIAL THANKS TO
+ * -------------------
+ * http://developer.android.com
+ * http://stackoverflow.com
+ * https://github.com
+ * https://slack.com   (https://spycoderscop290.slack.com)
+ ************************************************************************************************/
+
 package spycoders.cop290registration;
 
 
@@ -261,15 +294,6 @@ public class MainActivity extends AppCompatActivity  {
         });
 
 
-
-
-
-
-
-
-
-
-
     }
 
     //Displays the appropriate message on the toast after a focus is changed
@@ -354,6 +378,8 @@ public class MainActivity extends AppCompatActivity  {
 
     private View.OnClickListener onBut_Reset=new View.OnClickListener(){
         public void onClick(View v){
+            //Snippet from
+            // http://stackoverflow.com/questions/15564614/how-to-restart-an-android-application-programmatically
             Intent i = getBaseContext().getPackageManager()
                     .getLaunchIntentForPackage( getBaseContext().getPackageName() );
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -428,15 +454,17 @@ public class MainActivity extends AppCompatActivity  {
                         result = "";
                         myURL = new URL(url1);
                         conn = (HttpURLConnection) myURL.openConnection();
-                        System.out.println("tsrdytfuy");
+
                         enableStrictMode();
                         BufferedReader in = new BufferedReader(new InputStreamReader(
-                                conn.getInputStream()));
+                                conn.getInputStream())); //Snippet for using BufferedReader to get data from url from
+                                                        // https://docs.oracle.com/javase/tutorial/networking/urls/readingWriting.html
                         String inputLine;// reads one line at a time from the BufferedReader
                         String[] stemp = {entrynumber1txt.getText().toString().toLowerCase()
                                 , entrynumber2txt.getText().toString().toLowerCase()
                                 , CBTM.isChecked() ? entrynumber3txt.getText().toString().toLowerCase() : "abcdefghijk"};
 
+                        //searchString contains the kerberos id version of entry number
                         String[] searchString = {stemp[0].substring(4, 7).concat(stemp[0].substring(2, 4)).concat(stemp[0].substring(7, 11)),
                                 stemp[1].substring(4, 7).concat(stemp[1].substring(2, 4)).concat(stemp[1].substring(7, 11)),
                                 stemp[2].substring(4, 7).concat(stemp[2].substring(2, 4)).concat(stemp[2].substring(7, 11))};
@@ -484,7 +512,7 @@ public class MainActivity extends AppCompatActivity  {
                         }
                         in.close();
 
-                        if (!compatible) {
+                        if (!compatible) {//if there is a mismatch
                             NameEntryMismatchDialogFragment mismatchdiafragment = new NameEntryMismatchDialogFragment();
                             mismatchdiafragment.show(getFragmentManager(), "Name Entry Mismatch");
                         } else if (found[0] && found[1] && found[2]) {
@@ -495,7 +523,8 @@ public class MainActivity extends AppCompatActivity  {
                                 conn = (HttpURLConnection) myURL.openConnection();
                                 conn.setRequestMethod("POST");
 
-                                //Snippet from http://stackoverflow.com/questions/10500775/parse-json-from-httpurlconnection-object
+                                //Snippet for connection codes from
+                                // http://stackoverflow.com/questions/10500775/parse-json-from-httpurlconnection-object
                                 Map<String, Object> params = new LinkedHashMap<>();
                                 params.put("teamname", teamNametxt.getText().toString());
                                 params.put("entry1", entrynumber1txt.getText().toString());
@@ -572,7 +601,7 @@ public class MainActivity extends AppCompatActivity  {
                             notregdiafragment.show(getFragmentManager(), "Not registered for course");
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+
                         ConnFailDialogFragment connfailmsg = new ConnFailDialogFragment();
                         connfailmsg.show(getFragmentManager(), "Connection Failed");
                     }
@@ -583,6 +612,9 @@ public class MainActivity extends AppCompatActivity  {
         }
     };
 
+
+    //Help for making dialog box received from
+    //http://developer.android.com/guide/topics/ui/dialogs.html
 
     //Entry Number Repeat Dialog Box
     public class EntryNoRepeatDialogFragment extends DialogFragment {
@@ -839,6 +871,8 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     //To overcome the NetworkOnMainThreadException
+    //Snippet from
+    //http://stackoverflow.com/questions/8258725/strict-mode-in-android-2-2
     public void enableStrictMode()
     {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
