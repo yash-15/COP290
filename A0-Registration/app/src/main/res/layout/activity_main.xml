@@ -30,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="visible"
+            android:weightSum="1">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -159,15 +160,45 @@
 
 
             <Button
+                android:id="@+id/btnExit"
+                style="?android:textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="EXIT"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginLeft="5dp"
+                android:enabled="true"
+                android:visibility="visible"
+            android:background="@android:color/transparent"
+            android:clickable="true" />
+
+            <Button
+                android:id="@+id/btnReset"
+                style="?android:textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-49dp"
+                android:text="RESET"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginLeft="100dp"
+                android:enabled="true"
+                android:visibility="visible"
+                android:background="@android:color/transparent"
+                android:clickable="true" />
+
+            <Button
                 android:id="@+id/btnSUBMIT"
                 style="?android:textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="-49dp"
                 android:text="SUBMIT"
                 android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginLeft="240dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="255dp"
                 android:enabled="false"
                 android:visibility="visible"
                 android:background="@android:color/transparent"

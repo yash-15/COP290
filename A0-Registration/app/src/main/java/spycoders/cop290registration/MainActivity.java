@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity  {
     //Initial Declaration
     //Declaration of Objects in the layout
     EditText name1txt, name2txt, name3txt, entrynumber1txt, entrynumber2txt, entrynumber3txt, teamNametxt;
-    Button btn;
+    Button btn_exit,btn_reset,btn_submit;
     CheckBox CBTM;
 
     //Declaration of the result string which will contain the response message from the server upon an attempt to post data
@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity  {
         entrynumber3txt = (EditText) findViewById(R.id.txtENTRYNUMBER3);
         teamNametxt = (EditText) findViewById(R.id.txtTEAM_NAME);
         CBTM=(CheckBox)findViewById(R.id.checkBoxAddThirdMember);
-        btn = (Button) findViewById(R.id.btnSUBMIT);
+        btn_exit=(Button) findViewById(R.id.btnExit);
+        btn_reset=(Button) findViewById(R.id.btnReset);
+        btn_submit = (Button) findViewById(R.id.btnSUBMIT);
 
         //When the activity is first called excepting the team name text box all other fields are set to be invisible
 
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity  {
         entrynumber3txt.setVisibility(View.INVISIBLE);
 
         //Submit button is also disabled
-        btn.setEnabled(false);
+        btn_submit.setEnabled(false);
 
         //Blanking the textboxes
         teamNametxt.setText("");
@@ -90,8 +92,9 @@ public class MainActivity extends AppCompatActivity  {
         entrynumber3txt.setText("");
 
 
-        btn.setOnClickListener(onBut);
-
+        btn_exit.setOnClickListener(onBut_Exit);
+        btn_reset.setOnClickListener(onBut_Reset);
+        btn_submit.setOnClickListener(onBut_Submit);
 
         //So as to know that the text box on focus has been changed
         name1txt.setOnFocusChangeListener(CheckFocus);
@@ -303,7 +306,7 @@ public class MainActivity extends AppCompatActivity  {
     //This sub-procedure checks whether at the instance when it is invoked submit button should
     // be active or not
     public void inspect_submit(){
-        btn.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
+        btn_submit.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
                 && (String.valueOf(name1txt.getText()).trim().length() > 0)
                 && (String.valueOf(name2txt.getText()).trim().length() > 0)
                 && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
@@ -343,8 +346,22 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
+    private View.OnClickListener onBut_Exit=new View.OnClickListener(){
+        public void onClick(View v){
+            System.exit(0);
+        }
+    };
 
-    private View.OnClickListener onBut=new View.OnClickListener() {
+    private View.OnClickListener onBut_Reset=new View.OnClickListener(){
+        public void onClick(View v){
+            Intent i = getBaseContext().getPackageManager()
+                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            finish();  //kills the current activity
+            startActivity(i);
+        }
+    };
+    private View.OnClickListener onBut_Submit=new View.OnClickListener() {
         public void onClick(View v) {
 
             //At first check whether the entry number is of appropriate format i.e, 20NN-CCC-NNNN
@@ -708,7 +725,7 @@ public class MainActivity extends AppCompatActivity  {
                         public void onClick(DialogInterface dialog, int id) {
                             //Resends the request
                             result="";
-                            onBut.onClick(getView());
+                            onBut_Submit.onClick(getView());
                         }
                     })
                     .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
