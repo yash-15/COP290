@@ -29,6 +29,7 @@
  * http://stackoverflow.com
  * https://github.com
  * https://slack.com   (https://spycoderscop290.slack.com)
+ * For adding animation:- https://www.youtube.com/watch?v=0gElZRDtWHs
  ************************************************************************************************/
 
 package spycoders.cop290registration;
@@ -53,7 +54,6 @@ import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -150,6 +150,31 @@ public class MainActivity extends AppCompatActivity  {
 
         teamNametxt.requestFocus() ;        //focus is set to team name text box
 
+        teamNametxt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                name1txt.setVisibility(View.VISIBLE);
+                entrynumber1txt.setVisibility(View.VISIBLE);
+                if (!animated[1]) {
+                    animated[1] = true;
+                    name1txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                    entrynumber1txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                }
+                inspect_submit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+
         name1txt.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -164,7 +189,9 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                //Checks the format of the text entered
+                if(!isAlpha(String.valueOf(name1txt.getText())))
+                    name1txt.setError("Wrong Name Format");
             }
 
 
@@ -183,6 +210,28 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void afterTextChanged(Editable s) {
+                //Checks the format of the text entered
+                if(!isAlpha(String.valueOf(name2txt.getText())))
+                    name2txt.setError("Wrong Name Format");
+            }
+
+        });
+        name3txt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                inspect_submit() ;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //Checks the format of the text entered
+                if(!isAlpha(String.valueOf(name3txt.getText())))
+                    name3txt.setError("Wrong Name Format");
 
             }
 
@@ -207,6 +256,11 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void afterTextChanged(Editable s) {
+                //Checks the format of the text entered
+                if(!checkEntryNoFormat(String.valueOf(entrynumber1txt.getText())))
+                    entrynumber1txt.setError("INCORRECT ENTRY NUMBER FORMAT. CORRECT FORMAT 20NN CCC NNNN where\n" +
+                            "20NN - Year of entry \n" + "CCC - Branch Code\n" + "NNNN - Serial Number\n" + "N implies any digit from 0-9\n"
+                            + "C implies any character in A-Z or 0-9\n" + "No spaces (Spaces are provided here for the purpose of illustration) !");
 
             }
 
@@ -230,34 +284,15 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                //Checks the format of the text entered
+                if(!checkEntryNoFormat(String.valueOf(entrynumber2txt.getText())))
+                    entrynumber2txt.setError("INCORRECT ENTRY NUMBER FORMAT. CORRECT FORMAT 20NN CCC NNNN where\n" +
+                            "20NN - Year of entry \n" + "CCC - Branch Code\n" + "NNNN - Serial Number\n" + "N implies any digit from 0-9\n"
+                            + "C implies any character in A-Z or 0-9\n" + "No spaces (Spaces are provided here for the purpose of illustration) !");
             }
 
         });
-        teamNametxt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                name1txt.setVisibility(View.VISIBLE);
-                entrynumber1txt.setVisibility(View.VISIBLE);
-                if (!animated[1]) {
-                    animated[1]=true;
-                    name1txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
-                    entrynumber1txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
-                }
-                inspect_submit() ;
-         }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-
-        });
         entrynumber3txt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -271,27 +306,15 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                //Checks the format of the text entered
+                if(!checkEntryNoFormat(String.valueOf(entrynumber3txt.getText())))
+                    entrynumber3txt.setError("INCORRECT ENTRY NUMBER FORMAT. CORRECT FORMAT 20NN CCC NNNN where\n" +
+                            "20NN - Year of entry \n" + "CCC - Branch Code\n" + "NNNN - Serial Number\n" + "N implies any digit from 0-9\n"
+                            + "C implies any character in A-Z or 0-9\n" + "No spaces (Spaces are provided here for the purpose of illustration) !");
             }
 
         });
-        name3txt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                inspect_submit() ;
-          }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-
-        });
 
 
     }
@@ -302,28 +325,41 @@ public class MainActivity extends AppCompatActivity  {
         public void onFocusChange(View v, boolean hasFocus) {
 
             if (name1txt.hasFocus()){
-                toast.setText("Entering name of first member!");
+                toast.setText("NOW: Entering name of first member!"+"\n"+
+
+                        "NEXT: Enter entry no. of first member!");
             }
             else if (name2txt.hasFocus()){
-                toast.setText("Entering name of second member!");
+                toast.setText("NOW: Entering name of second member!"+"\n"+
+
+                        "NEXT: Enter entry no. of second member!");
             }
             else if (name3txt.hasFocus()){
-                toast.setText("Entering name of third member!");
+                toast.setText("NOW: Entering name of third member!"+"\n"+
+
+                        "NEXT: Enter the entry no. of third member!");
             }
             else if (entrynumber1txt.hasFocus()){
-                toast.setText("Entering entry no. of first member!");
+                toast.setText("NOW: Entering entry no. of first member!"+"\n"+
+
+                        "NEXT: Enter the name of second member!");
             }
             else if (entrynumber2txt.hasFocus()){
-                toast.setText("Entering entry no. of second member!");
+                toast.setText("NOW: Entering entry no. of second member!"+"\n"+
+
+                        "NEXT: SUBMIT or"+"OR Check to Enter the name of third member!");
             }
             else if (entrynumber3txt.hasFocus()){
-                toast.setText("Entering entry no. of third member!");
+                toast.setText("Entering entry no. of third member!" +
+                        "NEXT: SUBMIT!");
             }
             else if(teamNametxt.hasFocus()){
-                toast.setText("Entering the team name!");
+                toast.setText("NOW: Entering the team name!"+"\n"
+                        +"NEXT: Enter the name of first member");
             }
             else{}
             if(hasFocus) toast.show();
+
         }
     };
 
@@ -342,6 +378,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
     //Checks whether checkbox is checked or not and works accordingly
+    //Help obtained from http://developer.android.com/guide/topics/ui/controls/checkbox.html
     public void Select(View t) {
 
         boolean checked = ((CheckBox) t).isChecked();
@@ -862,7 +899,22 @@ public class MainActivity extends AppCompatActivity  {
         return ans;
     }
 
+    //Checks whether the characters are explicitly in (A-Z )
+    private boolean isAlpha(String s)
+    {
+        int l=s.length();
+        boolean ans=true;
+        for(int i=0;i<l;i++)
+        {
 
+            if(isNumeric(s.substring(i,i+1)))
+            {
+                ans=false;
+                break;
+            }
+        }
+        return ans;
+    }
     public boolean checkEntryNoFormat(String s)
     {
         return ((s.length()==11) && (s.substring(0,2).equals("20")) && (isNumeric(s.substring(2,4)))
