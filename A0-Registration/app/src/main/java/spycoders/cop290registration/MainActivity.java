@@ -906,8 +906,8 @@ public class MainActivity extends AppCompatActivity  {
         boolean ans=true;
         for(int i=0;i<l;i++)
         {
-
-            if(isNumeric(s.substring(i,i+1)))
+            char temp=s.charAt(i);
+            if(!((temp>=97 && temp<=122)||(temp>=65 && temp<=90)||(temp==32)||(temp==46)))
             {
                 ans=false;
                 break;
