@@ -30,6 +30,7 @@
  * https://github.com
  * https://slack.com   (https://spycoderscop290.slack.com)
  * For adding animation:- https://www.youtube.com/watch?v=0gElZRDtWHs
+ * For error sorting:- http://www.donnfelker.com/android-validation-with-edittext/
  ************************************************************************************************/
 
 package spycoders.cop290registration;
@@ -62,12 +63,12 @@ import java.util.Map;
 
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     //Initial Declaration
     //Declaration of Objects in the layout
     EditText name1txt, name2txt, name3txt, entrynumber1txt, entrynumber2txt, entrynumber3txt, teamNametxt;
-    Button btn_exit,btn_reset,btn_submit;
+    Button btn_exit, btn_reset, btn_submit;
     CheckBox CBTM;
 
     //Declaration of the result string which will contain the response message from the server upon an attempt to post data
@@ -80,9 +81,7 @@ public class MainActivity extends AppCompatActivity  {
     boolean[] animated;
 
     //A variable to store the member index in whose entry error is found
-    byte index=0;
-
-
+    byte index = 0;
 
 
     @Override
@@ -98,14 +97,14 @@ public class MainActivity extends AppCompatActivity  {
         entrynumber2txt = (EditText) findViewById(R.id.txtENTRYNUMBER2);
         entrynumber3txt = (EditText) findViewById(R.id.txtENTRYNUMBER3);
         teamNametxt = (EditText) findViewById(R.id.txtTEAM_NAME);
-        CBTM=(CheckBox)findViewById(R.id.checkBoxAddThirdMember);
-        btn_exit=(Button) findViewById(R.id.btnExit);
-        btn_reset=(Button) findViewById(R.id.btnReset);
+        CBTM = (CheckBox) findViewById(R.id.checkBoxAddThirdMember);
+        btn_exit = (Button) findViewById(R.id.btnExit);
+        btn_reset = (Button) findViewById(R.id.btnReset);
         btn_submit = (Button) findViewById(R.id.btnSUBMIT);
 
         //When the activity is first called excepting the team name text box all other fields are set to be invisible
 
-        name1txt.setVisibility(View.INVISIBLE) ;
+        name1txt.setVisibility(View.INVISIBLE);
         name2txt.setVisibility(View.INVISIBLE);
         name3txt.setVisibility(View.INVISIBLE);
         entrynumber1txt.setVisibility(View.INVISIBLE);
@@ -117,7 +116,7 @@ public class MainActivity extends AppCompatActivity  {
 
         //Blanking the textboxes
         teamNametxt.setText("");
-        name1txt.setText("") ;
+        name1txt.setText("");
         name2txt.setText("");
         name3txt.setText("");
         entrynumber1txt.setText("");
@@ -139,16 +138,16 @@ public class MainActivity extends AppCompatActivity  {
         teamNametxt.setOnFocusChangeListener(CheckFocus);
 
 
-        toast=Toast.makeText(getApplicationContext(),"Toasty",Toast.LENGTH_SHORT ) ;
+        toast = Toast.makeText(getApplicationContext(), "Toasty", Toast.LENGTH_SHORT);
 
-        result=new String("");
+        result = new String("");
 
-        animated=new boolean[3];
+        animated = new boolean[3];
         // 0:checkbox;1<=i<=2:team member i (both name and entry no.)
         //This check is not reqd. for member 3 as they get activated by check box.
-        for(int i=0;i<3;i++) animated[i]=false;
+        for (int i = 0; i < 3; i++) animated[i] = false;
 
-        teamNametxt.requestFocus() ;        //focus is set to team name text box
+        teamNametxt.requestFocus();        //focus is set to team name text box
 
         teamNametxt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -184,14 +183,14 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                inspect_submit() ;
+                inspect_submit();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 //Checks the format of the text entered
-                if(!isAlpha(String.valueOf(name1txt.getText())))
-                    name1txt.setError("Wrong Name Format");
+                if (!isAlpha(String.valueOf(name1txt.getText())))
+                    name1txt.setError(getString(R.string.Incorrect_name_format));
             }
 
 
@@ -211,8 +210,8 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void afterTextChanged(Editable s) {
                 //Checks the format of the text entered
-                if(!isAlpha(String.valueOf(name2txt.getText())))
-                    name2txt.setError("Wrong Name Format");
+                if (!isAlpha(String.valueOf(name2txt.getText())))
+                    name2txt.setError(getString(R.string.Incorrect_name_format));
             }
 
         });
@@ -224,14 +223,14 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                inspect_submit() ;
+                inspect_submit();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 //Checks the format of the text entered
-                if(!isAlpha(String.valueOf(name3txt.getText())))
-                    name3txt.setError("Wrong Name Format");
+                if (!isAlpha(String.valueOf(name3txt.getText())))
+                    name3txt.setError(getString(R.string.Incorrect_name_format));
 
             }
 
@@ -247,20 +246,18 @@ public class MainActivity extends AppCompatActivity  {
                 name2txt.setVisibility(View.VISIBLE);
                 entrynumber2txt.setVisibility(View.VISIBLE);
                 if (!animated[2]) {
-                    animated[2]=true;
+                    animated[2] = true;
                     name2txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
                     entrynumber2txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
                 }
-              inspect_submit() ;
+                inspect_submit();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 //Checks the format of the text entered
-                if(!checkEntryNoFormat(String.valueOf(entrynumber1txt.getText())))
-                    entrynumber1txt.setError("INCORRECT ENTRY NUMBER FORMAT. CORRECT FORMAT 20NN CCC NNNN where\n" +
-                            "20NN - Year of entry \n" + "CCC - Branch Code\n" + "NNNN - Serial Number\n" + "N implies any digit from 0-9\n"
-                            + "C implies any character in A-Z or 0-9\n" + "No spaces (Spaces are provided here for the purpose of illustration) !");
+                if (!checkEntryNoFormat(String.valueOf(entrynumber1txt.getText())))
+                    entrynumber1txt.setError(getString(R.string.Incorrect_entry_format));
 
             }
 
@@ -275,20 +272,18 @@ public class MainActivity extends AppCompatActivity  {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 CBTM.setVisibility(View.VISIBLE);
-                if(!animated[0]) {
-                    animated[0]=true;
+                if (!animated[0]) {
+                    animated[0] = true;
                     CBTM.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
                 }
-                inspect_submit() ;
+                inspect_submit();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 //Checks the format of the text entered
-                if(!checkEntryNoFormat(String.valueOf(entrynumber2txt.getText())))
-                    entrynumber2txt.setError("INCORRECT ENTRY NUMBER FORMAT. CORRECT FORMAT 20NN CCC NNNN where\n" +
-                            "20NN - Year of entry \n" + "CCC - Branch Code\n" + "NNNN - Serial Number\n" + "N implies any digit from 0-9\n"
-                            + "C implies any character in A-Z or 0-9\n" + "No spaces (Spaces are provided here for the purpose of illustration) !");
+                if (!checkEntryNoFormat(String.valueOf(entrynumber2txt.getText())))
+                    entrynumber2txt.setError(getString(R.string.Incorrect_entry_format));
             }
 
         });
@@ -301,80 +296,77 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                inspect_submit() ;
-}
+                inspect_submit();
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
                 //Checks the format of the text entered
-                if(!checkEntryNoFormat(String.valueOf(entrynumber3txt.getText())))
-                    entrynumber3txt.setError("INCORRECT ENTRY NUMBER FORMAT. CORRECT FORMAT 20NN CCC NNNN where\n" +
-                            "20NN - Year of entry \n" + "CCC - Branch Code\n" + "NNNN - Serial Number\n" + "N implies any digit from 0-9\n"
-                            + "C implies any character in A-Z or 0-9\n" + "No spaces (Spaces are provided here for the purpose of illustration) !");
+                if (!checkEntryNoFormat(String.valueOf(entrynumber3txt.getText())))
+                    entrynumber3txt.setError(getString(R.string.Incorrect_entry_format));
             }
 
         });
 
 
-
     }
 
     //Displays the appropriate message on the toast after a focus is changed
-    private View.OnFocusChangeListener CheckFocus=new View.OnFocusChangeListener() {
+    private View.OnFocusChangeListener CheckFocus = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
 
-            if (name1txt.hasFocus()){
-                toast.setText("NOW: Entering name of first member!"+"\n"+
-
-                        "NEXT: Enter entry no. of first member!");
+            if (name1txt.hasFocus()) {
+                toast.setText(getString(R.string.now) + getString(R.string.tnamecont)
+                        + getString(R.string.first) + getString(R.string.member) + "\n" +
+                        getString(R.string.next) + getString(R.string.tentry)
+                        + getString(R.string.first) + getString(R.string.member));
+            } else if (name2txt.hasFocus()) {
+                toast.setText(getString(R.string.now) + getString(R.string.tnamecont)
+                        + getString(R.string.second) + getString(R.string.member) + "\n" +
+                        getString(R.string.next) + getString(R.string.tentry)
+                        + getString(R.string.second) + getString(R.string.member));
+            } else if (name3txt.hasFocus()) {
+                toast.setText(getString(R.string.now) + getString(R.string.tnamecont)
+                        + getString(R.string.third) + getString(R.string.member) + "\n" +
+                        getString(R.string.next) + getString(R.string.tentry)
+                        + getString(R.string.third) + getString(R.string.member));
+            } else if (entrynumber1txt.hasFocus()) {
+                toast.setText(getString(R.string.now) + getString(R.string.tentrycont)
+                        + getString(R.string.first) + getString(R.string.member) + "\n" +
+                        getString(R.string.next) + getString(R.string.tname)
+                        + getString(R.string.second) + getString(R.string.member));
+            } else if (entrynumber2txt.hasFocus()) {
+                toast.setText(getString(R.string.now) + getString(R.string.tentrycont)
+                        + getString(R.string.second) + getString(R.string.member) + "\n" +
+                        getString(R.string.next) + getString(R.string.layout_submit)
+                        + getString(R.string.or) + getString(R.string.checkbox));
+            } else if (entrynumber3txt.hasFocus()) {
+                toast.setText(getString(R.string.now) + getString(R.string.tentrycont)
+                        + getString(R.string.first) + getString(R.string.member) + "\n" +
+                        getString(R.string.next) + getString(R.string.layout_submit) + "!");
+            } else if (teamNametxt.hasFocus()) {
+                toast.setText(getString(R.string.now) + getString(R.string.team) + "\n" +
+                        getString(R.string.next) + getString(R.string.tname)
+                        + getString(R.string.first) + getString(R.string.member));
+            } else {
             }
-            else if (name2txt.hasFocus()){
-                toast.setText("NOW: Entering name of second member!"+"\n"+
-
-                        "NEXT: Enter entry no. of second member!");
-            }
-            else if (name3txt.hasFocus()){
-                toast.setText("NOW: Entering name of third member!"+"\n"+
-
-                        "NEXT: Enter the entry no. of third member!");
-            }
-            else if (entrynumber1txt.hasFocus()){
-                toast.setText("NOW: Entering entry no. of first member!"+"\n"+
-
-                        "NEXT: Enter the name of second member!");
-            }
-            else if (entrynumber2txt.hasFocus()){
-                toast.setText("NOW: Entering entry no. of second member!"+"\n"+
-
-                        "NEXT: SUBMIT or"+"OR Check to Enter the name of third member!");
-            }
-            else if (entrynumber3txt.hasFocus()){
-                toast.setText("Entering entry no. of third member!" +
-                        "NEXT: SUBMIT!");
-            }
-            else if(teamNametxt.hasFocus()){
-                toast.setText("NOW: Entering the team name!"+"\n"
-                        +"NEXT: Enter the name of first member");
-            }
-            else{}
-            if(hasFocus) toast.show();
+            if (hasFocus) toast.show();
 
         }
     };
 
     //This sub-procedure checks whether at the instance when it is invoked submit button should
     // be active or not
-    public void inspect_submit(){
+    public void inspect_submit() {
         btn_submit.setEnabled((String.valueOf(teamNametxt.getText()).trim().length() > 0)
                 && (String.valueOf(name1txt.getText()).trim().length() > 0)
                 && (String.valueOf(name2txt.getText()).trim().length() > 0)
                 && (String.valueOf(entrynumber2txt.getText()).trim().length() > 0)
                 && (String.valueOf(entrynumber1txt.getText()).trim().length() > 0)
-                && (!(CBTM.isChecked()) || ((String.valueOf(name3txt.getText()).trim() .length() > 0)
-                                    && (String.valueOf(entrynumber3txt.getText()).trim() .length() > 0))));
+                && (!(CBTM.isChecked()) || ((String.valueOf(name3txt.getText()).trim().length() > 0)
+                && (String.valueOf(entrynumber3txt.getText()).trim().length() > 0))));
     }
-
 
 
     //Checks whether checkbox is checked or not and works accordingly
@@ -384,47 +376,47 @@ public class MainActivity extends AppCompatActivity  {
         boolean checked = ((CheckBox) t).isChecked();
 
 
-        switch(t.getId()) {
+        switch (t.getId()) {
             case R.id.checkBoxAddThirdMember:
-                if (checked)
-                {
+                if (checked) {
                     name3txt.setVisibility(View.VISIBLE);
                     entrynumber3txt.setVisibility(View.VISIBLE);
                     name3txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
                     entrynumber3txt.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
-                    toast.setText("Third member option active!");toast.show();
-                }
-                else
-                {
+                    toast.setText(getString(R.string.now) + getString(R.string.activate_third_mem) + "!" +
+                            "\n" + getString(R.string.next) + getString(R.string.tname) +
+                            getString(R.string.third) + getString(R.string.member));
+                    toast.show();
+                } else {
                     name3txt.setVisibility(View.INVISIBLE);
                     entrynumber3txt.setVisibility(View.INVISIBLE);
                 }
-                inspect_submit() ;
+                inspect_submit();
 
-                    break;
+                break;
 
         }
     }
 
 
-    private View.OnClickListener onBut_Exit=new View.OnClickListener(){
-        public void onClick(View v){
+    private View.OnClickListener onBut_Exit = new View.OnClickListener() {
+        public void onClick(View v) {
             System.exit(0);
         }
     };
 
-    private View.OnClickListener onBut_Reset=new View.OnClickListener(){
-        public void onClick(View v){
+    private View.OnClickListener onBut_Reset = new View.OnClickListener() {
+        public void onClick(View v) {
             //Snippet from
             // http://stackoverflow.com/questions/15564614/how-to-restart-an-android-application-programmatically
             Intent i = getBaseContext().getPackageManager()
-                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                    .getLaunchIntentForPackage(getBaseContext().getPackageName());
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();  //kills the current activity
             startActivity(i);
         }
     };
-    private View.OnClickListener onBut_Submit=new View.OnClickListener() {
+    private View.OnClickListener onBut_Submit = new View.OnClickListener() {
         public void onClick(View v) {
 
             //At first check whether the entry number is of appropriate format i.e, 20NN-CCC-NNNN
@@ -432,48 +424,36 @@ public class MainActivity extends AppCompatActivity  {
             //In the department field the third one is character so as to support MTech Students as well.
             //Some MTech students are also registered for this course.
             //Scope for improvement - This can be done during focus change as well.
-            if(!(checkEntryNoFormat(entrynumber1txt.getText().toString())))
-            {
-                index=1;
-                WrongFormatDialogFragment wfdiafrag=new WrongFormatDialogFragment() ;
-                wfdiafrag.show(getFragmentManager(),"Wrong Format 1");
-            }
-            else if(!(checkEntryNoFormat(entrynumber2txt.getText().toString())))
-            {
-                index=2;
-                WrongFormatDialogFragment wfdiafrag=new WrongFormatDialogFragment() ;
-                wfdiafrag.show(getFragmentManager(),"Wrong Format 2");
-            }
-            else if(CBTM.isChecked() && !(checkEntryNoFormat(entrynumber3txt.getText().toString())))
-            {
-                index=3;
-                WrongFormatDialogFragment wfdiafrag=new WrongFormatDialogFragment() ;
-                wfdiafrag.show(getFragmentManager(),"Wrong Format 3");
-            }
-
-            else {
+            if (!(checkEntryNoFormat(entrynumber1txt.getText().toString())
+                    && entrynumber1txt.getText().toString().length() == 11)) {
+                index = 1;
+                WrongFormatDialogFragment wfdiafrag = new WrongFormatDialogFragment();
+                wfdiafrag.show(getFragmentManager(), "Wrong Format 1");
+            } else if (!(checkEntryNoFormat(entrynumber2txt.getText().toString()))) {
+                index = 2;
+                WrongFormatDialogFragment wfdiafrag = new WrongFormatDialogFragment();
+                wfdiafrag.show(getFragmentManager(), "Wrong Format 2");
+            } else if (CBTM.isChecked() && !(checkEntryNoFormat(entrynumber3txt.getText().toString()))) {
+                index = 3;
+                WrongFormatDialogFragment wfdiafrag = new WrongFormatDialogFragment();
+                wfdiafrag.show(getFragmentManager(), "Wrong Format 3");
+            } else {
 
 
                 //Checks whether any Entry Number has been repeated in the form
 
-                index=0;
-                if(entrynumber1txt.getText().toString().equals(entrynumber2txt.getText().toString()))
-                {
-                    index=2;
-                }
-                else if (CBTM.isChecked() && ((entrynumber1txt.getText().toString().equals(entrynumber3txt.getText().toString()))
-                        ||(entrynumber2txt.getText().toString().equals(entrynumber3txt.getText().toString()))))
-                {
-                    index=3;
+                index = 0;
+                if (entrynumber1txt.getText().toString().equals(entrynumber2txt.getText().toString())) {
+                    index = 2;
+                } else if (CBTM.isChecked() && ((entrynumber1txt.getText().toString().equals(entrynumber3txt.getText().toString()))
+                        || (entrynumber2txt.getText().toString().equals(entrynumber3txt.getText().toString())))) {
+                    index = 3;
                 }
 
-                if (index!=0)
-                {
+                if (index != 0) {
                     EntryNoRepeatDialogFragment entryrepeatmsg = new EntryNoRepeatDialogFragment();
-                    entryrepeatmsg.show(getFragmentManager(),"Entry No. repeat!" );
-                }
-
-                else {
+                    entryrepeatmsg.show(getFragmentManager(), "Entry No. repeat!");
+                } else {
 
                     //Requires Internet Connection
 
@@ -495,7 +475,7 @@ public class MainActivity extends AppCompatActivity  {
                         enableStrictMode();
                         BufferedReader in = new BufferedReader(new InputStreamReader(
                                 conn.getInputStream())); //Snippet for using BufferedReader to get data from url from
-                                                        // https://docs.oracle.com/javase/tutorial/networking/urls/readingWriting.html
+                        // https://docs.oracle.com/javase/tutorial/networking/urls/readingWriting.html
                         String inputLine;// reads one line at a time from the BufferedReader
                         String[] stemp = {entrynumber1txt.getText().toString().toLowerCase()
                                 , entrynumber2txt.getText().toString().toLowerCase()
@@ -656,11 +636,11 @@ public class MainActivity extends AppCompatActivity  {
     //Entry Number Repeat Dialog Box
     public class EntryNoRepeatDialogFragment extends DialogFragment {
         @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState){
-            AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
-            builder.setTitle("ENTRY NUMBER REPEAT");
-            builder.setMessage("The Entry Number you entered for team member "+index+" has already been entered for another member!")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(getString(R.string.repeat_entry_no_title));
+            builder.setMessage(getString(R.string.repeat_entry_no_msg1) + index + getString(R.string.repeat_entry_no_msg2))
+                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Just exits the dialog box
                             result = "";
@@ -687,11 +667,11 @@ public class MainActivity extends AppCompatActivity  {
     //Name Entry Number Mismatch Dialog Box
     public class NameEntryMismatchDialogFragment extends DialogFragment {
         @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState){
-            AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
-            builder.setTitle("TEAM MEMBER'S NAME ENTRY NUMBER MISMATCH");
-            builder.setMessage("There is a mismatch between the name and entry number of Team Member "+index+" !")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(getString(R.string.name_entry_mismatch_title));
+            builder.setMessage(getString(R.string.name_entry_mismatch_msg) + index + " !")
+                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Just exits the dialog box
                             result = "";
@@ -718,11 +698,11 @@ public class MainActivity extends AppCompatActivity  {
     //Team Member not registered for COP290 course
     public class NotRegCourseDialogFragment extends DialogFragment {
         @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState){
-            AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
-            builder.setTitle("TEAM MEMBER NOT REGISTERED FOR COP290 COURSE");
-            builder.setMessage("Team Member "+index+" is currently not registered for COP290 course. So he cannot be a part of the team!")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(getString(R.string.not_reg_title));
+            builder.setMessage(getString(R.string.not_reg_msg1) + index + getString(R.string.not_reg_msg2))
+                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Just exits the dialog box
                             result = "";
@@ -748,13 +728,11 @@ public class MainActivity extends AppCompatActivity  {
     //Incorrect Entry Number Format Dialog Box
     public class WrongFormatDialogFragment extends DialogFragment {
         @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState){
-            AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
-            builder.setTitle("INCORRECT ENTRY NUMBER FORMAT!");
-            builder.setMessage("The format of the entry number of member " + index + " is incorrect. The correct format is 20NN CCC NNNN where\n" +
-                    "20NN - Year of entry \n" + "CCC - Branch Code\n" + "NNNN - Serial Number\n" + "N implies any digit from 0-9\n"
-                    + "C implies any character in A-Z or 0-9\n" + "No spaces (Spaces are provided here for the purpose of illustration) !")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(getString(R.string.Incorrect_entry_format_title));
+            builder.setMessage(getString(R.string.Incorrect_entry_format))
+                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Just exits the dialog box
                             result = "";
@@ -780,24 +758,24 @@ public class MainActivity extends AppCompatActivity  {
     //No connection dialog box
     public class ConnFailDialogFragment extends DialogFragment {
         @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState){
-            AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
-            builder.setTitle("NETWORK ERROR!");
-            builder.setMessage("The connection to the server has failed!")
-                    .setPositiveButton("BACK",new DialogInterface.OnClickListener(){
-                        public void onClick(DialogInterface dialog, int id){
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(getString(R.string.net_error_title));
+            builder.setMessage(getString(R.string.net_error_msg))
+                    .setPositiveButton(getString(R.string.back), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
                             //Just exits the dialog box
-                            result="";
+                            result = "";
                         }
                     })
-                    .setNeutralButton("RETRY", new DialogInterface.OnClickListener() {
+                    .setNeutralButton(getString(R.string.retry), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Resends the request
-                            result="";
+                            result = "";
                             onBut_Submit.onClick(getView());
                         }
                     })
-                    .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.layout_exit), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Exits the app
                             System.exit(0);
@@ -807,22 +785,23 @@ public class MainActivity extends AppCompatActivity  {
 
         }
     }
+
     //User already exists dialog box
     public class UserExistsDialogFragment extends DialogFragment {
         @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState){
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("REGISTERED USER!");
-            builder.setMessage("One or more users are already registered!")
-                    .setPositiveButton("Edit",new DialogInterface.OnClickListener(){
-                        public void onClick(DialogInterface dialog, int id){
+            builder.setTitle(getString(R.string.user_exists_title));
+            builder.setMessage(getString(R.string.user_exists_msg))
+                    .setPositiveButton(getString(R.string.edit), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
                             //Just exits the dialog box and sets focus on member 1
-                            result="";
+                            result = "";
                             dialog.dismiss();
-                            name1txt.requestFocus() ;
+                            name1txt.requestFocus();
                         }
                     })
-                    .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.layout_exit), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Exit the app
                             System.exit(0);
@@ -839,22 +818,22 @@ public class MainActivity extends AppCompatActivity  {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("REGISTRATION SUCCESSFUL");
-            builder.setMessage("Team \""+teamNametxt.getText().toString()+"\" was succesfully registered. Enjoy the course!")
-                    .setPositiveButton("REGISTER NEW TEAM", new DialogInterface.OnClickListener() {
+            builder.setTitle(getString(R.string.success_title));
+            builder.setMessage(getString(R.string.success_msg1) + teamNametxt.getText().toString() + getString(R.string.success_msg2))
+                    .setPositiveButton(getString(R.string.new_team), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Reset the form and start afresh
                             //Snippet used from
                             // http://stackoverflow.com/questions/15564614/how-to-restart-an-android-application-programmatically
                             Intent i = getBaseContext().getPackageManager()
-                                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                                    .getLaunchIntentForPackage(getBaseContext().getPackageName());
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             finish();  //kills the current activity
                             startActivity(i);
 
                         }
                     })
-                    .setNegativeButton("exit", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.layout_exit), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // Exit the app
                             System.exit(0);
@@ -867,15 +846,13 @@ public class MainActivity extends AppCompatActivity  {
 
 
     //This function checks whether any given string is a natural number or not
-    private boolean isNumeric(String s){
-        int l=s.length();
-        boolean ans=true;
-        for(int i=0;i<l;i++)
-        {
-            char temp=s.charAt(i);
-            if(temp<48 || temp>57)
-            {
-                ans=false;
+    private boolean isNumeric(String s) {
+        int l = s.length();
+        boolean ans = true;
+        for (int i = 0; i < l; i++) {
+            char temp = s.charAt(i);
+            if (temp < 48 || temp > 57) {
+                ans = false;
                 break;
             }
         }
@@ -883,53 +860,55 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     //Checks whether the characters are explicitly in (A-Z and 0-9)
-    private boolean isAlphaNumeric(String s)
-    {
-        int l=s.length();
-        boolean ans=true;
-        for(int i=0;i<l;i++)
-        {
-            char temp=s.charAt(i);
-            if(!((temp>=48 && temp<=57)||(temp>=65 && temp<=90)))
-            {
-                ans=false;
+    private boolean isAlphaNumeric(String s) {
+        int l = s.length();
+        boolean ans = true;
+        for (int i = 0; i < l; i++) {
+            char temp = s.charAt(i);
+            if (!((temp >= 48 && temp <= 57) || (temp >= 65 && temp <= 90))) {
+                ans = false;
                 break;
             }
         }
         return ans;
     }
 
-    //Checks whether the characters are explicitly in (A-Z )
-    private boolean isAlpha(String s)
-    {
-        int l=s.length();
-        boolean ans=true;
-        for(int i=0;i<l;i++)
-        {
-            char temp=s.charAt(i);
-            if(!((temp>=97 && temp<=122)||(temp>=65 && temp<=90)||(temp==32)||(temp==46)))
-            {
-                ans=false;
+    //Checks whether the characters are explicitly in (A-Z or a-z or ' ' or '.' )
+    private boolean isAlpha(String s) {
+        int l = s.length();
+        boolean ans = true;
+        for (int i = 0; i < l; i++) {
+            char temp = s.charAt(i);
+            if (!((temp >= 97 && temp <= 122) || (temp >= 65 && temp <= 90) || (temp == 32) || (temp == 46))) {
+                ans = false;
                 break;
             }
         }
         return ans;
     }
-    public boolean checkEntryNoFormat(String s)
-    {
-        return ((s.length()==11) && (s.substring(0,2).equals("20")) && (isNumeric(s.substring(2,4)))
-                && (isAlphaNumeric(s.substring(4,7)) )
-                && (isNumeric(s.substring(7,11))));
+
+
+    //Checks whether a given string till its length abides with the entry no. format
+    public boolean checkEntryNoFormat(String s) {
+        String ref_string = "2013ME10859";
+        int l = s.length();
+        if (l > 11) {
+            return false;
+        } else {
+            String test_string = s.concat(ref_string.substring(l, 11));
+            return ((test_string.substring(0, 2).equals("20")) && (isNumeric(test_string.substring(2, 4)))
+                    && (isAlphaNumeric(test_string.substring(4, 7)))
+                    && (isNumeric(test_string.substring(7, 11))));
+        }
     }
+
 
     //To overcome the NetworkOnMainThreadException
     //Snippet from
     //http://stackoverflow.com/questions/8258725/strict-mode-in-android-2-2
-    public void enableStrictMode()
-    {
+    public void enableStrictMode() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
     }
 }
-
