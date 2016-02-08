@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-    static int j=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,58 +169,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-        j=0;
-        for(int i=0;i<numberOfStudents;i++,j++) {
-            studentName[i].addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    inspect_submit();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    //Checks the format of the text entered
-                    if (!isAlpha(String.valueOf(studentName[j].getText())))
-                        studentName[j].setError(getString(R.string.Incorrect_name_format));
-                }
-            });
-
-            entryNumber[i].addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if (j + 1 < numberOfStudents - 1) {
-                        studentName[j + 1].setVisibility(View.VISIBLE);
-                        entryNumber[j + 1].setVisibility(View.VISIBLE);
-                        if (!isAnimated[j + 1]) {
-                            isAnimated[j + 1] = true;
-                            studentName[j + 1].startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
-                            entryNumber[j + 1].startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
-                        }
-                    } else if (j + 1 == numberOfStudents - 1) {
-                        CBTM.setVisibility(View.VISIBLE);
-                        if (!isAnimated[j + 1]) {
-                            isAnimated[j + 1] = true;
-                            CBTM.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
-                        }
-                    }
-                    inspect_submit();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    //Checks the format of the text entered
-                    if (!checkEntryNoFormat(String.valueOf(entryNumber[j].getText())))
-                        entryNumber[j].setError(getString(R.string.Incorrect_entry_format));
-                }
-            });
+        for(int i=0;i<numberOfStudents;i++) {
+            studentName[i].addTextChangedListener(new studentNameTextWatcher(i));
+            entryNumber[i].addTextChangedListener(new entryNumberTextWatcher(i));
         }
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -229,6 +179,64 @@ public class MainActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
+    private class studentNameTextWatcher implements TextWatcher {
+        private int j;
+        private studentNameTextWatcher(int z){
+            j=z;
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            inspect_submit();
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            //Checks the format of the text entered
+
+            if (!isAlpha(String.valueOf(studentName[j].getText())))
+                studentName[j].setError(getString(R.string.Incorrect_name_format));
+        }
+    }
+    private class entryNumberTextWatcher implements TextWatcher {
+        private int j;
+        private entryNumberTextWatcher(int z){
+            j=z;
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (j + 1 < numberOfStudents - 1) {
+                studentName[j + 1].setVisibility(View.VISIBLE);
+                entryNumber[j + 1].setVisibility(View.VISIBLE);
+                if (!isAnimated[j + 1]) {
+                    isAnimated[j + 1] = true;
+                    studentName[j + 1].startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                    entryNumber[j + 1].startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                }
+            } else if (j + 1 == numberOfStudents - 1) {
+                CBTM.setVisibility(View.VISIBLE);
+                if (!isAnimated[j + 1]) {
+                    isAnimated[j + 1] = true;
+                    CBTM.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.slide_in_left));
+                }
+            }
+            inspect_submit();
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            //Checks the format of the text entered
+            if (!checkEntryNoFormat(String.valueOf(entryNumber[j].getText())))
+                entryNumber[j].setError(getString(R.string.Incorrect_entry_format));
+        }
+    }
     //Displays the appropriate message on the toast after a focus is changed
     private View.OnFocusChangeListener CheckFocus = new View.OnFocusChangeListener() {
         @Override
@@ -261,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                         + getString(R.string.or) + getString(R.string.checkbox));
             } else if (entryNumber[2].hasFocus()) {
                 toast.setText(getString(R.string.now) + getString(R.string.tentrycont)
-                        + getString(R.string.first) + getString(R.string.member) + "\n" +
+                        + getString(R.string.third) + getString(R.string.member) + "\n" +
                         getString(R.string.next) + getString(R.string.layout_submit) + "!");
             } else if (teamName.hasFocus()) {
                 toast.setText(getString(R.string.now) + getString(R.string.team) + "\n" +
@@ -492,27 +500,29 @@ public class MainActivity extends AppCompatActivity {
                             }
                             finally {
                                 //For an already registered user
-                                if (result.equals("{\"RESPONSE_SUCCESS\": 0, \"RESPONSE_MESSAGE\": \"User already registered\"}")) {
-                                    UserExistsDialogFragment existmsgbox = new UserExistsDialogFragment();
-                                    existmsgbox.show(getFragmentManager(), "Already Exists");
-                                }
+                                switch (result) {
+                                    case "{\"RESPONSE_SUCCESS\": 0, \"RESPONSE_MESSAGE\": \"User already registered\"}":
+                                        UserExistsDialogFragment existmsgbox = new UserExistsDialogFragment();
+                                        existmsgbox.show(getFragmentManager(), "Already Exists");
+                                        break;
 
-                                //Upon the successful addition of an entry
-                                else if (result.equals("{\"RESPONSE_SUCCESS\": 1, \"RESPONSE_MESSAGE\": \"Registration completed\"}")) {
-                                    SuccMsgDialogFragment succmsgbox = new SuccMsgDialogFragment();
-                                    succmsgbox.show(getFragmentManager(), "Successful Response");
-                                }
-                                else if (result.equals("{\"RESPONSE_SUCCESS\": 0, \"RESPONSE_MESSAGE\": \"Data not posted!\"}")) {
+                                    //Upon the successful addition of an entry
+                                    case "{\"RESPONSE_SUCCESS\": 1, \"RESPONSE_MESSAGE\": \"Registration completed\"}":
+                                        SuccMsgDialogFragment succmsgbox = new SuccMsgDialogFragment();
+                                        succmsgbox.show(getFragmentManager(), "Successful Response");
+                                        break;
+                                    case "{\"RESPONSE_SUCCESS\": 0, \"RESPONSE_MESSAGE\": \"Data not posted!\"}":
                     /*
                         *This case should not arise in real
                         * Because this is the case when incomplete information is sent to the server
                         * But our pre-check after clicking the submit button would never allow to post such incomplete info.
                     */
-                                }
-                                //Any other value of the string result implies a connection failure
-                                else {
-                                    ConnFailDialogFragment connfailmsg = new ConnFailDialogFragment();
-                                    connfailmsg.show(getFragmentManager(), "Connection Failed");
+                                        break;
+                                    //Any other value of the string result implies a connection failure
+                                    default:
+                                        ConnFailDialogFragment connfailmsg = new ConnFailDialogFragment();
+                                        connfailmsg.show(getFragmentManager(), "Connection Failed");
+                                        break;
                                 }
                             }
                         } else {
