@@ -75,7 +75,7 @@
             android:layout_marginTop="20dp" />
 
         <Button
-            android:id="@+id/email_sign_in_button"
+            android:id="@+id/btnLogin"
             style="?android:textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,7 +83,8 @@
             android:text="@string/action_sign_in"
             android:textStyle="bold"
             android:textSize="30dp"
-            android:layout_gravity="left" />
+            android:layout_gravity="left"
+            android:onClick="Login"/>
 
         <Button
             style="?android:textAppearanceSmall"
