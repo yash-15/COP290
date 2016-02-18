@@ -46,6 +46,17 @@
             android:layout_marginBottom="8dp"
             android:visibility="gone" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="WELCOME!"
+            android:id="@+id/textView2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:textStyle="bold|italic"
+            android:textSize="40dp" />
+
         <AutoCompleteTextView
             android:id="@+id/Username"
             android:layout_width="match_parent"
@@ -57,7 +68,7 @@
             android:background="#fcf9f9"
             android:textIsSelectable="false"
             android:textSize="30dp"
-            android:layout_marginTop="80dp" />
+            android:layout_marginTop="60dp" />
 
         <EditText
             android:id="@+id/Password"
@@ -81,7 +92,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/action_sign_in"
-            android:textStyle="bold"
             android:textSize="30dp"
             android:layout_gravity="left"
             android:onClick="Login"/>
@@ -95,7 +105,7 @@
             android:text="@string/reset"
             android:textStyle="bold"
             android:layout_gravity="right"
-            android:textSize="30dp" />
+            android:textSize="15dp" />
 
         <Button
             style="?android:textAppearanceSmall"

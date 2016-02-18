@@ -3,22 +3,54 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/my_home"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="My Home" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/my_courses"
+            android:icon="@drawable/ic_menu_sort_by_size"
+            android:title="My Courses" />
+        <item
+            android:id="@+id/notifications"
+            android:icon="@drawable/ic_dialog_alert"
+            android:title="Notifications" />
+        <item
+            android:id="@+id/help"
+            android:icon="@drawable/ic_menu_help"
+            android:title="Help" />
     </group>
+    <item android:title="Courses">
+        <menu>
+            <item
+                android:id="@+id/assignment"
+                android:icon="@drawable/ic_menu_edit"
+                android:title="Assignments" />
+            <item
+                android:id="@+id/resources"
+                android:icon="@drawable/ic_menu_agenda"
+                android:title="Resources" />
+            <item
+                android:id="@+id/threads"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Threads" />
+            <item
+                android:id="@+id/grades"
+                android:icon="@drawable/ic_menu_info_details"
+                android:title="Grades" />
+
+            <item
+                android:id="@+id/calendar"
+                android:icon="@drawable/ic_menu_my_calendar"
+                android:title="Calendar" />
+            <item
+                android:id="@+id/search"
+                android:icon="@drawable/ic_menu_search"
+                android:title="Search" />
+
+        </menu>
+    </item>
+
+
 
     <item android:title="Communicate">
         <menu>
@@ -32,16 +64,16 @@
                 android:title="Send" />
         </menu>
     </item>
-    <item android:title="Profile">
+    <item android:title="Personal Settings">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/profile"
+                android:icon="@drawable/ic_menu_view"
+                android:title="Profile" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/password"
+                android:icon="@drawable/ic_secure"
+                android:title="Password" />
         </menu>
     </item>
 

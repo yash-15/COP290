@@ -80,13 +80,30 @@ public class Courses extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.assignment) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.my_home) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.my_courses) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.notifications) {
+
+        } else if (id == R.id.help) {
+
+        } else if (id == R.id.resources) {
+
+
+        } else if (id == R.id.threads) {
+
+        } else if (id == R.id.grades) {
+
+        } else if (id == R.id.calendar) {
+
+        } else if (id == R.id.search) {
+
+        } else if (id == R.id.profile) {
+
+        } else if (id == R.id.password) {
 
         } else if (id == R.id.nav_share) {
 
