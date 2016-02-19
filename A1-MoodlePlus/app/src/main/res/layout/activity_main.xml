@@ -51,14 +51,14 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="WELCOME!"
-            android:id="@+id/textView2"
+            android:id="@+id/txtViewWelcome"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="100dp"
             android:textStyle="bold|italic"
             android:textSize="40dp" />
 
         <AutoCompleteTextView
-            android:id="@+id/Username"
+            android:id="@+id/txtUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_email"
@@ -71,7 +71,7 @@
             android:layout_marginTop="60dp" />
 
         <EditText
-            android:id="@+id/Password"
+            android:id="@+id/txtPswd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
@@ -98,7 +98,7 @@
 
         <Button
             style="?android:textAppearanceSmall"
-            android:id="@+id/button"
+            android:id="@+id/btnReset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-59dp"
@@ -109,7 +109,7 @@
 
         <Button
             style="?android:textAppearanceSmall"
-            android:id="@+id/button3"
+            android:id="@+id/btnFP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -119,13 +119,5 @@
             android:typeface="normal" />
 
     </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
 
 </android.support.design.widget.CoordinatorLayout>
