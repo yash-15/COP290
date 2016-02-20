@@ -671,3 +671,9 @@
 10.10.78.22, 2016-02-20 01:34:32, GET, /MoodlePlus/static/fonts/glyphicons-halflings-regular.eot, HTTP/1.1, 200, 0.023006
 10.10.78.22, 2016-02-20 01:34:32, GET, /MoodlePlus/static/fonts/glyphicons-halflings-regular.woff, HTTP/1.1, 200, 0.000582
 10.192.35.47, 2016-02-20 01:40:01, GET, /default/login.json, HTTP/1.1, 200, 0.455427
+192.168.254.1, 2016-02-20 14:02:25, GET, /default/login.json, HTTP/1.1, 200, 1.264000
+192.168.254.1, 2016-02-20 14:05:00, GET, /default/login.json, HTTP/1.1, 200, 0.293000
+192.168.254.1, 2016-02-20 14:05:09, GET, /default/login.json, HTTP/1.1, 200, 0.061000
+192.168.254.1, 2016-02-20 14:08:03, GET, /default/login.json, HTTP/1.1, 200, 0.113000
+192.168.254.1, 2016-02-20 14:11:28, GET, /default/login.json, HTTP/1.1, 200, 0.125000
+192.168.254.1, 2016-02-20 14:15:47, GET, /default/login.json, HTTP/1.1, 200, 0.094000

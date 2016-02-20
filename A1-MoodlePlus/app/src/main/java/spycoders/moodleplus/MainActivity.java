@@ -79,7 +79,7 @@ private View.OnClickListener onBut_Login = new View.OnClickListener(){
 
                             if (response.optBoolean("success"))
                             {
-                                Intent intent= new Intent(MainActivity.this,Courses.class);
+                                Intent intent= new Intent(MainActivity.this,MyCourses.class);
                                 finish();
                                 startActivity(intent);
                                 toast.setText("Login Successful!");

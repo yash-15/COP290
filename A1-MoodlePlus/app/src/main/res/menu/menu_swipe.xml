@@ -24,7 +24,7 @@
 
     </item>
     <!--
-    <item android:title="Courses">
+    <item android:title="MyCourses">
         <menu>
             <item
                 android:id="@+id/assignment"
