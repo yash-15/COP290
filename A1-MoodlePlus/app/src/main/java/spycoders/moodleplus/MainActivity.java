@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
 private View.OnClickListener onBut_Login = new View.OnClickListener(){
         public void onClick(View v){
-            url="http://10.192.47.227:8000/default/login.json?userid="
+            url="http://192.168.254.1:8000/default/login.json?userid="
                     + txt_UserName.getText().toString()
                     + "&password="+txt_Pswd.getText().toString();
             // Request a string response from the provided URL.

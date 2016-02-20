@@ -36,5 +36,17 @@
     <string name="title_activity_grades">Grades</string>
     <string name="title_activity_threads">Threads</string>
 
+    <!-- Strings related to menu -->
+    <string name ="general">General</string>
+    <string name="home">Home</string>
+    <string name="notifications">Notifications</string>
+    <string name="myCourses">My Courses</string>
+    <string name="allGrades">All Grades</string>
+    <string name="pSettings">Personal Settings</string>
+    <string name="myProfile">My Profile</string>
+    <string name="Password">Password</string>
+    <string name="logout">Logout</string>
+    <string name="help">Help</string>
+
 
 </resources>
