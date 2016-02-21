@@ -23,7 +23,7 @@ public class Notifications_act extends AppCompatActivity {
         final LinearLayout ll=(LinearLayout) findViewById(R.id.ll_notif);
 
         String api = "http://192.168.254.1:8000/default/notifications.json";
-        JsonObjectRequest jsObjRequest_not = new JsonObjectRequest
+                JsonObjectRequest jsObjRequest_not = new JsonObjectRequest
                 (Request.Method.GET, api, null, new Response.Listener<JSONObject>() {
 
                     @Override
