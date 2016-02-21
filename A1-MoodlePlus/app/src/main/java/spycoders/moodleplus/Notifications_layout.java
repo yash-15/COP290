@@ -12,13 +12,13 @@ import android.widget.TextView;
 /**
  * Created by Prabhu on 2/21/2016.
  */
-public class notif_layout {
+public class Notifications_layout {
     LinearLayout ll;
     TextView time,postedBy,courseCode;
     Button btnView;
     //Color code - #00bfff for new notification  #c0fff4 for old
     //TextView
-    notif_layout(Context c,notif n)
+    Notifications_layout(Context c, notif n)
     {
         ll=new LinearLayout(c);
         ll.setOrientation(LinearLayout.VERTICAL);

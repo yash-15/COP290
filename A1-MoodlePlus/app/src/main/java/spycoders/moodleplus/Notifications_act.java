@@ -1,12 +1,8 @@
 package spycoders.moodleplus;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -16,7 +12,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Notifications extends AppCompatActivity {
+public class Notifications_act extends AppCompatActivity {
 
 
     @Override
@@ -26,9 +22,9 @@ public class Notifications extends AppCompatActivity {
 
         final LinearLayout ll=(LinearLayout) findViewById(R.id.ll_notif);
 
-        String url = "http://192.168.254.1:8000/default/notifications.json";
+        String api = "http://192.168.254.1:8000/default/notifications.json";
         JsonObjectRequest jsObjRequest_not = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, api, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -37,7 +33,7 @@ public class Notifications extends AppCompatActivity {
                             Queue<notif> notifs = create_Notif_Queue(response);
                             while (notifs.num_elements > 0) {
 
-                                notif_layout nf = new notif_layout(Notifications.this, notifs.dequeue());
+                                Notifications_layout nf = new Notifications_layout(Notifications_act.this, notifs.dequeue());
                                 LinearLayout.LayoutParams llp =
                                         new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                 ll.addView(nf.ll,llp);
@@ -54,7 +50,7 @@ public class Notifications extends AppCompatActivity {
 
                     }
                 });
-        LoginActivity.queue.add(jsObjRequest_not);
+        Login_act.queue.add(jsObjRequest_not);
 
 
     }

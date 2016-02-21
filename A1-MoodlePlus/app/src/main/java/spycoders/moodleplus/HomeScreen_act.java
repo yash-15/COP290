@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreen_act extends AppCompatActivity {
 
     Button btn_notifications,btn_myCourses,btn_allGrades,btn_myProfile,btn_password
             ,btn_logout,btn_help;
@@ -37,19 +37,19 @@ public class HomeScreen extends AppCompatActivity {
     private View.OnClickListener onBut = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent=new Intent(HomeScreen.this,HomeScreen.class);
+            Intent intent=new Intent(HomeScreen_act.this,HomeScreen_act.class);
             boolean change=true;
             switch(v.getId())
             {
 
                 case R.id.btnNotifications:
-                    intent= new Intent(HomeScreen.this,Notifications.class);
+                    intent= new Intent(HomeScreen_act.this,Notifications_act.class);
                     break;
                 case R.id.btnMyCourses:
-                    intent= new Intent(HomeScreen.this,MyCourses.class);
+                    intent= new Intent(HomeScreen_act.this,MyCourses_act.class);
                     break;
                 case R.id.btnAllGrades:
-                    intent= new Intent(HomeScreen.this,AllGrades.class);
+                    intent= new Intent(HomeScreen_act.this,AllGrades_act.class);
                     break;
                 default:change=false;
             }

@@ -22,10 +22,8 @@ import org.json.JSONObject;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
-import java.net.CookiePolicy;
-import java.net.CookieStore;
 
-public class LoginActivity extends AppCompatActivity {
+public class Login_act extends AppCompatActivity {
 
     Button btn_Login,btn_Reset,btn_FP;
     EditText txt_UserName,txt_Pswd;
@@ -90,7 +88,7 @@ private View.OnClickListener onBut_Login = new View.OnClickListener(){
                             if (response.optBoolean("success"))
                             {
 
-                                Intent intent= new Intent(LoginActivity.this,HomeScreen.class);
+                                Intent intent= new Intent(Login_act.this,HomeScreen_act.class);
                                 finish();
                                 startActivity(intent);
                                 toast.setText("Login Successful!");

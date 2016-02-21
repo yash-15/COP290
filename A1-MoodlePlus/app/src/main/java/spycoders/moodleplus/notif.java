@@ -10,9 +10,5 @@ public class notif {
     String time_created;
     String postedBy;
     String CourseCode;
-    public String toString()
-    {
-        return "seen: "+seen+"\ntime_created: "+time_created+"\npostedBy: "
-                +postedBy+"\nCourseCode: "+CourseCode;
-    }
+    
 }

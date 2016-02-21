@@ -1,13 +1,10 @@
 package spycoders.moodleplus;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+/**
+ * Created by Prabhu on 2/21/2016.
+ */
+public class allgrades {
 
-public class AllGrades extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_grades);
-    }
+    Integer sl,score,outOf,weight;
+    String courseCode,descr;
 }
