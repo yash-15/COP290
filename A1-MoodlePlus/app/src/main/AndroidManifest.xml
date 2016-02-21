@@ -27,10 +27,15 @@
         <activity
             android:name=".Notifications_act"
             android:label="@string/notifications" />
-        <activity android:name=".AllGrades_act"
-                    android:label="All Grades"/>
-        <activity android:name=".MyCourses_act"
-                    android:label="My Courses"></activity>
+        <activity
+            android:name=".AllGrades_act"
+            android:label="@string/allGrades" />
+        <activity
+            android:name=".MyCourses_act"
+            android:label="@string/myCourses" />
+        <activity
+            android:name=".MyProfile_act"
+            android:label="@string/myProfile"></activity>
     </application>
 
 </manifest>

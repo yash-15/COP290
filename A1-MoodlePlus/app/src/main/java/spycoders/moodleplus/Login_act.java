@@ -35,6 +35,8 @@ public class Login_act extends AppCompatActivity {
     CookieManager manager;
     boolean login_success=false;
 
+    static User logged_user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,6 +59,10 @@ public class Login_act extends AppCompatActivity {
 
         btn_FP=(Button) findViewById(R.id.btnFP);
         btn_FP.setOnClickListener(onBut_FP);
+
+        logged_user=new User();   // As this is run on logout as well so we can
+                                 // safely say that the data gets reset on logout
+                                // Anyways it is set again on login
 
         toast = Toast.makeText(getApplicationContext(), "Moodle Plus", Toast.LENGTH_SHORT);
         toast.show();
@@ -87,6 +93,18 @@ private View.OnClickListener onBut_Login = new View.OnClickListener(){
 
                             if (response.optBoolean("success"))
                             {
+                                JSONObject response_user=response.optJSONObject("user");
+
+                                //Set the logged user info
+
+                                logged_user.firstName=response_user.optString("first_name");
+                                logged_user.lastName=response_user.optString("last_name");
+                                logged_user.entryNo=response_user.optString("entry_no");
+                                logged_user.email=response_user.optString("email");
+                                logged_user.username=response_user.optString("username");
+                                logged_user.password=response_user.optString("password");
+                                logged_user.User_ID=response_user.optInt("id");
+                                logged_user.User_type=response_user.optInt("type_");
 
                                 Intent intent= new Intent(Login_act.this,HomeScreen_act.class);
                                 finish();
@@ -133,6 +151,8 @@ private View.OnClickListener onBut_Login = new View.OnClickListener(){
 
         }
     };
+
+
 
 
 }

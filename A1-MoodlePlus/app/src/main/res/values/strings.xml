@@ -50,4 +50,12 @@
     <string name="title_activity_all_grades">AllGrades</string>
 
 
+    <!-- strings related to profile -->
+    <string name="FirstName">First Name</string>
+    <string name="LastName">Last Name</string>
+    <string name="EntryNo">Entry No.</string>
+    <string name="UserID">User ID</string>
+    <string name="UserName">User Name</string>
+    <string name="Email">Email Address</string>
+    <string name="Type">Type</string>
 </resources>

@@ -66,6 +66,9 @@ public class HomeScreen_act extends AppCompatActivity {
                 case R.id.btnAllGrades:
                     intent= new Intent(HomeScreen_act.this,AllGrades_act.class);
                     break;
+                case R.id.btnMyProfile:
+                    intent=new Intent(HomeScreen_act.this,MyProfile_act.class);
+                    break;
                 case R.id.btnLogout:
                     change=false;
                     String api="http://192.168.254.1:8000/default/logout.json";
