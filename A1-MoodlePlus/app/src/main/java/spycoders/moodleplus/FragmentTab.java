@@ -3,12 +3,17 @@ package spycoders.moodleplus;
 /**
  * Created by Prabhu on 2/22/2016.
  */
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +25,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.net.URLEncoder;
 
 public class FragmentTab extends Fragment {
 static TextView tv;
@@ -140,6 +147,9 @@ static TextView tv;
                             try {
 
                                 Queue<thread> thread1 = create_thread_queue(response);
+                                LinearLayout.LayoutParams llp =
+                                        new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
 
                                 while (thread1.num_elements > 0) {
 
@@ -151,12 +161,86 @@ static TextView tv;
                                     thread_layout tl = new thread_layout(getActivity().getApplicationContext(),
                                             temp);
 
-                                    LinearLayout.LayoutParams llp =
-                                            new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                     ll.addView(tl.ll, llp);
 
                                 }
+                                Button btnPostThread =new Button(getActivity().getApplicationContext());
+                                btnPostThread.setText("Post New Thread ...");
+                                btnPostThread.setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        LayoutInflater inflater = LayoutInflater.from(getActivity());
+                                        View dialogView = inflater.inflate(R.layout.post_dialog_layout, null);
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                        builder.setView(dialogView);
+                                        builder.setTitle("Post a new thread to " + Login_act.current_course.code);
+
+                                        final EditText txtDescr = (EditText) dialogView.findViewById(R.id.txtPostDescription);
+                                        final EditText txtTitle = (EditText) dialogView.findViewById(R.id.txtPostTitle);
+
+                                        txtTitle.setHint("TITLE");
+                                        txtDescr.setHint("DESCRIPTION");
+                                        txtTitle.setVisibility(View.VISIBLE);
+                                        builder.setPositiveButton("Post thread", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                                try {
+                                                    String title_text = URLEncoder.encode(txtTitle.getText().toString(), "utf-8");
+                                                    String descr_text=URLEncoder.encode(txtDescr.getText().toString(), "utf-8");
+                                                    String api = "http://192.168.254.1:8000/threads/new.json?" +
+                                                            "title=" + title_text +
+                                                            "&description=" + descr_text+
+                                                            "&course_code="+Login_act.current_course.code;
+
+                                                    //Source for above
+                                                    // http://stackoverflow.com/questions/573184/java-convert-string-to-valid-uri-object
+
+                                                    JsonObjectRequest jsObjRequest_postThread = new JsonObjectRequest
+                                                            (Request.Method.GET, api, null, new Response.Listener<JSONObject>() {
+
+                                                                @Override
+                                                                public void onResponse(JSONObject response) {
+                                                                    Toast toast = Toast.makeText(getActivity().getApplicationContext(),
+                                                                            "Thread Added!", Toast.LENGTH_SHORT);
+                                                                    toast.show();
+                                                                    Intent intent = new Intent(getActivity().getBaseContext(), Course_Page_act.class);
+                                                                    //Code to be added to select threads tab
+                                                                    getActivity().finish();
+                                                                    startActivity(intent);
+                                                                }
+                                                            }, new Response.ErrorListener() {
+
+                                                                @Override
+                                                                public void onErrorResponse(VolleyError error) {
+                                                                    // TODO Auto-generated method stub
+
+                                                                    Toast toast = Toast.makeText(getActivity().getApplicationContext(),
+                                                                            "Network Error!", Toast.LENGTH_SHORT);
+                                                                    toast.show();
+
+                                                                }
+                                                            });
+                                                    Login_act.queue.add(jsObjRequest_postThread);
+                                                } catch (Exception e) {
+                                                    System.out.println("Failed");
+                                                }
+
+                                            }
+
+                                        })
+                                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+
+                                        AlertDialog input_dialog = builder.create();
+                                        input_dialog.show();
+
+                                    }
+                                });
+                                llp.gravity= Gravity.RIGHT;
+                                ll.addView(btnPostThread,llp);
                             }catch(Exception e){}
                         }
                     }, new Response.ErrorListener() {

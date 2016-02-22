@@ -36,13 +36,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FragmentTab.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FragmentTab.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/FragmentTab.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6721763">
+              <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#7340#12686#0" expanded="true" />
+                <element signature="e#8491#12063#0" expanded="true" />
+                <element signature="e#9758#10883#0" expanded="true" />
+                <element signature="e#10882#10883#0" expanded="true" />
+                <element signature="e#10885#11669#0" expanded="true" />
+                <element signature="e#11668#11669#0" expanded="true" />
+                <element signature="e#12062#12063#0" expanded="true" />
+                <element signature="e#12142#12464#0" expanded="true" />
+                <element signature="e#12463#12464#0" expanded="true" />
+                <element signature="e#12685#12686#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,25 +104,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="thread_details.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="thread_details.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/thread_details.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44262296">
-              <caret line="168" column="49" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="110" column="80" selection-start-line="110" selection-start-column="80" selection-end-line="110" selection-end-column="80" />
               <folding>
-                <element signature="e#2662#8844#0" expanded="true" />
-                <element signature="e#3838#8646#0" expanded="true" />
-                <element signature="e#5074#8059#0" expanded="true" />
-                <element signature="e#6115#7049#0" expanded="true" />
-                <element signature="e#7048#7049#0" expanded="true" />
-                <element signature="e#7051#7789#0" expanded="true" />
-                <element signature="e#7788#7789#0" expanded="true" />
-                <element signature="e#8058#8059#0" expanded="true" />
-                <element signature="e#8134#8440#0" expanded="true" />
-                <element signature="e#8439#8440#0" expanded="true" />
-                <element signature="e#8645#8646#0" expanded="true" />
-                <element signature="e#8843#8844#0" expanded="true" />
-                <element signature="e#9077#9078#0" expanded="true" />
+                <element signature="e#2662#8862#0" expanded="true" />
+                <element signature="e#3838#8664#0" expanded="true" />
+                <element signature="e#5092#8077#0" expanded="true" />
+                <element signature="e#6133#7067#0" expanded="true" />
+                <element signature="e#7066#7067#0" expanded="true" />
+                <element signature="e#7069#7807#0" expanded="true" />
+                <element signature="e#7806#7807#0" expanded="true" />
+                <element signature="e#8076#8077#0" expanded="true" />
+                <element signature="e#8152#8458#0" expanded="true" />
+                <element signature="e#8457#8458#0" expanded="true" />
+                <element signature="e#8663#8664#0" expanded="true" />
+                <element signature="e#8861#8862#0" expanded="true" />
+                <element signature="e#8864#9096#0" expanded="true" />
+                <element signature="e#9095#9096#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,8 +132,8 @@
       <file leaf-file-name="threads_layout.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/threads_layout.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state vertical-scroll-proportion="-8.206897">
+              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -148,18 +159,6 @@
               <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="thread_layout.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/thread_layout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
-              <folding>
-                <element signature="e#1823#1824#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2597,13 +2596,13 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/threads_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/L_List_thread.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/Login_act.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/FragmentTab.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/comment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/thread_layout.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/comment_layout.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/post_dialog_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_thread_details.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/thread_details.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/FragmentTab.java" />
       </list>
     </option>
   </component>
@@ -2667,6 +2666,28 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="A1-MoodlePlus" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2700,6 +2721,16 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="A1-MoodlePlus" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -2711,7 +2742,7 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="emulator-5554" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_4_API_23" />
     <property name="FullScreen" value="false" />
   </component>
@@ -2913,7 +2944,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3339012" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2921,7 +2953,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886535" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2933,7 +2965,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2953,16 +2984,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/FragmentTab.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="172" column="0" selection-start-line="131" selection-start-column="12" selection-end-line="172" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/Notifications_layout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2995,19 +3016,20 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="107" column="47" selection-start-line="107" selection-start-column="47" selection-end-line="107" selection-end-column="47" />
           <folding>
-            <element signature="e#2662#8844#0" expanded="true" />
-            <element signature="e#3838#8646#0" expanded="true" />
-            <element signature="e#5074#8059#0" expanded="true" />
-            <element signature="e#6115#7049#0" expanded="true" />
-            <element signature="e#7048#7049#0" expanded="true" />
-            <element signature="e#7051#7789#0" expanded="true" />
-            <element signature="e#7788#7789#0" expanded="true" />
-            <element signature="e#8058#8059#0" expanded="true" />
-            <element signature="e#8134#8440#0" expanded="true" />
-            <element signature="e#8439#8440#0" expanded="true" />
-            <element signature="e#8645#8646#0" expanded="true" />
-            <element signature="e#8843#8844#0" expanded="true" />
-            <element signature="e#9077#9078#0" expanded="true" />
+            <element signature="e#2662#8862#0" expanded="true" />
+            <element signature="e#3838#8664#0" expanded="true" />
+            <element signature="e#5092#8077#0" expanded="true" />
+            <element signature="e#6133#7067#0" expanded="true" />
+            <element signature="e#7066#7067#0" expanded="true" />
+            <element signature="e#7069#7807#0" expanded="true" />
+            <element signature="e#7806#7807#0" expanded="true" />
+            <element signature="e#8076#8077#0" expanded="true" />
+            <element signature="e#8152#8458#0" expanded="true" />
+            <element signature="e#8457#8458#0" expanded="true" />
+            <element signature="e#8663#8664#0" expanded="true" />
+            <element signature="e#8861#8862#0" expanded="true" />
+            <element signature="e#8864#9096#0" expanded="true" />
+            <element signature="e#9095#9096#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3062,6 +3084,16 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7340#12686#0" expanded="true" />
+            <element signature="e#8491#12063#0" expanded="true" />
+            <element signature="e#9758#10883#0" expanded="true" />
+            <element signature="e#10882#10883#0" expanded="true" />
+            <element signature="e#10885#11669#0" expanded="true" />
+            <element signature="e#11668#11669#0" expanded="true" />
+            <element signature="e#12062#12063#0" expanded="true" />
+            <element signature="e#12142#12464#0" expanded="true" />
+            <element signature="e#12463#12464#0" expanded="true" />
+            <element signature="e#12685#12686#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3205,6 +3237,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3348,17 +3381,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/threads_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_thread_details.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3380,16 +3402,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/FragmentTab.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/Notifications_act.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3398,24 +3410,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/threads_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.206897">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-23/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5191257">
+          <caret line="21332" column="46" selection-start-line="21332" selection-start-column="20" selection-end-line="21332" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/thread_details.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44262296">
-          <caret line="168" column="49" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="80" selection-start-line="110" selection-start-column="80" selection-end-line="110" selection-end-column="80" />
           <folding>
-            <element signature="e#2662#8844#0" expanded="true" />
-            <element signature="e#3838#8646#0" expanded="true" />
-            <element signature="e#5074#8059#0" expanded="true" />
-            <element signature="e#6115#7049#0" expanded="true" />
-            <element signature="e#7048#7049#0" expanded="true" />
-            <element signature="e#7051#7789#0" expanded="true" />
-            <element signature="e#7788#7789#0" expanded="true" />
-            <element signature="e#8058#8059#0" expanded="true" />
-            <element signature="e#8134#8440#0" expanded="true" />
-            <element signature="e#8439#8440#0" expanded="true" />
-            <element signature="e#8645#8646#0" expanded="true" />
-            <element signature="e#8843#8844#0" expanded="true" />
-            <element signature="e#9077#9078#0" expanded="true" />
+            <element signature="e#2662#8862#0" expanded="true" />
+            <element signature="e#3838#8664#0" expanded="true" />
+            <element signature="e#5092#8077#0" expanded="true" />
+            <element signature="e#6133#7067#0" expanded="true" />
+            <element signature="e#7066#7067#0" expanded="true" />
+            <element signature="e#7069#7807#0" expanded="true" />
+            <element signature="e#7806#7807#0" expanded="true" />
+            <element signature="e#8076#8077#0" expanded="true" />
+            <element signature="e#8152#8458#0" expanded="true" />
+            <element signature="e#8457#8458#0" expanded="true" />
+            <element signature="e#8663#8664#0" expanded="true" />
+            <element signature="e#8861#8862#0" expanded="true" />
+            <element signature="e#8864#9096#0" expanded="true" />
+            <element signature="e#9095#9096#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/spycoders/moodleplus/FragmentTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6721763">
+          <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7340#12686#0" expanded="true" />
+            <element signature="e#8491#12063#0" expanded="true" />
+            <element signature="e#9758#10883#0" expanded="true" />
+            <element signature="e#10882#10883#0" expanded="true" />
+            <element signature="e#10885#11669#0" expanded="true" />
+            <element signature="e#11668#11669#0" expanded="true" />
+            <element signature="e#12062#12063#0" expanded="true" />
+            <element signature="e#12142#12464#0" expanded="true" />
+            <element signature="e#12463#12464#0" expanded="true" />
+            <element signature="e#12685#12686#0" expanded="true" />
           </folding>
         </state>
       </provider>

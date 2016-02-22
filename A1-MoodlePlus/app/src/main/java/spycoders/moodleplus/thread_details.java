@@ -108,7 +108,7 @@ public class thread_details extends AppCompatActivity {
                                     final EditText txtComment = (EditText) dialogView.findViewById(R.id.txtPostDescription);
                                     final EditText txtTitle = (EditText) dialogView.findViewById(R.id.txtPostTitle);
 
-                                    txtComment.setHint("Tester");
+                                    txtComment.setHint("Type your comment here..");
                                     txtTitle.setVisibility(View.INVISIBLE);
                                     builder.setPositiveButton("Post", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
