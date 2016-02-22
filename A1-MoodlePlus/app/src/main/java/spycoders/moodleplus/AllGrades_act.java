@@ -31,7 +31,7 @@ public class AllGrades_act extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
 
                         try {
-                            Queue<allgrades> allgrades1 = create_allgrades_queue(response);
+                            Queue<allgrades> allgrades1 = create_allgrades_queue(response,true,"");
 
                             while (allgrades1.num_elements > 0) {
 
@@ -57,18 +57,29 @@ public class AllGrades_act extends AppCompatActivity {
 
     }
 
-    public Queue<allgrades> create_allgrades_queue(JSONObject data)
+    //all boolean says whether grades for a single course or not,
+    //This is so that this function can be used in FragmentTab for grades of a particular course
+    //In case only one course it is passed as course_code
+    //For all Grades this can be passed as ""
+    public Queue<allgrades> create_allgrades_queue(JSONObject data,boolean all,String course_code)
     {
         Queue<allgrades> ans = new Queue<allgrades>();
         try {
-            JSONArray j_array1 = data.getJSONArray("courses");
+            JSONArray j_array1=new JSONArray();
+            if (all)
+            {j_array1= data.getJSONArray("courses");}
             JSONArray j_array2=data.getJSONArray("grades");
-            int l = j_array1.length();
+            int l = j_array2.length();
             for (int i = 0; i < l; i++)
             {
                 allgrades temp = new allgrades();
                 temp.sl=i+1;
-                temp.courseCode=j_array1.getJSONObject(i).getString("code");
+                if(all)
+                {temp.courseCode=j_array1.getJSONObject(i).getString("code");}
+                else
+                {
+                    temp.courseCode=course_code;
+                }
                 JSONObject j_obj_temp=j_array2.getJSONObject(i);
                 temp.descr=j_obj_temp.getString("name");
                 temp.score=j_obj_temp.getInt("score");

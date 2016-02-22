@@ -35,7 +35,8 @@
             android:label="@string/myCourses" />
         <activity
             android:name=".MyProfile_act"
-            android:label="@string/myProfile"></activity>
+            android:label="@string/myProfile" />
+        <activity android:name=".Course_Page_act"></activity>
     </application>
 
 </manifest>

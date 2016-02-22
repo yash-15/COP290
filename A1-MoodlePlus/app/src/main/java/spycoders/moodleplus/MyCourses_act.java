@@ -1,5 +1,6 @@
 package spycoders.moodleplus;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,10 +45,14 @@ public class MyCourses_act extends AppCompatActivity {
                             LinearLayout.LayoutParams llp =
                                     new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                             ll.addView(txtView_header,llp);
+                            Login_act.courseList.clear();
                             while (myCourses.num_elements > 0) {
 
                                 Button btn_course=new Button(MyCourses_act.this);
                                 final course temp=myCourses.dequeue();
+                                //The queue used is redundant and only the linked list could have sufficed.
+                                //To be edited afterwards
+                                Login_act.courseList.insert(temp);
                                 btn_course.setText(temp.code.toUpperCase() + ":" + temp.name);
                                 btn_course.setOnClickListener(new View.OnClickListener(){
                                     public void onClick(View v){
@@ -55,6 +60,13 @@ public class MyCourses_act extends AppCompatActivity {
                                         toast=Toast.makeText(MyCourses_act.this, "You clicked course: " +
                                                 temp.code.substring(0, 6), Toast.LENGTH_SHORT);
                                         toast.show();
+                                        Intent intent=new Intent(MyCourses_act.this,Course_Page_act.class);
+                                        try{
+                                        Login_act.current_course=Login_act.courseList.find(temp.code.substring(0, 6));}
+                                        catch(Exception e){}
+                                        //intent.putExtra("course_code",temp.code.substring(0, 6));
+                                        finish();
+                                        startActivity(intent);
                                     }
                                 });
 

@@ -37,6 +37,14 @@ public class Login_act extends AppCompatActivity {
 
     static User logged_user;
 
+    static L_List_course courseList;
+
+    static course current_course;
+
+    static L_List_thread threadList;
+
+    static thread current_thread;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -63,6 +71,14 @@ public class Login_act extends AppCompatActivity {
         logged_user=new User();   // As this is run on logout as well so we can
                                  // safely say that the data gets reset on logout
                                 // Anyways it is set again on login
+
+        courseList=new L_List_course();
+
+        current_course=new course();
+
+        threadList=new L_List_thread();
+
+        current_thread=new thread();
 
         toast = Toast.makeText(getApplicationContext(), "Moodle Plus", Toast.LENGTH_SHORT);
         toast.show();
@@ -153,6 +169,9 @@ private View.OnClickListener onBut_Login = new View.OnClickListener(){
     };
 
 
+    public void populate_course_list()
+    {
 
+    }
 
 }

@@ -41,7 +41,15 @@ public class AllGrades_layout {
         grade.setText(g.score.toString() + "/" + g.outOf.toString());
         weight.setText(g.weight.toString());
 
+        sl.setTextColor(Color.parseColor("#000000"));
+        courseCode.setTextColor(Color.parseColor("#000000"));
+        descr.setTextColor(Color.parseColor("#000000"));
+        grade.setTextColor(Color.parseColor("#000000"));
+        weight.setTextColor(Color.parseColor("#000000"));
+        //Source for unit conversions
        // http://stackoverflow.com/questions/3379973/how-to-programatically-set-the-width-of-an-android-edittext-view-in-dps-not-pix
+
+
 
         int unit = TypedValue.COMPLEX_UNIT_DIP;
         DisplayMetrics metrics = c.getResources().getDisplayMetrics();
@@ -50,9 +58,10 @@ public class AllGrades_layout {
         params=new LinearLayout.LayoutParams(dipPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
         ll.addView(sl,params);
 
-        dipPixel = (int)(TypedValue.applyDimension(unit, 75, metrics));
-        params=new LinearLayout.LayoutParams(dipPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
-        ll.addView(courseCode,params);
+        dipPixel = (int) (TypedValue.applyDimension(unit, 75, metrics));
+        params = new LinearLayout.LayoutParams(dipPixel, LinearLayout.LayoutParams.WRAP_CONTENT);
+        ll.addView(courseCode, params);
+
 
         dipPixel = (int)(TypedValue.applyDimension(unit, 105, metrics));
         params=new LinearLayout.LayoutParams(dipPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
