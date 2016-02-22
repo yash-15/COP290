@@ -110,7 +110,7 @@ static TextView tv;
 
                                     ll.addView(gl.ll,llp);
                                 }
-                            }catch(Exception e){System.out.println("Exception");}
+                            }catch(Exception e){}
                         }
                     }, new Response.ErrorListener() {
 
@@ -157,7 +157,7 @@ static TextView tv;
                                     ll.addView(tl.ll, llp);
 
                                 }
-                            }catch(Exception e){System.out.println("Exception");}
+                            }catch(Exception e){}
                         }
                     }, new Response.ErrorListener() {
 

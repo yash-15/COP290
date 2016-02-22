@@ -1,6 +1,8 @@
 package spycoders.moodleplus;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
@@ -37,10 +39,18 @@ public class thread_layout {
 
         btnViewComments = new Button(c);
         btnViewComments.setText("View Comments>>");
+
+        final Context c_temp=c;
+        final int t_id=t.id;
         btnViewComments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(c_temp,thread_details.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                try {
+                    Login_act.current_thread = Login_act.threadList.find(t_id);
+                }catch(Exception e){}
+                c_temp.startActivity(intent);
             }
         });
         ll.setBackgroundColor(Color.parseColor("#00bfff"));
@@ -50,6 +60,6 @@ public class thread_layout {
         ll.addView(title,params);
         ll.addView(descr,params);
         params.gravity= Gravity.RIGHT;
-        ll.addView(btnViewComments,params);
+        ll.addView(btnViewComments, params);
     }
 }
