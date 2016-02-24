@@ -26,7 +26,7 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="title_activity_my__courses">My_Courses</string>
+    <string name="title_activity_my__courses">My Courses</string>
 
     <string name="title_activity_my__calendar">My_Calendar</string>
     <string name="subapp_name">calendar</string>
@@ -35,18 +35,17 @@
     <string name="new_message_notification_placeholder_text_template" />
     <string name="title_activity_grades">Grades</string>
     <string name="title_activity_threads">Threads</string>
+    <string name="title_activity_nav_base">nav_base</string>
 
-    <!-- Strings related to menu -->
-    <string name ="general">General</string>
-    <string name="home">Home</string>
-    <string name="notifications">Notifications</string>
-    <string name="myCourses">My Courses</string>
-    <string name="allGrades">All Grades</string>
-    <string name="pSettings">Personal Settings</string>
-    <string name="myProfile">My Profile</string>
-    <string name="Password">Password</string>
-    <string name="logout">Logout</string>
-    <string name="help">Help</string>
+
+    <!-- strings related to profile -->
+    <string name="FirstName">First Name</string>
+    <string name="LastName">Last Name</string>
+    <string name="EntryNo">Entry No.</string>
+    <string name="UserID">User ID</string>
+    <string name="UserName">User Name</string>
+    <string name="Email">Email Address</string>
+    <string name="Type">Type</string>
 
 
 </resources>
