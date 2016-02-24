@@ -1,7 +1,7 @@
 package spycoders.moodleplus;
 
 /**
- * Created by Prabhu on 2/22/2016.
+ * Created by Prabhu on 2/23/2016.
  */
 public class L_List<E> {
     node<E> head,tail;
@@ -34,3 +34,4 @@ public class L_List<E> {
     }
 
 }
+

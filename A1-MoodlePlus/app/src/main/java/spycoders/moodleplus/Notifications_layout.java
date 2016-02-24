@@ -1,6 +1,7 @@
 package spycoders.moodleplus;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
@@ -8,15 +9,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 /**
- * Created by Prabhu on 2/21/2016.
+ * Created by Prabhu on 2/23/2016.
  */
 public class Notifications_layout {
+
     LinearLayout ll;
     TextView time,postedBy,courseCode;
     Button btnView;
-    //Color code - #00bfff for new notification  #c0fff4 for old
+    //Color code - #F57F17 for new notification  #F9A825 for old
     //TextView
     Notifications_layout(Context c, notif n)
     {
@@ -34,17 +35,25 @@ public class Notifications_layout {
 
         btnView = new Button(c);
         btnView.setText("View>>");
+
+
+        final Context c_temp=c;
+        final notif n_temp=n;
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                Intent intent=new Intent(c_temp,Course_Page_activity.class);
+                intent.putExtra("THREADS","true");
+                Login_activity.current_course.code=n_temp.CourseCode;
+                c_temp.startActivity(intent);
             }
         });
-        ll.setBackgroundColor(n.seen ? Color.parseColor("#c0fff4") : Color.parseColor("#00bfff"));
+        ll.setBackgroundColor(n.seen ? Color.parseColor("#F9A825") : Color.parseColor("#F57F17"));
         ll.addView(time, params);
         ll.addView(postedBy,params);
         ll.addView(courseCode,params);
-        params.gravity= Gravity.RIGHT;
+        params.gravity= Gravity.LEFT;
         ll.addView(btnView,params);
     }
 }

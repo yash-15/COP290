@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Login_act"
+            android:name=".Login_activity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,22 +22,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeScreen_act"
-            android:label="@string/home" />
+            android:name=".HomeScreen_activity"
+            android:label="Home Page - Moodle Plus"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Notifications_act"
-            android:label="@string/notifications" />
+            android:name=".Base_activity"
+            android:label="@string/title_activity_nav_base"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AllGrades_act"
-            android:label="@string/allGrades" />
+            android:name=".MyCourses_activity"
+            android:label="@string/title_activity_my__courses"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MyCourses_act"
-            android:label="@string/myCourses" />
+            android:name=".Notifications_activity"
+            android:label="Notifications"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MyProfile_act"
-            android:label="@string/myProfile" />
-        <activity android:name=".Course_Page_act" />
-        <activity android:name=".thread_details"></activity>
+            android:name=".AllGrades_activity"
+            android:label="All Grades"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyProfile_activity"
+            android:label="My Profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Course_Page_activity" />
+        <activity android:name=".thread_details_activity"></activity>
     </application>
 
 </manifest>

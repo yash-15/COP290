@@ -8,26 +8,27 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MyProfile_act">
+    tools:context=".MyProfile_activity"
+    android:background="@drawable/b7">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/FirstName"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:id="@+id/txtViewFirstName" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Vinay"
-        android:textSize="25sp"
-        android:id="@+id/txtViewFirstNameVal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/FirstName"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/txtViewFirstName" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Vinay"
+            android:textSize="25sp"
+            android:id="@+id/txtViewFirstNameVal" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -70,25 +71,25 @@
             android:id="@+id/txtViewEntryNoVal" />
     </LinearLayout>
     <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="100dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Email"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:id="@+id/txtViewEmail" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="44dp"
-        android:text="vinay@cse.iitd.ac.in"
-        android:textSize="25sp"
-        android:id="@+id/txtViewEmailVal" />
-</LinearLayout>
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Email"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/txtViewEmail" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="44dp"
+            android:text="vinay@cse.iitd.ac.in"
+            android:textSize="25sp"
+            android:id="@+id/txtViewEmailVal" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

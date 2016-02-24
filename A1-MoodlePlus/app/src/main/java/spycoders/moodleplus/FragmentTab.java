@@ -1,13 +1,15 @@
 package spycoders.moodleplus;
 
 /**
- * Created by Prabhu on 2/22/2016.
+ * Created by Prabhu on 2/23/2016.
  */
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +31,7 @@ import org.json.JSONObject;
 import java.net.URLEncoder;
 
 public class FragmentTab extends Fragment {
-static TextView tv;
+    static TextView tv;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,25 +46,25 @@ static TextView tv;
         if(s.equals("About")) {
             v = inflater.inflate(R.layout.about_layout, container, false);
             TextView tv=(TextView) v.findViewById(R.id.txtViewAbout12);
-            tv.setText(Login_act.current_course.code);
+            tv.setText(Login_activity.current_course.code);
 
             tv=(TextView) v.findViewById(R.id.txtViewAbout22);
-            tv.setText(Login_act.current_course.name);
+            tv.setText(Login_activity.current_course.name);
 
             tv=(TextView) v.findViewById(R.id.txtViewAbout32);
-            tv.setText(Login_act.current_course.ltp);
+            tv.setText(Login_activity.current_course.ltp);
 
             tv=(TextView) v.findViewById(R.id.txtViewAbout42);
-            tv.setText(String.valueOf(Login_act.current_course.credits));
+            tv.setText(String.valueOf(Login_activity.current_course.credits));
 
             tv=(TextView) v.findViewById(R.id.txtViewAbout61);
-            tv.setText(Login_act.current_course.descr);
+            tv.setText(Login_activity.current_course.descr);
         }
 
         else if (s.equals("Assignments")) {
             v = inflater.inflate(R.layout.assignments_layout, container, false);
             final LinearLayout ll=(LinearLayout) v.findViewById(R.id.ll_ass);
-            String api_ass="http://192.168.254.1:8000/courses/course.json/"+Login_act.current_course.code+"/assignments";
+            String api_ass="http://"+Login_activity.ip+":"+Login_activity.port+"/courses/course.json/"+Login_activity.current_course.code+"/assignments";
 
             JsonObjectRequest jsObjRequest_ass = new JsonObjectRequest
                     (Request.Method.GET, api_ass, null, new Response.Listener<JSONObject>() {
@@ -72,13 +74,13 @@ static TextView tv;
                             System.out.println(response.toString());
                             Queue<assignment> ass_queue=create_ass_queue(response);
                             try{
-                            while(ass_queue.num_elements>0){
+                                while(ass_queue.num_elements>0){
 
-                                Ass_layout al= new Ass_layout(getActivity().getApplicationContext(),ass_queue.dequeue());
-                                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams
-                                        (LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                                ll.addView(al.ll,lp);
-                            }
+                                    Ass_layout al= new Ass_layout(getActivity().getApplicationContext(),ass_queue.dequeue());
+                                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams
+                                            (LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+                                    ll.addView(al.ll,lp);
+                                }
                             }
                             catch(Exception e){}
 
@@ -92,22 +94,22 @@ static TextView tv;
                             toast.show();
                         }
                     });
-            Login_act.queue.add(jsObjRequest_ass);
+            Login_activity.queue.add(jsObjRequest_ass);
         } else if (s.equals("Grades")) {
             v = inflater.inflate(R.layout.grades_layout, container, false);
             //We can use the similar thing as of allGrades; only change in api
             final LinearLayout ll=(LinearLayout) v.findViewById(R.id.ll_grades);
 
-            String api="http://192.168.254.1:8000/courses/course.json/"+Login_act.current_course.code+"/grades";
+            String api="http://"+Login_activity.ip+":"+Login_activity.port+"/courses/course.json/"+Login_activity.current_course.code+"/grades";
             JsonObjectRequest jsObjRequest_grades = new JsonObjectRequest
                     (Request.Method.GET, api, null, new Response.Listener<JSONObject>() {
 
                         @Override
                         public void onResponse(JSONObject response) {
 
-                            AllGrades_act aga=new AllGrades_act();
+                            AllGrades_activity aga=new AllGrades_activity();
                             try {
-                                Queue<allgrades> grades1 = aga.create_allgrades_queue(response,false,Login_act.current_course.code);
+                                Queue<allgrades> grades1 = aga.create_allgrades_queue(response,false,Login_activity.current_course.code);
                                 while (grades1.num_elements > 0) {
 
                                     AllGrades_layout gl = new AllGrades_layout(getActivity().getApplicationContext(),
@@ -129,14 +131,14 @@ static TextView tv;
 
                         }
                     });
-            Login_act.queue.add(jsObjRequest_grades);
+            Login_activity.queue.add(jsObjRequest_grades);
 
         } else {
             v = inflater.inflate(R.layout.threads_layout, container, false);
 
             final LinearLayout ll=(LinearLayout) v.findViewById(R.id.ll_threads);
 
-            String api="http://192.168.254.1:8000/courses/course.json/"+Login_act.current_course.code+"/threads";
+            String api="http://"+Login_activity.ip+":"+Login_activity.port+"/courses/course.json/"+Login_activity.current_course.code+"/threads";
             JsonObjectRequest jsObjRequest_threads = new JsonObjectRequest
                     (Request.Method.GET, api, null, new Response.Listener<JSONObject>() {
 
@@ -148,7 +150,7 @@ static TextView tv;
 
                                 Queue<thread> thread1 = create_thread_queue(response);
                                 LinearLayout.LayoutParams llp =
-                                        new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                        new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
                                 while (thread1.num_elements > 0) {
@@ -156,7 +158,7 @@ static TextView tv;
                                     //Queue Redundancy case to be solved later
                                     final thread temp=thread1.dequeue();
 
-                                    Login_act.threadList.insert(temp);
+                                    Login_activity.threadList.insert(temp);
 
                                     thread_layout tl = new thread_layout(getActivity().getApplicationContext(),
                                             temp);
@@ -173,7 +175,7 @@ static TextView tv;
                                         View dialogView = inflater.inflate(R.layout.post_dialog_layout, null);
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                         builder.setView(dialogView);
-                                        builder.setTitle("Post a new thread to " + Login_act.current_course.code);
+                                        builder.setTitle("Post a new thread to " + Login_activity.current_course.code);
 
                                         final EditText txtDescr = (EditText) dialogView.findViewById(R.id.txtPostDescription);
                                         final EditText txtTitle = (EditText) dialogView.findViewById(R.id.txtPostTitle);
@@ -186,11 +188,11 @@ static TextView tv;
 
                                                 try {
                                                     String title_text = URLEncoder.encode(txtTitle.getText().toString(), "utf-8");
-                                                    String descr_text=URLEncoder.encode(txtDescr.getText().toString(), "utf-8");
-                                                    String api = "http://192.168.254.1:8000/threads/new.json?" +
+                                                    String descr_text = URLEncoder.encode(txtDescr.getText().toString(), "utf-8");
+                                                    String api = "http://" + Login_activity.ip + ":"+Login_activity.port+"/threads/new.json?" +
                                                             "title=" + title_text +
-                                                            "&description=" + descr_text+
-                                                            "&course_code="+Login_act.current_course.code;
+                                                            "&description=" + descr_text +
+                                                            "&course_code=" + Login_activity.current_course.code;
 
                                                     //Source for above
                                                     // http://stackoverflow.com/questions/573184/java-convert-string-to-valid-uri-object
@@ -203,7 +205,8 @@ static TextView tv;
                                                                     Toast toast = Toast.makeText(getActivity().getApplicationContext(),
                                                                             "Thread Added!", Toast.LENGTH_SHORT);
                                                                     toast.show();
-                                                                    Intent intent = new Intent(getActivity().getBaseContext(), Course_Page_act.class);
+                                                                    Intent intent = new Intent(getActivity().getBaseContext(), Course_Page_activity.class);
+                                                                    intent.putExtra("THREADS","true");
                                                                     //Code to be added to select threads tab
                                                                     getActivity().finish();
                                                                     startActivity(intent);
@@ -220,7 +223,7 @@ static TextView tv;
 
                                                                 }
                                                             });
-                                                    Login_act.queue.add(jsObjRequest_postThread);
+                                                    Login_activity.queue.add(jsObjRequest_postThread);
                                                 } catch (Exception e) {
                                                     System.out.println("Failed");
                                                 }
@@ -234,11 +237,58 @@ static TextView tv;
                                                     }
                                                 });
 
-                                        AlertDialog input_dialog = builder.create();
+                                        final AlertDialog input_dialog = builder.create();
                                         input_dialog.show();
+
+                                        txtTitle.addTextChangedListener(new TextWatcher() {
+                                            @Override
+                                            public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
+
+                                            }
+
+                                            @Override
+                                            public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
+                                                if (txtTitle.getText().toString().length() == 0 ||
+                                                        txtDescr.getText().toString().length() == 0) {
+                                                    input_dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                                                } else {
+                                                    input_dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                                                }
+                                            }
+
+                                            @Override
+                                            public void afterTextChanged(final Editable s) {
+
+                                            }
+                                        });
+                                        txtDescr.addTextChangedListener(new TextWatcher() {
+                                            @Override
+                                            public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
+
+                                            }
+
+                                            @Override
+                                            public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
+                                                if (txtTitle.getText().toString().length() == 0 ||
+                                                        txtDescr.getText().toString().length() == 0) {
+                                                    input_dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                                                } else {
+                                                    input_dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                                                }
+                                            }
+
+                                            @Override
+                                            public void afterTextChanged(final Editable s) {
+
+                                            }
+                                        });
+
 
                                     }
                                 });
+                                llp =
+                                        new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
                                 llp.gravity= Gravity.RIGHT;
                                 ll.addView(btnPostThread,llp);
                             }catch(Exception e){}
@@ -253,7 +303,7 @@ static TextView tv;
 
                         }
                     });
-            Login_act.queue.add(jsObjRequest_threads);
+            Login_activity.queue.add(jsObjRequest_threads);
 
         }
 
@@ -285,6 +335,16 @@ static TextView tv;
     {
         Queue<thread> ans=new Queue<thread>();
         JSONArray t_json_array = data.optJSONArray("course_threads");
+        if (Course_Page_activity.setCourseData)
+        {
+            JSONObject t_course=data.optJSONObject("course");
+            Login_activity.current_course.code=t_course.optString("code");
+            Login_activity.current_course.name=t_course.optString("name");
+            Login_activity.current_course.descr=t_course.optString("description");
+            Login_activity.current_course.credits=t_course.optInt("credits");
+            Login_activity.current_course.ltp=t_course.optString("l_t_p");
+            Course_Page_activity.setCourseData=false;
+        }
         for(int i=0;i<t_json_array.length();i++)
         {
             JSONObject t_json=t_json_array.optJSONObject(i);

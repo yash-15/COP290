@@ -1,5 +1,6 @@
 package spycoders.moodleplus;
 
+
 import android.content.Context;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
@@ -11,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * Created by Prabhu on 2/21/2016.
+ * Created by Prabhu on 2/23/2016.
  */
 public class AllGrades_layout {
     LinearLayout ll;
@@ -35,11 +36,11 @@ public class AllGrades_layout {
         grade.setTextSize(20);
         weight.setTextSize(20);
 
-        sl.setText(g.sl.toString());
+        sl.setText(String.valueOf(g.sl));
         courseCode.setText(g.courseCode);
         descr.setText(g.descr);
-        grade.setText(g.score.toString() + "/" + g.outOf.toString());
-        weight.setText(g.weight.toString());
+        grade.setText(String.valueOf(g.score) + "/" + String.valueOf(g.outOf));
+        weight.setText(String.valueOf(g.weight));
 
         sl.setTextColor(Color.parseColor("#000000"));
         courseCode.setTextColor(Color.parseColor("#000000"));
@@ -47,16 +48,18 @@ public class AllGrades_layout {
         grade.setTextColor(Color.parseColor("#000000"));
         weight.setTextColor(Color.parseColor("#000000"));
         //Source for unit conversions
-       // http://stackoverflow.com/questions/3379973/how-to-programatically-set-the-width-of-an-android-edittext-view-in-dps-not-pix
+        // http://stackoverflow.com/questions/3379973/how-to-programatically-set-the-width-of-an-android-edittext-view-in-dps-not-pix
 
 
 
         int unit = TypedValue.COMPLEX_UNIT_DIP;
         DisplayMetrics metrics = c.getResources().getDisplayMetrics();
 
+
         int dipPixel = (int)(TypedValue.applyDimension(unit, 30, metrics));
         params=new LinearLayout.LayoutParams(dipPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
         ll.addView(sl,params);
+
 
         dipPixel = (int) (TypedValue.applyDimension(unit, 75, metrics));
         params = new LinearLayout.LayoutParams(dipPixel, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -68,14 +71,17 @@ public class AllGrades_layout {
         params.setMargins(20, 0, 0, 0);
         ll.addView(descr, params);
 
+
         dipPixel = (int)(TypedValue.applyDimension(unit, 75, metrics));
         params=new LinearLayout.LayoutParams(dipPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(10, 0, 0, 0);
         ll.addView(grade, params);
 
+
         params=new LinearLayout.LayoutParams(dipPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(10, 0, 0, 0);
-        ll.addView(weight,params);
+        ll.addView(weight, params);
+        System.out.println("l-7");
 
     }
 }
