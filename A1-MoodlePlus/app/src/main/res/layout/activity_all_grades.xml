@@ -22,8 +22,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sl  Course       Descr.     Grades  Weight"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
     </ScrollView>

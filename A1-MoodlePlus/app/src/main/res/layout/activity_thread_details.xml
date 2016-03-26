@@ -11,6 +11,12 @@
     tools:context="spycoders.moodleplus.thread_details"
     android:weightSum="1"
     android:background="@drawable/b7">
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="#e97006"-->
+        <!--android:="@style/AppTheme.PopupOverlay" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,11 +26,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thread Details:"/>
+            android:text="Thread Details:"
+            android:textStyle="bold" />
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:layout_marginTop="10dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +42,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Comments:"/>
+                android:text="Comments:"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

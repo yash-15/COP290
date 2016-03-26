@@ -5,9 +5,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,11 +27,11 @@ public class AllGrades_layout {
         grade=new TextView(c);
         weight=new TextView(c);
 
-        sl.setTextSize(20);
-        courseCode.setTextSize(20);
-        descr.setTextSize(20);
-        grade.setTextSize(20);
-        weight.setTextSize(20);
+        sl.setTextSize(10);
+        courseCode.setTextSize(10);
+        descr.setTextSize(10);
+        grade.setTextSize(10);
+        weight.setTextSize(10);
 
         sl.setText(String.valueOf(g.sl));
         courseCode.setText(g.courseCode);
@@ -66,20 +63,20 @@ public class AllGrades_layout {
         ll.addView(courseCode, params);
 
 
-        dipPixel = (int)(TypedValue.applyDimension(unit, 105, metrics));
+        dipPixel = (int)(TypedValue.applyDimension(unit, 75, metrics));
         params=new LinearLayout.LayoutParams(dipPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(20, 0, 0, 0);
         ll.addView(descr, params);
 
 
-        dipPixel = (int)(TypedValue.applyDimension(unit, 75, metrics));
+        dipPixel = (int)(TypedValue.applyDimension(unit, 50, metrics));
         params=new LinearLayout.LayoutParams(dipPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(10, 0, 0, 0);
+        params.setMargins(2, 0, 0, 0);
         ll.addView(grade, params);
 
 
         params=new LinearLayout.LayoutParams(dipPixel,LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(10, 0, 0, 0);
+        params.setMargins(2, 0, 0, 0);
         ll.addView(weight, params);
         System.out.println("l-7");
 

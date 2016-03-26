@@ -12,7 +12,7 @@
     android:background="@drawable/b7"
     android:weightSum="1">
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="172dp"
         android:id="@+id/editText"

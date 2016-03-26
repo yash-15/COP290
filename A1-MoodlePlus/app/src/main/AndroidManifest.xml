@@ -12,14 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Login_activity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:name=".Splash_Screen"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login_activity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         </activity>
         <activity
             android:name=".HomeScreen_activity"
@@ -46,7 +51,9 @@
             android:label="My Profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Course_Page_activity" />
-        <activity android:name=".thread_details_activity"></activity>
+        <activity android:name=".thread_details_activity"
+            android:label="Thread Details"
+            android:theme="@style/CustomActionBarTheme" ></activity>
     </application>
 
 </manifest>
