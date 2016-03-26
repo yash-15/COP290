@@ -1,4 +1,4 @@
-timestamp: 2016-03-26T16:23:24.596000
+timestamp: 2016-03-26T18:05:44.174000
 CREATE TABLE auth_user(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name CHAR(128),
@@ -10,21 +10,21 @@ CREATE TABLE auth_user(
     registration_id CHAR(512)
 );
 success!
-timestamp: 2016-03-26T16:23:24.801000
+timestamp: 2016-03-26T18:05:44.332000
 CREATE TABLE auth_group(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role CHAR(512),
     description TEXT
 );
 success!
-timestamp: 2016-03-26T16:23:24.901000
+timestamp: 2016-03-26T18:05:44.452000
 CREATE TABLE auth_membership(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
 );
 success!
-timestamp: 2016-03-26T16:23:25.004000
+timestamp: 2016-03-26T18:05:44.542000
 CREATE TABLE auth_permission(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
@@ -33,7 +33,7 @@ CREATE TABLE auth_permission(
     record_id INTEGER
 );
 success!
-timestamp: 2016-03-26T16:23:25.111000
+timestamp: 2016-03-26T18:05:44.707000
 CREATE TABLE auth_event(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     time_stamp TIMESTAMP,
@@ -43,7 +43,7 @@ CREATE TABLE auth_event(
     description TEXT
 );
 success!
-timestamp: 2016-03-26T16:23:25.200000
+timestamp: 2016-03-26T18:05:44.846000
 CREATE TABLE auth_cas(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
@@ -53,7 +53,7 @@ CREATE TABLE auth_cas(
     renew CHAR(1)
 );
 success!
-timestamp: 2016-03-26T16:23:25.301000
+timestamp: 2016-03-26T18:05:44.982000
 CREATE TABLE users(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name CHAR(128),
@@ -68,21 +68,21 @@ CREATE TABLE users(
     registration_id CHAR(512)
 );
 success!
-timestamp: 2016-03-26T16:23:25.438000
+timestamp: 2016-03-26T18:05:45.190000
 CREATE TABLE user_group(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role CHAR(512),
     description TEXT
 );
 success!
-timestamp: 2016-03-26T16:23:25.592000
+timestamp: 2016-03-26T18:05:45.423000
 CREATE TABLE user_membership(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
     group_id INTEGER REFERENCES user_group (id) ON DELETE CASCADE
 );
 success!
-timestamp: 2016-03-26T16:23:25.694000
+timestamp: 2016-03-26T18:05:45.516000
 CREATE TABLE user_permission(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     group_id INTEGER REFERENCES user_group (id) ON DELETE CASCADE,
@@ -91,7 +91,7 @@ CREATE TABLE user_permission(
     record_id INTEGER
 );
 success!
-timestamp: 2016-03-26T16:23:25.808000
+timestamp: 2016-03-26T18:05:45.633000
 CREATE TABLE user_event(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     time_stamp TIMESTAMP,
@@ -101,7 +101,7 @@ CREATE TABLE user_event(
     description TEXT
 );
 success!
-timestamp: 2016-03-26T16:23:25.899000
+timestamp: 2016-03-26T18:05:45.786000
 CREATE TABLE static_vars(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name CHAR(512) UNIQUE,
@@ -109,7 +109,7 @@ CREATE TABLE static_vars(
     string_value CHAR(512)
 );
 success!
-timestamp: 2016-03-26T16:23:26.031000
+timestamp: 2016-03-26T18:05:45.982000
 CREATE TABLE user_vars(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
@@ -118,7 +118,7 @@ CREATE TABLE user_vars(
     string_value CHAR(512)
 );
 success!
-timestamp: 2016-03-26T16:23:26.121000
+timestamp: 2016-03-26T18:05:46.143000
 CREATE TABLE courses(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name CHAR(512),
@@ -128,7 +128,7 @@ CREATE TABLE courses(
     l_t_p CHAR(512)
 );
 success!
-timestamp: 2016-03-26T16:23:26.219000
+timestamp: 2016-03-26T18:05:46.300000
 CREATE TABLE registered_courses(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     course_id INTEGER REFERENCES courses (id) ON DELETE CASCADE,
@@ -139,21 +139,21 @@ CREATE TABLE registered_courses(
     ending_date TIMESTAMP
 );
 success!
-timestamp: 2016-03-26T16:23:26.319000
+timestamp: 2016-03-26T18:05:46.416000
 CREATE TABLE student_registrations(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     student_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
     registered_course_id INTEGER REFERENCES registered_courses (id) ON DELETE CASCADE
 );
 success!
-timestamp: 2016-03-26T16:23:26.418000
+timestamp: 2016-03-26T18:05:46.561000
 CREATE TABLE ta_registrations(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
     registered_course_id INTEGER REFERENCES registered_courses (id) ON DELETE CASCADE
 );
 success!
-timestamp: 2016-03-26T16:23:26.543000
+timestamp: 2016-03-26T18:05:46.672000
 CREATE TABLE events(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     registered_course_id INTEGER REFERENCES registered_courses (id) ON DELETE CASCADE,
@@ -166,7 +166,7 @@ CREATE TABLE events(
     file_ CHAR(512)
 );
 success!
-timestamp: 2016-03-26T16:23:26.655000
+timestamp: 2016-03-26T18:05:46.831000
 CREATE TABLE grades(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     registered_course_id INTEGER REFERENCES registered_courses (id) ON DELETE CASCADE,
@@ -177,7 +177,7 @@ CREATE TABLE grades(
     weightage DOUBLE
 );
 success!
-timestamp: 2016-03-26T16:23:26.777000
+timestamp: 2016-03-26T18:05:46.948000
 CREATE TABLE resources(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     registered_course_id INTEGER REFERENCES registered_courses (id) ON DELETE CASCADE,
@@ -188,7 +188,7 @@ CREATE TABLE resources(
     created_at TIMESTAMP
 );
 success!
-timestamp: 2016-03-26T16:23:26.909000
+timestamp: 2016-03-26T18:05:47.072000
 CREATE TABLE submissions(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
@@ -198,7 +198,7 @@ CREATE TABLE submissions(
     created_at TIMESTAMP
 );
 success!
-timestamp: 2016-03-26T16:23:27.031000
+timestamp: 2016-03-26T18:05:47.157000
 CREATE TABLE threads(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
@@ -209,7 +209,7 @@ CREATE TABLE threads(
     description CHAR(512)
 );
 success!
-timestamp: 2016-03-26T16:23:27.171000
+timestamp: 2016-03-26T18:05:47.248000
 CREATE TABLE notifications(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
@@ -218,7 +218,7 @@ CREATE TABLE notifications(
     created_at TIMESTAMP
 );
 success!
-timestamp: 2016-03-26T16:23:27.384000
+timestamp: 2016-03-26T18:05:47.394000
 CREATE TABLE comments(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     thread_id INTEGER REFERENCES threads (id) ON DELETE CASCADE,
