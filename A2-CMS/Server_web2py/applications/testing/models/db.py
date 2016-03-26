@@ -103,7 +103,7 @@ db.define_table(
     Field('first_name', length=128, default=''),
     Field('last_name', length=128, default=''),
     Field('email', length=128, unique=True),
-   Field('username', length=100, unique=True), #cs5110272
+   Field('username', length=100, unique=True), 
     Field('mobile','integer',length=10,requires=IS_INT_IN_RANGE(1000000000,10000000000)),
     Field('address',length=128,requires=IS_NOT_EMPTY()),
     Field('locality',db.localities),
@@ -174,3 +174,9 @@ db.define_table('grp_complaint',complaint,
                 Field('Poll_Results',db.polls),
                 Field('Approved_Discarded_Date','datetime')
 )
+
+db.define_table('votes',
+                Field('poll',db.polls),
+                Field('user_ID',db.users),
+                Field('choice','integer')
+                )
