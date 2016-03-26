@@ -78,8 +78,11 @@ def login():
     userid = request.vars.userid
     password = request.vars.password
     user = auth.login_bare(userid,password)
-    file_pic=open(os.getcwd()+"\\applications\\testing\\uploads\\"+user.profile_pic,'rb')
-    pic1=bytearray(file_pic.read())
+    try:
+        file_pic=open(os.getcwd()+"\\applications\\testing\\uploads\\"+user.profile_pic,'rb')
+        pic1=bytearray(file_pic.read())
+    except Exception,e:
+        pic1=[]
     pic=[]
     for i in range(0,len(pic1)):
         pic.append(pic1[i])
