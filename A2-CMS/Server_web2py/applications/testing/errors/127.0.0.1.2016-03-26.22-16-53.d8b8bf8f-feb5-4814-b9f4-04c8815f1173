@@ -1,0 +1,392 @@
+(dp1
+S'output'
+p2
+S'<type \'exceptions.TypeError\'> bytearray(b\'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01\\x02\\x00\\x00\\x01\\x00\\x01\\x00\\x00\\xff\\xfe\\x00\\x04*\\x00\\xff\\xe2\\x0b\\xf8ICC_PROFILE\\x00\\x01\\x01\\x00\\x00\\x0b\\xe8\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00mntrRGB XYZ \\x07\\xd9\\x00\\x03\\x00\\x1b\\x00\\x15\\x00$\\x00\\x1facsp\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\xf6\\xd6\\x00\\x01\\x00\\x00\\x00\\x00\\xd3-\\x00\\x00\\x00\\x00)\\xf8=\\xde\\xaf\\xf2U\\xaexB\\xfa\\xe4\\xca\\x839\\r\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x10desc\\x00\\x00\\x01D\\x00\\x00\\x00ybXYZ\\x00\\x00\\x01\\xc0\\x00\\x00\\x00\\x14bTRC\\x00\\x00\\x01\\xd4\\x00\\x00\\x08\\x0cdmdd\\x00\\x00\\t\\xe0\\x00\\x00\\x00\\x88gXYZ\\x00\\x00\\nh\\x00\\x00\\x00\\x14gTRC\\x00\\x00\\x01\\xd4\\x00\\x00\\x08\\x0clumi\\x00\\x00\\n|\\x00\\x00\\x00\\x14meas\\x00\\x00\\n\\x90\\x00\\x00\\x00$bkpt\\x00\\x00\\n\\xb4\\x00\\x00\\x00\\x14rXYZ\\x00\\x00\\n\\xc8\\x00\\x00\\x00\\x14rTRC\\x00\\x00\\x01\\xd4\\x00\\x00\\x08\\x0ctech\\x00\\x00\\n\\xdc\\x00\\x00\\x00\\x0cvued\\x00\\x00\\n\\xe8\\x00\\x00\\x00\\x87wtpt\\x00\\x00\\x0bp\\x00\\x00\\x00\\x14cprt\\x00\\x00\\x0b\\x84\\x00\\x00\\x007chad\\x00\\x00\\x0b\\xbc\\x00\\x00\\x00,desc\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x1fsRGB IEC61966-2-1 black scaled\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00XYZ \\x00\\x00\\x00\\x00\\x00\\x00$\\xa0\\x00\\x00\\x0f\\x84\\x00\\x00\\xb6\\xcfcurv\\x00\\x00\\x00\\x00\\x00\\x00\\x04\\x00\\x00\\x00\\x00\\x05\\x00\\n\\x00\\x0f\\x00\\x14\\x00\\x19\\x00\\x1e\\x00#\\x00(\\x00-\\x002\\x007\\x00;\\x00@\\x00E\\x00J\\x00O\\x00T\\x00Y\\x00^\\x00c\\x00h\\x00m\\x00r\\x00w\\x00|\\x00\\x81\\x00\\x86\\x00\\x8b\\x00\\x90\\x00\\x95\\x00\\x9a\\x00\\x9f\\x00\\xa4\\x00\\xa9\\x00\\xae\\x00\\xb2\\x00\\xb7\\x00\\xbc\\x00\\xc1\\x00\\xc6\\x00\\xcb\\x00\\xd0\\x00\\xd5\\x00\\xdb\\x00\\xe0\\x00\\xe5\\x00\\xeb\\x00\\xf0\\x00\\xf6\\x00\\xfb\\x01\\x01\\x01\\x07\\x01\\r\\x01\\x13\\x01\\x19\\x01\\x1f\\x01%\\x01+\\x012\\x018\\x01>\\x01E\\x01L\\x01R\\x01Y\\x01`\\x01g\\x01n\\x01u\\x01|\\x01\\x83\\x01\\x8b\\x01\\x92\\x01\\x9a\\x01\\xa1\\x01\\xa9\\x01\\xb1\\x01\\xb9\\x01\\xc1\\x01\\xc9\\x01\\xd1\\x01\\xd9\\x01\\xe1\\x01\\xe9\\x01\\xf2\\x01\\xfa\\x02\\x03\\x02\\x0c\\x02\\x14\\x02\\x1d\\x02&\\x02/\\x028\\x02A\\x02K\\x02T\\x02]\\x02g\\x02q\\x02z\\x02\\x84\\x02\\x8e\\x02\\x98\\x02\\xa2\\x02\\xac\\x02\\xb6\\x02\\xc1\\x02\\xcb\\x02\\xd5\\x02\\xe0\\x02\\xeb\\x02\\xf5\\x03\\x00\\x03\\x0b\\x03\\x16\\x03!\\x03-\\x038\\x03C\\x03O\\x03Z\\x03f\\x03r\\x03~\\x03\\x8a\\x03\\x96\\x03\\xa2\\x03\\xae\\x03\\xba\\x03\\xc7\\x03\\xd3\\x03\\xe0\\x03\\xec\\x03\\xf9\\x04\\x06\\x04\\x13\\x04 \\x04-\\x04;\\x04H\\x04U\\x04c\\x04q\\x04~\\x04\\x8c\\x04\\x9a\\x04\\xa8\\x04\\xb6\\x04\\xc4\\x04\\xd3\\x04\\xe1\\x04\\xf0\\x04\\xfe\\x05\\r\\x05\\x1c\\x05+\\x05:\\x05I\\x05X\\x05g\\x05w\\x05\\x86\\x05\\x96\\x05\\xa6\\x05\\xb5\\x05\\xc5\\x05\\xd5\\x05\\xe5\\x05\\xf6\\x06\\x06\\x06\\x16\\x06\\\'\\x067\\x06H\\x06Y\\x06j\\x06{\\x06\\x8c\\x06\\x9d\\x06\\xaf\\x06\\xc0\\x06\\xd1\\x06\\xe3\\x06\\xf5\\x07\\x07\\x07\\x19\\x07+\\x07=\\x07O\\x07a\\x07t\\x07\\x86\\x07\\x99\\x07\\xac\\x07\\xbf\\x07\\xd2\\x07\\xe5\\x07\\xf8\\x08\\x0b\\x08\\x1f\\x082\\x08F\\x08Z\\x08n\\x08\\x82\\x08\\x96\\x08\\xaa\\x08\\xbe\\x08\\xd2\\x08\\xe7\\x08\\xfb\\t\\x10\\t%\\t:\\tO\\td\\ty\\t\\x8f\\t\\xa4\\t\\xba\\t\\xcf\\t\\xe5\\t\\xfb\\n\\x11\\n\\\'\\n=\\nT\\nj\\n\\x81\\n\\x98\\n\\xae\\n\\xc5\\n\\xdc\\n\\xf3\\x0b\\x0b\\x0b"\\x0b9\\x0bQ\\x0bi\\x0b\\x80\\x0b\\x98\\x0b\\xb0\\x0b\\xc8\\x0b\\xe1\\x0b\\xf9\\x0c\\x12\\x0c*\\x0cC\\x0c\\\\\\x0cu\\x0c\\x8e\\x0c\\xa7\\x0c\\xc0\\x0c\\xd9\\x0c\\xf3\\r\\r\\r&\\r@\\rZ\\rt\\r\\x8e\\r\\xa9\\r\\xc3\\r\\xde\\r\\xf8\\x0e\\x13\\x0e.\\x0eI\\x0ed\\x0e\\x7f\\x0e\\x9b\\x0e\\xb6\\x0e\\xd2\\x0e\\xee\\x0f\\t\\x0f%\\x0fA\\x0f^\\x0fz\\x0f\\x96\\x0f\\xb3\\x0f\\xcf\\x0f\\xec\\x10\\t\\x10&\\x10C\\x10a\\x10~\\x10\\x9b\\x10\\xb9\\x10\\xd7\\x10\\xf5\\x11\\x13\\x111\\x11O\\x11m\\x11\\x8c\\x11\\xaa\\x11\\xc9\\x11\\xe8\\x12\\x07\\x12&\\x12E\\x12d\\x12\\x84\\x12\\xa3\\x12\\xc3\\x12\\xe3\\x13\\x03\\x13#\\x13C\\x13c\\x13\\x83\\x13\\xa4\\x13\\xc5\\x13\\xe5\\x14\\x06\\x14\\\'\\x14I\\x14j\\x14\\x8b\\x14\\xad\\x14\\xce\\x14\\xf0\\x15\\x12\\x154\\x15V\\x15x\\x15\\x9b\\x15\\xbd\\x15\\xe0\\x16\\x03\\x16&\\x16I\\x16l\\x16\\x8f\\x16\\xb2\\x16\\xd6\\x16\\xfa\\x17\\x1d\\x17A\\x17e\\x17\\x89\\x17\\xae\\x17\\xd2\\x17\\xf7\\x18\\x1b\\x18@\\x18e\\x18\\x8a\\x18\\xaf\\x18\\xd5\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd\') is not JSON serializable'
+p3
+sS'layer'
+p4
+S'C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\applications\\testing\\views\\generic.json'
+p5
+sS'code'
+p6
+S"from gluon.serializers import json\nresponse.write(XML(json(response._vars)))\nresponse.write('\\r\\n', escape=False)"
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.TypeError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.TypeError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.TypeError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.TypeError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.TypeError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.TypeError object>'
+p23
+sS'__reduce__'
+p24
+S'<built-in method __reduce__ of exceptions.TypeError object>'
+p25
+sS'__str__'
+p26
+S"<method-wrapper '__str__' of exceptions.TypeError object>"
+p27
+sS'__format__'
+p28
+S'<built-in method __format__ of exceptions.TypeError object>'
+p29
+sS'__getattribute__'
+p30
+S"<method-wrapper '__getattribute__' of exceptions.TypeError object>"
+p31
+sS'__class__'
+p32
+S"<type 'exceptions.TypeError'>"
+p33
+sS'__unicode__'
+p34
+S'<built-in method __unicode__ of exceptions.TypeError object>'
+p35
+sS'__delattr__'
+p36
+S"<method-wrapper '__delattr__' of exceptions.TypeError object>"
+p37
+sS'__subclasshook__'
+p38
+S'<built-in method __subclasshook__ of type object>'
+p39
+sS'__repr__'
+p40
+S"<method-wrapper '__repr__' of exceptions.TypeError object>"
+p41
+sS'args'
+p42
+S'(r"bytearray(b\'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01...19\\x91\\x19\\xb7\\x19\\xdd\') is not JSON serializable",)'
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.TypeError object>'
+p47
+sS'__doc__'
+p48
+S"'Inappropriate argument type.'"
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.TypeError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S'bytearray(b\'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01\\x02\\x00\\x00\\x01\\x00\\x01\\x00\\x00\\xff\\xfe\\x00\\x04*\\x00\\xff\\xe2\\x0b\\xf8ICC_PROFILE\\x00\\x01\\x01\\x00\\x00\\x0b\\xe8\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00mntrRGB XYZ \\x07\\xd9\\x00\\x03\\x00\\x1b\\x00\\x15\\x00$\\x00\\x1facsp\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\xf6\\xd6\\x00\\x01\\x00\\x00\\x00\\x00\\xd3-\\x00\\x00\\x00\\x00)\\xf8=\\xde\\xaf\\xf2U\\xaexB\\xfa\\xe4\\xca\\x839\\r\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x10desc\\x00\\x00\\x01D\\x00\\x00\\x00ybXYZ\\x00\\x00\\x01\\xc0\\x00\\x00\\x00\\x14bTRC\\x00\\x00\\x01\\xd4\\x00\\x00\\x08\\x0cdmdd\\x00\\x00\\t\\xe0\\x00\\x00\\x00\\x88gXYZ\\x00\\x00\\nh\\x00\\x00\\x00\\x14gTRC\\x00\\x00\\x01\\xd4\\x00\\x00\\x08\\x0clumi\\x00\\x00\\n|\\x00\\x00\\x00\\x14meas\\x00\\x00\\n\\x90\\x00\\x00\\x00$bkpt\\x00\\x00\\n\\xb4\\x00\\x00\\x00\\x14rXYZ\\x00\\x00\\n\\xc8\\x00\\x00\\x00\\x14rTRC\\x00\\x00\\x01\\xd4\\x00\\x00\\x08\\x0ctech\\x00\\x00\\n\\xdc\\x00\\x00\\x00\\x0cvued\\x00\\x00\\n\\xe8\\x00\\x00\\x00\\x87wtpt\\x00\\x00\\x0bp\\x00\\x00\\x00\\x14cprt\\x00\\x00\\x0b\\x84\\x00\\x00\\x007chad\\x00\\x00\\x0b\\xbc\\x00\\x00\\x00,desc\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x1fsRGB IEC61966-2-1 black scaled\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00XYZ \\x00\\x00\\x00\\x00\\x00\\x00$\\xa0\\x00\\x00\\x0f\\x84\\x00\\x00\\xb6\\xcfcurv\\x00\\x00\\x00\\x00\\x00\\x00\\x04\\x00\\x00\\x00\\x00\\x05\\x00\\n\\x00\\x0f\\x00\\x14\\x00\\x19\\x00\\x1e\\x00#\\x00(\\x00-\\x002\\x007\\x00;\\x00@\\x00E\\x00J\\x00O\\x00T\\x00Y\\x00^\\x00c\\x00h\\x00m\\x00r\\x00w\\x00|\\x00\\x81\\x00\\x86\\x00\\x8b\\x00\\x90\\x00\\x95\\x00\\x9a\\x00\\x9f\\x00\\xa4\\x00\\xa9\\x00\\xae\\x00\\xb2\\x00\\xb7\\x00\\xbc\\x00\\xc1\\x00\\xc6\\x00\\xcb\\x00\\xd0\\x00\\xd5\\x00\\xdb\\x00\\xe0\\x00\\xe5\\x00\\xeb\\x00\\xf0\\x00\\xf6\\x00\\xfb\\x01\\x01\\x01\\x07\\x01\\r\\x01\\x13\\x01\\x19\\x01\\x1f\\x01%\\x01+\\x012\\x018\\x01>\\x01E\\x01L\\x01R\\x01Y\\x01`\\x01g\\x01n\\x01u\\x01|\\x01\\x83\\x01\\x8b\\x01\\x92\\x01\\x9a\\x01\\xa1\\x01\\xa9\\x01\\xb1\\x01\\xb9\\x01\\xc1\\x01\\xc9\\x01\\xd1\\x01\\xd9\\x01\\xe1\\x01\\xe9\\x01\\xf2\\x01\\xfa\\x02\\x03\\x02\\x0c\\x02\\x14\\x02\\x1d\\x02&\\x02/\\x028\\x02A\\x02K\\x02T\\x02]\\x02g\\x02q\\x02z\\x02\\x84\\x02\\x8e\\x02\\x98\\x02\\xa2\\x02\\xac\\x02\\xb6\\x02\\xc1\\x02\\xcb\\x02\\xd5\\x02\\xe0\\x02\\xeb\\x02\\xf5\\x03\\x00\\x03\\x0b\\x03\\x16\\x03!\\x03-\\x038\\x03C\\x03O\\x03Z\\x03f\\x03r\\x03~\\x03\\x8a\\x03\\x96\\x03\\xa2\\x03\\xae\\x03\\xba\\x03\\xc7\\x03\\xd3\\x03\\xe0\\x03\\xec\\x03\\xf9\\x04\\x06\\x04\\x13\\x04 \\x04-\\x04;\\x04H\\x04U\\x04c\\x04q\\x04~\\x04\\x8c\\x04\\x9a\\x04\\xa8\\x04\\xb6\\x04\\xc4\\x04\\xd3\\x04\\xe1\\x04\\xf0\\x04\\xfe\\x05\\r\\x05\\x1c\\x05+\\x05:\\x05I\\x05X\\x05g\\x05w\\x05\\x86\\x05\\x96\\x05\\xa6\\x05\\xb5\\x05\\xc5\\x05\\xd5\\x05\\xe5\\x05\\xf6\\x06\\x06\\x06\\x16\\x06\\\'\\x067\\x06H\\x06Y\\x06j\\x06{\\x06\\x8c\\x06\\x9d\\x06\\xaf\\x06\\xc0\\x06\\xd1\\x06\\xe3\\x06\\xf5\\x07\\x07\\x07\\x19\\x07+\\x07=\\x07O\\x07a\\x07t\\x07\\x86\\x07\\x99\\x07\\xac\\x07\\xbf\\x07\\xd2\\x07\\xe5\\x07\\xf8\\x08\\x0b\\x08\\x1f\\x082\\x08F\\x08Z\\x08n\\x08\\x82\\x08\\x96\\x08\\xaa\\x08\\xbe\\x08\\xd2\\x08\\xe7\\x08\\xfb\\t\\x10\\t%\\t:\\tO\\td\\ty\\t\\x8f\\t\\xa4\\t\\xba\\t\\xcf\\t\\xe5\\t\\xfb\\n\\x11\\n\\\'\\n=\\nT\\nj\\n\\x81\\n\\x98\\n\\xae\\n\\xc5\\n\\xdc\\n\\xf3\\x0b\\x0b\\x0b"\\x0b9\\x0bQ\\x0bi\\x0b\\x80\\x0b\\x98\\x0b\\xb0\\x0b\\xc8\\x0b\\xe1\\x0b\\xf9\\x0c\\x12\\x0c*\\x0cC\\x0c\\\\\\x0cu\\x0c\\x8e\\x0c\\xa7\\x0c\\xc0\\x0c\\xd9\\x0c\\xf3\\r\\r\\r&\\r@\\rZ\\rt\\r\\x8e\\r\\xa9\\r\\xc3\\r\\xde\\r\\xf8\\x0e\\x13\\x0e.\\x0eI\\x0ed\\x0e\\x7f\\x0e\\x9b\\x0e\\xb6\\x0e\\xd2\\x0e\\xee\\x0f\\t\\x0f%\\x0fA\\x0f^\\x0fz\\x0f\\x96\\x0f\\xb3\\x0f\\xcf\\x0f\\xec\\x10\\t\\x10&\\x10C\\x10a\\x10~\\x10\\x9b\\x10\\xb9\\x10\\xd7\\x10\\xf5\\x11\\x13\\x111\\x11O\\x11m\\x11\\x8c\\x11\\xaa\\x11\\xc9\\x11\\xe8\\x12\\x07\\x12&\\x12E\\x12d\\x12\\x84\\x12\\xa3\\x12\\xc3\\x12\\xe3\\x13\\x03\\x13#\\x13C\\x13c\\x13\\x83\\x13\\xa4\\x13\\xc5\\x13\\xe5\\x14\\x06\\x14\\\'\\x14I\\x14j\\x14\\x8b\\x14\\xad\\x14\\xce\\x14\\xf0\\x15\\x12\\x154\\x15V\\x15x\\x15\\x9b\\x15\\xbd\\x15\\xe0\\x16\\x03\\x16&\\x16I\\x16l\\x16\\x8f\\x16\\xb2\\x16\\xd6\\x16\\xfa\\x17\\x1d\\x17A\\x17e\\x17\\x89\\x17\\xae\\x17\\xd2\\x17\\xf7\\x18\\x1b\\x18@\\x18e\\x18\\x8a\\x18\\xaf\\x18\\xd5\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd\') is not JSON serializable'
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S's\xceg\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>testing</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-2680d86c-5fe4-4b11-afb7-45ee90a65f1d<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_moodleplus</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-90ee714e-7523-44b2-a9d4-90c6328e9299<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_testing</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-d4c5f5ab-9a4a-44bc-994b-50f7d96f16f9<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-1b7a23b8-be4c-44ae-8d99-e80bfa33a763<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CACHE_CONTROL</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-1b7a23b8-be4c-44ae-8d99-e80bfa33a763; session_id_moodleplus=127.0.0.1-90ee714e-7523-44b2-a9d4-90c6328e9299; session_id_testing=127.0.0.1-d4c5f5ab-9a4a-44bc-994b-50f7d96f16f9; session_id_admin=127.0.0.1-2680d86c-5fe4-4b11-afb7-45ee90a65f1d</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/testing/default/login.json</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div>userid=me1130859&amp;password=prabhu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>53611</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>Admin</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\Users\\\\P.K. Mishra\\\\Documents\\\\GitHub\\\\COP290\\\\A2-CMS\\\\Server_web2py\\\\applications\\\\testing\\\\&#x27;, &#x27;C:\\\\Users\\\\P.K. Mishra\\\\Documents\\\\GitHub\\\\COP290\\\\A2-CMS\\\\Server_web2py\\\\applications\\\\admin\\\\&#x27;, &#x27;C:\\\\Users\\\\P.K. Mishra\\\\Documents\\\\GitHub\\\\COP290\\\\A2-CMS\\\\Server_web2py\\\\applications\\\\MoodlePlus\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x30970d0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;fe80::501a:546a:4eac:a577%2&#x27;, &#x27;192.168.254.1&#x27;, &#x27;10.250.212.159&#x27;, &#x27;fe80::104a:2cc2:899e:4b92%9&#x27;, &#x27;192.168.137.1&#x27;, &#x27;fe80::d1c4:1bb2:3b7b:4826%7&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;Admin&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\Users\\\\P.K. Mishra\\\\Documents\\\\GitHub\\\\COP290\\\\A2-CMS\\\\Server_web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cache_control</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-1b7a23b8-be4c-44ae-8d99-e80bfa33a763; session_id_moodleplus=127.0.0.1-90ee714e-7523-44b2-a9d4-90c6328e9299; session_id_testing=127.0.0.1-d4c5f5ab-9a4a-44bc-994b-50f7d96f16f9; session_id_admin=127.0.0.1-2680d86c-5fe4-4b11-afb7-45ee90a65f1d</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>fe80::501a:546a:4eac:a577%2</div></td></tr><tr><td><div>192.168.254.1</div></td></tr><tr><td><div>Admin</div></td></tr><tr><td><div>10.250.212.159</div></td></tr><tr><td><div>fe80::104a:2cc2:899e:4b92%9</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.137.1</div></td></tr><tr><td><div>fe80::d1c4:1bb2:3b7b:4826%7</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/testing/default/login.json</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div>userid=me1130859&amp;password=prabhu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>53611</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/testing/default/login.json?userid=me1130859&amp;password=prabhu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>Admin</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_original_uri</td><td style="vertical-align:top;">:</td><td><div>/testing/default/login.json?userid=me1130859&amp;password=prabhu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.10.3-stable+timestamp.2015.04.02.21.42.07</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x0214D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x0326ECA8&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x04A33BB0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x0214D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x0326ECA8&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x04A33BB0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>json</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\applications\\testing\\</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>login</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\Users\\\\P.K. Mishra\\\\Documents\\\\GitHub\\\\COP290\\\\A2-CMS\\\\Server_web2py\\\\applications\\\\testing\\\\&#x27;, &#x27;C:\\\\Users\\\\P.K. Mishra\\\\Documents\\\\GitHub\\\\COP290\\\\A2-CMS\\\\Server_web2py\\\\applications\\\\admin\\\\&#x27;, &#x27;C:\\\\Users\\\\P.K. Mishra\\\\Documents\\\\GitHub\\\\COP290\\\\A2-CMS\\\\Server_web2py\\\\applications\\\\MoodlePlus\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x30970d0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;fe80::501a:546a:4eac:a577%2&#x27;, &#x27;192.168.254.1&#x27;, &#x27;10.250.212.159&#x27;, &#x27;fe80::104a:2cc2:899e:4b92%9&#x27;, &#x27;192.168.137.1&#x27;, &#x27;fe80::d1c4:1bb2:3b7b:4826%7&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;Admin&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\Users\\\\P.K. Mishra\\\\Documents\\\\GitHub\\\\COP290\\\\A2-CMS\\\\Server_web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>fe80::501a:546a:4eac:a577%2</div></td></tr><tr><td><div>192.168.254.1</div></td></tr><tr><td><div>Admin</div></td></tr><tr><td><div>10.250.212.159</div></td></tr><tr><td><div>fe80::104a:2cc2:899e:4b92%9</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.137.1</div></td></tr><tr><td><div>fe80::d1c4:1bb2:3b7b:4826%7</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.10.3-stable+timestamp.2015.04.02.21.42.07</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_sheduler</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 3, 26, 22, 16, 53, 659000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/testing/default/login.json</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 3, 26, 16, 46, 53, 659000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uuid</td><td style="vertical-align:top;">:</td><td><div>testing/127.0.0.1.2016-03-26.22-16-53.d8b8bf8f-feb5-4814-b9f4-04c8815f1173</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x098F2970&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\gluon\\restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 0967B4A0, file "C:\\User...applications\\testing\\views\\generic.json", line 1>'
+p69
+ssS'lnum'
+p70
+I227
+sS'lines'
+p71
+(dp72
+I224
+S'            ccode = code'
+p73
+sI225
+S'        else:'
+p74
+sI226
+S'            ccode = compile2(code, layer)'
+p75
+sI227
+S'        exec ccode in environment'
+p76
+sI228
+S'    except HTTP:'
+p77
+sI229
+S'        raise'
+p78
+sI230
+S'    except RestrictedError:'
+p79
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p80
+sI222
+S'    try:'
+p81
+sI223
+S'        if isinstance(code, types.CodeType):'
+p82
+ssS'call'
+p83
+S'(code="from gluon.serializers import json\\nresponse.writ...nse._vars)))\\nresponse.write(\'\\\\r\\\\n\', escape=False)", environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'ASSIGNJS\': <function ASSIGNJS>, \'AppConfig\': <function AppConfig>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, ...}, layer=r\'C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-...er_web2py\\applications\\testing\\views\\generic.json\')'
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\applications\\testing\\views\\generic.json'
+p88
+sg64
+(dp89
+sg70
+I2
+sg71
+(dp90
+I1
+S'{{from gluon.serializers import json}}{{=XML(json(response._vars))}}'
+p91
+ssg83
+S'()'
+p92
+sg85
+S'<module>'
+p93
+sa(dp94
+g62
+S'C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\gluon\\serializers.py'
+p95
+sg64
+(dp96
+S'default'
+p97
+S'<function custom_json>'
+p98
+sS'json_parser.dumps'
+p99
+S'<function dumps>'
+p100
+sS'global json_parser'
+p101
+S"<module 'json' from 'C:\\Users\\P.K. Mishra\\Docume...CMS\\Server_web2py\\library.zip\\json\\__init__.pyc'>"
+p102
+sS'value'
+p103
+S"{'pic': bytearray(b'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01...\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd'), 'success': True, 'user': <Row {'profile_pic': 'users.profile_pic.94e86db6...i', 'password': 'prabhu', 'mobile': 9871317974L}>}"
+p104
+ssg70
+I137
+sg71
+(dp105
+I132
+S''
+sI133
+S'def json(value, default=custom_json):'
+p106
+sI134
+S'    if decimal_false_option:'
+p107
+sI135
+S'        value = json_parser.dumps(value, default=default, use_decimal=False)'
+p108
+sI136
+S'    else:'
+p109
+sI137
+S'        value = json_parser.dumps(value, default=default)'
+p110
+sI138
+S''
+sI139
+S'    # replace JavaScript incompatible spacing'
+p111
+sI140
+S'    # http://timelessrepo.com/json-isnt-a-javascript-subset'
+p112
+sI141
+S"    return value.replace(ur'\\u2028', '\\\\u2028').replace(ur'\\2029', '\\\\u2029')"
+p113
+ssg83
+S"(value={'pic': bytearray(b'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01...\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd'), 'success': True, 'user': <Row {'profile_pic': 'users.profile_pic.94e86db6...i', 'password': 'prabhu', 'mobile': 9871317974L}>}, default=<function custom_json>)"
+p114
+sg85
+S'json'
+p115
+sa(dp116
+g62
+S'C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\json\\__init__.py'
+p117
+sg64
+(dp118
+sg70
+I250
+sg71
+(dp119
+sg83
+S"(obj={'pic': bytearray(b'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01...\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd'), 'success': True, 'user': <Row {'profile_pic': 'users.profile_pic.94e86db6...i', 'password': 'prabhu', 'mobile': 9871317974L}>}, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=<class 'json.encoder.JSONEncoder'>, indent=None, separators=None, encoding='utf-8', default=<function custom_json>, sort_keys=False, **kw={})"
+p120
+sg85
+S'dumps'
+p121
+sa(dp122
+g62
+S'C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\json\\encoder.py'
+p123
+sg64
+(dp124
+sg70
+I207
+sg71
+(dp125
+sg83
+S"(self=<json.encoder.JSONEncoder object>, o={'pic': bytearray(b'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01...\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd'), 'success': True, 'user': <Row {'profile_pic': 'users.profile_pic.94e86db6...i', 'password': 'prabhu', 'mobile': 9871317974L}>})"
+p126
+sg85
+S'encode'
+p127
+sa(dp128
+g62
+S'C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\json\\encoder.py'
+p129
+sg64
+(dp130
+sg70
+I270
+sg71
+(dp131
+sg83
+S"(self=<json.encoder.JSONEncoder object>, o={'pic': bytearray(b'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01...\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd'), 'success': True, 'user': <Row {'profile_pic': 'users.profile_pic.94e86db6...i', 'password': 'prabhu', 'mobile': 9871317974L}>}, _one_shot=True)"
+p132
+sg85
+S'iterencode'
+p133
+sa(dp134
+g62
+S'C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\gluon\\serializers.py'
+p135
+sg64
+(dp136
+S'builtinrepr'
+p137
+S'<built-in function repr>'
+p138
+sS'builtinTypeError'
+p139
+S"<type 'exceptions.TypeError'>"
+p140
+sS'o'
+S"bytearray(b'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01...\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd')"
+p141
+ssg70
+I110
+sg71
+(dp142
+I105
+S"    elif hasattr(o, 'as_list') and callable(o.as_list):"
+p143
+sI106
+S'        return o.as_list()'
+p144
+sI107
+S"    elif hasattr(o, 'as_dict') and callable(o.as_dict):"
+p145
+sI108
+S'        return o.as_dict()'
+p146
+sI109
+S'    else:'
+p147
+sI110
+S'        raise TypeError(repr(o) + " is not JSON serializable")'
+p148
+sI111
+S''
+sI112
+S''
+sI113
+S'def xml_rec(value, key, quote=True):'
+p149
+sI114
+S"    if hasattr(value, 'custom_xml') and callable(value.custom_xml):"
+p150
+ssg83
+S"(o=bytearray(b'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01...\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd'))"
+p151
+sg85
+S'custom_json'
+p152
+sasS'pyver'
+p153
+S'Python 2.7.9: C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\web2py.exe (prefix: C:\\Python27)'
+p154
+sS'session'
+p155
+g57
+(S's\xdd\n\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">auth</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">expiration</td><td style="vertical-align:top;">:</td><td><div>3600</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">hmac_key</td><td style="vertical-align:top;">:</td><td><div>3ba9a61b-b7a8-4fba-9355-d7813028ea7f</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_visit</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 3, 26, 22, 16, 53, 659000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">address</td><td style="vertical-align:top;">:</td><td><div>EF-25, Udaigiri Hostel, IIT Delhi</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">email</td><td style="vertical-align:top;">:</td><td><div>prabhupanda31@gmail.com</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">first_name</td><td style="vertical-align:top;">:</td><td><div>Prabhu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">id</td><td style="vertical-align:top;">:</td><td><div>1L</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_name</td><td style="vertical-align:top;">:</td><td><div>Panda</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">locality</td><td style="vertical-align:top;">:</td><td><div>2L</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">mobile</td><td style="vertical-align:top;">:</td><td><div>9871317974L</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">profile_pic</td><td style="vertical-align:top;">:</td><td><div>users.profile_pic.94e86db6b7abaf52.5072616268752e6a7067.jpg</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_id</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">reset_password_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">username</td><td style="vertical-align:top;">:</td><td><div>me1130859</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user_groups</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr></table></div>'
+tRp156
+sS'etype'
+p157
+S"<type 'exceptions.TypeError'>"
+p158
+sS'date'
+p159
+S'Sat Mar 26 22:16:53 2016'
+p160
+sS'response'
+p161
+g57
+(S'sY>\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x098F2940&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_testing</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-d4c5f5ab-9a4a-44bc-994b-50f7d96f16f9<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>bootstrap3_inline</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">logo</td><td style="vertical-align:top;">:</td><td><div><a class="navbar-brand" href="http://www.web2py.com/" id="web2py-logo"><b>web<span>2</span>py</b>&trade;&nbsp;</a></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Home</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/testing/index.json</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>My Sites</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/site.json</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>This App</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Design</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/design.json/testing</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>Controller</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/edit.json/testing/controllers/default.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>View</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/edit.json/testing/views/default/login.json</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>DB Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/edit.json/testing/models/db.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Menu Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/edit.json/testing/models/menu.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Config.ini</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/edit.json/testing/private/appconfig.ini</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Layout</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/edit.json/testing/views/layout.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Stylesheet</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/edit.json/testing/static/css/web2py-bootstrap3.css</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Database</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/testing/appadmin/index.json</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Errors</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/errors.json/testing</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>About</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/about.json/testing</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>web2py.com</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Download</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/download</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Support</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/support</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Demo</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/demo_admin</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Quick Examples</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/examples/default/examples</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>FAQ</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/AlterEgo</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Videos</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/videos/</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Free Applications</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/appliances</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/plugins</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2pyslices.com/</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Documentation</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Online book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>Preface</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/00</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Introduction</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/01</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Python</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/02</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Overview</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/03</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>The Core</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/04</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>The Views</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/05</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Database</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/06</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Forms and Validators</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/07</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Email and SMS</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/08</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Access Control</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/09</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Services</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/10</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Ajax Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/11</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Components and Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/12</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Deployment Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/13</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Other Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/14</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Helping web2py</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/15</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Buy web2py\'s book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://stores.lulu.com/web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Community</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Groups</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/usergroups</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Twitter</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://twitter.com/web2py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Live Chat</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://webchat.freenode.net/?channels=web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">description</td><td style="vertical-align:top;">:</td><td><div>a cool new app</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div>web2py, python, framework</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/login/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_testing</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\applications\\testing\\sessions\\127.0.0.1-985326fd-0bc1-4b00-9a06-ee3ac2efbee9</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>bcaa95ad4230fb34c9b383e753fbc2ad</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-985326fd-0bc1-4b00-9a06-ee3ac2efbee9</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_testing</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>testing</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>Testing</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/login.json</div></td></tr></table></div>'
+tRp162
+sS'locals'
+p163
+(dp164
+S'o'
+S"bytearray(b'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01...\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd')"
+p165
+sssS'traceback'
+p166
+S'Traceback (most recent call last):\n  File "C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\gluon\\restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\applications\\testing\\views\\generic.json", line 2, in <module>\n  File "C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\gluon\\serializers.py", line 137, in json\n    value = json_parser.dumps(value, default=default)\n  File "json/__init__.py", line 250, in dumps\n  File "json/encoder.py", line 207, in encode\n  File "json/encoder.py", line 270, in iterencode\n  File "C:\\Users\\P.K. Mishra\\Documents\\GitHub\\COP290\\A2-CMS\\Server_web2py\\gluon\\serializers.py", line 110, in custom_json\n    raise TypeError(repr(o) + " is not JSON serializable")\nTypeError: bytearray(b\'\\xff\\xd8\\xff\\xe0\\x00\\x10JFIF\\x00\\x01\\x02\\x00\\x00\\x01\\x00\\x01\\x00\\x00\\xff\\xfe\\x00\\x04*\\x00\\xff\\xe2\\x0b\\xf8ICC_PROFILE\\x00\\x01\\x01\\x00\\x00\\x0b\\xe8\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00mntrRGB XYZ \\x07\\xd9\\x00\\x03\\x00\\x1b\\x00\\x15\\x00$\\x00\\x1facsp\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\xf6\\xd6\\x00\\x01\\x00\\x00\\x00\\x00\\xd3-\\x00\\x00\\x00\\x00)\\xf8=\\xde\\xaf\\xf2U\\xaexB\\xfa\\xe4\\xca\\x839\\r\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x10desc\\x00\\x00\\x01D\\x00\\x00\\x00ybXYZ\\x00\\x00\\x01\\xc0\\x00\\x00\\x00\\x14bTRC\\x00\\x00\\x01\\xd4\\x00\\x00\\x08\\x0cdmdd\\x00\\x00\\t\\xe0\\x00\\x00\\x00\\x88gXYZ\\x00\\x00\\nh\\x00\\x00\\x00\\x14gTRC\\x00\\x00\\x01\\xd4\\x00\\x00\\x08\\x0clumi\\x00\\x00\\n|\\x00\\x00\\x00\\x14meas\\x00\\x00\\n\\x90\\x00\\x00\\x00$bkpt\\x00\\x00\\n\\xb4\\x00\\x00\\x00\\x14rXYZ\\x00\\x00\\n\\xc8\\x00\\x00\\x00\\x14rTRC\\x00\\x00\\x01\\xd4\\x00\\x00\\x08\\x0ctech\\x00\\x00\\n\\xdc\\x00\\x00\\x00\\x0cvued\\x00\\x00\\n\\xe8\\x00\\x00\\x00\\x87wtpt\\x00\\x00\\x0bp\\x00\\x00\\x00\\x14cprt\\x00\\x00\\x0b\\x84\\x00\\x00\\x007chad\\x00\\x00\\x0b\\xbc\\x00\\x00\\x00,desc\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x1fsRGB IEC61966-2-1 black scaled\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00XYZ \\x00\\x00\\x00\\x00\\x00\\x00$\\xa0\\x00\\x00\\x0f\\x84\\x00\\x00\\xb6\\xcfcurv\\x00\\x00\\x00\\x00\\x00\\x00\\x04\\x00\\x00\\x00\\x00\\x05\\x00\\n\\x00\\x0f\\x00\\x14\\x00\\x19\\x00\\x1e\\x00#\\x00(\\x00-\\x002\\x007\\x00;\\x00@\\x00E\\x00J\\x00O\\x00T\\x00Y\\x00^\\x00c\\x00h\\x00m\\x00r\\x00w\\x00|\\x00\\x81\\x00\\x86\\x00\\x8b\\x00\\x90\\x00\\x95\\x00\\x9a\\x00\\x9f\\x00\\xa4\\x00\\xa9\\x00\\xae\\x00\\xb2\\x00\\xb7\\x00\\xbc\\x00\\xc1\\x00\\xc6\\x00\\xcb\\x00\\xd0\\x00\\xd5\\x00\\xdb\\x00\\xe0\\x00\\xe5\\x00\\xeb\\x00\\xf0\\x00\\xf6\\x00\\xfb\\x01\\x01\\x01\\x07\\x01\\r\\x01\\x13\\x01\\x19\\x01\\x1f\\x01%\\x01+\\x012\\x018\\x01>\\x01E\\x01L\\x01R\\x01Y\\x01`\\x01g\\x01n\\x01u\\x01|\\x01\\x83\\x01\\x8b\\x01\\x92\\x01\\x9a\\x01\\xa1\\x01\\xa9\\x01\\xb1\\x01\\xb9\\x01\\xc1\\x01\\xc9\\x01\\xd1\\x01\\xd9\\x01\\xe1\\x01\\xe9\\x01\\xf2\\x01\\xfa\\x02\\x03\\x02\\x0c\\x02\\x14\\x02\\x1d\\x02&\\x02/\\x028\\x02A\\x02K\\x02T\\x02]\\x02g\\x02q\\x02z\\x02\\x84\\x02\\x8e\\x02\\x98\\x02\\xa2\\x02\\xac\\x02\\xb6\\x02\\xc1\\x02\\xcb\\x02\\xd5\\x02\\xe0\\x02\\xeb\\x02\\xf5\\x03\\x00\\x03\\x0b\\x03\\x16\\x03!\\x03-\\x038\\x03C\\x03O\\x03Z\\x03f\\x03r\\x03~\\x03\\x8a\\x03\\x96\\x03\\xa2\\x03\\xae\\x03\\xba\\x03\\xc7\\x03\\xd3\\x03\\xe0\\x03\\xec\\x03\\xf9\\x04\\x06\\x04\\x13\\x04 \\x04-\\x04;\\x04H\\x04U\\x04c\\x04q\\x04~\\x04\\x8c\\x04\\x9a\\x04\\xa8\\x04\\xb6\\x04\\xc4\\x04\\xd3\\x04\\xe1\\x04\\xf0\\x04\\xfe\\x05\\r\\x05\\x1c\\x05+\\x05:\\x05I\\x05X\\x05g\\x05w\\x05\\x86\\x05\\x96\\x05\\xa6\\x05\\xb5\\x05\\xc5\\x05\\xd5\\x05\\xe5\\x05\\xf6\\x06\\x06\\x06\\x16\\x06\\\'\\x067\\x06H\\x06Y\\x06j\\x06{\\x06\\x8c\\x06\\x9d\\x06\\xaf\\x06\\xc0\\x06\\xd1\\x06\\xe3\\x06\\xf5\\x07\\x07\\x07\\x19\\x07+\\x07=\\x07O\\x07a\\x07t\\x07\\x86\\x07\\x99\\x07\\xac\\x07\\xbf\\x07\\xd2\\x07\\xe5\\x07\\xf8\\x08\\x0b\\x08\\x1f\\x082\\x08F\\x08Z\\x08n\\x08\\x82\\x08\\x96\\x08\\xaa\\x08\\xbe\\x08\\xd2\\x08\\xe7\\x08\\xfb\\t\\x10\\t%\\t:\\tO\\td\\ty\\t\\x8f\\t\\xa4\\t\\xba\\t\\xcf\\t\\xe5\\t\\xfb\\n\\x11\\n\\\'\\n=\\nT\\nj\\n\\x81\\n\\x98\\n\\xae\\n\\xc5\\n\\xdc\\n\\xf3\\x0b\\x0b\\x0b"\\x0b9\\x0bQ\\x0bi\\x0b\\x80\\x0b\\x98\\x0b\\xb0\\x0b\\xc8\\x0b\\xe1\\x0b\\xf9\\x0c\\x12\\x0c*\\x0cC\\x0c\\\\\\x0cu\\x0c\\x8e\\x0c\\xa7\\x0c\\xc0\\x0c\\xd9\\x0c\\xf3\\r\\r\\r&\\r@\\rZ\\rt\\r\\x8e\\r\\xa9\\r\\xc3\\r\\xde\\r\\xf8\\x0e\\x13\\x0e.\\x0eI\\x0ed\\x0e\\x7f\\x0e\\x9b\\x0e\\xb6\\x0e\\xd2\\x0e\\xee\\x0f\\t\\x0f%\\x0fA\\x0f^\\x0fz\\x0f\\x96\\x0f\\xb3\\x0f\\xcf\\x0f\\xec\\x10\\t\\x10&\\x10C\\x10a\\x10~\\x10\\x9b\\x10\\xb9\\x10\\xd7\\x10\\xf5\\x11\\x13\\x111\\x11O\\x11m\\x11\\x8c\\x11\\xaa\\x11\\xc9\\x11\\xe8\\x12\\x07\\x12&\\x12E\\x12d\\x12\\x84\\x12\\xa3\\x12\\xc3\\x12\\xe3\\x13\\x03\\x13#\\x13C\\x13c\\x13\\x83\\x13\\xa4\\x13\\xc5\\x13\\xe5\\x14\\x06\\x14\\\'\\x14I\\x14j\\x14\\x8b\\x14\\xad\\x14\\xce\\x14\\xf0\\x15\\x12\\x154\\x15V\\x15x\\x15\\x9b\\x15\\xbd\\x15\\xe0\\x16\\x03\\x16&\\x16I\\x16l\\x16\\x8f\\x16\\xb2\\x16\\xd6\\x16\\xfa\\x17\\x1d\\x17A\\x17e\\x17\\x89\\x17\\xae\\x17\\xd2\\x17\\xf7\\x18\\x1b\\x18@\\x18e\\x18\\x8a\\x18\\xaf\\x18\\xd5\\x18\\xfa\\x19 \\x19E\\x19k\\x19\\x91\\x19\\xb7\\x19\\xdd\') is not JSON serializable\n'
+p167
+s.

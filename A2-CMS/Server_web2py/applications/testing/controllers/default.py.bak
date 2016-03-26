@@ -7,7 +7,7 @@
 ## - user is required for authentication and authorization
 ## - download is for downloading files uploaded in the db (does streaming)
 #########################################################################
-
+import os
 def index():
     """
     example action using the internationalization operator T and flash
@@ -78,7 +78,12 @@ def login():
     userid = request.vars.userid
     password = request.vars.password
     user = auth.login_bare(userid,password)
-    return dict(success=False if not user else True, user=user,myconst=100)
+    file_pic=open(os.getcwd()+"\\applications\\testing\\uploads\\"+user.profile_pic,'rb')
+    pic1=bytearray(file_pic.read())
+    pic=[]
+    for i in range(0,len(pic1)):
+        pic.append(pic1[i])
+    return dict(success=False if not user else True, user=user,pic=pic)
 
 def logout():
     return dict(success=True, loggedout=auth.logout())
