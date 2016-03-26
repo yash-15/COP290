@@ -156,12 +156,7 @@ complaint=db.Table(db,'complaint',Field('Complaint_ID',length=16,unique=True),  
                 Field('Images','upload')
 )
 
-db.define_table('ind_complaint',complaint,
-                Field('Admin_ID',db.administrators),
-                Field('Cor_Grp_Comp',db.grp_complaint),
-                Field('Solver_ID',db.solvers,requires=IS_NOT_EMPTY()),
-                Field('Resolved_Date','datetime',writable=False)
-)
+
 
 db.define_table('polls',
                 Field('Title',requires=IS_NOT_EMPTY()),
@@ -175,7 +170,12 @@ db.define_table('grp_complaint',complaint,
                 Field('Poll_Results',db.polls),
                 Field('Approved_Discarded_Date','datetime')
 )
-
+db.define_table('ind_complaint',complaint,
+                Field('Admin_ID',db.administrators),
+                Field('Cor_Grp_Comp',db.grp_complaint),
+                Field('Solver_ID',db.solvers,requires=IS_NOT_EMPTY()),
+                Field('Resolved_Date','datetime',writable=False)
+)
 db.define_table('votes',
                 Field('poll',db.polls,requires=IS_NOT_EMPTY()),
                 Field('user_ID',db.users,requires=IS_NOT_EMPTY()),
