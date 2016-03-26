@@ -156,10 +156,7 @@ complaint=db.Table(db,'complaint',Field('Complaint_ID',length=16,unique=True),  
                 Field('Images','upload')
 )
 
-db.define_table('ind_complaint',complaint,
-                Field('Solver_ID',db.solvers,requires=IS_NOT_EMPTY()),
-                Field('Resolved_Date','datetime',writable=False)
-)
+
 
 db.define_table('polls',
                 Field('Title',requires=IS_NOT_EMPTY()),
@@ -169,14 +166,26 @@ db.define_table('polls',
 db.define_table('grp_complaint',complaint,
                 Field('Initial_Admin_ID',db.administrators,requires=IS_NOT_EMPTY()),
                 Field('Cur_Admin_ID',db.administrators,requires=IS_NOT_EMPTY()),
-                Field('Transaction_History','list:string'),
-                Field('Locality_Type',db.localities,requires=IS_NOT_EMPTY()),
+                Field('locality',db.localities,requires=IS_NOT_EMPTY()),
                 Field('Poll_Results',db.polls),
                 Field('Approved_Discarded_Date','datetime')
 )
-
+db.define_table('ind_complaint',complaint,
+                Field('Admin_ID',db.administrators),
+                Field('Cor_Grp_Comp',db.grp_complaint),
+                Field('Solver_ID',db.solvers,requires=IS_NOT_EMPTY()),
+                Field('Resolved_Date','datetime',writable=False)
+)
 db.define_table('votes',
-                Field('poll',db.polls),
-                Field('user_ID',db.users),
-                Field('choice','integer')
+                Field('poll',db.polls,requires=IS_NOT_EMPTY()),
+                Field('user_ID',db.users,requires=IS_NOT_EMPTY()),
+                Field('choice','integer',requires=IS_NOT_EMPTY())
+                )
+
+db.define_table('complaint_logs',
+                Field('Complaint_ID',db.grp_complaint,requires=IS_NOT_EMPTY()),
+                Field('Admin1',db.administrators,requires=IS_NOT_EMPTY()),
+                Field('Admin2',db.administrators),
+                Field('action_taken','string',requires=IS_NOT_EMPTY()),
+                Field('mod_date','datetime',requires=IS_NOT_EMPTY()),
                 )
