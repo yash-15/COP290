@@ -69,7 +69,7 @@ public class MyCourses_activity extends Base_activity{
                                         } catch (Exception e) {
                                         }
                                         //intent.putExtra("course_code",temp.code.substring(0, 6));
-                                        finish();
+                                        //finish();
                                         startActivity(intent);
                                     }
                                 });

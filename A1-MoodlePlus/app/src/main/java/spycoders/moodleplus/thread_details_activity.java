@@ -87,7 +87,7 @@ public class thread_details_activity extends AppCompatActivity {
                                 comment_layout cl = new comment_layout(thread_details_activity.this,
                                         temp);
 
-
+                                llp.setMargins(0,20,0,0);
                                 ll2.addView(cl.ll, llp);
 
                             }
