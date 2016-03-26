@@ -90,3 +90,86 @@ auth.settings.reset_password_requires_verification = True
 
 ## after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
+
+from datetime import datetime,timedelta
+
+db.define_table(
+    'localities',
+    Field('locality_id','integer'),
+    Field('description',length=32,requires=IS_NOT_EMPTY()),)
+
+db.define_table(
+    'users',
+    Field('first_name', length=128, default=''),
+    Field('last_name', length=128, default=''),
+    Field('email', length=128, unique=True),
+   Field('username', length=100, unique=True), #cs5110272
+    Field('mobile','integer',length=10,requires=IS_INT_IN_RANGE(1000000000,10000000000)),
+    Field('address',length=128,requires=IS_NOT_EMPTY()),
+    Field('locality',db.localities),
+    Field('profile_pic','upload'),
+    Field('password', 'password', length=512, readable=False, label='Password'),
+    Field('registration_key', length=512, writable=False, readable=False, default=''),
+    Field('reset_password_key', length=512, writable=False, readable=False, default=''),
+    Field('registration_id', length=512, writable=False, readable=False, default=''),
+ )
+
+
+custom_auth_table = db['users']
+
+auth.settings.table_user = custom_auth_table
+auth.settings.table_user_name = 'users'    #Very important to mention
+auth.settings.table_group_name = 'user_group'
+auth.settings.table_membership_name = 'user_membership'
+auth.settings.table_permission_name = 'user_permission'
+auth.settings.table_event_name = 'user_event'
+auth.settings.login_userfield = 'username'        #the loginfield will be username
+auth.define_tables(username=False)    #Creating the table
+
+
+db.define_table(
+    'administrators',
+    Field('post',length=64,unique=True),
+    Field('description',length=128,default=''),
+    Field('cor_user',db.users),
+    Field('parent','reference administrators'),
+    Field('isLeaf','boolean'),
+)
+
+db.define_table(
+    'solvers',
+    Field('Department',length=64,unique=True),
+    Field('Description',length=128,default=''),
+    Field('cor_user',db.users)
+)
+
+db.define_table('statuses',Field('Description',unique=True))
+
+complaint=db.Table(db,'complaint',Field('Complaint_ID',length=16,unique=True),  #Primary Key
+                Field('User_ID',db.users,requires=IS_NOT_EMPTY()),
+                Field('Reg_Date','datetime',default=datetime.now,writable=False,requires=IS_NOT_EMPTY()),
+                Field('Title',length=64,requires=IS_NOT_EMPTY()),
+                Field('Description',requires=IS_NOT_EMPTY()),
+                Field('Status',db.statuses,requires=IS_NOT_EMPTY()),
+                Field('Links','list:string'),
+                Field('Images','upload')
+)
+
+db.define_table('ind_complaint',complaint,
+                Field('Solver_ID',db.solvers,requires=IS_NOT_EMPTY()),
+                Field('Resolved_Date','datetime',writable=False)
+)
+
+db.define_table('polls',
+                Field('Title',requires=IS_NOT_EMPTY()),
+                Field('Choices','list:string'),
+                Field('Votes','list:integer'))
+
+db.define_table('grp_complaint',complaint,
+                Field('Initial_Admin_ID',db.administrators,requires=IS_NOT_EMPTY()),
+                Field('Cur_Admin_ID',db.administrators,requires=IS_NOT_EMPTY()),
+                Field('Transaction_History','list:string'),
+                Field('Locality_Type',db.localities,requires=IS_NOT_EMPTY()),
+                Field('Poll_Results',db.polls),
+                Field('Approved_Discarded_Date','datetime')
+)

@@ -131,6 +131,7 @@ db.define_table(
     'administrators',
     Field('post',length=64,unique=True),
     Field('description',length=128,default=''),
+    Field('locality',db.localities),
     Field('cor_user',db.users),
     Field('parent','reference administrators'),
     Field('isLeaf','boolean'),
