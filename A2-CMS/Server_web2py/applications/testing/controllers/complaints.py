@@ -190,3 +190,37 @@ def lodge_insti():
         else:
             raise HTTP(404)
     return dict(complaint=complaint,success=True)
+
+def resolve_ind():
+    if (len(request.args)!=1):
+        raise HTTP(404)
+    else:
+        cid=int(request.args[0])
+        db((db.ind_complaint.id==cid)&(db.ind_complaint.User_ID==auth.user.id)
+           &(db.ind_complaint.Admin_ID==None)&(db.ind_complaint.Status==1)).update(Status=5,Resolved_Date=datetime.now)
+        comp=db((db.ind_complaint.id==cid)&(db.ind_complaint.User_ID==auth.user.id)
+           &(db.ind_complaint.Admin_ID==None)).select()
+        if (len(comp)>0):
+            comp=comp.first()
+        else:
+            raise HTTP(404)
+    return dict(complaint=comp)
+        
+def resolve_admin():
+    if (len(request.args)!=2):
+        raise HTTP(404)
+    else:
+        aid=int(request.args[0])
+           #Authentication check
+        admins=db((db.administrators.id==aid)&(db.administrators.User_ID==auth.user.id)).select()
+        if (len(admins)==0):
+            raise HTTP(404) 
+        #Authentication Passed
+        cid=int(request.args[1])
+        db((db.ind_complaint.id==cid)&(db.ind_complaint.Admin_ID==aid)&(db.ind_complaint.Status==1)).update(Status=5,Resolved_Date=datetime.now)
+        comp=db((db.ind_complaint.id==cid)&(db.ind_complaint.Admin_ID==aid)).select()
+        if(len(comp)==0):
+            raise HTTP(404)
+        else:
+            comp=comp.first()
+    return dict(complaint=comp)
