@@ -1,0 +1,82 @@
+<resources>
+
+    <string name="app_name">CMS</string>
+    <string name="title_activity_login">Login to Complaint Management System</string>
+
+    <!-- Strings related to nav_bar -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_action_settings">Settings</string>
+
+    <!-- Strings related to activity_login -->
+    <string name="login_Welcome_To_CMS">Welcome To CMS</string>
+    <string name="login_prompt_email">UserName</string>
+    <string name="login_prompt_password">Password</string>
+    <string name="login_Remember_Password">Remember Password</string>
+    <string name="login_action_log_in">Login</string>
+    <string name="login_reset">Reset</string>
+    <string name="login_forgot_password">Forgot Password</string>
+    <string name="login_action_sign_in">Sign in</string>
+    <string name="login_clear_data">Clear Data</string>
+    <string name="login_error_invalid_email">This email address is invalid</string>
+    <string name="login_error_invalid_password">This password is too short</string>
+    <string name="login_error_incorrect_password">This password is incorrect</string>
+    <string name="login_error_field_required">This field is required</string>
+
+
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."</string>
+
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
+    <string name="title_activity_courses">Courses</string>
+
+
+
+    <string name="title_activity_my__calendar">My_Calendar</string>
+    <string name="subapp_name">calendar</string>
+    <string name="calendar">Calendar</string>
+    <string name="new_message_notification_title_template" />
+    <string name="new_message_notification_placeholder_text_template" />
+    <string name="title_activity_grades">Grades</string>
+    <string name="title_activity_threads">Threads</string>
+    <string name="title_activity_nav_base">nav_base</string>
+
+
+    <!-- strings related to category -->
+    <string name="CHOOSE_CATEGORY">CHOOSE CATEGORY</string>
+    <string name="INSTITUTE_LEVEL">INSTITUTE LEVEL</string>
+    <string name="HOSTEL_LEVEL">HOSTEL LEVEL</string>
+    <string name="INDIVIDUAL">INDIVIDUAL</string>
+    <string name="USER_NAME">User Name</string>
+
+
+
+    <!-- strings related to profile -->
+    <string name="FirstName">First Name</string>
+    <string name="LastName">Last Name</string>
+    <string name="EntryNo">Entry No.</string>
+    <string name="UserID">User ID</string>
+    <string name="UserName">User Name</string>
+    <string name="Email">Email Address</string>
+    <string name="Type">Type</string>
+    <string name="Next">Next</string>
+
+    <!--strings related to drawer-->
+    <string name="MY_PROFILE">MY PROFILE</string>
+    <string name="PASSWORD">PASSWORD</string>
+    <string name="HELP">HELP</string>
+    <string name="LOGOUT">LOGOUT</string>
+    <string name="P_S_nav">PERSONAL SETTINGS</string>
+
+    <!--strings related to complaint CMS-->
+    <string name="COMPLAINT_FORM">COMPLAINT FORM</string>
+    <string name="TITLE">TITLE</string>
+    <string name="DESCRIPTION">DESCRIPTION</string>
+    <string name="Enter_the_Link">Enter the Link</string>
+    <string name="PREVIEW">PREVIEW</string>
+
+
+
+</resources>
