@@ -107,7 +107,7 @@ def adminview():
                 #Shows all the admin_ind complaints
             elif (comp_type=="pending"):
                 comp=db((db.grp_complaint.Cur_Admin_ID==aid)&((db.grp_complaint.Status==2)|(db.grp_complaint.Status==3)
-                                                              |(db.grp_complaint.Status==2))).select()
+                                                              |(db.grp_complaint.Status==6))).select()
                 #Shows all the grp_complaints addressed to you but have not met their final fate
             elif(comp_type=="logs"):
                 comp=db((db.complaint_logs.Admin1==aid)|(db.complaint_logs.Admin2==aid)).select()
@@ -125,7 +125,7 @@ def adminview():
                 comp=db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&(db.grp_complaint.Status in [2,3,6])).select()
                 db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&(db.grp_complaint.Status==2)).update(Status=6)
             elif(comp_type=="logs"):
-                comp=db((db.complaint_logs.Complaint_ID==cid)&(db.complaint_logs.Admin1==aid)|(db.complaint_logs.Admin2==aid)).select()
+                comp=db((db.complaint_logs.Complaint_ID==cid)&((db.complaint_logs.Admin1==aid)|(db.complaint_logs.Admin2==aid))).select()
                 if(len(comp)>0):
                     comp=db(db.grp_complaint.id==cid).select()
             else:
@@ -138,7 +138,7 @@ def adminview():
             raise HTTP (404)
     return dict(complaints=comp)
 
-
+@auth.requires_login()
 def lodge_ind():
     if (set(["title","description","solverid"])>set(request.vars)):
         raise HTTP(404)
@@ -154,6 +154,7 @@ def lodge_ind():
             raise HTTP(404)
     return dict(complaint=complaint,success=True)
 
+@auth.requires_login()
 def lodge_hstl():
     if (set(["title","description","adminid"])>set(request.vars)):
         raise HTTP(404)
@@ -174,6 +175,7 @@ def lodge_hstl():
             raise HTTP(404)
     return dict(complaint=complaint,success=True)
 
+@auth.requires_login()
 def lodge_insti():
     if (set(["title","description","adminid"])>set(request.vars)):
         raise HTTP(404)
@@ -194,6 +196,7 @@ def lodge_insti():
             raise HTTP(404)
     return dict(complaint=complaint,success=True)
 
+@auth.requires_login()
 def resolve_ind():
     if (len(request.args)!=1):
         raise HTTP(404)
@@ -209,6 +212,7 @@ def resolve_ind():
             raise HTTP(404)
     return dict(complaint=comp)
         
+@auth.requires_login()
 def resolve_admin():
     if (len(request.args)!=2):
         raise HTTP(404)
@@ -228,6 +232,7 @@ def resolve_admin():
             comp=comp.first()
     return dict(complaint=comp)
 
+@auth.requires_login()
 def discard():
     if (len(request.args)!=2):
         raise HTTP(404)
@@ -249,6 +254,7 @@ def discard():
             log=db.complaint_logs.insert(Complaint_ID=cid,Admin1=aid,action_taken="Discard",mod_date=dttm)
     return dict(complaint=comp,log=db(db.complaint_logs.id==log).select().first())
 
+@auth.requires_login()
 def forward():
     l=len(request.args)
     if (l!=2):
@@ -258,16 +264,47 @@ def forward():
         cid=int(request.args[1])
         #Admin Authentication
         admin=db((db.administrators.id==child)&(db.administrators.cor_user==auth.user.id)&(db.administrators.parent!=None)).select()
-        if (len(admins)==0):
+        if (len(admin)==0):
             raise HTTP(404) 
         else:
             admin=admin.first()
             parent=admin.parent
-            comp=db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==child)).select()
-            db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==child)).update(Cur_Admin_ID=parent)   
+            comp=db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==child)&((db.grp_complaint.Status==2)|(db.grp_complaint.Status==3)
+                                                              |(db.grp_complaint.Status==6))).select()
+            db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==child)&((db.grp_complaint.Status==2)|(db.grp_complaint.Status==3)
+                                                              |(db.grp_complaint.Status==6))).update(Cur_Admin_ID=parent)
             if (len(comp)==0):
                 raise HTTP(404)
             else:
                 comp=comp.first()
                 log=db.complaint_logs.insert(Complaint_ID=cid,Admin1=child,Admin2=parent,action_taken="Forward",mod_date=datetime.now)
     return dict(complaint=comp,log=db(db.complaint_logs.id==log).select().first())
+
+@auth.requires_login()
+def approve():
+    l=len(request.args)
+    if(l!=3):
+        raise HTTP(404)
+    else:
+        aid=int(request.args[0])
+        cid=int(request.args[1])
+        sid=int(request.args[2])
+        #Authentication of user
+        admin=db((db.administrators.id==aid)&(db.administrators.cor_user==auth.user.id)).select()
+        if (len(admin)==0):
+            raise HTTP(404) 
+        #Authentication passed
+        
+        db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&
+                                                              (db.grp_complaint.Status==6)).update(Status=7)
+        comp=db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&
+                                                              (db.grp_complaint.Status==7)).select()
+        if (len(comp)>0):
+            comp=comp.first()
+            dttm=datetime.now
+            admin_ind=db.ind_complaint.insert(User_ID=auth.user.id,Reg_Date=dttm,Title=comp.Title,Description=comp.Description,
+                                              Status=1,Links=comp.Links,Images=comp.Images,Admin_ID=aid,Cor_Grp_Comp=cid,Solver_ID=sid)
+            log=db.complaint_logs.insert(Complaint_ID=cid,Admin1=aid,action_taken="Approve",mod_date=dttm)
+        else:
+            raise HTTP(404)
+    return dict(complaint=comp,admin_ind=db(db.ind_complaint.id==admin_ind).select().first(),log=db(db.complaint_logs.id==log).select().first())

@@ -159,6 +159,8 @@ complaint=db.Table(db,'complaint',  #Primary Key
 
 
 db.define_table('polls',
+                Field('Date_Created','datetime',default=datetime.now,writable=False,requires=IS_NOT_EMPTY()),
+                Field('Last_Date','datetime',requires=IS_NOT_EMPTY()),
                 Field('Title',requires=IS_NOT_EMPTY()),
                 Field('Choices','list:string'),
                 Field('Votes','list:integer'))
