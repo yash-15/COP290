@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 # try something like
+from datetime import datetime,timedelta
+
 def index(): return dict(message="hello from complaints.py")
 
 @auth.requires_login()
@@ -132,3 +134,59 @@ def adminview():
         else:
             raise HTTP (404)
     return dict(complaints=comp)
+
+
+def lodge_ind():
+    if (set(["title","description","solverid"])>set(request.vars)):
+        raise HTTP(404)
+    else:
+        title=str(request.vars["title"])
+        descr=str(request.vars["description"])
+        solver_id=int(request.vars["solverid"])
+        if (len(db(db.solvers.id==solver_id).select())>0):
+            complaint_id=db.ind_complaint.insert(User_ID=auth.user.id,Reg_Date=datetime.now,Title=title,Description=descr,
+                                                 Status=1,Solver_ID=solver_id)
+            complaint=db(db.ind_complaint.id==complaint_id).select().first()
+        else:
+            raise HTTP(404)
+    return dict(complaint=complaint,success=True)
+
+def lodge_hstl():
+    if (set(["title","description","adminid"])>set(request.vars)):
+        raise HTTP(404)
+    else:
+        title=str(request.vars["title"])
+        descr=str(request.vars["description"])
+        admin_id=int(request.vars["adminid"])
+        locality=db(db.users.id==auth.user.id).select().first().locality
+        admin=db(db.administrators.id==admin_id).select()
+        if (len(admin)>0 and locality!=18):   # A person staying outside IIT can't lodge locality based complaint
+            if(admin.first().locality==locality and admin.first().isLeaf):  #Complaints can be addressed at first only to leaf level admins
+                complaint_id=db.grp_complaint.insert(User_ID=auth.user.id,Reg_Date=datetime.now,Title=title,Description=descr,
+                                                     Status=2,Initial_Admin_ID=admin_id,Cur_Admin_ID=admin_id,locality=locality)
+                complaint=db(db.grp_complaint.id==complaint_id).select().first()
+            else:
+                raise HTTP(404)
+        else:
+            raise HTTP(404)
+    return dict(complaint=complaint,success=True)
+
+def lodge_insti():
+    if (set(["title","description","adminid"])>set(request.vars)):
+        raise HTTP(404)
+    else:
+        title=str(request.vars["title"])
+        descr=str(request.vars["description"])
+        admin_id=int(request.vars["adminid"])
+        locality=17
+        admin=db(db.administrators.id==admin_id).select()
+        if (len(admin)>0):
+            if(admin.first().locality==locality and admin.first().isLeaf): #Complaints can be addressed at first only to leaf level admins
+                complaint_id=db.grp_complaint.insert(User_ID=auth.user.id,Reg_Date=datetime.now,Title=title,Description=descr,
+                                                     Status=2,Initial_Admin_ID=admin_id,Cur_Admin_ID=admin_id,locality=locality)
+                complaint=db(db.grp_complaint.id==complaint_id).select().first()
+            else:
+                raise HTTP(404)
+        else:
+            raise HTTP(404)
+    return dict(complaint=complaint,success=True)

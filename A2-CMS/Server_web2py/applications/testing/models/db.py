@@ -146,7 +146,7 @@ db.define_table(
 
 db.define_table('statuses',Field('Description',unique=True))
 
-complaint=db.Table(db,'complaint',Field('Complaint_ID',length=16,unique=True),  #Primary Key
+complaint=db.Table(db,'complaint',  #Primary Key
                 Field('User_ID',db.users,requires=IS_NOT_EMPTY()),
                 Field('Reg_Date','datetime',default=datetime.now,writable=False,requires=IS_NOT_EMPTY()),
                 Field('Title',length=64,requires=IS_NOT_EMPTY()),
