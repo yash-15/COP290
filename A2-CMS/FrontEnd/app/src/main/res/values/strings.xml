@@ -11,7 +11,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_action_settings">Settings</string>
 
-    <!-- Strings for activity_login -->
+    <!-- Strings for activity_login_layout -->
     <string name="login_Welcome_To_CMS">Welcome To CMS</string>
     <string name="login_prompt_email">UserName</string>
     <string name="login_prompt_password">Password</string>
@@ -25,6 +25,7 @@
     <string name="login_error_invalid_password">This password is too short</string>
     <string name="login_error_incorrect_password">This password is incorrect</string>
     <string name="login_error_field_required">This field is required</string>
+    <string name="action_settings">Settings</string>
 
     <!-- Strings for activity_select_profile -->
     <string name="profile_login_as">Sign in as</string>

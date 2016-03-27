@@ -26,7 +26,7 @@ public class selectProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_profile);
 
-        login.queue= Volley.newRequestQueue(this);
+        Login_activity.queue= Volley.newRequestQueue(this);
 
         Button individual = (Button) findViewById(R.id.profile_button_indivual);
         Button admin = (Button) findViewById(R.id.profile_button_admin);
@@ -89,7 +89,7 @@ public class selectProfile extends AppCompatActivity {
                 }
 
         );
-        login.queue.add(jsObjRequest);
+        Login_activity.queue.add(jsObjRequest);
     }
 
     private void popToast(String message) {

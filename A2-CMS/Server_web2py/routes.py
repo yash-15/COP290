@@ -1,5 +1,5 @@
 routers = dict( 
     BASE = dict( 
-        default_application='MoodlePlus', 
+        default_application='testing', 
     ) 
 )

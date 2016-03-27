@@ -3,6 +3,7 @@
                 package="in.ac.iitd.spycoders.CMS" >
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".login"
+            android:name=".Login_activity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>

@@ -39,7 +39,7 @@
         android:layout_marginTop="20dp" />
 
     <EditText
-        android:id="@+id/textUserName"
+        android:id="@+id/txtUserName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/login_prompt_email"
@@ -54,7 +54,7 @@
         android:textColor="#ada9a9" />
 
     <EditText
-        android:id="@+id/textPassword"
+        android:id="@+id/txtPswd"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/login_prompt_password"
