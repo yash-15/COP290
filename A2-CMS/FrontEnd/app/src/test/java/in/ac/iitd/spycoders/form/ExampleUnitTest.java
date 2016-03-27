@@ -1,4 +1,4 @@
-package in.ac.iitd.spycoders.form;
+package in.ac.iitd.spycoders.CMS;
 
 import org.junit.Test;
 
