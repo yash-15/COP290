@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    android:background="@drawable/background">
+    android:background="@color/lightBlue">
 
     <include
         layout="@layout/app_bar_pages"

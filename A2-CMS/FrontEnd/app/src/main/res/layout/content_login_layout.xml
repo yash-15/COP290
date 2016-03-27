@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    android:background="@drawable/background"
+    android:background="@drawable/btn"
     android:weightSum="1"
     android:gravity="center_horizontal"
     android:orientation="vertical"
@@ -34,7 +34,7 @@
         android:layout_width="111dp"
         android:layout_height="84dp"
         android:id="@+id/imageView2"
-        android:background="@drawable/icon"
+        android:background="@drawable/ic_menu_gallery"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp" />
 
