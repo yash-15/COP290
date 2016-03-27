@@ -3,12 +3,15 @@
     <string name="app_name">CMS</string>
     <string name="title_activity_login">Login to Complaint Management System</string>
 
-    <!-- Strings related to nav_bar -->
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."</string>
+
+    <!-- Strings for nav_bar -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_action_settings">Settings</string>
 
-    <!-- Strings related to activity_login -->
+    <!-- Strings for activity_login -->
     <string name="login_Welcome_To_CMS">Welcome To CMS</string>
     <string name="login_prompt_email">UserName</string>
     <string name="login_prompt_password">Password</string>
@@ -23,28 +26,13 @@
     <string name="login_error_incorrect_password">This password is incorrect</string>
     <string name="login_error_field_required">This field is required</string>
 
+    <!-- Strings for activity_select_profile -->
+    <string name="profile_login_as">Sign in as</string>
+    <string name="profile_individual">Individual</string>
+    <string name="profile_solver">Solver</string>
+    <string name="profile_admin">Administrator</string>
 
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."</string>
-
-
-    <string name="action_share">Share</string>
-    <string name="action_reply">Reply</string>
-    <string name="title_activity_courses">Courses</string>
-
-
-
-    <string name="title_activity_my__calendar">My_Calendar</string>
-    <string name="subapp_name">calendar</string>
-    <string name="calendar">Calendar</string>
-    <string name="new_message_notification_title_template" />
-    <string name="new_message_notification_placeholder_text_template" />
-    <string name="title_activity_grades">Grades</string>
-    <string name="title_activity_threads">Threads</string>
-    <string name="title_activity_nav_base">nav_base</string>
-
-
-    <!-- strings related to category -->
+    <!-- strings for category -->
     <string name="CHOOSE_CATEGORY">CHOOSE CATEGORY</string>
     <string name="INSTITUTE_LEVEL">INSTITUTE LEVEL</string>
     <string name="HOSTEL_LEVEL">HOSTEL LEVEL</string>
@@ -76,7 +64,6 @@
     <string name="DESCRIPTION">DESCRIPTION</string>
     <string name="Enter_the_Link">Enter the Link</string>
     <string name="PREVIEW">PREVIEW</string>
-
 
 
 </resources>

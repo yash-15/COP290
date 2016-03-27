@@ -32,7 +32,7 @@ public class login extends AppCompatActivity{
     private EditText userName, password;
 
     Toast toastObj;
-    public RequestQueue queue;
+    public static RequestQueue queue;
     String url;
 
     String ip,port;
@@ -40,7 +40,7 @@ public class login extends AppCompatActivity{
     CookieManager manager;
 
     SharedPreferences loginCredentials, userInfo;
-    SharedPreferences.Editor loginCredentialsEditor = loginCredentials .edit(),userInfoEditor = userInfo.edit();
+    SharedPreferences.Editor loginCredentialsEditor,userInfoEditor;
 
     String storedUser,storedPassword;
 
@@ -79,11 +79,16 @@ public class login extends AppCompatActivity{
         CookieHandler.setDefault(manager);
         //TODO : are the cookies handled completely
 
-        loginCredentials = getSharedPreferences("LoginCredentials", Context.MODE_PRIVATE);
+        loginCredentials = getSharedPreferences("LoginCredentials", MODE_PRIVATE);
+        userInfo = getSharedPreferences("UserInfo",MODE_PRIVATE);
+        loginCredentialsEditor = loginCredentials.edit();
+        userInfoEditor = userInfo.edit();
+
         storedUser = loginCredentials.getString("UserName", "");
         storedPassword = loginCredentials.getString("Password", "");
-        ip= loginCredentials.getString("IP","127.0.0.1");
+        ip= loginCredentials.getString("IP", "127.0.0.1");
         port= loginCredentials.getString("Port","8000");
+
 
         userName.setText(storedUser);
         password.setText(storedPassword);
@@ -211,8 +216,7 @@ public class login extends AppCompatActivity{
 
                 @Override
                 public void onResponse(JSONObject response) {
-                    if (response.optBoolean("success"))
-                    {
+                    if (response.optBoolean("success")) {
                         JSONObject response_userInfo=response.optJSONObject("user");
                         userInfoEditor.putString("userName", response_userInfo.optString("username"));
                         userInfoEditor.putString("password", response_userInfo.optString("password"));
@@ -224,12 +228,14 @@ public class login extends AppCompatActivity{
                         userInfoEditor.putInt("locality", response_userInfo.optInt("locality"));
                         userInfoEditor.putLong("mobile", response_userInfo.optLong("mobile"));
                         //TODO : add support for profile-pic
-                        userInfoEditor.commit();
+                        userInfoEditor.apply();
 
                         if(rememberMe.isChecked()){
                             loginCredentialsEditor.putString("UserName", userName.getText().toString());
                             loginCredentialsEditor.putString("Password", password.getText().toString());
-                            loginCredentialsEditor.commit();
+                            loginCredentialsEditor.putString("IP", ip);
+                            loginCredentialsEditor.putString("Port", port);
+                            loginCredentialsEditor.apply();
                         }
                         Intent intent= new Intent(login.this,category.class);
                         // FIXME: link class correctly
