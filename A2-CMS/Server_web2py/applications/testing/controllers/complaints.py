@@ -85,7 +85,6 @@ def adminview():
     #Currently not dealing with children
     # Categories- Admin_Individual Complaints, Pending Complaints, logs
     # Logs is the history of group level complaints
-    
     l=len(request.args)
     if (l<2):
         raise HTTP(404)
@@ -105,14 +104,19 @@ def adminview():
         if (l==2):
             if (comp_type=="admin_ind"):
                 comp=db((db.ind_complaint.User_ID==auth.user.id)&(db.ind_complaint.Admin_ID==aid)).select()
+                #Shows all the admin_ind complaints
             elif (comp_type=="pending"):
-                comp=db((db.grp_complaint.Cur_Admin_ID==aid)&(db.grp_complaint.Status in [2,3,6])).select()
+                comp=db((db.grp_complaint.Cur_Admin_ID==aid)&((db.grp_complaint.Status==2)|(db.grp_complaint.Status==3)
+                                                              |(db.grp_complaint.Status==2))).select()
+                #Shows all the grp_complaints addressed to you but have not met their final fate
             elif(comp_type=="logs"):
                 comp=db((db.complaint_logs.Admin1==aid)|(db.complaint_logs.Admin2==aid)).select()
+                #Shows all the grp_level complaints which were associated with you and have met their final fate
             else:
                 raise HTTP(404)
             
         elif (l==3):
+            #Shows a specific complaint of the three types with which an admin can be associated
             cid=int(request.args[2])
             if (comp_type=="admin_ind"):
                 comp=db((db.ind_complaint.id==cid)&(db.ind_complaint.Admin_ID==aid)).select()
@@ -121,10 +125,9 @@ def adminview():
                 comp=db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&(db.grp_complaint.Status in [2,3,6])).select()
                 db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&(db.grp_complaint.Status==2)).update(Status=6)
             elif(comp_type=="logs"):
-                comp=db((db.grp_complaint.Complaint_ID==cid)&(db.complaint_logs.Admin1==aid)|(db.complaint_logs.Admin2==aid)).select()
-                db((db.grp_complaint.Complaint_ID==cid)&((db.complaint_logs.Admin1==aid)|(db.complaint_logs.Admin2==aid))&(db.ind_complaint.Status==2)).update(Status=6)
+                comp=db((db.complaint_logs.Complaint_ID==cid)&(db.complaint_logs.Admin1==aid)|(db.complaint_logs.Admin2==aid)).select()
                 if(len(comp)>0):
-                    comp=db(db.grp_complaint.id==cid)
+                    comp=db(db.grp_complaint.id==cid).select()
             else:
                 raise HTTP(404)
             if (len(comp)>0):
@@ -212,7 +215,7 @@ def resolve_admin():
     else:
         aid=int(request.args[0])
            #Authentication check
-        admins=db((db.administrators.id==aid)&(db.administrators.User_ID==auth.user.id)).select()
+        admins=db((db.administrators.id==aid)&(db.administrators.cor_user==auth.user.id)).select()
         if (len(admins)==0):
             raise HTTP(404) 
         #Authentication Passed
@@ -224,3 +227,24 @@ def resolve_admin():
         else:
             comp=comp.first()
     return dict(complaint=comp)
+
+def discard():
+    if (len(request.args)!=2):
+        raise HTTP(404)
+    else:
+        aid=int(request.args[0])
+           #Authentication check
+        admins=db((db.administrators.id==aid)&(db.administrators.cor_user==auth.user.id)).select()
+        if (len(admins)==0):
+            raise HTTP(404) 
+        #Authentication Passed
+        cid=int(request.args[1])
+        dttm=datetime.now
+        db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&(db.grp_complaint.Status==6)).update(Status=4,Approved_Discarded_Date=dttm)
+        #Only Waiting Approval Complaints can be discarded
+        comp=db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&(db.grp_complaint.Status==4)).select()
+        if(len(comp)==0):
+            raise HTTP(404)
+        else:
+            log=db.complaint_logs.insert(Complaint_ID=cid,Admin1=aid,action_taken="Discard",mod_date=dttm)
+    return dict(complaint=comp,log=log)
