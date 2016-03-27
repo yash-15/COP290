@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\nav_base.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\nav_base.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\nav_base.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\nav_base.xml"
+    },
+    {
+        "merged": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_nav_base_drawer.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\activity_nav_base_drawer.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_nav_base_drawer.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\activity_nav_base_drawer.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\nav_base.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\nav_base.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_nav_base_drawer.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\activity_nav_base_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_nav_base_drawer.xml",
+        "source": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\activity_nav_base_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\menu\\nav_base.xml",
+        "source": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\src\\main\\res\\menu\\nav_base.xml"
+    }
+]

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="spycoders.moodleplus"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="spycoders.moodleplus.Splash_Screen"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="spycoders.moodleplus.Login_activity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name="spycoders.moodleplus.HomeScreen_activity"
+            android:label="Home Page - Moodle Plus"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="spycoders.moodleplus.Base_activity"
+            android:label="@string/title_activity_nav_base"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="spycoders.moodleplus.MyCourses_activity"
+            android:label="@string/title_activity_my__courses"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="spycoders.moodleplus.Notifications_activity"
+            android:label="Notifications"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="spycoders.moodleplus.AllGrades_activity"
+            android:label="All Grades"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="spycoders.moodleplus.MyProfile_activity"
+            android:label="My Profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="spycoders.moodleplus.Course_Page_activity" />
+        <activity
+            android:name="spycoders.moodleplus.thread_details_activity"
+            android:label="Thread Details"
+            android:theme="@style/CustomActionBarTheme" />
+    </application>
+
+</manifest>

@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\G:\\A1-MoodlePlus\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Volumes\\WININSTALL\\A1-MoodlePlus\\C:\\Users\\P.K. Mishra\\Desktop\\A1-MoodlePlus\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Users\\P.K. Mishra\\Documents\\Sem 6\\COP290\\ASS-1\\finalAss1\\A1-MoodlePlus\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    }
+]

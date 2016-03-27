@@ -111,7 +111,7 @@ def adminview():
                 #Shows all the grp_complaints addressed to you but have not met their final fate
             elif(comp_type=="logs"):
                 comp=db((db.complaint_logs.Admin1==aid)|(db.complaint_logs.Admin2==aid)).select()
-                #Shows all the grp_level complaints which were associated with you and have met their final fate
+                #Shows all the grp_level complaints which were associated with you 
             else:
                 raise HTTP(404)
             
@@ -247,4 +247,27 @@ def discard():
             raise HTTP(404)
         else:
             log=db.complaint_logs.insert(Complaint_ID=cid,Admin1=aid,action_taken="Discard",mod_date=dttm)
-    return dict(complaint=comp,log=log)
+    return dict(complaint=comp,log=db(db.complaint_logs.id==log).select().first())
+
+def forward():
+    l=len(request.args)
+    if (l!=2):
+        raise HTTP(404)
+    else:
+        child=int(request.args[0])
+        cid=int(request.args[1])
+        #Admin Authentication
+        admin=db((db.administrators.id==child)&(db.administrators.cor_user==auth.user.id)&(db.administrators.parent!=None)).select()
+        if (len(admins)==0):
+            raise HTTP(404) 
+        else:
+            admin=admin.first()
+            parent=admin.parent
+            comp=db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==child)).select()
+            db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==child)).update(Cur_Admin_ID=parent)   
+            if (len(comp)==0):
+                raise HTTP(404)
+            else:
+                comp=comp.first()
+                log=db.complaint_logs.insert(Complaint_ID=cid,Admin1=child,Admin2=parent,action_taken="Forward",mod_date=datetime.now)
+    return dict(complaint=comp,log=db(db.complaint_logs.id==log).select().first())
