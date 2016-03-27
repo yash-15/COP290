@@ -294,14 +294,14 @@ def approve():
         if (len(admin)==0):
             raise HTTP(404) 
         #Authentication passed
-        
+        dttm=datetime.now
         db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&
-                                                              (db.grp_complaint.Status==6)).update(Status=7)
+                                                              (db.grp_complaint.Status==6)).update(Status=7,Approved_Discarded_Date=dttm)
         comp=db((db.grp_complaint.id==cid)&(db.grp_complaint.Cur_Admin_ID==aid)&
                                                               (db.grp_complaint.Status==7)).select()
         if (len(comp)>0):
             comp=comp.first()
-            dttm=datetime.now
+            
             admin_ind=db.ind_complaint.insert(User_ID=auth.user.id,Reg_Date=dttm,Title=comp.Title,Description=comp.Description,
                                               Status=1,Links=comp.Links,Images=comp.Images,Admin_ID=aid,Cor_Grp_Comp=cid,Solver_ID=sid)
             log=db.complaint_logs.insert(Complaint_ID=cid,Admin1=aid,action_taken="Approve",mod_date=dttm)
