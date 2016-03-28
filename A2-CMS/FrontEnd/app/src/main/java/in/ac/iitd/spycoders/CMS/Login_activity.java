@@ -86,6 +86,10 @@ public class Login_activity extends AppCompatActivity {
     boolean login_success=false;
 
     static User logged_user;
+    static Admin logged_admin;
+    static Solver logged_solver;
+    enum mode {normal,admin,solver};
+    static mode logged_mode;
 
     SharedPreferences sharedpreferences;
 
@@ -114,7 +118,11 @@ public class Login_activity extends AppCompatActivity {
 
         cBoxRemMe=(CheckBox) findViewById(R.id.checkBoxRem_me);
 
-        logged_user=new User();   // As this is run on logout as well so we can
+        logged_user=new User();
+        logged_admin=new Admin();
+        logged_solver=new Solver();
+        logged_mode=mode.normal;
+        // As this is run on logout as well so we can
         // safely say that the data gets reset on logout
         // Anyways it is set again on login
 
@@ -134,9 +142,9 @@ public class Login_activity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
         stored_user=sharedpreferences.getString("UserName", "");
         stored_password = sharedpreferences.getString("Password", "");
-        ip=sharedpreferences.getString("IP","127.0.0.1");
-        port=sharedpreferences.getString("Port","8000");
-        extras=sharedpreferences.getString("Extras","");
+        ip=sharedpreferences.getString("IP", "127.0.0.1");
+        port=sharedpreferences.getString("Port", "8000");
+        extras=sharedpreferences.getString("Extras", "");
 
         txt_UserName.setText(stored_user);
         txt_Pswd.setText(stored_password);
@@ -296,7 +304,7 @@ public class Login_activity extends AppCompatActivity {
                                     editor.putString("UserName",txt_UserName.getText().toString());
                                     editor.putString("Password",txt_Pswd.getText().toString());
                                     editor.commit();}
-                                Intent intent= new Intent(Login_activity.this,content.class);
+                                Intent intent= new Intent(Login_activity.this,Mode_Choose_activity.class);
                                 finish();
                                 startActivity(intent);
                                 toast.setText("Login Successful!");
