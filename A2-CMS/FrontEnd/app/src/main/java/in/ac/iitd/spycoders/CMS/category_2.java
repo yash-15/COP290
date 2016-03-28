@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import in.ac.iitd.spycoders.CMS.R;
-
 public class category_2 extends category {
 
     private Button cat_1;
@@ -24,7 +22,7 @@ public class category_2 extends category {
         cat_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), complaint_form.class);
+                Intent intent = new Intent(getApplicationContext(), Complaint_Form_activity.class);
                 startActivity(intent);
             }
         });
@@ -32,7 +30,7 @@ public class category_2 extends category {
         cat_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), complaint_form.class);
+                Intent intent = new Intent(getApplicationContext(), Complaint_Form_activity.class);
                 startActivity(intent);
             }
         });
@@ -40,7 +38,7 @@ public class category_2 extends category {
         cat_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), complaint_form.class);
+                Intent intent = new Intent(getApplicationContext(), Complaint_Form_activity.class);
                 startActivity(intent);
             }
         });
@@ -48,7 +46,7 @@ public class category_2 extends category {
         cat_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), complaint_form.class);
+                Intent intent = new Intent(getApplicationContext(), Complaint_Form_activity.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +54,7 @@ public class category_2 extends category {
         cat_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), complaint_form.class);
+                Intent intent = new Intent(getApplicationContext(), Complaint_Form_activity.class);
                 startActivity(intent);
             }
         });
@@ -64,7 +62,7 @@ public class category_2 extends category {
         cat_6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), complaint_form.class);
+                Intent intent = new Intent(getApplicationContext(), Complaint_Form_activity.class);
                 startActivity(intent);
             }
         });

@@ -57,6 +57,18 @@
                     android:background="#ffffe0"
                     />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="40dp"
+                android:background="#000000"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn"
+                android:id="@+id/btnLogout"
+                android:text="LOGOUT"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

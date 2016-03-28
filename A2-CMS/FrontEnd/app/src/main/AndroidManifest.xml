@@ -23,26 +23,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".pages"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".content"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
             android:name=".category"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".category_2"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".complaint_form"
+            android:name=".Complaint_Form_activity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Mode_Choose_activity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Mode_Choose_activity" />
+        <activity
+            android:name=".Admin_activity"
+            android:label="@string/title_activity_admin_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Normal_activity"
+            android:label="@string/title_activity_normal_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Solver_activity" />
+        <activity android:name=".Normal_View_activity"></activity>
     </application>
 
 </manifest>

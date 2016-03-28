@@ -33,44 +33,6 @@ import org.json.JSONObject;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 
-
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.InputType;
-import android.text.method.PasswordTransformationMethod;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-
-
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.net.CookieHandler;
-import java.net.CookieManager;
-import java.net.URLEncoder;
-
 public class Login_activity extends AppCompatActivity {
 
     Button btn_Login,btn_Clear_Data,btn_FP;
@@ -185,7 +147,7 @@ public class Login_activity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_login, menu);
         return true;
     }
 
@@ -365,7 +327,5 @@ public class Login_activity extends AppCompatActivity {
         }
     };
 
-
-
-
 }
+

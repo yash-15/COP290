@@ -2,12 +2,13 @@ package in.ac.iitd.spycoders.CMS;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import in.ac.iitd.spycoders.CMS.R;
 
-public class category extends content {
+public class category extends AppCompatActivity {
 
     private Button Ins;
     private Button Hos;

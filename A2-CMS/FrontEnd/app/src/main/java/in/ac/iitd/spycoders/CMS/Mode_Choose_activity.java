@@ -34,7 +34,8 @@ public class Mode_Choose_activity extends AppCompatActivity {
                 toast = Toast.makeText(Mode_Choose_activity.this, "Signing in as: Normal User"
                         , Toast.LENGTH_SHORT);
                 toast.show();
-                Intent intent = new Intent(Mode_Choose_activity.this, content.class);
+                Intent intent = new Intent(Mode_Choose_activity.this, Normal_activity.class);
+                finish();
                 startActivity(intent);
             }
         });
@@ -83,6 +84,38 @@ public class Mode_Choose_activity extends AppCompatActivity {
         Login_activity.queue.add(jsObjRequest1);
         Login_activity.queue.add(jsObjRequest2);
 
+        Button btnLogout=(Button) findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+//The logout texts are repetitive because unfortunately could not figure out a way to reduce repetitions
+                String api="http://"+Login_activity.ip+":"+Login_activity.port+Login_activity.extras+"/default/logout.json";
+                final Toast toast=Toast.makeText(getBaseContext(),"LogOut.json",Toast.LENGTH_SHORT);
+                JsonObjectRequest jsObjRequest_logout = new JsonObjectRequest
+                        (Request.Method.GET, api, null, new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                System.out.println(response.toString());
+                                toast.setText("Logged Out Successfully!!");
+                                toast.show();
+                                Intent intent_logout=new Intent(getBaseContext(),Login_activity.class);
+                                intent_logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);//clear history of pages
+                                startActivity(intent_logout);
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO Auto-generated method stub
+                                toast.setText("Can't logout: Check your network connection!");
+                                toast.show();
+                            }
+                        });
+                Login_activity.queue.add(jsObjRequest_logout);
+
+            }
+        });
+
     }
     public void create_list1(JSONObject response)
     {
@@ -112,8 +145,9 @@ public class Mode_Choose_activity extends AppCompatActivity {
                     toast = Toast.makeText(Mode_Choose_activity.this, "Signing in as: " +
                             temp.post, Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(Mode_Choose_activity.this, content.class);
+                    Intent intent = new Intent(Mode_Choose_activity.this, Admin_activity.class);
                     Login_activity.logged_admin = temp;
+                    finish();
                     startActivity(intent);
                 }
             });
@@ -123,7 +157,7 @@ public class Mode_Choose_activity extends AppCompatActivity {
     }
     public void create_list2(JSONObject response)
     {
-        System.out.println(response.toString());
+
         JSONArray j_array=response.optJSONArray("posts");
         int l=j_array.length();
         final LinearLayout ll= (LinearLayout) findViewById(R.id.ll_mode_solver_choose);
@@ -147,8 +181,9 @@ public class Mode_Choose_activity extends AppCompatActivity {
                     toast = Toast.makeText(Mode_Choose_activity.this, "Signing in as: " +
                             "Solver Head of " + temp.Department, Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(Mode_Choose_activity.this, content.class);
+                    Intent intent = new Intent(Mode_Choose_activity.this, Normal_activity.class);
                     Login_activity.logged_solver = temp;
+                    finish();
                     startActivity(intent);
                 }
             });

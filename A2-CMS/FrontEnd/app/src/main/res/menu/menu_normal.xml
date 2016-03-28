@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="Complaints">
+    <menu>
+        <item
+            android:id="@+id/mitem_lodge"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Lodge Complaint"/>
+        <item
+            android:id="@+id/mitem_view"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="View Complaints"/>
+
+    </menu>
+
+</item>
+
+</menu>
