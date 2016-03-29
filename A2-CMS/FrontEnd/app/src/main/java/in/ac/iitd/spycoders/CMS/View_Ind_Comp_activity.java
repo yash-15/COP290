@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,9 @@ public class View_Ind_Comp_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_ind_comp_layout);
 
+        final LinearLayout ll=(LinearLayout) findViewById(R.id.ll_admin_ind_info);
+        final TextView tv_ind_comp_admin_id=new TextView(this);
+        final TextView tv_ind_comp_cor_grp_comp=new TextView(this);
         final TextView tv_ind_comp_id=(TextView) findViewById(R.id.tv_ind_comp_id);
         final TextView tv_ind_comp_user_id=(TextView) findViewById(R.id.tv_ind_comp_user_id);
         final TextView tv_ind_comp_reg_date=(TextView) findViewById(R.id.tv_ind_comp_reg_date);
@@ -36,9 +40,16 @@ public class View_Ind_Comp_activity extends AppCompatActivity {
 
         final Toast toast=Toast.makeText(this,"",Toast.LENGTH_SHORT);
 
-        String api_ind="http://"+Login_activity.ip+":"+Login_activity.port+Login_activity.extras+
-                "/complaints/normview.json/ind/"+Login_activity.current_ind.id;
-
+        String api_ind="";
+        if (Login_activity.logged_mode==Login_activity.mode.solver)
+        {
+            api_ind = "http://" + Login_activity.ip + ":" + Login_activity.port + Login_activity.extras +
+                    "/complaints/solverview.json/" +Login_activity.logged_solver.id +"/"+ Login_activity.current_ind.id;
+        }
+        else {
+             api_ind = "http://" + Login_activity.ip + ":" + Login_activity.port + Login_activity.extras +
+                    "/complaints/normview.json/ind/" + Login_activity.current_ind.id;
+        }
         JsonObjectRequest jsObjRequest_ind = new JsonObjectRequest
                 (Request.Method.GET, api_ind, null, new Response.Listener<JSONObject>() {
 
@@ -61,9 +72,20 @@ public class View_Ind_Comp_activity extends AppCompatActivity {
                           //      -1:response1.optInt("Cor_Grp_Comp");
                         Login_activity.current_ind.Solver_ID=response1.optInt("Solver_ID");
 
+                        if (!response1.isNull("Admin_ID"))
+                        {
+                            tv_ind_comp_admin_id.setText("Admin_ID: "+response1.optString("Admin_ID"));
+                            tv_ind_comp_admin_id.setTextSize(25);
+                            tv_ind_comp_cor_grp_comp.setText("Cor_Grp_Comp: " + response1.optString("Cor_Grp_Comp"));
+                            tv_ind_comp_cor_grp_comp.setTextSize(25);
+                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                            ll.addView(tv_ind_comp_admin_id,lp);
+                            ll.addView(tv_ind_comp_cor_grp_comp,lp);
+                        }
 
                         tv_ind_comp_id.setText(String.valueOf(Login_activity.current_ind.id));
-                        tv_ind_comp_status.setText(Login_activity.current_ind.Status==5?"Resolved":"Unresolved");
+                        tv_ind_comp_status.setText(Login_activity.current_ind.Status == 5 ? "Resolved" : "Unresolved");
                         tv_ind_comp_user_id.setText(String.valueOf(Login_activity.current_ind.User_ID));
                         tv_ind_comp_descr.setText(Login_activity.current_ind.Description);
                         tv_ind_comp_title.setText(Login_activity.current_ind.Title);
@@ -71,7 +93,8 @@ public class View_Ind_Comp_activity extends AppCompatActivity {
                         tv_ind_comp_reg_date.setText(Login_activity.current_ind.Reg_Date);
                         tv_ind_comp_solver.setText(String.valueOf(Login_activity.current_ind.Solver_ID));
 
-                        btn_ind_comp_resolve.setVisibility(Login_activity.current_ind.Status == 5 ? View.INVISIBLE : View.VISIBLE);
+                        btn_ind_comp_resolve.setVisibility(Login_activity.current_ind.Status == 5
+                                ||Login_activity.logged_mode==Login_activity.mode.solver? View.INVISIBLE : View.VISIBLE);
                         btn_ind_comp_resolve.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
                                 String api_resolve="http://"+Login_activity.ip+":"+Login_activity.port+Login_activity.extras+

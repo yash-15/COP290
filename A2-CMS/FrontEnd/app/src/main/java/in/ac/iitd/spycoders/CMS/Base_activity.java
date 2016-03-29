@@ -156,11 +156,10 @@ public class Base_activity extends AppCompatActivity
                 break;
             case R.id.mitem_view:
 
-                if (Login_activity.logged_mode==Login_activity.mode.normal)
-                {
+
                     intent=new Intent(getBaseContext(),Normal_View_activity.class);
                     startActivity(intent);
-                }
+
                 break;
             case R.id.mitem_profile:
                 break;

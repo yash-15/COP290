@@ -43,7 +43,9 @@
             android:name=".Normal_activity"
             android:label="@string/title_activity_normal_activity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Solver_activity" />
+        <activity android:name=".Solver_activity"
+            android:label="@string/title_activity_solver_activity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Normal_View_activity" />
         <activity android:name=".View_Ind_Comp_activity" />
         <activity android:name=".View_Grp_Comp_activity"></activity>

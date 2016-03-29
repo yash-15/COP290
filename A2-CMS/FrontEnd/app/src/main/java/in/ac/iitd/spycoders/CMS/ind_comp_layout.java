@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class ind_comp_layout {
 
     LinearLayout ll;
-    TextView cid,title,date;
+    TextView cid,title,date,status;
     Button details;
 
     ind_comp_layout(Context c,ind_comp a)
@@ -25,14 +25,15 @@ public class ind_comp_layout {
         cid=new TextView(c);
         title=new TextView(c);
         date=new TextView(c);
+        status=new TextView(c);
         details=new Button(c);
         ll.setBackgroundColor(Color.parseColor("#07000000"));
 
 
         cid.setText("Complaint_ID: " + String.valueOf(a.id));
-
         title.setText("Title: " + a.Title);
         date.setText("Complained On: " + a.Reg_Date);
+        status.setText("Status: "+((a.Status==1)?"Unresolved":"Resolved"));
         details.setText("Details >>");
         final Context t_c=c;
         final ind_comp t_a=a;
@@ -41,20 +42,22 @@ public class ind_comp_layout {
 
                 Intent intent = new Intent(t_c, View_Ind_Comp_activity.class);
                 Login_activity.current_ind=t_a;
+                Login_activity.logs=false;
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 t_c.startActivity(intent);
             }
         });
 
         cid.setBackgroundColor(Color.parseColor("#07000000"));
-
         title.setBackgroundColor(Color.parseColor("#07000000"));
         date.setBackgroundColor(Color.parseColor("#07000000"));
+        status.setBackgroundColor(Color.parseColor("#07000000"));
         details.setBackgroundColor(Color.parseColor("#FFFFFF"));
 
         cid.setTextColor(Color.parseColor("#000000"));
         title.setTextColor(Color.parseColor("#000000"));
         date.setTextColor(Color.parseColor("#000000"));
+        status.setTextColor(Color.parseColor("#000000"));
         details.setTextColor(Color.parseColor("#000000"));
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams
@@ -65,6 +68,7 @@ public class ind_comp_layout {
         ll.addView(cid, lp);
         ll.addView(title, lp);
         ll.addView(date, lp);
+        ll.addView(status,lp);
         ll.addView(details,lp);
 
     }

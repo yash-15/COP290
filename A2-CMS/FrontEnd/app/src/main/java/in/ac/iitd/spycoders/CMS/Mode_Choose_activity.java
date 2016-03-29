@@ -181,7 +181,7 @@ public class Mode_Choose_activity extends AppCompatActivity {
                     toast = Toast.makeText(Mode_Choose_activity.this, "Signing in as: " +
                             "Solver Head of " + temp.Department, Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(Mode_Choose_activity.this, Normal_activity.class);
+                    Intent intent = new Intent(Mode_Choose_activity.this, Solver_activity.class);
                     Login_activity.logged_solver = temp;
                     finish();
                     startActivity(intent);

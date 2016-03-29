@@ -38,7 +38,7 @@ public class View_Grp_Comp_activity extends AppCompatActivity {
                 }
             }
         }
-
+        final TextView dummy=new TextView(this);//for checking administrative privileges
         final TextView tv_grp_comp_id=(TextView) findViewById(R.id.tv_grp_comp_id);
         final TextView tv_grp_comp_type=(TextView) findViewById(R.id.tv_grp_comp_type);
         final TextView tv_grp_comp_locality=(TextView) findViewById(R.id.tv_grp_comp_locality);
@@ -59,10 +59,23 @@ public class View_Grp_Comp_activity extends AppCompatActivity {
 
 
         final Toast toast=Toast.makeText(this,"",Toast.LENGTH_SHORT);
-
-        String api_grp="http://"+Login_activity.ip+":"+Login_activity.port+Login_activity.extras+
-                "/complaints/normview.json/"+(insti_level?"insti/":"hstl/")+Login_activity.current_grp.id;
-
+//Group complaints cannot be viewed by solvers
+        String api_grp="";
+        if (Login_activity.logged_mode==Login_activity.logged_mode.normal) {
+            api_grp = "http://" + Login_activity.ip + ":" + Login_activity.port + Login_activity.extras +
+                    "/complaints/normview.json/" + (insti_level ? "insti/" : "hstl/") + Login_activity.current_grp.id;
+        }
+        else
+        {//Assuming the complaint is not approved,discarded or forwarded
+            if(Login_activity.logs) {
+                api_grp = "http://" + Login_activity.ip + ":" + Login_activity.port + Login_activity.extras +
+                        "/complaints/adminview.json/" + Login_activity.logged_admin.id + "/logs/" + Login_activity.current_grp.id;
+            }
+            else{
+                api_grp = "http://" + Login_activity.ip + ":" + Login_activity.port + Login_activity.extras +
+                        "/complaints/adminview.json/" + Login_activity.logged_admin.id + "/pending/" + Login_activity.current_grp.id;
+            }
+        }
         JsonObjectRequest jsObjRequest_grp = new JsonObjectRequest
                 (Request.Method.GET, api_grp, null, new Response.Listener<JSONObject>() {
 
@@ -85,7 +98,7 @@ public class View_Grp_Comp_activity extends AppCompatActivity {
                         Login_activity.current_grp.Approved_Discarded_Date=response1.isNull("Approved_Discarded_Date")?
                                 "":response1.optString("Approved_Discarded_Date");
 
-                        Login_activity.current_grp.Reg_Date=response1.optString("Reg_Date");
+
 
 
 
@@ -116,49 +129,87 @@ public class View_Grp_Comp_activity extends AppCompatActivity {
                             tv_grp_comp_type.setText("Local");
                         }
                         tv_grp_comp_cur_admin.setText(String.valueOf(Login_activity.current_grp.Cur_Admin_ID));
-                        //Assuming a normal user has accessed
-                        if (Login_activity.current_grp.Poll_Results==-1)
+                        if (Login_activity.logged_mode==Login_activity.mode.admin &&
+                                Login_activity.logged_admin.id==Login_activity.current_grp.Cur_Admin_ID)
                         {
-                            temp="No Polls";
-                            btn_grp_comp_poll.setVisibility(View.INVISIBLE);
-                        }
-                        else if (Login_activity.current_grp.Status==3)
-                        {
-                            temp="Ongoing Polls";
-                            btn_grp_comp_poll.setVisibility(View.VISIBLE);
-                            btn_grp_comp_poll.setText("VOTE");
+                            dummy.setText("T");
                         }
                         else
                         {
-                            temp="Polls Over";
+                            dummy.setText("F");
+                        }
+                        //Status of the POLL Button
+                        if (dummy.getText().toString().equals("F"))
+                        {
                             btn_grp_comp_poll.setVisibility(View.INVISIBLE);
+                            if (Login_activity.current_grp.Poll_Results==3)
+                            {
+                                btn_grp_comp_poll.setVisibility(View.VISIBLE);
+                                btn_grp_comp_poll.setText("VIEW>>");
+                            }
+                        }
+                        else
+                        {
+                            btn_grp_comp_poll.setVisibility(View.VISIBLE);
+                            if (Login_activity.current_grp.Poll_Results==-1 )
+                                {if( Login_activity.current_grp.Status!=5
+                                        && Login_activity.current_grp.Status!=7)
+                                    {
+                                        btn_grp_comp_poll.setText("START A POLL >>");
+                                    }
+                                   else
+                                {
+                                    btn_grp_comp_poll.setVisibility(View.INVISIBLE);
+                                }
+                            }
+                            else
+                            {
+                                btn_grp_comp_poll.setText("VIEW>>");
+                            }
                         }
                         tv_grp_comp_poll_status.setText(temp);
                         tv_grp_comp_reg_date.setText(Login_activity.current_grp.Reg_Date);
                         tv_grp_comp_init_admin.setText(String.valueOf(Login_activity.current_grp.Initial_Admin_ID));
                         tv_grp_comp_resolve_date.setText(Login_activity.current_grp.Approved_Discarded_Date);
 
-                        //Assuming a normal user has accessed
+
                         btn_grp_comp_approve.setVisibility(View.INVISIBLE);
                         btn_grp_comp_discard.setVisibility(View.INVISIBLE);
                         btn_grp_comp_forward.setVisibility(View.INVISIBLE);
 
-                        /*
-                        btn_ind_comp_resolve.setOnClickListener(new View.OnClickListener() {
+                        if(dummy.getText().toString().equals("T")) {
+                            if (Login_activity.logged_admin.parent!=-1)
+                            {btn_grp_comp_forward.setVisibility(View.VISIBLE);}
+                            if (Login_activity.current_grp.Status == 6) {
+                                btn_grp_comp_approve.setVisibility(View.VISIBLE);
+                                btn_grp_comp_discard.setVisibility(View.VISIBLE);
+                            }
+
+                        }
+
+
+
+                        btn_grp_comp_approve.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
-                                String api_resolve="http://"+Login_activity.ip+":"+Login_activity.port+Login_activity.extras+
-                                        "/complaints/resolve_ind.json/"+Login_activity.current_ind.id;
-                                JsonObjectRequest jsObjRequest_resolve = new JsonObjectRequest
-                                        (Request.Method.GET, api_resolve, null, new Response.Listener<JSONObject>() {
+                                Intent intent=new Intent(View_Grp_Comp_activity.this,Choose_Authority_activity.class);
+                                Login_activity.lodge_var1=0;
+                                finish();
+                                startActivity(intent);
+                            }
+                        });
+
+                        btn_grp_comp_discard.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+                                String api_discard="http://" + Login_activity.ip + ":" + Login_activity.port + Login_activity.extras +
+                                        "/complaints/discard.json/" + Login_activity.logged_admin.id + "/"+ Login_activity.current_grp.id;
+                                        JsonObjectRequest jsObjRequest_discard = new JsonObjectRequest
+                                        (Request.Method.GET, api_discard, null, new Response.Listener<JSONObject>() {
 
                                             @Override
                                             public void onResponse(JSONObject response) {
-                                                System.out.println(response.toString());
-                                                toast.setText("Resolved Successfully!!");
-                                                toast.show();
-                                                Intent intent_refresh=new Intent(getBaseContext(),View_Ind_Comp_activity.class);
+
                                                 finish();
-                                                startActivity(intent_refresh);
+
                                             }
                                         }, new Response.ErrorListener() {
 
@@ -169,11 +220,34 @@ public class View_Grp_Comp_activity extends AppCompatActivity {
                                                 toast.show();
                                             }
                                         });
-                                Login_activity.queue.add(jsObjRequest_resolve);
-
+                                Login_activity.queue.add(jsObjRequest_discard);
                             }
                         });
-*/
+                        btn_grp_comp_forward.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+                                String api_forward="http://" + Login_activity.ip + ":" + Login_activity.port + Login_activity.extras +
+                                        "/complaints/forward.json/" + Login_activity.logged_admin.id + "/"+ Login_activity.current_grp.id;
+                                JsonObjectRequest jsObjRequest_forward = new JsonObjectRequest
+                                        (Request.Method.GET, api_forward, null, new Response.Listener<JSONObject>() {
+
+                                            @Override
+                                            public void onResponse(JSONObject response) {
+
+                                                finish();
+
+                                            }
+                                        }, new Response.ErrorListener() {
+
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+                                                // TODO Auto-generated method stub
+                                                toast.setText("Network Error!");
+                                                toast.show();
+                                            }
+                                        });
+                                Login_activity.queue.add(jsObjRequest_forward);
+                            }
+                        });
 
 
 

@@ -60,6 +60,8 @@ public class Login_activity extends AppCompatActivity {
     //var1 is the type : 0->ind, 1->hstl,2->insti
     //var2 is the authority id: solver id or a leaf-level admin id
 
+    static boolean logs=false;
+
     SharedPreferences sharedpreferences;
 
     String stored_user,stored_password;

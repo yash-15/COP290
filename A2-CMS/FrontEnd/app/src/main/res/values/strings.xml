@@ -67,6 +67,7 @@
     <string name="Enter_the_Link">Enter the Link</string>
     <string name="PREVIEW">PREVIEW</string>
     <string name="title_activity_admin_activity">Admin_activity</string>
+    <string name="title_activity_solver_activity">Solver_activity</string>
     <string name="title_activity_normal_activity">Normal_activity</string>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -86,9 +86,37 @@ public class Choose_Authority_activity extends Choose_Category_activity {
             btnSolver.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     toast.show();
-                    Intent intent = new Intent(Choose_Authority_activity.this, Complaint_Form_activity.class);
-                    Login_activity.lodge_var2 = j_obj.optInt("id");
-                    startActivity(intent);
+                    if (Login_activity.logged_mode==Login_activity.mode.normal) {
+                        Intent intent = new Intent(Choose_Authority_activity.this, Complaint_Form_activity.class);
+                        Login_activity.lodge_var2 = j_obj.optInt("id");
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        String api_approve="http://"+Login_activity.ip+":"+Login_activity.port+Login_activity.extras+
+                                "/complaints/approve.json/"+Login_activity.logged_admin.id+"/"+
+                                Login_activity.current_grp.id+"/"+j_obj.optInt("id");
+
+                        JsonObjectRequest jsObjRequest_approve = new JsonObjectRequest
+                                (Request.Method.GET, api_approve, null, new Response.Listener<JSONObject>() {
+
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                toast.setText("Complaint Approved!");
+                                finish();
+                                //Normal_View_activity.mTabHost.setCurrentTab(0);
+                                    }
+                                }, new Response.ErrorListener() {
+
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        // TODO Auto-generated method stub
+                                        toast.setText("Network Error!");
+                                        toast.show();
+                                    }
+                                });
+                        Login_activity.queue.add(jsObjRequest_approve);
+                    }
                 }
             });
             ll.addView(btnSolver, llp);

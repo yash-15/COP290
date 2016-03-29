@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 public class Normal_View_activity extends AppCompatActivity {
 
-    private FragmentTabHost mTabHost;
+    public static FragmentTabHost mTabHost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,15 +17,43 @@ public class Normal_View_activity extends AppCompatActivity {
         mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         mTabHost.setBackgroundColor(Color.parseColor("#FFC400"));
 
-        mTabHost.addTab(
-                mTabHost.newTabSpec("Individual").setIndicator("Individual", null),
-                Normal_View_fragment.class, null);
-        mTabHost.addTab(
-                mTabHost.newTabSpec("Locality").setIndicator("Locality", null),
-                Normal_View_fragment.class, null);
-        mTabHost.addTab(
-                mTabHost.newTabSpec("Institute").setIndicator("Institute", null),
-                Normal_View_fragment.class, null);
-
+        if (Login_activity.logged_mode==Login_activity.mode.admin)
+        {
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("Approved").setIndicator("Approved",null),
+                    Normal_View_fragment.class,null);
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("Pending").setIndicator("Pending", null),
+                    Normal_View_fragment.class,null);
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("Unread").setIndicator("Unread",null),
+                    Normal_View_fragment.class,null);
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("Logs").setIndicator("Logs",null),
+                    Normal_View_fragment.class,null);
+        }
+        else if (Login_activity.logged_mode==Login_activity.mode.solver)
+        {
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("S_Individual").setIndicator("Individual",null),
+                    Normal_View_fragment.class,null);
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("Group").setIndicator("Group",null),
+                    Normal_View_fragment.class,null);
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("Resolved").setIndicator("Resolved",null),
+                    Normal_View_fragment.class,null);
+        }
+        else {
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("Individual").setIndicator("Individual", null),
+                    Normal_View_fragment.class, null);
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("Locality").setIndicator("Locality", null),
+                    Normal_View_fragment.class, null);
+            mTabHost.addTab(
+                    mTabHost.newTabSpec("Institute").setIndicator("Institute", null),
+                    Normal_View_fragment.class, null);
+        }
     }
 }
