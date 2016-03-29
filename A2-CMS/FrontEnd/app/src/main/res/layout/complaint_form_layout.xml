@@ -12,7 +12,6 @@
         android:layout_height="57dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/COMPLAINT_FORM"
-        android:id="@+id/textView4"
         android:textSize="40dp"
         android:textStyle="bold|italic"
         android:textColor="#fbf9f9"
@@ -23,7 +22,7 @@
     <EditText
         android:layout_width="345dp"
         android:layout_height="wrap_content"
-        android:id="@+id/title_text"
+        android:id="@+id/txt_lodge_title"
         android:hint="@string/TITLE"
         android:textStyle="bold"
         android:textColor="#ffffff"
@@ -36,7 +35,7 @@
     <EditText
         android:layout_width="348dp"
         android:layout_height="wrap_content"
-        android:id="@+id/description_text"
+        android:id="@+id/txt_lodge_descr"
         android:hint="@string/DESCRIPTION"
         android:textStyle="bold"
         android:textColor="#ffffff"
@@ -62,7 +61,7 @@
     <EditText
         android:layout_width="344dp"
         android:layout_height="wrap_content"
-        android:id="@+id/enter_the_link_text"
+        android:id="@+id/txt_lodge_link"
         android:hint="Enter the Link"
         android:textStyle="bold"
         android:textColor="#ffffff"
@@ -73,12 +72,12 @@
         android:textAlignment="center" />
 
     <Button
-        android:id="@+id/btn_next_form"
+        android:id="@+id/btn_lodge"
         style="?android:textAppearanceSmall"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/Next"
+        android:text="Lodge"
         android:textSize="30sp"
         android:onClick="Login"
         android:background="@drawable/btn"

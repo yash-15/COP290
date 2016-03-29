@@ -12,21 +12,34 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 public class Complaint_Form_activity extends AppCompatActivity {
 
     int REQUEST_CAMERA = 0, SELECT_FILE = 1;
-    Button btnSelect;
+    Button btnSelect,btnLodge;
     ImageView ivImage;
+    EditText txt_lodge_title,txt_lodge_descr;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +52,110 @@ public class Complaint_Form_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectImage();
+            }
+        });
+
+        txt_lodge_title=(EditText) findViewById(R.id.txt_lodge_title);
+        txt_lodge_descr=(EditText) findViewById(R.id.txt_lodge_descr);
+        txt_lodge_title.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
+                if (txt_lodge_title.getText().toString().length() == 0 ||
+                        txt_lodge_descr.getText().toString().length() == 0) {
+                    btnLodge.setEnabled(false);
+                } else {
+                    btnLodge.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(final Editable s) {
+
+            }
+        });
+        txt_lodge_descr.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
+                if (txt_lodge_title.getText().toString().length() == 0 ||
+                        txt_lodge_descr.getText().toString().length() == 0) {
+                    btnLodge.setEnabled(false);
+                } else {
+                    btnLodge.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(final Editable s) {
+
+            }
+        });
+        btnLodge=(Button) findViewById(R.id.btn_lodge);
+        btnLodge.setEnabled(false);
+        btnLodge.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    //Source for below
+                    // http://stackoverflow.com/questions/573184/java-convert-string-to-valid-uri-object
+                    String title_text = URLEncoder.encode(txt_lodge_title.getText().toString(), "utf-8");
+                    String descr_text = URLEncoder.encode(txt_lodge_descr.getText().toString(), "utf-8");
+                    String api_header = "http://" + Login_activity.ip + ":"+Login_activity.port+Login_activity.extras+
+                            "/complaints/";
+                    String api_params="";
+                    switch(Login_activity.lodge_var1)
+                    {
+                        case 0:api_params="lodge_ind.json?title="+title_text+"&description="+descr_text
+                                +"&solverid="+String.valueOf(Login_activity.lodge_var2);
+                                break;
+                        case 1:api_params="lodge_hstl.json?title="+title_text+"&description="+descr_text
+                                +"&adminid="+String.valueOf(Login_activity.lodge_var2);
+                            break;
+                        case 2:api_params="lodge_insti.json?title="+title_text+"&description="+descr_text
+                                +"&adminid="+String.valueOf(Login_activity.lodge_var2);
+                            break;
+                    }
+                    JsonObjectRequest jsObjRequest_lodge = new JsonObjectRequest
+                            (Request.Method.GET, api_header+api_params, null, new Response.Listener<JSONObject>() {
+
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    Toast toast = Toast.makeText(Complaint_Form_activity.this,
+                                            "Complaint Lodged!", Toast.LENGTH_SHORT);
+                                    toast.show();
+                                    Intent intent = new Intent(Complaint_Form_activity.this, Normal_activity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                }
+                            }, new Response.ErrorListener() {
+
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // TODO Auto-generated method stub
+
+                                    Toast toast = Toast.makeText(Complaint_Form_activity.this,
+                                            "Network Error!", Toast.LENGTH_SHORT);
+                                    toast.show();
+
+                                }
+                            });
+                    Login_activity.queue.add(jsObjRequest_lodge);
+                } catch (Exception e) {
+                    System.out.println("Failed");
+                }
+
+
+
             }
         });
         ivImage = (ImageView) findViewById(R.id.ivImage);

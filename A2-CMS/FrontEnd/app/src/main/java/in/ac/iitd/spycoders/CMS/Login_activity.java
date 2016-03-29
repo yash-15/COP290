@@ -53,6 +53,13 @@ public class Login_activity extends AppCompatActivity {
     enum mode {normal,admin,solver};
     static mode logged_mode;
 
+    static ind_comp current_ind;
+    static grp_comp current_grp;
+
+    static int lodge_var1=-1,lodge_var2=-1;
+    //var1 is the type : 0->ind, 1->hstl,2->insti
+    //var2 is the authority id: solver id or a leaf-level admin id
+
     SharedPreferences sharedpreferences;
 
     String stored_user,stored_password;
@@ -88,6 +95,8 @@ public class Login_activity extends AppCompatActivity {
         // safely say that the data gets reset on logout
         // Anyways it is set again on login
 
+        current_ind=new ind_comp();
+        current_grp=new grp_comp();
         toast = Toast.makeText(getApplicationContext(), "Complaint Management System", Toast.LENGTH_SHORT);
         toast.show();
 
@@ -285,6 +294,7 @@ public class Login_activity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             // TODO Auto-generated method stub
+                            System.out.println(error.toString());
                             toast.setText("Network Error!");
                             toast.show();
 

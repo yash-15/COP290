@@ -9,7 +9,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="ID:"/>
+                <TextView
+                    android:id="@+id/tv_grp_comp_id"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="14894" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,9 +115,6 @@
                     android:textSize="25sp"
                     android:text="Door knob broken" />
             </LinearLayout>
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -114,15 +128,16 @@
                         android:text="Description:"/>
                     <TextView
                         android:id="@+id/tv_grp_comp_descr"
+                        android:background="@drawable/custom_border"
                         android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
+                        android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:textSize="25sp"
                         android:text="shusbvwovbwevbwvweiuvjwe viwvncubnwg ng wcin iuwr xrzmwx croignw hoecnh
                         cegbweuitncwevhwhooguiwerkigdsr gerug egui ewge rgeuigeliu gewrpg wg/q;g qgql gqg qegk
                         e ruighweri gkwe gg egwogwlg hwelkg ieqo ghkweh" />
                 </LinearLayout>
-            </ScrollView>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -200,11 +215,11 @@
                     android:textSize="25sp"
                     android:text="Discard"/>
                 <Button
-                    android:id="@+id/btn_grp_comp_poll"
+                    android:id="@+id/btn_grp_comp_forward"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25sp"
-                    android:text="Poll"/>
+                    android:text="Forward"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -233,17 +248,11 @@
                 android:orientation="horizontal"
                 android:id="@+id/ll_grp_comp_vote">
                 <Button
-                    android:id="@+id/btn_grp_comp_vote"
+                    android:id="@+id/btn_grp_comp_poll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="25sp"
-                    android:text="Vote"/>
-                <Button
-                    android:id="@+id/btn_grp_comp_view_votes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:text="View Votes"/>
+                    android:text="Poll"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

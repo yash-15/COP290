@@ -150,9 +150,12 @@ public class Base_activity extends AppCompatActivity
         switch(id)
         {
             case R.id.mitem_lodge:
+                Intent intent;
+                intent=new Intent(getBaseContext(),Choose_Category_activity.class);
+                startActivity(intent);
                 break;
             case R.id.mitem_view:
-                Intent intent;
+
                 if (Login_activity.logged_mode==Login_activity.mode.normal)
                 {
                     intent=new Intent(getBaseContext(),Normal_View_activity.class);

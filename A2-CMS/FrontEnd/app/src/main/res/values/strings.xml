@@ -35,7 +35,7 @@
     <string name="profile_solver">Solver</string>
     <string name="profile_admin">Administrator</string>
 
-    <!-- strings for category -->
+    <!-- strings for choose_category_layout -->
     <string name="CHOOSE_CATEGORY">CHOOSE CATEGORY</string>
     <string name="INSTITUTE_LEVEL">INSTITUTE LEVEL</string>
     <string name="HOSTEL_LEVEL">HOSTEL LEVEL</string>
