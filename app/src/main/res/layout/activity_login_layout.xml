@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Login_activity"
+    android:background="#991212">
+
+    <!--<android.support.design.widget.AppBarLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:theme="@style/AppTheme.AppBarOverlay"-->
+    <!--android:background="#1a3abc">-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:background="#060ae9"-->
+    <!--app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <!--<include layout="@layout/content_login_layout" />-->
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="in.ac.iitd.spycoders.a1_trial.LoginActivity"
+
+        android:weightSum="1">
+
+        <!-- Login progress -->
+        <ProgressBar
+            android:id="@+id/login_progress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Welcome_To_CMS"
+            android:id="@+id/textView3"
+            android:textColor="#f2f3f7"
+            android:textStyle="bold|italic"
+            android:textSize="40dp" />
+
+        <ImageView
+            android:layout_width="111dp"
+            android:layout_height="84dp"
+            android:id="@+id/imageView2"
+            android:background="@drawable/ic_menu_camera"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/txtUserName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:background="@android:color/transparent"
+            android:textIsSelectable="false"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:clickable="false"
+            android:autoText="true"
+            android:textColor="#ada9a9" />
+
+        <EditText
+            android:id="@+id/txtPswd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_password"
+            android:imeActionId="@+id/login"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:background="@android:color/transparent"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp" />
+
+        <CheckBox
+            android:layout_width="249dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Remember_Password"
+            android:id="@+id/checkBoxRem_me"
+            android:layout_weight="0.11"
+            android:textSize="20dp"
+            android:checked="false"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="?android:textAppearanceSmall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/action_sign_in"
+            android:textSize="30sp"
+            android:onClick="Login"
+            android:background="@drawable/btn" />
+
+        <Button
+            style="?android:textAppearanceSmall"
+            android:id="@+id/btnFP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/fp"
+            android:textStyle="bold"
+            android:typeface="normal"
+            android:layout_marginLeft="-80dp"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            style="?android:textAppearanceSmall"
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-45dp"
+            android:text="@string/Clear_Data"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_gravity="right"
+            android:background="@drawable/btn"  />
+
+    </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

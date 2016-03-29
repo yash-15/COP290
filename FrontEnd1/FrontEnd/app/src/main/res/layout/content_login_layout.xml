@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@drawable/btn2"
+    android:weightSum="1"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true">
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_Welcome_To_CMS"
+        android:id="@+id/textView3"
+        android:textColor="#f2f3f7"
+        android:textStyle="bold|italic"
+        android:textSize="40sp"
+        android:layout_marginTop="37dp" />
+
+    <ImageView
+        android:layout_width="111dp"
+        android:layout_height="84dp"
+        android:id="@+id/imageView2"
+        android:background="@drawable/icon_cms"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:id="@+id/txtUserName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/login_prompt_email"
+        android:inputType="text"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:background="@android:color/transparent"
+        android:textIsSelectable="false"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:clickable="false"
+        android:textColor="#ada9a9" />
+
+    <EditText
+        android:id="@+id/txtPswd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/login_prompt_password"
+        android:imeActionId="@+id/login"
+        android:imeActionLabel="@string/login_action_sign_in"
+        android:imeOptions="actionUnspecified"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:background="@android:color/transparent"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxRem_me"
+        android:layout_width="249dp"
+        android:layout_height="20dp"
+        android:text="@string/login_Remember_Password"
+        android:layout_weight="0.11"
+        android:textSize="20sp"
+        android:checked="false"
+        android:layout_marginTop="5dp" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="?android:textAppearanceSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/login_action_log_in"
+        android:textSize="30sp"
+        android:background="@drawable/btn" />
+
+    <Button
+        style="?android:textAppearanceSmall"
+        android:id="@+id/btnFP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/login_forgot_password"
+        android:textStyle="bold"
+        android:typeface="normal"
+        android:layout_marginLeft="-80dp"
+        android:layout_marginStart="-80dp"
+        android:background="@android:color/transparent"/>
+
+    <Button
+        style="?android:textAppearanceSmall"
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-45dp"
+        android:text="@string/login_clear_data"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_gravity="end"
+        android:background="@drawable/btn"  />
+
+</LinearLayout>

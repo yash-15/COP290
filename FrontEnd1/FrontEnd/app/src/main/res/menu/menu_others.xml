@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/mitem_profile"
+                android:icon="@drawable/ic_menu_view"
+                android:title="View/Edit Profile" />
+            <item
+                android:id="@+id/mitem_password"
+                android:icon="@drawable/ic_secure"
+                android:title="Change Password" />
+            <item
+                android:id="@+id/mitem_switch"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Switch Mode" />
+            <item
+                android:id="@+id/mitem_logout"
+                android:icon="@drawable/logout"
+                android:title="@string/LOGOUT"/>
+        </menu>
+    </item>
+    <item android:title="@string/HELP">
+        <menu>
+            <item
+                android:id="@+id/mitem_help"
+                android:icon="@drawable/ic_menu_help"
+                android:title="@string/HELP" />
+
+        </menu>
+    </item>
+
+</menu>

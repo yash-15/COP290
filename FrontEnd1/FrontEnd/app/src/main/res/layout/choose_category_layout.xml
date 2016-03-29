@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@drawable/btn2">
+    <TextView
+        android:text="@string/CHOOSE_CATEGORY"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textColor="#045ffb"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:textStyle="bold|italic"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentStart="false"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="20dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/INSTITUTE_LEVEL"
+        android:textSize="30dp"
+        android:id="@+id/btn_lodge_insti"
+        android:background="@drawable/btn"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HOSTEL LEVEL"
+        android:textSize="30dp"
+        android:id="@+id/btn_lodge_hstl"
+        android:background="@drawable/btn"
+        android:layout_below="@+id/institute_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/INDIVIDUAL"
+        android:textSize="30dp"
+        android:id="@+id/btn_lodge_ind"
+        android:background="@drawable/btn"
+        android:layout_below="@+id/hostel_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+
+
+</LinearLayout>
