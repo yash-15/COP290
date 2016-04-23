@@ -49,6 +49,8 @@ public class p2pchat {
 	static String serverAddress,port;//Stores the IP address and port of the server
 	
 	/**
+	 * @param
+	 * @return
 	 * This dialog box will appear at the start of the application.
 	 * This will allow the user to choose the mode of running:
 	 * Whether he wants to start a new network or connect to a previous network
@@ -122,6 +124,8 @@ public class p2pchat {
 	
 	
 	/**
+	 * @param
+	 * @return
 	 * Setting up the main window of the peer-to-peer chat application
 	 */
 	static void initWindow()
@@ -141,6 +145,14 @@ public class p2pchat {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	
+	/**
+	 * @param sockAddr
+	 * @param sep
+	 * @return ip
+	 * The sockAddr is of the form ip/ip or ip:port etc.
+	 * This function extracts the ip form that
+	 */
 	static String SocketAddress2LocalAddress(String sockAddr,char sep)
 	{
 		int index=0;
@@ -152,6 +164,12 @@ public class p2pchat {
 		return sockAddr.substring(0,index);
 	}
 	
+	
+	/**
+	 * @param
+	 * @return
+	 * Just equivalent to restarting the application
+	 */
 	static void restart()
 	{
 		if (window!=null){window.dispose();}
@@ -174,6 +192,16 @@ public class p2pchat {
 		status.setText("Number of Users: "+(--num_users));expose_server=is_server &&num_users<4;
 	}
 	
+	
+	/**
+	 * @param t_name
+	 * @param i
+	 * @return name
+	 * 
+	 * t_name is the name chosen by the user
+	 * But it may already be in use.
+	 * So this function returns some variant of t_name
+	 */
 	static String giveName(String t_name,int i)
 	{
 		if (t_name.equals("")||t_name.equals(null)) t_name="NO_NAME";
@@ -209,6 +237,7 @@ public class p2pchat {
 		}
 		return t_name;
 	}
+	
 	
 	/**
 	 * This function is called after a new user is connected to the server and 
@@ -254,6 +283,11 @@ public class p2pchat {
 		}
 	}
 	
+	/**
+	 * When the current pseudo-server goes down 
+	 * a new pseudo-server needs to be chosen
+	 * This function does that and the other necessities
+	 */
 	static void newServer()
 	{
 		int min=-1;
@@ -272,6 +306,9 @@ public class p2pchat {
 	}
 	
 	
+	/**
+	 * Just for debugging purposes
+	 */
 	static void testprint()
 	{
 		for (int i=0;i<4;i++)
@@ -279,12 +316,14 @@ public class p2pchat {
 			System.out.println(users[i].toString());
 		}
 	}
+	
+	
 	public static void main(String[] args) {	
 		
 		
-		startDialogBox();
+		startDialogBox(); ///Get the mode of running
 		
-		initWindow();
+		initWindow();	///Initialize the GUI
 		
 		users=new user[4];
 		sockets=new Vector<Socket>();
@@ -298,11 +337,10 @@ public class p2pchat {
 		
 		me=new user();
 		
-		//Setting the server socket but it is not open to clients till now
+		///Setting the server socket but it is not open to clients till now
 		try{
 			s_socket=new ServerSocket(0);
 			me.s_port=s_socket.getLocalPort();
-			//me.ip=SocketAddress2LocalAddress(s_socket.getLocalSocketAddress().toString(),'/');
 			System.out.println(s_socket.getInetAddress().toString());
 			System.out.println(me.ip);
 			window.setTitle("Listening @ "+me.ip+":"+me.s_port);
@@ -310,7 +348,7 @@ public class p2pchat {
 		catch(Exception e)
 		{System.out.println("Can't have server socket");}
 			
-		//Connecting to an existing network if client mode 
+		///Connecting to an existing network if client mode 
 		expose_server=is_server;
 		if (!expose_server)
 		{
@@ -323,7 +361,8 @@ public class p2pchat {
 			{System.out.println("No Connection or Incorrect Address");
 			restart();}
 		}
-		//If you are the starting server add your data to the users array 
+		
+		///If you are the starting server add your data to the users array 
 		else{
 			users[0].name=giveName(JOptionPane.showInputDialog("Choose a Name"), 0);
 			users[0].ip=serverAddress;
@@ -336,7 +375,7 @@ public class p2pchat {
 			well_connected=true;
 		}
 		
-		//Display window
+		///Display window
 		window.setVisible(true);
 		if (expose_server)
 		{
@@ -344,7 +383,7 @@ public class p2pchat {
 		}
 		
 		
-		//Make yourself open to clients
+		///Make yourself open to clients
 		try{
 			while(true)
 			{   
@@ -356,7 +395,7 @@ public class p2pchat {
 	
 	}
 	
-	//Client Thread
+	///Client Thread
 	private static class cl_thread extends Thread{
 		private Socket socket;
 		private BufferedReader from;
@@ -377,7 +416,7 @@ public class p2pchat {
 				addr=socket.getRemoteSocketAddress().toString().substring(1);
 				display.append("Connected to Server @ "+addr+"\n");
 				
-				//Initialize your databases from the server
+				///Initialize your databases from the server
 				while(true)
 				{	
 					msgJsonObjectFrom=new JSONObject(from.readLine());
@@ -429,9 +468,9 @@ public class p2pchat {
 						 display.append("I am "+me.name+"\n");
 						 
 						 
-						 //Once you have received all the user data connect to other users
+						 ///Once you have received all the user data connect to other users
 						 connectAll();
-						 //Update the status bar
+						 ///Update the status bar
 						 status.setText("Number of Users: "+(num_users));
 					}
 				}
@@ -440,24 +479,24 @@ public class p2pchat {
 				display.append("Server @ "+socket.getRemoteSocketAddress().toString()+"is unavailable.\n");
 				
 				
-				//If the connection is not established properly that means you must restart
+				///If the connection is not established properly that means you must restart
 				if (!well_connected)
 				{ JOptionPane.showMessageDialog(null,"The server is unavailable");restart();}
-				//Otherwise you assume that the server is down and continue with that
+				///Otherwise you assume that the server is down and continue with that
 				else {
-					//Set the priority to -1 for the server
+					///Set the priority to -1 for the server
 					for(int j=0;j<4;j++)
 					{
 						String t_ip=SocketAddress2LocalAddress(addr,':');
 						String t_port=addr.substring(t_ip.length()+1,addr.length());
-						//Check whether it is the server
+						///Check whether it is the server
 						if (users[j].ip.equals(t_ip)
 								&& users[j].s_port==Integer.valueOf
 								(t_port))
 						{
 							disconnect(j);
 							if (t_ip.equals(serverAddress) &&
-									t_port.equals(port)) newServer(); //Update for new server
+									t_port.equals(port)) newServer(); ///Update for new server
 							testprint();
 							break;
 						}
@@ -468,7 +507,7 @@ public class p2pchat {
 		}
 	}
 	
-	//Server Thread
+	///Server Thread
 	private static class sr_thread extends Thread{
 		private Socket socket;
 		private BufferedReader from;
@@ -486,13 +525,17 @@ public class p2pchat {
 		{
 			i=-1; //This will store the array address where the new client will be stored
 			connect=false;// This tells whether we want this connection or not
+		
 			String remoteAddress=socket.getRemoteSocketAddress().toString();
 			try{
-				
+				if(!SocketAddress2LocalAddress(socket.getLocalSocketAddress()
+						.toString().substring(1), ':').equals(serverAddress)){
+					throw new Exception();
+				}
 				from=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				to=new PrintWriter(socket.getOutputStream(),true);
-				//This implies you a new connection request has been sent to the current server
-				//and there are frees slots.
+				///This implies you a new connection request has been sent to the current server
+				///and there are frees slots.
 				if (expose_server){
 					connect=true;
 					display.append("Connected to "+remoteAddress+"\n");
@@ -502,7 +545,7 @@ public class p2pchat {
 					msgJsonObjectTo=new JSONObject();
 					
 						
-					//get the index of an empty location in the users array
+					///get the index of an empty location in the users array
 					i=0;
 					for (i=0;i<4;i++)
 					{
@@ -511,26 +554,26 @@ public class p2pchat {
 					users[i].ip=SocketAddress2LocalAddress(remoteAddress.substring(1),':');
 					users[i].priority=++max_priority;
 					users[i].socket=socket;
-					//attempt to receive name and port in the next exchange
-					
+					///attempt to receive name and port in the next exchange
 					msgJsonObjectTo.put("PROTOCOL", "SUBMITNAMEPORT");
 					to.println(msgJsonObjectTo.toString());
 					display.append("Asked "+remoteAddress+" for name and port\n");
-					//Retrieves the name and the port
+
+					///Retrieves the name and the port
 					msgJsonObjectFrom=new JSONObject(from.readLine());
 					if (msgJsonObjectFrom.optString("PROTOCOL").equals("NAMEPORT"))
 					{
 						users[i].s_port=msgJsonObjectFrom.optInt("PORT");
 						String t_name=msgJsonObjectFrom.optString("NAME");
 						
-						//After properly setting t_name
+						///After properly setting t_name
 						users[i].name=giveName(t_name, i);
 						
 						display.append(remoteAddress+" --> "+users[i].name+"\n");
 						display.append("Sending UserData to "+users[i].name+"\n");
 						
-						//Now the new user is properly set
-						//We need to send the info of all users to this person
+						///Now the new user is properly set
+						///We need to send the info of all users to this person
 						msgJsonObjectTo =new JSONObject();
 						msgJsonObjectTo.put("PROTOCOL", "USERDATA");
 						JSONArray jsonUsersArray=new JSONArray();
@@ -548,13 +591,10 @@ public class p2pchat {
 						testprint();
 					}
 					else {
-						//Disconnects if any other info is sent
+						///Disconnects if any other info is sent
 						display.append("Incorrect Info! Connection cut @ "+remoteAddress+"\n");
 						socket.close();
-						/*
-						disconnect(i);
-						interrupt();
-						System.out.println("Reached");*/
+						
 					}
 					
 				}
@@ -581,7 +621,7 @@ public class p2pchat {
 					to.println(msgJsonObjectTo.toString());
 					display.append("Asking for secret Key @ "+remoteAddress+"\n");
 					
-					//Wait for the response
+					///Wait for the response
 					msgJsonObjectFrom=new JSONObject(from.readLine());
 					display.append("Verifying Key @ "+remoteAddress+"\n");
 					try{
@@ -624,19 +664,13 @@ public class p2pchat {
 					if (!connect){
 					display.append("Connection Refused @ "+remoteAddress+"\n");
 					socket.close(); //Close the connection 
-					//interrupt(); // Thread Suicide
+					
 					}
 				}
 				while(true){
 					String x=from.readLine();
 					if(x.equals(null)){
-						
 						socket.close();
-						
-						/*
-						disconnect(i);
-						interrupt();
-						display.append("Disconnected @ "+remoteAddress+"\n");*/
 					}
 					else{
 						display.append(x+"\n");
@@ -648,7 +682,6 @@ public class p2pchat {
 					if(connect){
 					disconnect(i);
 					display.append("Disconnected @ "+remoteAddress+"\n");
-					//interrupt();
 					}}}
 		}
 	}	
