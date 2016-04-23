@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
 
     android:weightSum="1"
-    android:background="@color/lightBlue">
+    android:background="@drawable/btn2">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

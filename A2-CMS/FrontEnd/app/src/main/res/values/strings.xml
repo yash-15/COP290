@@ -72,6 +72,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings related to app_bar -->
+    <string name="form">COMPLAINT FORM</string>
+    <string name="inst">INSTITUTE LEVEL</string>
+    <string name="host">HOSTEL LEVEL</string>
+    <string name="indi">INDIVIDUAL LEVEL</string>
+    <string name="lc">LODGE A COMPLAINT</string>
+    <string name="vc">VIEW COMPLAINT</string>
+    <string name="p">PROFILE</string>
 
 
 </resources>

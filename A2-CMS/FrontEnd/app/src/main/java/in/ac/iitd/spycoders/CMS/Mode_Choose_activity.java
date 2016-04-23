@@ -1,7 +1,6 @@
 package in.ac.iitd.spycoders.CMS;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -145,7 +142,7 @@ public class Mode_Choose_activity extends AppCompatActivity {
                     toast = Toast.makeText(Mode_Choose_activity.this, "Signing in as: " +
                             temp.post, Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(Mode_Choose_activity.this, Admin_activity.class);
+                    Intent intent = new Intent(Mode_Choose_activity.this, Solver_Admin_activity.class);
                     Login_activity.logged_admin = temp;
                     finish();
                     startActivity(intent);
@@ -181,7 +178,7 @@ public class Mode_Choose_activity extends AppCompatActivity {
                     toast = Toast.makeText(Mode_Choose_activity.this, "Signing in as: " +
                             "Solver Head of " + temp.Department, Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(Mode_Choose_activity.this, Solver_activity.class);
+                    Intent intent = new Intent(Mode_Choose_activity.this, Solver_Admin_activity.class);
                     Login_activity.logged_solver = temp;
                     finish();
                     startActivity(intent);

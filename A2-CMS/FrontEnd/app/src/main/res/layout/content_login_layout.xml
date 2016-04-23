@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    android:background="@drawable/btn"
+    android:background="@drawable/btn2"
     android:weightSum="1"
     android:gravity="center_horizontal"
     android:orientation="vertical"
@@ -28,13 +28,14 @@
         android:id="@+id/textView3"
         android:textColor="#f2f3f7"
         android:textStyle="bold|italic"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:layout_marginTop="37dp" />
 
     <ImageView
         android:layout_width="111dp"
         android:layout_height="84dp"
         android:id="@+id/imageView2"
-        android:background="@drawable/ic_menu_gallery"
+        android:background="@drawable/icon_cms"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp" />
 

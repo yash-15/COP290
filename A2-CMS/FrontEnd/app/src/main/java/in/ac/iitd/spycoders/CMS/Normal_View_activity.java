@@ -15,7 +15,7 @@ public class Normal_View_activity extends AppCompatActivity {
 
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
-        mTabHost.setBackgroundColor(Color.parseColor("#FFC400"));
+        mTabHost.setBackgroundColor(Color.parseColor("#3F51B5"));
 
         if (Login_activity.logged_mode==Login_activity.mode.admin)
         {

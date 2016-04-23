@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
-    <!--tools:context="in.ac.iitd.spycoders.CMS.Admin_activity">-->
+    android:fitsSystemWindows="true"
+    android:background="@drawable/btn2">
+    <!--tools:context="in.ac.iitd.spycoders.CMS.Solver_Admin_activity">-->
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

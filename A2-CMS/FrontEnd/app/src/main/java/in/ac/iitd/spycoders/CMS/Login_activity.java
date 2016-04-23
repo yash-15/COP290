@@ -271,6 +271,7 @@ public class Login_activity extends AppCompatActivity {
                                 logged_user.address=response_user.optString("address");
                                 logged_user.id=response_user.optInt("id");
                                 logged_user.locality=response_user.optInt("locality");
+                                logged_user.mobile=response_user.optInt("mobile");
 
                                 if(cBoxRemMe.isChecked()){
                                     SharedPreferences.Editor editor=sharedpreferences.edit();

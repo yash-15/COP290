@@ -147,6 +147,8 @@ public class Base_activity extends AppCompatActivity
         // Handle navigation view item clicks here.
 
         int id = item.getItemId();
+        final Toast toast=Toast.makeText(getApplicationContext(), "Welcome To CMS", Toast.LENGTH_SHORT);
+
         switch(id)
         {
             case R.id.mitem_lodge:
@@ -162,8 +164,13 @@ public class Base_activity extends AppCompatActivity
 
                 break;
             case R.id.mitem_profile:
+                intent = new Intent(getBaseContext(), Normal_Profile_activity.class);
+                startActivity(intent);
                 break;
             case R.id.mitem_password:
+
+                toast.setText("Functionality not available");
+                toast.show();
                 break;
             case R.id.mitem_switch:
                 logout=false;
@@ -174,6 +181,8 @@ public class Base_activity extends AppCompatActivity
                 onOptionsItemSelected(temp);
                 break;
             case R.id.mitem_help:
+                toast.setText("Functionality not available");
+                toast.show();
                 break;
             default:
                 break;
