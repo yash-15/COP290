@@ -1,5 +1,6 @@
 package p2pchat;
 
+import java.io.PrintWriter;
 import java.net.Socket;
 
 import org.json.JSONException;
@@ -9,8 +10,8 @@ public class user {
 		int s_port=-1,priority=-1,id=-1;
 		String name="",ip="";
 		boolean goodClient;
-		Socket socket=new Socket();
-		
+		//Socket socket=new Socket();
+		conPkg conn=new conPkg();
 		//Priority is -1 if the user does not exist
 		
 	

@@ -38,6 +38,7 @@ public class p2pchat {
 	static JPanel jPanel;
 	static JTextArea display;
 	static JTextArea status;
+	static JTextField chatmsg;
 	static ServerSocket s_socket;
 	static user me;
 	static user[] users;
@@ -90,7 +91,7 @@ public class p2pchat {
 		rButton2.addActionListener(radio_ActionListener);
 		
 		//rButton1.setSelected(true);
-		rButton2.setSelected(true);
+		//rButton2.setSelected(true);
 		radio_ActionListener.actionPerformed(new ActionEvent(rButton1, 1001,""));
 		final JComponent[] comps=new JComponent[] {
 				rButton1,
@@ -114,9 +115,9 @@ public class p2pchat {
 					temp3=jTextFieldServerPort.getText();
 			String Default="";
 			try{Default=InetAddress.getLocalHost().getHostAddress();}
-			catch(Exception e){Default="0.0.0.0";}
-			serverAddress=is_server?(temp1.equals("")?Default:temp1)
-					:(temp2.equals("")?Default:temp2);
+			catch(Exception e){restart();}
+			serverAddress=is_server?((temp1.equals("")||temp1.equals("0.0.0.0"))?Default:temp1)
+					:((temp2.equals("")||temp2.equals("0.0.0.0"))?Default:temp2);
 			port=is_server?"":(temp3.equals("")?"8000":temp3);
 		}
 		
@@ -138,8 +139,36 @@ public class p2pchat {
 		status.setEditable(false);
 		display = new JTextArea(8,40);
 		display.setEditable(false);
+		chatmsg=new JTextField();
+		chatmsg.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if (well_connected)
+				{
+					for(int j=0;j<4;j++)
+					{
+						if(users[j].priority!=-1 && me.id!=j+1)
+						{
+							try{
+							PrintWriter prTemp=users[j].conn.ptWriter;
+							prTemp.println(me.name+":"+chatmsg.getText());
+							}catch(Exception e){display.append("Could not sent to "+users[j].name+"\n");}
+						}
+					}
+					display.append(me.name+":"+chatmsg.getText()+"\n");
+					chatmsg.setText("");
+				}
+				else {
+					display.append("You are not properly connected to the network!\n");
+					chatmsg.select(0, chatmsg.getText().length());
+				}
+			}
+		});
 		jPanel.add(status);
 		jPanel.add(new JScrollPane(display));
+		jPanel.add(chatmsg);
 		window.getContentPane().add(jPanel,"East");
 		window.pack();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -267,6 +296,7 @@ public class p2pchat {
 		if (well_connected)
 		{
 			display.append("Successfully connected to the peer-to-peer network\n");
+			window.setTitle("Pong Game @IP: "+me.ip);
 		}
 		goodClient=0;
 		int[] toConnect={i1,i2};
@@ -277,8 +307,10 @@ public class p2pchat {
 			{
 				  Socket c_socket= new Socket(users[j].ip,users[j].s_port);
 				  sockets.add(c_socket);
-				  users[j].socket=c_socket;
-				  new cl_thread(c_socket).start();
+				  users[j].conn=new conPkg(c_socket,
+						  new BufferedReader(new InputStreamReader(c_socket.getInputStream())),
+						  new PrintWriter(c_socket.getOutputStream(),true));
+				  new cl_thread(users[j].conn).start();
 			}
 		}
 	}
@@ -299,7 +331,8 @@ public class p2pchat {
 			}
 		}
 		serverAddress=users[min].ip;port=String.valueOf(users[min].s_port);
-		if (min+1==me.id){is_server=true;expose_server=is_server&&num_users<4;}
+		if (min+1==me.id){is_server=true;expose_server=is_server&&num_users<4;
+		window.setTitle("Pong Game -- Listening @ "+me.ip+":"+me.s_port);}
 		else{is_server=false;expose_server=false;}
 		display.append("New Server is "+users[min].name+" @ "+serverAddress
 				+":"+port+"\n");
@@ -320,13 +353,14 @@ public class p2pchat {
 	
 	public static void main(String[] args) {	
 		
+		users=new user[4];
+		sockets=new Vector<Socket>();
 		
 		startDialogBox(); ///Get the mode of running
 		
 		initWindow();	///Initialize the GUI
 		
-		users=new user[4];
-		sockets=new Vector<Socket>();
+		
 		
 		for (int i=0;i<4;i++)
 		{
@@ -336,14 +370,14 @@ public class p2pchat {
 		}
 		
 		me=new user();
-		
+		testprint();
 		///Setting the server socket but it is not open to clients till now
 		try{
 			s_socket=new ServerSocket(0);
 			me.s_port=s_socket.getLocalPort();
 			System.out.println(s_socket.getInetAddress().toString());
 			System.out.println(me.ip);
-			window.setTitle("Listening @ "+me.ip+":"+me.s_port);
+			window.setTitle("Initializing....");
 			}
 		catch(Exception e)
 		{System.out.println("Can't have server socket");}
@@ -356,7 +390,9 @@ public class p2pchat {
 			  Socket c_socket= new Socket(serverAddress,Integer.valueOf(port));
 			  sockets.add(c_socket);
 			  well_connected=false;
-			  new cl_thread(c_socket).start();  
+			  new cl_thread(new conPkg(c_socket,
+					  new BufferedReader(new InputStreamReader(c_socket.getInputStream())),
+							  new PrintWriter(c_socket.getOutputStream(),true))).start();
 			}catch(Exception e)
 			{System.out.println("No Connection or Incorrect Address");
 			restart();}
@@ -370,6 +406,7 @@ public class p2pchat {
 			users[0].s_port=me.s_port;
 			me=users[0];
 			port=String.valueOf(me.s_port);
+			window.setTitle("Pong Game -- Listening @ "+me.ip+":"+me.s_port);
 			Random t_rand=new Random();
 			secretKey=(int) ((1E8) *t_rand.nextDouble());
 			well_connected=true;
@@ -389,7 +426,9 @@ public class p2pchat {
 			{   
 				Socket s_socket1=s_socket.accept();
 				sockets.add(s_socket1);
-				new sr_thread(s_socket1).start();
+				new sr_thread(new conPkg(s_socket1,
+						  new BufferedReader(new InputStreamReader(s_socket1.getInputStream())),
+								  new PrintWriter(s_socket1.getOutputStream(),true))).start();
 			}
 		}catch(Exception e){e.printStackTrace();}
 	
@@ -403,16 +442,18 @@ public class p2pchat {
 		private JSONObject msgJsonObjectTo;
 		private JSONObject msgJsonObjectFrom;
 		private String addr;
-		public cl_thread(Socket socket)
+		public cl_thread(conPkg conn)
 		{
-			this.socket=socket;
+			this.socket=conn.socket;
+			this.from=conn.bfReader;
+			this.to=conn.ptWriter;
 		}
 		
 		public void run()
 		{
 			try{
-				from=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				to=new PrintWriter(socket.getOutputStream(),true);
+				//from=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				//to=new PrintWriter(socket.getOutputStream(),true);
 				addr=socket.getRemoteSocketAddress().toString().substring(1);
 				display.append("Connected to Server @ "+addr+"\n");
 				
@@ -437,7 +478,9 @@ public class p2pchat {
 						if (well_connected)
 						{
 							display.append("Successfully connected to the peer-to-peer network\n");
+							window.setTitle("Pong Game @IP: "+me.ip);
 						}
+						break;
 					}
 					else if (t_prot.equals("SUBMITNAMEPORT")){
 						display.append("Asked for Name and Port by Server\n");
@@ -459,7 +502,7 @@ public class p2pchat {
 							 users[j].priority=t_json.optInt("PRIORITY");
 							 users[j].s_port=t_json.optInt("PORT");
 							 if (users[j].ip.equals(serverAddress)&&
-									 users[j].s_port==Integer.valueOf(port)) users[j].socket=socket;
+									 users[j].s_port==Integer.valueOf(port)) users[j].conn=new conPkg(socket,from,to);
 						 }
 						 me=users[msgJsonObjectFrom.optInt("YOUR_ID")-1];
 						 max_priority=msgJsonObjectFrom.optInt("MAX_PRIORITY");
@@ -472,8 +515,18 @@ public class p2pchat {
 						 connectAll();
 						 ///Update the status bar
 						 status.setText("Number of Users: "+(num_users));
+						 break;
 					}
 				}
+				while(true){
+					String x=from.readLine();
+					if(x.equals(null)){
+						socket.close();
+					}
+					else{
+						display.append(x+"\n");
+						}}
+				
 			}catch(Exception e)
 			{
 				display.append("Server @ "+socket.getRemoteSocketAddress().toString()+"is unavailable.\n");
@@ -516,9 +569,11 @@ public class p2pchat {
 		private JSONObject msgJsonObjectFrom;
 		private int i;
 		private boolean connect;//Tells whether the connection was authenticated or not
-		public sr_thread(Socket socket)
+		public sr_thread(conPkg conn)
 		{
-			this.socket=socket;
+			this.socket=conn.socket;
+			this.from=conn.bfReader;
+			this.to=conn.ptWriter;
 		}
 		
 		public void run()
@@ -532,8 +587,8 @@ public class p2pchat {
 						.toString().substring(1), ':').equals(serverAddress)){
 					throw new Exception();
 				}
-				from=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				to=new PrintWriter(socket.getOutputStream(),true);
+				//from=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				//to=new PrintWriter(socket.getOutputStream(),true);
 				///This implies you a new connection request has been sent to the current server
 				///and there are frees slots.
 				if (expose_server){
@@ -553,7 +608,7 @@ public class p2pchat {
 					}
 					users[i].ip=SocketAddress2LocalAddress(remoteAddress.substring(1),':');
 					users[i].priority=++max_priority;
-					users[i].socket=socket;
+					users[i].conn=new conPkg(socket,from,to);
 					///attempt to receive name and port in the next exchange
 					msgJsonObjectTo.put("PROTOCOL", "SUBMITNAMEPORT");
 					to.println(msgJsonObjectTo.toString());
@@ -644,6 +699,7 @@ public class p2pchat {
 						t_user.ip=tjson_user.optString("IP");
 						t_user.s_port=tjson_user.optInt("PORT");
 						t_user.priority=tjson_user.optInt("PRIORITY");
+						t_user.conn=new conPkg(socket,from,to);
 						max_priority=t_user.priority>max_priority?t_user.priority:max_priority;
 						display.append("Connected to "+remoteAddress+"\n");
 						status.setText("Number of Users: "+(++num_users));
