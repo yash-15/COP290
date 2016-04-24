@@ -584,7 +584,7 @@ public class p2pchat {
 			String remoteAddress=socket.getRemoteSocketAddress().toString();
 			try{
 				if(!SocketAddress2LocalAddress(socket.getLocalSocketAddress()
-						.toString().substring(1), ':').equals(serverAddress)){
+						.toString().substring(1), ':').equals(me.ip)){
 					throw new Exception();
 				}
 				//from=new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -732,7 +732,7 @@ public class p2pchat {
 						display.append(x+"\n");
 						}}
 			}catch(Exception e)
-			{System.out.println(e);
+			{e.printStackTrace();
 				try{socket.close();}catch(Exception e1){}
 				finally{
 					if(connect){
