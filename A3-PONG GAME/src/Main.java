@@ -2,8 +2,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -56,12 +54,7 @@ public class Main{
 		//frame.setResizable(false);
 		System.out.println(minDim+" is the dim at "+System.currentTimeMillis());
 		frame.setTitle("Ping Pong!");
-		frame.addWindowListener(new WindowAdapter(){
-            public void windowClosing(WindowEvent e){
-            	network.window.setVisible(true);
-            	frame.dispose();
-            }
-        });
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);	// center-aligned
 
 		statusBar.setText("Size is : "+String.valueOf(width)+" x "+String.valueOf(height));

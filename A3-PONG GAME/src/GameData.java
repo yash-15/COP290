@@ -44,7 +44,7 @@ public class GameData {
 	private int localUser;
 	private Player[] players;
 	private ArrayList<Ball> balls;
-	public static int windowSize;
+	private int windowSize;
 	private double restitution;
 	
 	public GameData() {
@@ -59,9 +59,7 @@ public class GameData {
 		System.out.println("GameData Constructed!");
 	}
 
-	
 	public int _numberOfPlayers()	{	return numberOfPlayers;	}
-	public int _localUser()			{	return localUser;		}
 	public int _centralPlayer()		{	return centralPlayer;	}
 	public Player[] _players()		{	return players;			}
 	public Player _player(int i)	{	return players[i];		}
@@ -83,6 +81,9 @@ public class GameData {
 			numberOfPlayers++;
 		}	
 	}
+
+	public int _localUser()	{	return localUser;	}
+	public int _windowSize(){	return windowSize;	}
 	
 	public void set_windowSize(int t){	
 		windowSize=t;
@@ -100,7 +101,7 @@ public class GameData {
 
 class Ball{
 	
-	private	double x=0,y=0,rad=0,vx=0,vy=0,ax=0,ay=0,theta=0,omega=0,alpha=0;
+	private	double x=0,y=0,rad=0,vx=0,vy=0,ax=0,ay=0,omega=0,alpha=0;
 	private Color color=Color.RED;
 	
 	public Ball(){
@@ -125,7 +126,6 @@ class Ball{
 	public double _vy()		{	return vy;		}
 	public double _ax()		{	return ax;		}
 	public double _ay()		{	return ay;		}
-	public double _theta()	{	return theta;	}
 	public double _omega()	{	return omega;	}
 	public double _alpha()	{	return alpha;	}
 	public Color  _color()	{	return color;	}
@@ -137,7 +137,6 @@ class Ball{
 	public void set_vy(double t)	{	vy=t;	}
 	public void set_ax(double t)	{	ax=t;	}
 	public void set_ay(double t)	{	ay=t;	}
-	public void	set_theta(double t)	{	theta=t;}
 	public void set_omega(double t)	{	omega=t;}
 	public void set_alpha(double t)	{	alpha=t;}
 	public void set_color(Color t)	{	color=t;}
@@ -150,7 +149,7 @@ enum Position{
 
 class Paddle{
 	
-	private Position pos; //Stores the orientation of the paddle
+	private Position pos;
 	private double len,wdt,x,vx,ax;
 	private Color color=Color.BLUE;
 	static double def_len, def_wdt, max_speed, max_x, def_y;
@@ -189,6 +188,7 @@ class Paddle{
 	public void set_x(double t)	{
 		x=Math.max(-max_x,Math.min(max_x, t));
 	}
+	public void set_y(double t)		{	y=t;	}
 	public void set_vx(double t) {
 		vx=Math.max(-max_speed,Math.min(max_speed,t));
 	}

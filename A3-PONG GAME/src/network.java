@@ -2,7 +2,6 @@
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,7 +15,6 @@ import javax.swing.JTextField;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -29,13 +27,12 @@ import java.net.Socket;
 import java.util.Random;
 import java.util.Vector;
 
-public class network {
+public class network extends Thread{
 	static JFrame window;
 	static JPanel jPanel;
 	static JTextArea display;
 	static JTextArea status;
 	static JTextField chatmsg;
-	static JButton playButton;
 	static ServerSocket s_socket;
 	static user me;
 	static user[] users;
@@ -57,16 +54,16 @@ public class network {
 	static void startDialogBox(){
 		ButtonGroup rButtonGroup =new ButtonGroup();
 		
-		final JRadioButton rButton1=new JRadioButton("Run as Server");
-		final JRadioButton rButton2=new JRadioButton("Run as Client");
+		JRadioButton rButton1=new JRadioButton("Run as Server");
+		JRadioButton rButton2=new JRadioButton("Run as Client");
 		
-		final JLabel jLabelExposeIP=new JLabel("Expose IP:");
-		final JLabel jLabelServerIP=new JLabel("Server IP:");
-		final JLabel jLabelServerPort=new JLabel("Server Port:");
+		JLabel jLabelExposeIP=new JLabel("Expose IP:");
+		JLabel jLabelServerIP=new JLabel("Server IP:");
+		JLabel jLabelServerPort=new JLabel("Server Port:");
 		
-		final JTextField jTextFieldExposeIP=new JTextField();
-		final JTextField jTextFieldServerIP= new JTextField();
-		final JTextField jTextFieldServerPort=new JTextField();
+		JTextField jTextFieldExposeIP=new JTextField();
+		JTextField jTextFieldServerIP= new JTextField();
+		JTextField jTextFieldServerPort=new JTextField();
 
 		rButtonGroup.add(rButton1);
 		rButtonGroup.add(rButton2);
@@ -163,22 +160,9 @@ public class network {
 				}
 			}
 		});
-		
-		playButton = new JButton();
-		playButton.setText("PLAY >>");
-		playButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				Main.main(null);
-				window.setVisible(false);
-			}
-		});
 		jPanel.add(status);
 		jPanel.add(new JScrollPane(display));
 		jPanel.add(chatmsg);
-		jPanel.add(playButton);
 		window.getContentPane().add(jPanel,"East");
 		window.pack();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
