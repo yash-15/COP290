@@ -2,6 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Scanner;
+
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
@@ -44,7 +46,7 @@ public class Main{
 		double height = screenSize.getHeight();
 		int minDim = (int)Math.min(width, height)-100;
 		frame.setSize(minDim-15,minDim+15);
-		frame.setResizable(false);
+		//frame.setResizable(false);
 		System.out.println(minDim+" is the dim at "+System.currentTimeMillis());
 		frame.setTitle("Ping Pong!");
 
@@ -53,10 +55,13 @@ public class Main{
 		frame.setLocationRelativeTo(null);	// center-aligned
 
 		statusbar.setText("Size is : "+String.valueOf(width)+" x "+String.valueOf(height));
-		frame.getContentPane().add(statusbar, BorderLayout.SOUTH);
-		frame.getContentPane().add(bar2, BorderLayout.NORTH);
-
+		BoxLayout bLayout=new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
+		frame.getContentPane().setLayout(bLayout);
+		frame.getContentPane().add(statusbar);
 		frame.getContentPane().add(game._UI());
+		frame.getContentPane().add(bar2);
+		bar2.setText("Test");
+		//frame.pack();
 		frame.setVisible(true);
 
 		System.out.println("Game window Created!");
@@ -88,40 +93,3 @@ public class Main{
 	}
 }
 
-/*import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
-
-public class Game extends JFrame {
-
-    private JLabel statusbar;
-
-    public Game() {
-        
-        initUI();
-   }
-    
-   private void initUI() {
-
-       
-        setSize(200, 400);
-        setTitle("Game");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);       
-        statusbar = new JLabel(" 0");
-        add(statusbar, BorderLayout.SOUTH);
-       
-   }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                Game game = new Game();
-                game.setVisible(true);
-            }
-        });                
-    } 
-}*/

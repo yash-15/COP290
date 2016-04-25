@@ -26,7 +26,7 @@ public class Game implements ActionListener{
 	private JLabel statusBar;
 	private Timer timer;
 	private long prevTime,curTime;
-	private int size;
+	public static int size;
 	
 	public Game(Main parent) {
 
@@ -60,13 +60,7 @@ public class Game implements ActionListener{
 		
 		//message("Move() with delta : "+delta);
 		
-		for(Ball ball : data._balls()){
-			ball.set_x (ball._x()+delta*ball._vx());
-			ball.set_y (ball._y()+delta*ball._vy());
-			ball.set_vx(ball._vx()+delta*ball._ax());
-			ball.set_vy(ball._vy()+delta*ball._ay());
-			//statusBar.setText("X : "+String.valueOf(ball._x())+" Y : "+String.valueOf(ball._y()));
-		}
+		
 		
 		Player[] player = data._players();
 		Paddle paddle;
@@ -75,18 +69,27 @@ public class Game implements ActionListener{
 				paddle=player[i]._paddle();
 				paddle.set_x(paddle._x()+delta*paddle._vx());
 				if(player[i]._isHuman()){
-					if(!paddle.isKeyPressed && paddle._vx()*paddle._ax()>=0){
-						paddle.set_vx(0);
-						paddle.set_ax(0);
-					}
-					else
-						paddle.set_vx(paddle._vx()+delta*paddle._ax());
-				}
+									}
 				else if(player[i]._isBot()) {
 					player[i]._AI().playMove();
-					paddle.set_vx(paddle._vx()+delta*paddle._ax());
+					//paddle.set_vx(paddle._vx()+delta*paddle._ax());
 				}
+				if(!paddle.isKeyPressed && paddle._vx()*paddle._ax()>=0){
+					paddle.set_vx(0);
+					paddle.set_ax(0);
+				}
+				else
+					{paddle.set_vx(paddle._vx()+delta*paddle._ax());}
+				
 			}
+		}
+		
+		for(Ball ball : data._balls()){
+			ball.set_x (ball._x()+delta*ball._vx());
+			ball.set_y (ball._y()+delta*ball._vy());
+			ball.set_vx(ball._vx()+delta*ball._ax());
+			ball.set_vy(ball._vy()+delta*ball._ay());
+			//statusBar.setText("X : "+String.valueOf(ball._x())+" Y : "+String.valueOf(ball._y()));
 		}
 	}
   
@@ -142,8 +145,8 @@ public class Game implements ActionListener{
 			player._paddle().set_positionID(i);
 			data.addPlayer(player);
 		}
-		Ball ball = new Ball(20,300,0,500,500);
-		ball.set_color(Color.BLUE);
+		Ball ball = new Ball(10,300,0,200,200);
+		ball.set_color(Color.DARK_GRAY);
 		data.addBall(ball);
 
 	//	ball = new Ball(20,-30,-30,-20,-20);

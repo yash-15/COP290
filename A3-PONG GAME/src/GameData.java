@@ -223,15 +223,16 @@ class Paddle{
 	}
 	
 	public void moveLeft(){
-		ax=-500;
+		ax=-1000;
 		isKeyPressed=true;
 	}
 	public void moveRight(){
-		ax=500;
+		ax=1000;
 		isKeyPressed=true;
 	}
 	public void stop(){
-		ax*=-2;
+		if(isKeyPressed)
+			ax=ax*-2;
 		isKeyPressed=false;
 	}
 	
