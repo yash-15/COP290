@@ -14,11 +14,11 @@ public class GUI extends JPanel{
 	JLabel statusBar;
 	int size;
     public GUI(){}
-    public GUI(Game parent, GameData _data){
+    public GUI(GameData _data){
 
 		System.out.println("Constructing GUI using Data!");
     	data=_data;
-    	statusBar = parent._statusBar();
+    	statusBar = Main.statusBar;
 
 		System.out.println("GUI Constructed!");
 	}

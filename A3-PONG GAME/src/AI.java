@@ -1,4 +1,4 @@
-import javax.xml.xpath.XPath;
+
 
 
 
@@ -46,12 +46,12 @@ public class AI {
 			bx+=(bvx* reachTime);
 			
 	//		if(paddle._pos()==Position.RIGHT)
-		//		Main.statusbar.setText(count+" "+(int)ball._x()+" "+(int)ball._y()+" :: "+bx+" Yo");
+		//		Main.statusBar.setText(count+" "+(int)ball._x()+" "+(int)ball._y()+" :: "+bx+" Yo");
 			if(player._paddle()._pos()==Position.UP) 
-				{//Main.statusbar.setText("Tentative : "+(int)bx+"\nPaddle at :"+(int)x+"\nReachTime: "+reachTime);
-				Main.statusbar.setText("Paddle Velocity: "+paddle._vx()+" Accn: "+paddle._ax());}
-				
-			if(reachTime>=0 && Math.abs(bx-x)>len/2){
+				{//Main.statusBar.setText("Tentative : "+(int)bx+"\nPaddle at :"+(int)x+"\nReachTime: "+reachTime);
+				//Main.statusBar.setText("Paddle Velocity: "+paddle._vx()+" Accn: "+paddle._ax());}
+				}
+			if(reachTime>=0 && Math.abs(bx-x)>0){
 				if(bx>x) player._paddle().moveRight();
 				else player._paddle().moveLeft();
 			}
@@ -61,6 +61,6 @@ public class AI {
 			return;
 		}
 			
-		Main.message(false,"AI! at "+System.currentTimeMillis());
+		
 	}
 }

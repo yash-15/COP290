@@ -1,5 +1,5 @@
 import java.awt.Color;
-import java.util.HashSet;
+import java.util.ArrayList;
 
 /**
  * @author YKB
@@ -7,29 +7,30 @@ import java.util.HashSet;
  */
 
 /*** Board Configuration :
- * 					 (3) 
+ * 					 (2) 
  * 	   //===========================\\
  * 	   ||							||
  * 	   ||							||
  * 	   ||							||
  * 	   ||							||
  * 	   ||							||
- * 	(2)||			(0,0)			||(4)
+ * 	(3)||			(0,0)			||(1)
  * 	   ||							||
  * 	   ||							||
  * 	   ||							||
  * 	   ||							||
  * 	   ||							||
  * 	   \\===========================//
- * 					 (1)
+ * 					 (0)
  * 
- * 		1 : DOWN  ;	 2 : LEFT  ;  3 : UP  ;  4 : RIGHT  
+ * 		0 : DOWN  ;	 1 : RIGHT  ;  2 : UP  ;  3 : RIGHT  
  */
 
 
 public class GameData {
 	
-	/** MAXPLAYERS		: maximum number of players in the game
+	/** 
+	 * MAXPLAYERS		: maximum number of players in the game
 	 * numberOfPlayers 	: number of players in the game : 2,3,4 are acceptable
 	 * centralPlayer	: player performing the computations : should be a Human Player
 	 * localUser		: ID of user running on local machine
@@ -42,18 +43,19 @@ public class GameData {
 	private int centralPlayer;
 	private int localUser;
 	private Player[] players;
-	private HashSet<Ball> balls;
+	private ArrayList<Ball> balls;
 	private int windowSize;
+	private double restitution;
 	
 	public GameData() {
 
 		System.out.println("Constructing GameData...");
 		numberOfPlayers = centralPlayer = 0;
 		players = new Player[MAXPLAYERS];
-		balls = new HashSet<Ball>();
+		balls = new ArrayList<Ball>();
 
 		localUser=0;
-		
+		restitution=0.3;
 		System.out.println("GameData Constructed!");
 	}
 
@@ -61,7 +63,8 @@ public class GameData {
 	public int _centralPlayer()		{	return centralPlayer;	}
 	public Player[] _players()		{	return players;			}
 	public Player _player(int i)	{	return players[i];		}
-	public HashSet<Ball> _balls()	{	return balls;			}
+	public ArrayList<Ball> _balls()	{	return balls;			}
+	public double _restitution()    {	return restitution;		}
 	
 	public void set_centralPlayer(int t)	{
 		if(t>=0 && t<numberOfPlayers && players[t]._isHuman())
@@ -86,7 +89,7 @@ public class GameData {
 		windowSize=t;
 		Paddle.def_len = windowSize/5.0;
 		Paddle.def_wdt = windowSize/20.0;
-		Paddle.max_speed = windowSize/3.0;
+		Paddle.max_speed = windowSize;
 		Paddle.max_x = 0.35*windowSize;
 	}
 	

@@ -12,7 +12,6 @@ public class HumanPlayer extends KeyAdapter {
 	
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		Main.message(debug,"KEY : "+key+" at "+System.currentTimeMillis());
 		switch(key){
 			case KeyEvent.VK_LEFT :
 				data._player(data._localUser())._paddle().moveLeft();
@@ -25,7 +24,6 @@ public class HumanPlayer extends KeyAdapter {
 	
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
-		Main.message(debug,"REL : "+key+" at "+System.currentTimeMillis());
 		switch(key){
 			case KeyEvent.VK_LEFT : 
 			case KeyEvent.VK_RIGHT : 
