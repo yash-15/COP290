@@ -91,7 +91,6 @@ public class GameData {
 		Paddle.def_wdt = windowSize/20.0;
 		Paddle.max_speed = windowSize;
 		Paddle.max_x = 0.35*windowSize;
-		Paddle.def_y = -9.5*Paddle.def_wdt;
 	}
 	
 	public void addBall(Ball ball) {
@@ -144,27 +143,27 @@ class Ball{
 }
 
 enum Position{
-	DOWN,RIGHT,UP,LEFT;
+	LEFT,RIGHT,UP,DOWN;
 }
 
 class Paddle{
 	
 	private Position pos;
-	private double len,wdt,x,vx,ax;
+	private double len,wdt,x,y,vx,ax; 
 	private Color color=Color.BLUE;
-	static double def_len, def_wdt, max_speed, max_x, def_y;
+	static double def_len, def_wdt, max_speed, max_x;
 	boolean isKeyPressed;
 	
 	public Paddle() {
 		pos = Position.DOWN;
-		x=vx=ax=0;
+		x=y=vx=ax=0;
 		len=def_len;
 		wdt=def_wdt;
 		isKeyPressed = false;
 	}
 
 	public double _x()		{	return x;		}
-	public double _y()		{	return def_y;	}
+	public double _y()		{	return -9.5*def_wdt;	}
 	public double _vx()		{	return vx;		}
 	public double _ax()		{	return ax;		}
 	public double _len()	{	return len;		}
@@ -173,15 +172,33 @@ class Paddle{
 	public Color  _color()	{	return color;	}
 	
 	public int _positionID() {
-		return pos.ordinal();
+		switch (pos) {
+			case DOWN:	return 0;
+			case RIGHT:	return 1;
+			case UP:	return 2;
+			case LEFT:	return 3;
+		}
+		return 0;	//should not reach here!
 	}
 	
 	public int _dx(){
-		return (1-pos.ordinal())%2;
+		switch (pos) {
+			case DOWN:	return 1;
+			case RIGHT:	return 0;
+			case UP:	return -1;
+			case LEFT:	return 0;
+		}
+		return 0;	//should not reach here!
 	}
 	
 	public int _dy(){
-		return (2-pos.ordinal())%2;
+		switch (pos) {
+		case DOWN:	return 0;
+		case RIGHT:	return 1;
+		case UP:	return 0;
+		case LEFT:	return -1;
+	}
+	return 0;	//should not reach here!
 }
 	
 	
@@ -198,8 +215,14 @@ class Paddle{
 	public void set_pos(Position t)	{	pos=t;	}	
 	public void set_color(Color t)	{	color=t;}
 	
-	public void set_positionID(int t){
-		pos = Position.values()[t];			
+	public void set_positionID(int t) throws Exception{
+		switch(t) {
+			case 0:	pos = Position.DOWN;	break;
+			case 1:	pos = Position.RIGHT;	break;
+			case 2:	pos = Position.UP;		break;
+			case 3:	pos = Position.LEFT;	break;
+			default:throw new Exception("Invalid Position for the paddle!");
+		}		
 	}
 	
 	public void moveLeft(){
@@ -212,7 +235,7 @@ class Paddle{
 	}
 	public void stop(){
 		if(isKeyPressed)
-			ax*=-2;
+			ax=ax*-2;
 		isKeyPressed=false;
 	}
 	
