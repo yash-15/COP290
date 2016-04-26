@@ -5,10 +5,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Game implements ActionListener{
 	
 	private final int render_delay = 10; // The time period of timer in ms 
-	private GameData data;
+	public static GameData data;
 	private GUI UI;
 	private Timer timer;
 	private long prevTime,curTime;  
@@ -60,6 +63,7 @@ public class Game implements ActionListener{
 		
 		Ball ball = new Ball(10,200,0,300,400);
 		ball.set_color(Color.DARK_GRAY);
+		ball.set_id(0);
 		data.addBall(ball);
 		
 		UI.set_localUser(localUser);
@@ -104,6 +108,14 @@ public class Game implements ActionListener{
 		t._paddle().set_positionID(pos);
 		t.set_AI(new AI(data,t._paddle()));
 		data.set_numberOfPlayers(1+data._numberOfPlayers());
+	}
+	
+	public static void convertToBot(int i)
+	{
+		Player t_player=data._player(i);
+		t_player.isBot=true;
+		t_player.isHuman=false;
+		t_player.set_AI(new AI(data, t_player._paddle()));
 	}
 	
 	public void play(){
@@ -168,11 +180,18 @@ public class Game implements ActionListener{
 			if(Math.abs(ball._x())+ball._rad()>=size/2.0)
 				if(ball._x()*ball._vx()>0){
 					ball.set_vx(-ball._vx());
+					int t_id=det_wall(ball._x(),ball._y(), ball._rad());
+					if (t_id==0 || (t_id!=-1 && network.is_server
+							&& data._player(t_id)._isBot())) BallMessage(ball._id());
+					
 					//statusBar.setText("WALL WALL WALL");
 				}
 			if(Math.abs(ball._y())+ball._rad()>=size/2.0)
 				if(ball._y()*ball._vy()>0){
 					ball.set_vy(-ball._vy());
+					int t_id=det_wall(ball._x(),ball._y(), ball._rad());
+					if (t_id==0 || (t_id!=-1 && network.is_server
+							&& data._player(t_id)._isBot())) BallMessage(ball._id());
 					//statusBar.setText("WALL WALL WALL");
 				}
 		}
@@ -195,17 +214,63 @@ public class Game implements ActionListener{
 						if(paddle._dx()*ball._vy()<0){
 							ball.set_vy(-ball._vy());
 						    ball.set_vx(ball._vx()+data._restitution()*paddle._dx()*paddle._vx());
+						    if (i==0 || (network.is_server && data._player(i).isBot)) BallMessage(ball._id());
 						    //statusBar.setText("PADDLE PADDLE PADDLE");
 					    }
 						if(paddle._dy()*ball._vx()>0){
 							ball.set_vx(-ball._vx());
 							ball.set_vy(ball._vy()+data._restitution()*paddle._dy()*paddle._vx());
+							if (i==0 || (network.is_server && data._player(i).isBot)) BallMessage(ball._id());
 							//statusBar.setText("PADDLE PADDLE PADDLE");
 						}
 					}
 				}
 			}
 		}
+	}
+	
+	//i for ball_id
+	private void BallMessage(int i)
+	{
+		JSONObject t_json=new JSONObject();
+		Ball t_ball=GameData.balls.get(i);
+		try {
+			t_json.put("PROTOCOL", "BALL_UPDATE");
+			t_json.put("USER_ID", network.me.id);
+			t_json.put("BALL_ID", i);
+			t_json.put("X",t_ball._x());
+			t_json.put("Y",t_ball._y());
+			t_json.put("VX",t_ball._vx());
+			t_json.put("VY",t_ball._vy());
+			t_json.put("AX",t_ball._ax());
+			t_json.put("AY",t_ball._ay());
+			t_json.put("THETA",t_ball._theta());
+			t_json.put("OMEGA",t_ball._omega());
+			t_json.put("ALPHA",t_ball._alpha());
+			t_json.put("COLOR",t_ball._color());
+			for(int j=0;j<4;j++)
+			{
+				if(network.users[j].id!=network.me.id && network.users[j].priority!=-1){
+					network.users[j].conn.ptWriter.println(t_json.toString());
+				}
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/* Returns 0,1,2 ,3 as per the walls 
+	 * Returns -1 if not applicable
+	 */
+	private int det_wall(double x,double y,double r)
+	{
+		if (x+r>=size/2) return 1;
+		else if (x-r<=-size/2) return 3;
+		else if(y+r>=size/2) return 2;
+		else if (y-r<=-size/2) return 0;
+		else return -1;
 	}
 	
 }

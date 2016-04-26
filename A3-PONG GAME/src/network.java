@@ -243,7 +243,7 @@ public class network {
 	{
 		users[i].priority=-1;
 		status.setText("Number of Users: "+(--num_users));expose_server=is_server && num_users<4;
-		if (!window.isVisible()) { GameData.players[(i+1-me.id)%4].isBot=true;}
+		if (!window.isVisible()) {System.out.println((i+5-me.id)%4);Game.convertToBot((i+5-me.id)%4);}
 	}
 	
 	
@@ -793,6 +793,33 @@ public class network {
 									Main.main(null);
 									window.setVisible(false);
 							}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("BALL_UPDATE")){
+									int num90rot=0,s_id=msgJsonObjectFrom.optInt("USER_ID");
+									double xco,yco;double[] x1=new double[2];
+									num90rot=((me.id-s_id)+4)%4;
+									
+									Ball t_ball=GameData.balls.get(msgJsonObjectFrom.optInt("BALL_ID"));
+									
+									xco=msgJsonObjectFrom.optDouble("X");
+									yco=msgJsonObjectFrom.optDouble("Y");
+									x1=Physics.Rotate(num90rot, xco,yco);
+									t_ball.set_x(x1[0]);t_ball.set_y(x1[1]);
+									
+									xco=msgJsonObjectFrom.optDouble("VX");
+									yco=msgJsonObjectFrom.optDouble("VY");
+									x1=Physics.Rotate(num90rot, xco,yco);
+									t_ball.set_vx(x1[0]);t_ball.set_vy(x1[1]);
+									
+									xco=msgJsonObjectFrom.optDouble("AX");
+									yco=msgJsonObjectFrom.optDouble("AY");
+									x1=Physics.Rotate(num90rot, xco,yco);
+									t_ball.set_ax(x1[0]);t_ball.set_ay(x1[1]);
+									
+									t_ball.set_theta(msgJsonObjectFrom.optDouble("THETA")-num90rot*3.1415926);
+									t_ball.set_omega(msgJsonObjectFrom.optDouble("OMEGA"));
+									t_ball.set_alpha(msgJsonObjectFrom.optDouble("ALPHA"));
+									
+								}
 								else {
 									
 								}

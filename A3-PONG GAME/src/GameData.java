@@ -35,12 +35,11 @@ public class GameData {
 	private int numberOfPlayers;
 	private int centralPlayer;
 	public static Player[] players;
-	private ArrayList<Ball> balls;
+	public static ArrayList<Ball> balls;
 	private int windowSize;
 	private double restitution;
 	
 	public GameData() {
-
 		System.out.println("Constructing GameData...");
 		numberOfPlayers = centralPlayer = 0;
 		players = new Player[MAXPLAYERS];

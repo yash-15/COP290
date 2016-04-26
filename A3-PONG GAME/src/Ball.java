@@ -2,7 +2,8 @@ import java.awt.Color;
 
 class Ball{
 	
-	private	double x=0,y=0,rad=0,vx=0,vy=0,ax=0,ay=0,omega=0,alpha=0;
+	private int id;
+	private	double x=0,y=0,rad=0,vx=0,vy=0,ax=0,ay=0,theta=0,omega=0,alpha=0;
 	private Color color=Color.RED;
 	
 	public Ball(){
@@ -27,9 +28,11 @@ class Ball{
 	public double _vy()		{	return vy;		}
 	public double _ax()		{	return ax;		}
 	public double _ay()		{	return ay;		}
+	public double _theta()	{	return theta;	}
 	public double _omega()	{	return omega;	}
 	public double _alpha()	{	return alpha;	}
 	public Color  _color()	{	return color;	}
+	public int _id()		{	return id;		}
 
 	public void set_x(double t)		{	x=t;	}
 	public void set_y(double t)		{	y=t;	}
@@ -38,8 +41,9 @@ class Ball{
 	public void set_vy(double t)	{	vy=t;	}
 	public void set_ax(double t)	{	ax=t;	}
 	public void set_ay(double t)	{	ay=t;	}
+	public void set_theta(double t)	{	theta=t;}
 	public void set_omega(double t)	{	omega=t;}
 	public void set_alpha(double t)	{	alpha=t;}
 	public void set_color(Color t)	{	color=t;}
-	
+	public void set_id(int i)		{	id=i;	}
 }
