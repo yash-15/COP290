@@ -31,7 +31,7 @@ public class GameData {
 	 * balls			: Set of all active balls in the game
 	 */
 	
-	public static final int MAXPLAYERS = 4;
+	public final int MAXPLAYERS = 4;
 	private int numberOfPlayers;
 	private int centralPlayer;
 	private Player[] players;
@@ -49,29 +49,6 @@ public class GameData {
 		restitution=0.3;
 		System.out.println("GameData Constructed!");
 	}
-
-	public int _numberOfPlayers()	{	return numberOfPlayers;	}
-	public int _centralPlayer()		{	return centralPlayer;	}
-	public Player[] _players()		{	return players;			}
-	public Player _player(int i)	{	return players[i];		}
-	public ArrayList<Ball> _balls()	{	return balls;			}
-	public double _restitution()    {	return restitution;		}
-	
-	public void set_centralPlayer(int t)	{
-		if(t>=0 && t<numberOfPlayers && players[t]._isHuman())
-			centralPlayer=t;
-		else
-			throw new IllegalArgumentException();
-	}
-	
-	public void addPlayer(Player t) throws Exception	{
-		if(numberOfPlayers==MAXPLAYERS)
-			throw new Exception("Maximum limit reached.");
-		else{
-			players[numberOfPlayers]=t;
-			numberOfPlayers++;
-		}	
-	}
 	
 	public void set_windowSize(int t){	
 		windowSize=t;
@@ -79,6 +56,27 @@ public class GameData {
 		Paddle.def_wdt = windowSize/20.0;
 		Paddle.max_speed = windowSize;
 		Paddle.max_x = 0.35*windowSize;
+	}
+
+	public int _numberOfPlayers()	{	return numberOfPlayers;	}
+	public int _centralPlayer()		{	return centralPlayer;	}
+	public Player[] _players()		{	return players;			}
+	public Player _player(int i)	{	return players[i];		}
+	public ArrayList<Ball> _balls()	{	return balls;			}
+	public double _restitution()    {	return restitution;		}
+	public int _windowSize() 		{	return windowSize;		}
+	
+
+	public void set_numberOfPlayers(int t)	{	numberOfPlayers=t;	}
+	public void set_centralPlayer(int t)	{
+		if(t>=0 && t<numberOfPlayers && players[t]._isHuman())
+			centralPlayer=t;
+		else
+			throw new IllegalArgumentException();
+	}
+	
+	public void set_player(int id, Player t) {
+		players[id]=t;
 	}
 	
 	public void addBall(Ball ball) {

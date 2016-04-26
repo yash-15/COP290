@@ -73,6 +73,7 @@ public class Main0{
 					obj.game.play();
 				}
 				catch(Exception e){
+					e.printStackTrace();
 					System.out.println(e.toString());
 				}
 			}

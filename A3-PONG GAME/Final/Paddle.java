@@ -24,6 +24,7 @@ class Paddle{
 	public double _wdt()	{	return wdt;		}
 	public Position _pos()	{	return pos;		}
 	public Color  _color()	{	return color;	}
+	public boolean  _isKeyPressed()	{	return isKeyPressed;	}
 	
 	public int _positionID() {
 		switch (pos) {

@@ -2,38 +2,29 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class HumanPlayer extends KeyAdapter {
-	GameData data;
-	int localUser;
-	boolean debug;
-	public HumanPlayer(Game game) {
-		data = game._data();
-		localUser = game._localUser();
+	Paddle paddle;
+	public HumanPlayer(Paddle _paddle) {
+		paddle = _paddle;
+		System.out.println("Adding KeyAdapter to Paddle "+paddle._pos().toString());
 	}
 	
 	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		switch(key){
+		switch(e.getKeyCode()){
 			case KeyEvent.VK_LEFT :
-				data._player(localUser)._paddle().moveLeft();
+				paddle.moveLeft();
 				break;
 			case KeyEvent.VK_RIGHT : 
-				data._player(localUser)._paddle().moveRight();
+				paddle.moveRight();
 				break;
 		}
 	}
 	
 	public void keyReleased(KeyEvent e) {
-		int key = e.getKeyCode();
-		switch(key){
+		switch(e.getKeyCode()){
 			case KeyEvent.VK_LEFT : 
 			case KeyEvent.VK_RIGHT : 
-				data._player(localUser)._paddle().stop();
+				paddle.stop();
 				break;
 		}
 	}
-	
-	public void set_localUser(int t) {
-		localUser = t;
-	}
-	
 }

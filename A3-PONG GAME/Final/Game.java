@@ -41,34 +41,62 @@ public class Game implements ActionListener{
 	public void setup(int numberOfPlayers, int localUser) throws Exception {
 		
 		this.localUser = localUser;
-		this.size = UI.getWidth()-3;
+		//TODO : Verify size below
+		this.size = UI.getWidth();UI.getToolkit().getScreenSize();
 		
 		System.out.println(size +" is the size of box");
 		data.set_windowSize(size);
 		UI.set_windowSize(size);
-		UI.set_localUser(localUser);
-		
-		UI.setFocusable(true);
-		UI.addKeyListener(new HumanPlayer(this));
-	       
-		Player player;
 		
 		for(int i=0;i<numberOfPlayers;i++) {
-			
-			//TODO: write cleaner methods to create Human/Bot.
-			player = new Player(data);
-			player.set_isAlive(true);
-			player.set_isHuman(i==0);
-			player.set_isBot(i>0);
-			if(player._isBot())
-				player.set_AI(new AI(this,player));
-			player._paddle().set_positionID(i);
-			data.addPlayer(player);
+			if(i<-2)
+				addHumanPlayer(i);
+			else
+				addBotPlayer(i);
 		}
-		Ball ball = new Ball(10,300,0,150,200);
+		
+		Ball ball = new Ball(10,200,0,400,300);
 		ball.set_color(Color.DARK_GRAY);
 		data.addBall(ball);
+		
+		UI.set_localUser(localUser);
+	}
 	
+	/**
+	 * Add a Human Player with given global Position. UI would still be
+	 * rendered as if he is playing at Position.BOTTOM.
+	 * If index of this Human player is same as local user, then 
+	 * KeyListener is also instantiated for it.
+	 * @param pos Integer corresponding to Position of the paddle
+	 * @throws Exception Maximum Players Limit Reached Already. 
+	 */
+	public void addHumanPlayer(int pos) throws Exception	{
+		if(data._numberOfPlayers()==data.MAXPLAYERS)
+			throw new Exception("Maximum limit reached.");
+		System.out.println("Adding human player at index "+data._numberOfPlayers()+" as "+Position.values()[pos]);
+		Player t = new Player();
+		data.set_player(data._numberOfPlayers(),t);
+		t.set_isAlive(true);
+		t.set_isBot(false);
+		t.set_isHuman(true);
+		t._paddle().set_positionID(pos);
+		if(data._numberOfPlayers()==localUser)
+			UI.addKeyListener(new HumanPlayer(t._paddle()));
+		data.set_numberOfPlayers(1+data._numberOfPlayers());
+	}
+	
+	public void addBotPlayer(int pos) throws Exception	{
+		if(data._numberOfPlayers()==data.MAXPLAYERS)
+			throw new Exception("Maximum limit reached.");
+		System.out.println("Adding bot player at index "+data._numberOfPlayers()+" as "+Position.values()[pos]);
+		Player t = new Player();
+		data.set_player(data._numberOfPlayers(),t);	
+		t.set_isAlive(true);
+		t.set_isBot(true);
+		t.set_isHuman(false);
+		t._paddle().set_positionID(pos);
+		t.set_AI(new AI(data,t._paddle()));
+		data.set_numberOfPlayers(1+data._numberOfPlayers());
 	}
 	
 	public void play(){
@@ -90,33 +118,29 @@ public class Game implements ActionListener{
 		prevTime = curTime;
 	}
 		
+	Player player;
+	Paddle paddle;
+	
 	/**
 	 * Updates the parameters of the paddles and the balls when called.
-	 * Called @ every timer event
+	 * Called at every timer event
 	 */
-	
 	private void move() {
 		
 		double delta = (curTime-prevTime)/1000.0;
 		
-		//TODO: Can be a better way so that you need not make references every time
-		Player[] player = data._players();
-		Paddle paddle;
-		
 		for(int i=0; i<data._numberOfPlayers();i++){
-			if(player[i]._isAlive()){
-				paddle=player[i]._paddle();
+			player=data._player(i);
+			if(player._isAlive()){
+				paddle=player._paddle();
 				paddle.set_x(paddle._x()+delta*paddle._vx());
-				if(player[i]._isBot()) {
-					player[i]._AI().playMove();
-				}
-				if(!paddle.isKeyPressed && paddle._vx()*paddle._ax()>=0){
+				paddle.set_vx(paddle._vx()+delta*paddle._ax());
+				if(player._isBot())
+					player._AI().playMove();
+				if(!paddle._isKeyPressed() && paddle._vx()*paddle._ax()>=0){
 					paddle.set_vx(0);
 					paddle.set_ax(0);
 				}
-				else
-					{paddle.set_vx(paddle._vx()+delta*paddle._ax());}
-				
 			}
 		}
 		
@@ -137,12 +161,12 @@ public class Game implements ActionListener{
 			if(Math.abs(ball._x())+ball._rad()>=size/2.0)
 				if(ball._x()*ball._vx()>0){
 					ball.set_vx(-ball._vx());
-					statusBar.setText("WALL WALL WALL");
+					//statusBar.setText("WALL WALL WALL");
 				}
 			if(Math.abs(ball._y())+ball._rad()>=size/2.0)
 				if(ball._y()*ball._vy()>0){
 					ball.set_vy(-ball._vy());
-					statusBar.setText("WALL WALL WALL");
+					//statusBar.setText("WALL WALL WALL");
 				}
 		}
 	}
@@ -159,20 +183,22 @@ public class Game implements ActionListener{
 			for(int i=0;i<numberOfPlayers;i++) {
 				paddle=data._player(i)._paddle();
 				res = Physics.Rotate(paddle._positionID(), ball._x(), ball._y());
-				if(res[1]-ball._rad()<=paddle._y()+paddle._wdt()/2)
+				if(res[1]-ball._rad()<=paddle._y()+paddle._wdt()/2){
 					if(Math.abs(res[0]-paddle._x())<=paddle._len()/2+ball._rad()) {
 						if(paddle._dx()*ball._vy()<0){
 							ball.set_vy(-ball._vy());
 						    ball.set_vx(ball._vx()+data._restitution()*paddle._dx()*paddle._vx());
-						    statusBar.setText("PADDLE PADDLE PADDLE");
+						    //statusBar.setText("PADDLE PADDLE PADDLE");
 					    }
 						if(paddle._dy()*ball._vx()>0){
 							ball.set_vx(-ball._vx());
 							ball.set_vy(ball._vy()+data._restitution()*paddle._dy()*paddle._vx());
-							statusBar.setText("PADDLE PADDLE PADDLE");
+							//statusBar.setText("PADDLE PADDLE PADDLE");
 						}
 					}
+				}
 			}
 		}
 	}
+	
 }

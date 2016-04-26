@@ -13,22 +13,14 @@ class Player{
 	 *  paddle		: Paddle assigned to the player
 	 */
 	
-	private String name,IPAddress;
-	private int serverPort,clientPort;
-	private boolean isAlive,isHuman,isBot;
-	private int botLevel,health;
+	private String name="",IPAddress="";
+	private int serverPort=0,clientPort=0;
+	private boolean isAlive=true,isHuman=false,isBot=false;
+	private int botLevel=0,health=5;
 	private Paddle paddle;
 	private AI ai;
-	private GameData parent;
-	public enum State{DEAD,HUMAN,BOT;}
 	
-	private State state;
-
-	public Player(GameData data){
-		name=IPAddress="";
-		isAlive=isBot=isHuman=false;
-		health=botLevel=0;
-		parent = data;
+	public Player(){
 		paddle = new Paddle();
 	}
 	
@@ -42,7 +34,6 @@ class Player{
 	public int _botLevel()		{	return botLevel;	}
 	public int _health()		{	return health;		}
 	public Paddle _paddle()		{	return paddle;		}
-	public State _state() 		{	return state;		}
 	public AI _AI() 			{	return ai;			}
 	
 	public void set_name(String t)		{	name=t;			}
@@ -55,7 +46,6 @@ class Player{
 	public void set_paddle(Paddle t)	{	paddle=t;		}
 	public void set_clientPort(int t) 	{	clientPort=t;	}
 	public void set_serverPort(int t) 	{	serverPort=t;	}
-	public void set_state(State t)	 	{	state=t;		}
 	public void set_AI(AI t) 			{	ai=t;			}
 
 }

@@ -8,6 +8,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
+@SuppressWarnings("serial")
 public class ChatBox extends JPanel implements ActionListener{
 
 	JTextArea display;

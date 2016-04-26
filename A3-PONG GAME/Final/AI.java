@@ -1,6 +1,5 @@
 
 public class AI {
-	Player player;
 	Paddle paddle;
 	GameData data;
 	int size;
@@ -8,11 +7,10 @@ public class AI {
 	double x0,y0,x,bvx,bx,bvy,by,len,wdt,rad,sz;
 	
 	
-	public AI(Game game,Player _player) {
-		player = _player;
-		data = game._data();
-		paddle = _player._paddle();
-		size=game._size();
+	public AI(GameData _data,Paddle _paddle) {
+		data = _data;
+		paddle = _paddle;
+		size=_data._windowSize();
 	}
 	public void playMove(){
 		
@@ -45,17 +43,19 @@ public class AI {
 			
 	//		if(paddle._pos()==Position.RIGHT)
 		//		Main.statusBar.setText(count+" "+(int)ball._x()+" "+(int)ball._y()+" :: "+bx+" Yo");
-			if(player._paddle()._pos()==Position.UP) 
+			if(paddle._pos()==Position.UP) 
 				{//Main.statusBar.setText("Tentative : "+(int)bx+"\nPaddle at :"+(int)x+"\nReachTime: "+reachTime);
 				//Main.statusBar.setText("Paddle Velocity: "+paddle._vx()+" Accn: "+paddle._ax());}
 				}
 			if(reachTime>=0 && Math.abs(bx-x)>0.3*paddle._len()){
-				if(bx>x) player._paddle().moveRight();
-				else player._paddle().moveLeft();
+				if(bx>x)
+					paddle.moveRight();
+				else
+					paddle.moveLeft();
 			}
-			else {
-				player._paddle().stop();
-			}
+			else
+				paddle.stop();
+			
 			return;
 		}
 			

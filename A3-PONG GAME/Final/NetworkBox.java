@@ -11,6 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 
+@SuppressWarnings("serial")
 public class NetworkBox extends JPanel implements ActionListener{
 
 	ButtonGroup rButtonGroup;
