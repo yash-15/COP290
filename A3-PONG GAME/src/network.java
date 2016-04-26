@@ -2,6 +2,7 @@
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,8 +14,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;  
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -27,12 +30,13 @@ import java.net.Socket;
 import java.util.Random;
 import java.util.Vector;
 
-public class network extends Thread{
+public class network {
 	static JFrame window;
 	static JPanel jPanel;
 	static JTextArea display;
 	static JTextArea status;
 	static JTextField chatmsg;
+	static JButton playButton;
 	static ServerSocket s_socket;
 	static user me;
 	static user[] users;
@@ -54,22 +58,21 @@ public class network extends Thread{
 	static void startDialogBox(){
 		ButtonGroup rButtonGroup =new ButtonGroup();
 		
-		JRadioButton rButton1=new JRadioButton("Run as Server");
-		JRadioButton rButton2=new JRadioButton("Run as Client");
+		final JRadioButton rButton1=new JRadioButton("Run as Server");
+		final JRadioButton rButton2=new JRadioButton("Run as Client");
 		
-		JLabel jLabelExposeIP=new JLabel("Expose IP:");
-		JLabel jLabelServerIP=new JLabel("Server IP:");
-		JLabel jLabelServerPort=new JLabel("Server Port:");
+		final JLabel jLabelExposeIP=new JLabel("Expose IP:");
+		final JLabel jLabelServerIP=new JLabel("Server IP:");
+		final JLabel jLabelServerPort=new JLabel("Server Port:");
 		
-		JTextField jTextFieldExposeIP=new JTextField();
-		JTextField jTextFieldServerIP= new JTextField();
-		JTextField jTextFieldServerPort=new JTextField();
+		final JTextField jTextFieldExposeIP=new JTextField();
+		final JTextField jTextFieldServerIP= new JTextField();
+		final JTextField jTextFieldServerPort=new JTextField();
 
 		rButtonGroup.add(rButton1);
 		rButtonGroup.add(rButton2);
 		ActionListener radio_ActionListener=new ActionListener() {
 			
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				jLabelExposeIP.setEnabled(rButton1.isSelected());
@@ -135,8 +138,6 @@ public class network extends Thread{
 		display.setEditable(false);
 		chatmsg=new JTextField();
 		chatmsg.addActionListener(new ActionListener() {
-			
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				if (well_connected)
@@ -160,9 +161,37 @@ public class network extends Thread{
 				}
 			}
 		});
+		
+		playButton = new JButton();
+		playButton.setText("PLAY >>");
+		playButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println(arg0.getActionCommand());
+				Main.main(null);
+				window.setVisible(false);
+				for(int i=0;i<4;i++)
+				{
+					if (users[i].id!=me.id && users[i].priority!=-1)
+					{
+						JSONObject t_json =new JSONObject();
+						try {
+							t_json.put("PROTOCOL", "GAMESTART");
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						users[i].conn.ptWriter.println(t_json.toString());
+						//JOptionPane.showMessageDialog(window, "DONE");
+					}
+				}
+			}
+		});
 		jPanel.add(status);
 		jPanel.add(new JScrollPane(display));
 		jPanel.add(chatmsg);
+		jPanel.add(playButton);
 		window.getContentPane().add(jPanel,"East");
 		window.pack();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -512,13 +541,35 @@ public class network extends Thread{
 						 break;
 					}
 				}
+				//Waits for messages from peers
 				while(true){
 					String x=from.readLine();
 					if(x.equals(null)){
 						socket.close();
 					}
 					else{
-						display.append(x+"\n");
+						
+							
+								msgJsonObjectFrom=new JSONObject(x);
+								if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
+								{
+									int t_p_index=((msgJsonObjectFrom.optInt("USER_ID")-me.id)+4) %4;
+									Paddle t_paddle=GameData.players[t_p_index]._paddle();
+									t_paddle.set_x(msgJsonObjectFrom.optDouble("X"));
+									t_paddle.set_vx(msgJsonObjectFrom.optDouble("VX"));
+									t_paddle.set_ax(msgJsonObjectFrom.optDouble("AX"));
+									t_paddle.isKeyPressed=msgJsonObjectFrom.optBoolean("IS_KEY_PRESSED");
+								}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("GAMESTART")){
+									//JOptionPane.showMessageDialog(window,"GOT");
+									Main.main(null);
+									window.setVisible(false);
+							}
+								else{
+									
+								}
+							
+						
 						}}
 				
 			}catch(Exception e)
@@ -723,7 +774,28 @@ public class network extends Thread{
 						socket.close();
 					}
 					else{
-						display.append(x+"\n");
+						
+							
+								msgJsonObjectFrom=new JSONObject(x);
+								if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
+								{
+									int t_p_index=((msgJsonObjectFrom.optInt("USER_ID")-me.id)+4) %4;
+									Paddle t_paddle=GameData.players[t_p_index]._paddle();
+									t_paddle.set_x(msgJsonObjectFrom.optDouble("X"));
+									t_paddle.set_vx(msgJsonObjectFrom.optDouble("VX"));
+									t_paddle.set_ax(msgJsonObjectFrom.optDouble("AX"));
+									t_paddle.isKeyPressed=msgJsonObjectFrom.optBoolean("IS_KEY_PRESSED");
+								}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("GAMESTART")){
+									//JOptionPane.showMessageDialog(window,"GOT");
+									Main.main(null);
+									window.setVisible(false);
+							}
+								else {
+									
+								}
+							
+						
 						}}
 			}catch(Exception e)
 			{e.printStackTrace();

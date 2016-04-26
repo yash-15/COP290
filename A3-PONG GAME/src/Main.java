@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -8,28 +7,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
-/**
- * @author YKB
- *
- */
-
 public class Main{
-
 	
 	private JFrame frame;  //Main Frame
-	static public JLabel statusBar;
+	private JLabel statusBar;
 	private Game game;
-	
 	
 	/**
 	 * This initializes the components and calls createWindow()
 	 */
+	
 	public Main() {
 		
 		System.out.println("Constructing Main...");
 		frame = new JFrame();
 		statusBar = new JLabel();
-		game = new Game();
+		game = new Game(this);
 		//TODO: Add Network Object and must ensure that the minimum size is returned
 		//TODO: Or you can consider re-scaling according to size.
 		createWindow();
@@ -52,6 +45,7 @@ public class Main{
 		//TODO: Please check the height
 		frame.setSize(minDim,minDim+40);
 		//frame.setResizable(false);
+		//frame.setPreferredSize(new Dimension(400, 400));
 		System.out.println(minDim+" is the dim at "+System.currentTimeMillis());
 		frame.setTitle("Ping Pong!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,26 +62,22 @@ public class Main{
 		System.out.println("Game window Created!");
 	}
 	
+	public JLabel _statusBar() {	return statusBar;	}
 	
-	
-		
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() { 
 			public void run() {
 				try{
-	
 					Main obj = new Main();
 					System.out.println("Calling game Play!");
 					obj.game.setup(4);
-					//wait(10000);
 					obj.game.play();
-				
 				}
 				catch(Exception e){
+					e.printStackTrace();
 					System.out.println(e.toString());
 				}
 			}
 		});
 	}
 }
-
