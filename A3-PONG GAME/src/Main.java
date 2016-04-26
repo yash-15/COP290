@@ -1,6 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -21,6 +23,18 @@ public class Main{
 		
 		System.out.println("Constructing Main...");
 		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//TODO on Game Over
+		/*
+		frame.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+               network.window.setVisible(true);
+               network.expose_server=(network.is_server && network.num_users<4);
+               frame.dispose();
+            }
+        });
+        */
 		statusBar = new JLabel();
 		game = new Game(this);
 		//TODO: Add Network Object and must ensure that the minimum size is returned

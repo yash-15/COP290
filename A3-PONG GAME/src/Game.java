@@ -142,7 +142,7 @@ public class Game implements ActionListener{
 				paddle=player._paddle();
 				paddle.set_x(paddle._x()+delta*paddle._vx());
 				paddle.set_vx(paddle._vx()+delta*paddle._ax());
-				if(player._isBot())
+				if(player._isBot() && network.is_server)
 					player._AI().playMove();
 				if(!paddle._isKeyPressed() && paddle._vx()*paddle._ax()>=0){
 					paddle.set_vx(0);

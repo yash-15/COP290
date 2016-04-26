@@ -171,6 +171,7 @@ public class network {
 				System.out.println(arg0.getActionCommand());
 				Main.main(null);
 				window.setVisible(false);
+				expose_server=false;
 				for(int i=0;i<4;i++)
 				{
 					if (users[i].id!=me.id && users[i].priority!=-1)
@@ -241,7 +242,8 @@ public class network {
 	static void disconnect(int i)
 	{
 		users[i].priority=-1;
-		status.setText("Number of Users: "+(--num_users));expose_server=is_server &&num_users<4;
+		status.setText("Number of Users: "+(--num_users));expose_server=is_server && num_users<4;
+		if (!window.isVisible()) { GameData.players[(i+1-me.id)%4].isBot=true;}
 	}
 	
 	

@@ -15,7 +15,7 @@ class Player{
 	
 	private String name="",IPAddress="";
 	private int serverPort=0,clientPort=0;
-	private boolean isAlive=true,isHuman=false,isBot=false;
+	public boolean isAlive=true,isHuman=false,isBot=false;
 	private int botLevel=0,health=3;
 	private Paddle paddle;
 	private AI ai;
