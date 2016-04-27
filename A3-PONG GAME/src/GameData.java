@@ -50,7 +50,7 @@ public class GameData {
 		players = new Player[MAXPLAYERS];
 		balls = new ArrayList<Ball>();
 		num_alive=MAXPLAYERS;
-		restitution=0.3;
+		restitution=0.3;// for paddle only not to be confused with ball collisons
 		System.out.println("GameData Constructed!");
 		//GameOn=true;//Assuming the new GameData is made only when a new game is started
 	}
