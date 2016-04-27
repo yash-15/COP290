@@ -14,7 +14,7 @@ public class Main{
 	public static JFrame frame;  //Main Frame
 	public static JLabel statusBar;
 	public static Game game;
-	
+	public static boolean ready;
 	/**
 	 * This initializes the components and calls createWindow()
 	 */
@@ -25,6 +25,7 @@ public class Main{
 		frame = new JFrame();
 		statusBar = new JLabel();
 		game = new Game(this);
+		ready=false;
 		//TODO: Add Network Object and must ensure that the minimum size is returned
 		//TODO: Or you can consider re-scaling according to size.
 		createWindow();

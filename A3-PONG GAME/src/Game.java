@@ -66,6 +66,9 @@ public class Game implements ActionListener{
 		
 		Ball ball = new Ball(10,200,0,600,600);
 		ball.set_color(Color.DARK_GRAY);
+		if(network.is_server)
+			ball.set_color(Color.GREEN);
+		
 		ball.set_id(0);
 		data.addBall(ball);
 		ball = new Ball(10,20,0,700,400);
@@ -127,6 +130,7 @@ public class Game implements ActionListener{
 	public void play(){
 		prevTime = System.currentTimeMillis();
 		System.out.println("Starting play() at "+prevTime);
+		addWelcomeScreen();
 		timer = new Timer(render_delay,this);
 		if(network.is_server){
 			for (Ball ball:data._balls())
@@ -138,7 +142,11 @@ public class Game implements ActionListener{
 	public void actionPerformed(ActionEvent evt) {
 		
 		curTime = evt.getWhen();
-	
+		if(!Main.ready){
+			prevTime = curTime;
+			UI.repaint();
+			return;
+		}
 		move();
 		CollisionWithCorners();
 		CollisionWithPaddles();
@@ -386,5 +394,19 @@ public class Game implements ActionListener{
 			}
 		}
 		
+	}
+	public int remaining_time=10;
+	
+	void addWelcomeScreen(){
+		Timer timer0 = new Timer(1000, new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				if(remaining_time==0)
+					Main.ready=true;
+				else
+					remaining_time--;
+			}
+		});
+		timer0.start();
 	}
 }

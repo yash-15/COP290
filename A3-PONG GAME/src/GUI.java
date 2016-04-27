@@ -1,6 +1,7 @@
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -9,15 +10,18 @@ import java.awt.geom.AffineTransform;
 public class GUI extends JPanel{
 
 	boolean debug=true;
+	Game game;
 	GameData data;
 	JLabel statusBar;
 	int size;
 	int localUser,localPos;
 	int offSet=30;
-    public GUI(Game game){
+	
+    public GUI(Game _game){
 
 		System.out.println("Constructing GUI using Data!");
-    	data=game._data();
+    	game=_game;
+		data=game._data();
     	statusBar = game._statusBar();
     	setFocusable(true);
     	localUser = -1;
@@ -34,15 +38,18 @@ public class GUI extends JPanel{
 	public void paintComponent(Graphics graphics){
 		super.paintComponent(graphics);
 		render_boundary(graphics);
-	//	render_ball(ball, graphics);
-	//	ball.set_x(1+ball._x());
-		for(Ball ball  : data._balls())
-			render_ball(ball, graphics);
 		Player[] players = data._players();
 		int numberOfPlayers = data._numberOfPlayers(), localPos=-1;
 		for(int i=0;i<numberOfPlayers;i++)
-			if(players[i].isAlive) render_paddle(localPos, players[i]._paddle(), graphics);
-
+			if(players[i].isAlive)
+				render_paddle(localPos, players[i]._paddle(), graphics);
+		if(!Main.ready){
+			showNumber((Graphics2D) graphics,game.remaining_time);
+		}
+		else
+			for(Ball ball  : data._balls())
+				render_ball(ball, graphics);
+		
 		render_playerInfo(graphics);
 	}
 	
@@ -116,6 +123,14 @@ public class GUI extends JPanel{
 			graphics2d.drawString(info, (int)rel_co_or[0],(int)rel_co_or[1]);
 			at.rotate(((i%2==0)?1:-1)*Math.PI/2);
 		}
+	}
+	Font font;
+	void showNumber(Graphics2D graphics, int value) {
+		font=graphics.getFont();
+		graphics.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 48));
+		graphics.setColor(Color.BLUE);
+		graphics.drawString(String.valueOf(value), X(0), Y(0));
+		graphics.setFont(font);
 	}
 	
 	public void set_windowSize(int t)	{	size=t;			}
