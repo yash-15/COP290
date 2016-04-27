@@ -64,13 +64,17 @@ public class Game implements ActionListener{
 				addHumanPlayer(network.users[i%4].name,j);
 		}
 		
-		Ball ball = new Ball(10,200,0,600,600);
+		Ball ball = new Ball(10,200,0,60,60);
 		ball.set_color(Color.DARK_GRAY);
 		ball.set_id(0);
 		data.addBall(ball);
-		ball = new Ball(10,20,0,700,400);
+		ball = new Ball(10,20,0,70,400);
 		ball.set_color(Color.BLUE);
 		ball.set_id(1);
+		data.addBall(ball);
+		ball = new Ball(10,20,0,20,300);
+		ball.set_color(Color.GREEN);
+		ball.set_id(2);
 		data.addBall(ball);
 		UI.set_localUser(localUser);
 	}
@@ -79,7 +83,10 @@ public class Game implements ActionListener{
 	 * Add a Human Player with given global Position. UI would still be
 	 * rendered as if he is playing at Position.BOTTOM.
 	 * If index of this Human player is same as local user, then 
-	 * KeyListener is also instantiated for it.
+	 * KeyListener is also
+	 * 
+	 *  .
+	 *  instantiated for it.
 	 * @param pos Integer corresponding to Position of the paddle
 	 * @throws Exception Maximum Players Limit Reached Already. 
 	 */
@@ -138,11 +145,12 @@ public class Game implements ActionListener{
 	public void actionPerformed(ActionEvent evt) {
 		
 		curTime = evt.getWhen();
-	
+		if(network.is_server) statusBar.setText("Server");
 		move();
 		CollisionWithCorners();
 		CollisionWithPaddles();
 		CollisionWithWalls();
+		CollisionWithBalls();
 		UI.repaint(); 
 		send_counter+=render_delay;
 		if(send_counter>=1000)
@@ -237,28 +245,42 @@ public class Game implements ActionListener{
 				}
 		}
 	}
-	/*
+	
 	private void CollisionWithBalls(){
 		for(Ball ball1: data._balls()){
 			for(Ball ball2:data._balls()){
 				if (ball2._id()>ball1._id()){
 					double x1=ball1._x(),x2=ball2._x(),y1=ball1._y(),y2=ball2._y();
 					double dx=x2-x1,dy=y2-y1;
+					double[] v1={ball1._vx(),ball1._vy()},v2={ball2._vx(),ball2._vy()};
 					//CHeck whether they are in contact
-					if (Math.hypot(dx, dy)<=ball1._rad()+ball2._rad()){
+					if (Math.hypot(dx, dy)<=ball1._rad()+ball2._rad()
+							&& ((v2[0]-v1[0])*dx + (v2[1]-v1[1])*dy<=0)){
 						double theta;
-						try{theta=Math.atan(dy/dx);}catch(Exception e){theta=1.570796*(dy>0?1:-1);}
-						double vx1=ball1._vx(),vx2=ball2._vx(),vy1=ball1._vy(),vy2=ball2._vy();
-						double[] v_1=Physics.RotateDouble(theta, vx1, vy1);
-						double[] v_2=Physics.RotateDouble(theta, vx2, vy2);
+						try{theta=Math.atan2(dy, dx);System.out.println("atan"+theta); }catch(Exception e){theta=1.570796*(dy>0?1:-1);}
+						
+						double[] v_1=Physics.RotateDouble(theta, v1[0], v1[1]);
+						double[] v_2=Physics.RotateDouble(theta, v2[0], v2[1]);
 						double m1=Math.pow(ball1._rad(),2),m2=Math.pow(ball2._rad(),2);
-						v_1[0]=vx1*(m1-data._restitution())
+						double coeff_rest=1.0;
+						v_1[0]=v1[0]*(m1-coeff_rest*m2)/(m1+m2) + 
+								v2[0]*((coeff_rest+1)*m2)/(m1+m2);
+						v_2[0]=v2[0]*(m2-coeff_rest*m1)/(m1+m2) + 
+								v1[0]*((coeff_rest+1)*m1)/(m1+m2);
+						v1=Physics.RotateDouble(-theta, v_1[0], v_1[1]);
+						v2=Physics.RotateDouble(-theta, v_2[0], v_2[1]);
+						ball1.set_vx(v1[0]);ball1.set_vy(v1[1]);
+						ball2.set_vx(v2[0]);ball2.set_vy(v2[1]);
+						if(network.is_server) {
+							BallMessage(ball1._id());
+							BallMessage(ball2._id());
+						}
 					}
 				}
 			}
 		}
 	}
-	*/
+	
 	/**
 	 * Checks whether a ball has collided with any of the paddles
 	 * If yes, then appropriate changes in the ball's parameters are made

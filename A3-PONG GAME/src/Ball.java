@@ -2,7 +2,7 @@ import java.awt.Color;
 
 class Ball{
 	
-	private int id;
+	private int id; // Same as the index of the Ball ArrayList
 	private	double x=0,y=0,rad=0,vx=0,vy=0,ax=0,ay=0,theta=0,omega=0,alpha=0;
 	private Color color=Color.RED;
 	
