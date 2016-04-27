@@ -41,7 +41,7 @@ public class GUI extends JPanel{
 		Player[] players = data._players();
 		int numberOfPlayers = data._numberOfPlayers(), localPos=-1;
 		for(int i=0;i<numberOfPlayers;i++)
-			render_paddle(localPos, players[i]._paddle(), graphics);
+			if(players[i].isAlive) render_paddle(localPos, players[i]._paddle(), graphics);
 
 		render_playerInfo(graphics);
 	}
@@ -72,9 +72,6 @@ public class GUI extends JPanel{
 		x-=len/2;
 		y+=wdt/2;
 		rad = (int)(p._wdt());
-		//message(count+" "+x0+" "+y0+" :: "+x+" "+y+" :: "+len+" "+wdt+" :: "+rad);
-		//if(count==0)
-			//statusBar.setText(p._vx()+ " speed :: "+p._ax()+" accn :: at "+System.currentTimeMillis());
 		graphics.setColor(p._color());
 		graphics.fillRect(X(x),Y(y),len,wdt);//,rad,rad);
 		graphics.setColor(Color.BLACK);
@@ -97,7 +94,7 @@ public class GUI extends JPanel{
 		
 		AffineTransform at = new AffineTransform();
 		int dist=(int) (size+offSet)/2;
-		statusBar.setText(String.valueOf(dist));
+		//statusBar.setText(String.valueOf(dist));
 		double rel_co_or[]={0,dist};
 		for(int i=0;i<4;i++){
 			rel_co_or=Physics.Rotate((4-i)%4,0.0, -(double)dist);

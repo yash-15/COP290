@@ -147,6 +147,7 @@ public class network {
 						if(users[j].priority!=-1 && me.id!=j+1)
 						{
 							try{
+								System.out.println("Writing to user "+users[j].conn.socket.getRemoteSocketAddress().toString());
 							PrintWriter prTemp=users[j].conn.ptWriter;
 							prTemp.println(me.name+":"+chatmsg.getText());
 							}catch(Exception e){display.append("Could not sent to "+users[j].name+"\n");}
@@ -154,6 +155,7 @@ public class network {
 					}
 					display.append(me.name+":"+chatmsg.getText()+"\n");
 					chatmsg.setText("");
+					testprint();
 				}
 				else {
 					display.append("You are not properly connected to the network!\n");
@@ -243,7 +245,11 @@ public class network {
 	{
 		users[i].priority=-1;
 		status.setText("Number of Users: "+(--num_users));expose_server=is_server && num_users<4;
-		if (!window.isVisible()) {System.out.println((i+5-me.id)%4);Game.convertToBot((i+5-me.id)%4);}
+		if (!window.isVisible()) {
+			Main.game.data.plString();
+			System.out.println("our test"+(i+5-me.id)%4);
+			Main.statusBar.setText(Main.game.data._player((i+5-me.id)%4)._name()+" is now disconnected");
+			Game.convertToBot((i+5-me.id)%4);}
 	}
 	
 	
@@ -552,7 +558,10 @@ public class network {
 					else{
 						
 							
-								msgJsonObjectFrom=new JSONObject(x);
+						try{
+							msgJsonObjectFrom=new JSONObject(x);}
+						catch(Exception e){display.append("JSON ERROR");}
+						display.append("CHECK\n");
 								if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
 								{
 									int t_p_index=((msgJsonObjectFrom.optInt("USER_ID")-me.id)+4) %4;
@@ -563,10 +572,13 @@ public class network {
 									t_paddle.isKeyPressed=msgJsonObjectFrom.optBoolean("IS_KEY_PRESSED");
 								}
 								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("GAMESTART")){
-									//JOptionPane.showMessageDialog(window,"GOT");
 									Main.main(null);
 									window.setVisible(false);
 							}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("LOST_LIFE")){
+									int t_id=msgJsonObjectFrom.optInt("USER_ID");
+									Main.game.LostLife((4+t_id-me.id)%4,false);
+								}
 								else{
 									
 								}
@@ -576,6 +588,7 @@ public class network {
 				
 			}catch(Exception e)
 			{
+				e.printStackTrace();
 				display.append("Server @ "+socket.getRemoteSocketAddress().toString()+"is unavailable.\n");
 				
 				
@@ -597,7 +610,6 @@ public class network {
 							disconnect(j);
 							if (t_ip.equals(serverAddress) &&
 									t_port.equals(port)) newServer(); ///Update for new server
-							testprint();
 							break;
 						}
 					}
@@ -777,8 +789,7 @@ public class network {
 					}
 					else{
 						
-							
-								msgJsonObjectFrom=new JSONObject(x);
+							msgJsonObjectFrom=new JSONObject(x);
 								if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
 								{
 									int t_p_index=((msgJsonObjectFrom.optInt("USER_ID")-me.id)+4) %4;
@@ -789,7 +800,6 @@ public class network {
 									t_paddle.isKeyPressed=msgJsonObjectFrom.optBoolean("IS_KEY_PRESSED");
 								}
 								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("GAMESTART")){
-									//JOptionPane.showMessageDialog(window,"GOT");
 									Main.main(null);
 									window.setVisible(false);
 							}
@@ -820,10 +830,13 @@ public class network {
 									t_ball.set_alpha(msgJsonObjectFrom.optDouble("ALPHA"));
 									
 								}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("LOST_LIFE")){
+									int t_id=msgJsonObjectFrom.optInt("USER_ID");
+									Main.game.LostLife((4+t_id-me.id)%4,false);
+								}
 								else {
 									
 								}
-							
 						
 						}}
 			}catch(Exception e)

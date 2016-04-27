@@ -1,3 +1,6 @@
+import org.json.JSONException;
+import org.json.JSONObject;
+
 class Player{
 	
 	/**
@@ -36,6 +39,7 @@ class Player{
 	public int _health()		{	return health;		}
 	public Paddle _paddle()		{	return paddle;		}
 	public AI _AI() 			{	return ai;			}
+	
 	
 	public void set_name(String t)		{	name=t;			}
 	public void set_IPAddress(String t)	{	IPAddress=t;	}

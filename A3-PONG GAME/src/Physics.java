@@ -12,5 +12,15 @@ public class Physics {
 		res[1]=y0*Cos[count]-x0*Sin[count];
 		return res;
 	}
+	
+	/*
+	 * CCW theta radian rotation
+	 */
+	public static double[] RotateDouble(double theta, double x0, double y0){
+		double[] res = {0.0,0.0};
+		res[0]=x0*Math.cos(theta)+y0*Math.sin(theta);
+		res[1]=y0*Math.cos(theta)-x0*Math.sin(theta);
+		return res;
+	}
 
 }

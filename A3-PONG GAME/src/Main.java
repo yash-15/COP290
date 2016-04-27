@@ -11,9 +11,9 @@ import javax.swing.SwingUtilities;
 
 public class Main{
 	
-	private JFrame frame;  //Main Frame
-	private JLabel statusBar;
-	private Game game;
+	public static JFrame frame;  //Main Frame
+	public static JLabel statusBar;
+	public static Game game;
 	
 	/**
 	 * This initializes the components and calls createWindow()
@@ -23,18 +23,6 @@ public class Main{
 		
 		System.out.println("Constructing Main...");
 		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//TODO on Game Over
-		/*
-		frame.addWindowListener(new WindowAdapter(){
-            public void windowClosing(WindowEvent e){
-               network.window.setVisible(true);
-               network.expose_server=(network.is_server && network.num_users<4);
-               frame.dispose();
-            }
-        });
-        */
 		statusBar = new JLabel();
 		game = new Game(this);
 		//TODO: Add Network Object and must ensure that the minimum size is returned
@@ -71,6 +59,24 @@ public class Main{
 		
 		frame.getContentPane().add(game._UI());
 		frame.getContentPane().add(statusBar,BorderLayout.SOUTH);
+		statusBar.setText("status");
+		//TODO on Game Over
+		/**
+				frame.addWindowListener(new WindowAdapter(){
+		            public void windowClosing(WindowEvent e){
+		               for(int i=0;i<4;i++)
+		               {
+		            	   try{
+		            		   network.users[i].conn.socket.close();
+		            	   }catch(Exception e1){}//DO nothing if sockets do not exist}
+		               }
+		               network.window.setVisible(true);
+		               network.expose_server=(network.is_server && network.num_users<4);
+		               frame.dispose();
+		            }
+		        });
+			*/	
+		
 		frame.setVisible(true);
 
 		System.out.println("Game window Created!");
