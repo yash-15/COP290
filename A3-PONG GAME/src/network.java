@@ -203,9 +203,11 @@ public class network {
 		ballCountSlider.setPaintTicks(true);
 		ballCountSlider.setPaintLabels(true);
 		Main.ballCount=1;
+		ballCountSlider.setToolTipText(String.valueOf(Main.ballCount));
 		ballCountSlider.addChangeListener(new ChangeListener() {
 			
 			public void stateChanged(ChangeEvent e) {
+				ballCountSlider.setToolTipText(String.valueOf(Main.ballCount));
 				if(flagballslide){
 					Main.ballCount=ballCountSlider.getValue();
 					JSONObject msgJsonObject=new JSONObject();
@@ -234,9 +236,11 @@ public class network {
 		lifeCountSlider.setMajorTickSpacing(5);
 		lifeCountSlider.setPaintTicks(true);
 		lifeCountSlider.setPaintLabels(true);
+		lifeCountSlider.setToolTipText(String.valueOf(Main.lifeCount));
 		lifeCountSlider.addChangeListener(new ChangeListener() {
 			
 			public void stateChanged(ChangeEvent e) {
+				lifeCountSlider.setToolTipText(String.valueOf(Main.lifeCount));
 				if(flaglifeslide){
 					if(lifeCountSlider.getValue()==0)
 						lifeCountSlider.setValue(1);
