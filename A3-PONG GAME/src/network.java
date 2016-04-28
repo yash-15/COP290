@@ -46,7 +46,7 @@ public class network {
 	static int secretKey=0;
 	static int goodClient=0;
 	static String serverAddress,port;//Stores the IP address and port of the server
-	
+	public static boolean initialized=true;// To see that we do not read JSON before initialization
 	/**
 	 * @param
 	 * @return
@@ -475,6 +475,7 @@ public class network {
 		private JSONObject msgJsonObjectTo;
 		private JSONObject msgJsonObjectFrom;
 		private String addr;
+		boolean check=true;
 		public cl_thread(conPkg conn)
 		{
 			this.socket=conn.socket;
@@ -557,7 +558,7 @@ public class network {
 					if(x.equals(null)){
 						socket.close();
 					}
-					else{
+					else if(initialized){
 						
 							
 								try{
@@ -573,6 +574,33 @@ public class network {
 									t_paddle.set_vx(msgJsonObjectFrom.optDouble("VX"));
 									t_paddle.set_ax(msgJsonObjectFrom.optDouble("AX"));
 									t_paddle.isKeyPressed=msgJsonObjectFrom.optBoolean("IS_KEY_PRESSED");
+								}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("BALL_UPDATE")){
+									int num90rot=0,s_id=msgJsonObjectFrom.optInt("USER_ID");
+									double xco,yco;double[] x1=new double[2];
+									num90rot=((me.id-s_id)+4)%4;
+									
+									Ball t_ball=GameData.balls.get(msgJsonObjectFrom.optInt("BALL_ID"));
+									
+									xco=msgJsonObjectFrom.optDouble("X");
+									yco=msgJsonObjectFrom.optDouble("Y");
+									x1=Physics.Rotate(num90rot, xco,yco);
+									t_ball.set_x(x1[0]);t_ball.set_y(x1[1]);
+									
+									xco=msgJsonObjectFrom.optDouble("VX");
+									yco=msgJsonObjectFrom.optDouble("VY");
+									x1=Physics.Rotate(num90rot, xco,yco);
+									t_ball.set_vx(x1[0]);t_ball.set_vy(x1[1]);
+									
+									xco=msgJsonObjectFrom.optDouble("AX");
+									yco=msgJsonObjectFrom.optDouble("AY");
+									x1=Physics.Rotate(num90rot, xco,yco);
+									t_ball.set_ax(x1[0]);t_ball.set_ay(x1[1]);
+									
+									t_ball.set_theta(msgJsonObjectFrom.optDouble("THETA")-num90rot*3.1415926);
+									t_ball.set_omega(msgJsonObjectFrom.optDouble("OMEGA"));
+									t_ball.set_alpha(msgJsonObjectFrom.optDouble("ALPHA"));
+									
 								}
 								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("GAMESTART")){
 									Main.main(null);
@@ -791,7 +819,7 @@ public class network {
 					if(x.equals(null)){
 						socket.close();
 					}
-					else{
+					else if (initialized){
 						
 						try{
 							msgJsonObjectFrom=new JSONObject(x);

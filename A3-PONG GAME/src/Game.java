@@ -134,6 +134,7 @@ public class Game implements ActionListener{
 	}
 	
 	public void play(){
+		network.initialized=true;
 		prevTime = System.currentTimeMillis();
 		System.out.println("Starting play() at "+prevTime);
 		timer = new Timer(render_delay,this);

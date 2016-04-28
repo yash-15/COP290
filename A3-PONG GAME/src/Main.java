@@ -73,6 +73,7 @@ public class Main{
 		               }
 		               network.window.setVisible(true);
 		               network.expose_server=(network.is_server && network.num_users<4);
+		               network.initialized=true;
 		               frame.dispose();
 		            }
 		        });
@@ -89,6 +90,7 @@ public class Main{
 		SwingUtilities.invokeLater(new Runnable() { 
 			public void run() {
 				try{
+					network.initialized=false;
 					Main obj = new Main();
 					System.out.println("Calling game Play!");
 					obj.game.setup(4);

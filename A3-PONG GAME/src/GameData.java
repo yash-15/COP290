@@ -42,6 +42,7 @@ public class GameData {
 	public static ArrayList<Ball> balls;
 	private int windowSize;
 	private double restitution;
+
 	//public boolean GameOn=false;
 	
 	public GameData() {
@@ -88,6 +89,7 @@ public class GameData {
 	
 	public void addBall(Ball ball) {
 		balls.add(ball);
+		System.out.println("Number of balls:"+balls.size());
 	}
 	
 	public void  plString()	{ 
