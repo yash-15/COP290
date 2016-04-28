@@ -42,6 +42,9 @@ public class network {
 	static JTextArea status;
 	static JTextField chatmsg;
 	static JButton playButton;
+	static JSlider ballCountSlider; 
+	static JSlider lifeCountSlider;
+	static boolean flagballslide=true,flaglifeslide=true;
 	static ServerSocket s_socket;
 	static user me;
 	static user[] users;
@@ -195,31 +198,64 @@ public class network {
 			}
 		});
 		
-		final JSlider ballCountSlider = new JSlider(1,4,1);
+		ballCountSlider= new JSlider(1,4,1);
 		ballCountSlider.setMajorTickSpacing(1);
 		ballCountSlider.setPaintTicks(true);
 		ballCountSlider.setPaintLabels(true);
+		Main.ballCount=1;
 		ballCountSlider.addChangeListener(new ChangeListener() {
 			
 			public void stateChanged(ChangeEvent e) {
-				Main.ballCount=ballCountSlider.getValue();
+				if(flagballslide){
+					Main.ballCount=ballCountSlider.getValue();
+					JSONObject msgJsonObject=new JSONObject();
+					try {
+						msgJsonObject.put("PROTOCOL", "BALL_COUNT");
+						msgJsonObject.put("NUM", Main.ballCount);
+					} catch (JSONException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					for(int j=0;j<4;j++)
+					{
+						if(users[j].id!=me.id && users[j].priority!=-1){
+							users[j].conn.ptWriter.println(msgJsonObject.toString());
+						}
+					}
+				}
 			}
 		});
 		
 		JPanel ballCountJPanel = new JPanel();
 		ballCountJPanel.add(new JLabel("Number of Balls : "));
 		ballCountJPanel.add(ballCountSlider);
-		
-		final JSlider lifeCountSlider = new JSlider(0,50,5);
+		Main.lifeCount=5;
+		lifeCountSlider = new JSlider(0,50,5);
 		lifeCountSlider.setMajorTickSpacing(5);
 		lifeCountSlider.setPaintTicks(true);
 		lifeCountSlider.setPaintLabels(true);
 		lifeCountSlider.addChangeListener(new ChangeListener() {
 			
 			public void stateChanged(ChangeEvent e) {
-				if(lifeCountSlider.getValue()==0)
-					lifeCountSlider.setValue(1);
-				Main.lifeCount=lifeCountSlider.getValue();
+				if(flaglifeslide){
+					if(lifeCountSlider.getValue()==0)
+						lifeCountSlider.setValue(1);
+					Main.lifeCount=lifeCountSlider.getValue();
+					JSONObject msgJsonObject=new JSONObject();
+					try {
+						msgJsonObject.put("PROTOCOL", "LIFE_COUNT");
+						msgJsonObject.put("NUM", Main.lifeCount);
+					} catch (JSONException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					for(int j=0;j<4;j++)
+					{
+						if(users[j].id!=me.id && users[j].priority!=-1){
+							users[j].conn.ptWriter.println(msgJsonObject.toString());
+						}
+					}
+				}
 			}
 		});
 		
@@ -644,7 +680,19 @@ public class network {
 								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("GAMESTART")){
 									Main.main(null);
 									window.setVisible(false);
-							}
+								}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("BALL_COUNT")){
+									flagballslide=false;
+									Main.ballCount=msgJsonObjectFrom.optInt("NUM");
+									ballCountSlider.setValue(Main.ballCount);
+									flagballslide=true;
+								}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("LIFE_COUNT")){
+									flaglifeslide=false;
+									Main.lifeCount=msgJsonObjectFrom.optInt("NUM");
+									lifeCountSlider.setValue(Main.lifeCount);
+									flaglifeslide=true;
+								}
 								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("LOST_LIFE")){
 									int t_id=msgJsonObjectFrom.optInt("USER_ID");
 									Main.game.LostLife((4+t_id-me.id)%4,false);
@@ -876,6 +924,18 @@ public class network {
 									Main.main(null);
 									window.setVisible(false);
 							}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("BALL_COUNT")){
+									flagballslide=false;
+									Main.ballCount=msgJsonObjectFrom.optInt("NUM");
+									ballCountSlider.setValue(Main.ballCount);
+									flagballslide=true;
+								}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("LIFE_COUNT")){
+									flaglifeslide=false;
+									Main.lifeCount=msgJsonObjectFrom.optInt("NUM");
+									lifeCountSlider.setValue(Main.lifeCount);
+									flagballslide=true;
+								}
 								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("BALL_UPDATE")){
 									int num90rot=0,s_id=msgJsonObjectFrom.optInt("USER_ID");
 									double xco,yco;double[] x1=new double[2];
