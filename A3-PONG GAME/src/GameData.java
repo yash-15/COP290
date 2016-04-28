@@ -83,6 +83,7 @@ public class GameData {
 	
 	public void set_player(int id, Player t) {
 		players[id]=t;
+		System.out.println("Added player "+t._name()+"to players");
 	}
 	
 	public void addBall(Ball ball) {
@@ -93,6 +94,7 @@ public class GameData {
 		try {
 			for (int i=0;i<4;i++)
 			{
+				System.out.println("Printing player "+i);
 				System.out.println("PLAYER 1: "+players[i]._name());
 			}
 		} catch (Exception e) {

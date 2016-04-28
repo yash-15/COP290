@@ -244,10 +244,11 @@ public class network {
 	static void disconnect(int i)
 	{
 		users[i].priority=-1;
-		status.setText("Number of Users: "+(--num_users));expose_server=is_server && num_users<4;
+		status.setText("Number of Users: "+(--num_users));expose_server=window.isVisible()
+				&& is_server && num_users<4;
 		if (!window.isVisible()) {
 			Main.game.data.plString();
-			System.out.println("our test"+(i+5-me.id)%4);
+			System.out.println("our test"+(i+5-me.id)%4 + users[(i+5-me.id)%4].name);
 			Main.statusBar.setText(Main.game.data._player((i+5-me.id)%4)._name()+" is now disconnected");
 			Game.convertToBot((i+5-me.id)%4);}
 	}
@@ -362,7 +363,8 @@ public class network {
 			}
 		}
 		serverAddress=users[min].ip;port=String.valueOf(users[min].s_port);
-		if (min+1==me.id){is_server=true;expose_server=is_server&&num_users<4;
+		if (min+1==me.id){is_server=true;expose_server=window.isVisible() 
+				&& is_server&&num_users<4;
 		window.setTitle("Pong Game -- Listening @ "+me.ip+":"+me.s_port);}
 		else{is_server=false;expose_server=false;}
 		display.append("New Server is "+users[min].name+" @ "+serverAddress
@@ -558,13 +560,14 @@ public class network {
 					else{
 						
 							
-						try{
-							msgJsonObjectFrom=new JSONObject(x);}
-						catch(Exception e){display.append("JSON ERROR");}
-						display.append("CHECK\n");
+								try{
+								msgJsonObjectFrom=new JSONObject(x);
+					}catch(Exception e){}
+						
 								if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
 								{
 									int t_p_index=((msgJsonObjectFrom.optInt("USER_ID")-me.id)+4) %4;
+									System.out.println("Paddle Index: "+t_p_index);
 									Paddle t_paddle=GameData.players[t_p_index]._paddle();
 									t_paddle.set_x(msgJsonObjectFrom.optDouble("X"));
 									t_paddle.set_vx(msgJsonObjectFrom.optDouble("VX"));
@@ -607,6 +610,7 @@ public class network {
 								&& users[j].s_port==Integer.valueOf
 								(t_port))
 						{
+							System.out.println("Disconnecting id "+(j+1)+users[j].name);
 							disconnect(j);
 							if (t_ip.equals(serverAddress) &&
 									t_port.equals(port)) newServer(); ///Update for new server
@@ -654,7 +658,7 @@ public class network {
 					connect=true;
 					display.append("Connected to "+remoteAddress+"\n");
 					status.setText("Number of Users: "+(++num_users));
-					expose_server=is_server &&num_users<4;
+					expose_server=window.isVisible() && is_server &&num_users<4;
 					
 					msgJsonObjectTo=new JSONObject();
 					
@@ -762,7 +766,7 @@ public class network {
 						max_priority=t_user.priority>max_priority?t_user.priority:max_priority;
 						display.append("Connected to "+remoteAddress+"\n");
 						status.setText("Number of Users: "+(++num_users));
-						expose_server=is_server &&num_users<4;
+						expose_server=window.isVisible()&&is_server &&num_users<4;
 						msgJsonObjectTo=new JSONObject();
 						msgJsonObjectTo.put("PROTOCOL","CONNECTED");
 						to.println(msgJsonObjectTo);
@@ -789,7 +793,9 @@ public class network {
 					}
 					else{
 						
+						try{
 							msgJsonObjectFrom=new JSONObject(x);
+				}catch(Exception e){}
 								if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
 								{
 									int t_p_index=((msgJsonObjectFrom.optInt("USER_ID")-me.id)+4) %4;

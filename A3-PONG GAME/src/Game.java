@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.print.attribute.standard.Media;
 import javax.swing.JLabel;
@@ -15,7 +16,7 @@ public class Game implements ActionListener{
 	private final int render_delay = 10; // The time period of timer in ms 
 	public static GameData data;
 	private GUI UI;
-	private Timer timer;
+	public Timer timer;
 	private long prevTime,curTime;  
 	public int size;
 	private int localUser;
@@ -67,16 +68,17 @@ public class Game implements ActionListener{
 		Ball ball = new Ball(10,200,0,60,60);
 		ball.set_color(Color.DARK_GRAY);
 		ball.set_id(0);
-		data.addBall(ball);
+		data.addBall(ball);System.out.println("zero: "+data.balls.get(0)._id());
+		/*
 		ball = new Ball(10,20,0,70,400);
 		ball.set_color(Color.BLUE);
 		ball.set_id(1);
-		data.addBall(ball);
+		data.addBall(ball);System.out.println("one: "+data.balls.get(1)._id());
 		ball = new Ball(10,20,0,20,300);
 		ball.set_color(Color.GREEN);
 		ball.set_id(2);
-		data.addBall(ball);
-		UI.set_localUser(localUser);
+		data.addBall(ball);*/
+		UI.set_localUser(localUser);//System.out.println("two: "+data.balls.get(2)._id());
 	}
 	
 	/**
@@ -137,7 +139,8 @@ public class Game implements ActionListener{
 		timer = new Timer(render_delay,this);
 		if(network.is_server){
 			for (Ball ball:data._balls())
-				BallMessage(ball._id());
+				{BallMessage(ball._id());
+				System.out.println("Sent initial ball data of "+ball._id());}
 		}
 		timer.start();
 	}
@@ -257,7 +260,7 @@ public class Game implements ActionListener{
 					if (Math.hypot(dx, dy)<=ball1._rad()+ball2._rad()
 							&& ((v2[0]-v1[0])*dx + (v2[1]-v1[1])*dy<=0)){
 						double theta;
-						try{theta=Math.atan2(dy, dx);System.out.println("atan"+theta); }catch(Exception e){theta=1.570796*(dy>0?1:-1);}
+						try{theta=Math.atan2(dy, dx); }catch(Exception e){theta=1.570796*(dy>0?1:-1);}
 						
 						double[] v_1=Physics.RotateDouble(theta, v1[0], v1[1]);
 						double[] v_2=Physics.RotateDouble(theta, v2[0], v2[1]);
@@ -338,6 +341,7 @@ public class Game implements ActionListener{
 			{
 				if(network.users[j].id!=network.me.id && network.users[j].priority!=-1){
 					network.users[j].conn.ptWriter.println(t_json.toString());
+					System.out.println("Sent ball data to "+network.users[j].id );
 				}
 			}
 		} catch (JSONException e) {
@@ -403,6 +407,7 @@ public class Game implements ActionListener{
 					//data.GameOn=false;
 					JOptionPane.showMessageDialog(Main.frame, "Game Over: Winner is "+data._player(j)._name());
 					network.window.setVisible(true);
+					network.expose_server=(network.is_server && network.num_users<4);
 					Main.frame.dispose();
 				}
 			}

@@ -50,7 +50,7 @@ public class Main{
 		//frame.setPreferredSize(new Dimension(400, 400));
 		System.out.println(minDim+" is the dim at "+System.currentTimeMillis());
 		frame.setTitle("Ping Pong!");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);	// center-aligned
 
 		statusBar.setText("Size is : "+String.valueOf(width)+" x "+String.valueOf(height));
@@ -61,10 +61,11 @@ public class Main{
 		frame.getContentPane().add(statusBar,BorderLayout.SOUTH);
 		statusBar.setText("status");
 		//TODO on Game Over
-		/**
+		
 				frame.addWindowListener(new WindowAdapter(){
 		            public void windowClosing(WindowEvent e){
-		               for(int i=0;i<4;i++)
+		               game.timer.stop();
+		            	for(int i=0;i<4;i++)
 		               {
 		            	   try{
 		            		   network.users[i].conn.socket.close();
@@ -75,7 +76,7 @@ public class Main{
 		               frame.dispose();
 		            }
 		        });
-			*/	
+			
 		
 		frame.setVisible(true);
 

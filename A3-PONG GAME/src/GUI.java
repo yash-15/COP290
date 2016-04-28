@@ -1,6 +1,8 @@
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -96,6 +98,10 @@ public class GUI extends JPanel{
 		int dist=(int) (size+offSet)/2;
 		//statusBar.setText(String.valueOf(dist));
 		double rel_co_or[]={0,dist};
+		graphics2d.setFont(new Font("Arial", Font.BOLD, 15));
+	   
+	    graphics2d.setColor(Color.BLACK);
+	    
 		for(int i=0;i<4;i++){
 			rel_co_or=Physics.Rotate((4-i)%4,0.0, -(double)dist);
 			graphics2d.setTransform(at);
