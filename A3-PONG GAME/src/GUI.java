@@ -2,6 +2,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -44,7 +45,7 @@ public class GUI extends JPanel{
 			if(players[i].isAlive)
 				render_paddle(localPos, players[i]._paddle(), graphics);
 		if(!Main.ready){
-			showNumber((Graphics2D) graphics,game.remaining_time);
+			showNumber((Graphics2D) graphics,game.remaining_time,game.prevSec);
 		}
 		else
 			for(Ball ball  : data._balls())
@@ -92,13 +93,16 @@ public class GUI extends JPanel{
 			graphics.fillRect(X(dx*size*19.0/40.0-size/40.0),Y(dy*size*19.0/40.0+size/40.0),size/20,size/20);
 		graphics.setColor(Color.BLACK);
 		graphics.drawRect(offSet,offSet,size,size);
+	//	graphics.drawLine(X(-size/2), Y(0), X(size/2), Y(0));
+	//	graphics.drawLine(X(0), Y(-size/2), X(0), Y(size/2));
 	}
 	
 	
 	//TODO account for position in random orders
 	public void render_playerInfo(Graphics graphics) {
 		Graphics2D graphics2d = (Graphics2D) graphics;
-		
+		graphics2d.setColor(Color.BLACK);
+		metrics=graphics2d.getFontMetrics();
 		AffineTransform at = new AffineTransform();
 		int dist=(int) (size+offSet)/2;
 		//statusBar.setText(String.valueOf(dist));
@@ -120,16 +124,24 @@ public class GUI extends JPanel{
 			else	sub_info="DEAD";
 				
 			String info=sub_info+" "+i+" "+data._player(i)._name()+" LIVES: "+data._player(i)._health();
-			graphics2d.drawString(info, (int)rel_co_or[0],(int)rel_co_or[1]);
+			graphics2d.drawString(info,(int)(rel_co_or[0]-metrics.stringWidth(info)/2.0),
+					(int)rel_co_or[1]);
 			at.rotate(((i%2==0)?1:-1)*Math.PI/2);
 		}
 	}
+	
 	Font font;
-	void showNumber(Graphics2D graphics, int value) {
+	FontMetrics metrics;
+	String numberString;
+	void showNumber(Graphics2D graphics, int value, long time) {
+		int sz = 2*(int)Math.sqrt((10-value)*(System.currentTimeMillis()-time));
 		font=graphics.getFont();
-		graphics.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 48));
-		graphics.setColor(Color.BLUE);
-		graphics.drawString(String.valueOf(value), X(0), Y(0));
+		graphics.setFont(new Font(Font.SANS_SERIF, Font.BOLD, sz));
+		metrics=graphics.getFontMetrics();
+		numberString=value>0?String.valueOf(value):"GO";
+		graphics.setColor(Color.RED);
+		graphics.drawString(numberString,
+				X(-metrics.stringWidth(numberString)/2.0), Y(-metrics.getHeight()/3.0));
 		graphics.setFont(font);
 	}
 	

@@ -9,6 +9,7 @@ import javax.swing.Timer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 public class Game implements ActionListener{
 	
@@ -414,16 +415,21 @@ public class Game implements ActionListener{
 		}
 		
 	}
-	public int remaining_time=10;
-	
+	public int remaining_time=5+1;
+	public long prevSec;
+	Timer timer0;
 	void addWelcomeScreen(){
-		Timer timer0 = new Timer(1000, new ActionListener() {
+		timer0 = new Timer(1000, new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				if(remaining_time==0)
+				if(remaining_time==0){
 					Main.ready=true;
-				else
+					timer0.stop();
+				}
+				else{
 					remaining_time--;
+					prevSec=System.currentTimeMillis();
+				}
 			}
 		});
 		timer0.start();

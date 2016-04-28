@@ -25,7 +25,6 @@ public class Main{
 		frame = new JFrame();
 		statusBar = new JLabel();
 		game = new Game(this);
-		ready=false;
 		//TODO: Add Network Object and must ensure that the minimum size is returned
 		//TODO: Or you can consider re-scaling according to size.
 		createWindow();
@@ -89,6 +88,7 @@ public class Main{
 		SwingUtilities.invokeLater(new Runnable() { 
 			public void run() {
 				try{
+					ready=false;
 					Main obj = new Main();
 					System.out.println("Calling game Play!");
 					obj.game.setup(4);
