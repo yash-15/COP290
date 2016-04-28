@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -600,6 +601,7 @@ public class network {
 									t_ball.set_theta(msgJsonObjectFrom.optDouble("THETA")-num90rot*3.1415926);
 									t_ball.set_omega(msgJsonObjectFrom.optDouble("OMEGA"));
 									t_ball.set_alpha(msgJsonObjectFrom.optDouble("ALPHA"));
+									t_ball.set_color(new Color(msgJsonObjectFrom.optInt("COLOR")));
 									
 								}
 								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("GAMESTART")){
@@ -862,6 +864,7 @@ public class network {
 									t_ball.set_theta(msgJsonObjectFrom.optDouble("THETA")-num90rot*3.1415926);
 									t_ball.set_omega(msgJsonObjectFrom.optDouble("OMEGA"));
 									t_ball.set_alpha(msgJsonObjectFrom.optDouble("ALPHA"));
+									t_ball.set_color(new Color(msgJsonObjectFrom.optInt("COLOR")));
 									
 								}
 								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("LOST_LIFE")){
