@@ -137,6 +137,7 @@ public class Game implements ActionListener{
 		network.initialized=true;
 		prevTime = System.currentTimeMillis();
 		System.out.println("Starting play() at "+prevTime);
+		addWelcomeScreen();
 		timer = new Timer(render_delay,this);
 		if(network.is_server){
 			for (Ball ball:data._balls())
@@ -149,6 +150,11 @@ public class Game implements ActionListener{
 	public void actionPerformed(ActionEvent evt) {
 		
 		curTime = evt.getWhen();
+		if(!Main.ready){
+			 			prevTime = curTime;
+			 			UI.repaint();
+			 			return;
+			 		}
 		if(network.is_server) statusBar.setText("Server");
 		move();
 		CollisionWithCorners();
@@ -415,4 +421,23 @@ public class Game implements ActionListener{
 		}
 		
 	}
+	public int remaining_time=5+1;
+	 	public long prevSec;
+	 	Timer timer0;
+	 	void addWelcomeScreen(){
+	 		timer0 = new Timer(1000, new ActionListener() {
+	 			
+	 			public void actionPerformed(ActionEvent e) {
+	 				if(remaining_time==0){
+	 					Main.ready=true;
+	 					timer0.stop();
+	 					}
+	  				else{
+	 					remaining_time--;
+	 					prevSec=System.currentTimeMillis();
+	  				}
+	 			}
+	 		});
+	 		timer0.start();
+	 	}
 }

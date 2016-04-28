@@ -14,6 +14,7 @@ public class Main{
 	public static JFrame frame;  //Main Frame
 	public static JLabel statusBar;
 	public static Game game;
+	public static boolean ready;
 	
 	/**
 	 * This initializes the components and calls createWindow()
@@ -91,6 +92,7 @@ public class Main{
 			public void run() {
 				try{
 					network.initialized=false;
+					ready=false;
 					Main obj = new Main();
 					System.out.println("Calling game Play!");
 					obj.game.setup(4);
