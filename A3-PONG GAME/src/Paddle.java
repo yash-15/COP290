@@ -10,7 +10,7 @@ class Paddle{
 	private Color color=Color.BLUE;
 	static double def_len, def_wdt, max_speed, max_x;
 	boolean isKeyPressed;
-	private Player parent;
+	public Player parent;
 	public Paddle(Player player) {
 		pos = Position.DOWN;
 		parent=player;

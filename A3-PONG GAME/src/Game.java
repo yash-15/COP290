@@ -65,19 +65,18 @@ public class Game implements ActionListener{
 				addHumanPlayer(network.users[i%4].name,j);
 		}
 		
-		Ball ball = new Ball(10,200,0,60,60);
+		Ball ball = new Ball(10,150,0,50,30);
 		ball.set_color(Color.DARK_GRAY);
 		ball.set_id(0);
 		data.addBall(ball);System.out.println("zero: "+data.balls.get(0)._id());
-		/*
-		ball = new Ball(10,20,0,70,400);
+		ball = new Ball(10,20,0,70,40);
 		ball.set_color(Color.BLUE);
 		ball.set_id(1);
 		data.addBall(ball);System.out.println("one: "+data.balls.get(1)._id());
-		ball = new Ball(10,20,0,20,300);
+		ball = new Ball(10,20,0,40,30);
 		ball.set_color(Color.GREEN);
 		ball.set_id(2);
-		data.addBall(ball);*/
+		data.addBall(ball);
 		UI.set_localUser(localUser);//System.out.println("two: "+data.balls.get(2)._id());
 	}
 	
