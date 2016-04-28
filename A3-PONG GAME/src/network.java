@@ -10,12 +10,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;  
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -139,7 +143,6 @@ public class network {
 		chatmsg=new JTextField();
 		chatmsg.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				if (well_connected)
 				{
 					for(int j=0;j<4;j++)
@@ -169,8 +172,7 @@ public class network {
 		playButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				System.out.println(arg0.getActionCommand());
+				System.out.println("Play pressed: "+arg0.getActionCommand());
 				Main.main(null);
 				window.setVisible(false);
 				expose_server=false;
@@ -191,9 +193,44 @@ public class network {
 				}
 			}
 		});
+		
+		final JSlider ballCountSlider = new JSlider(1,4,1);
+		ballCountSlider.setMajorTickSpacing(1);
+		ballCountSlider.setPaintTicks(true);
+		ballCountSlider.setPaintLabels(true);
+		ballCountSlider.addChangeListener(new ChangeListener() {
+			
+			public void stateChanged(ChangeEvent e) {
+				Main.ballCount=ballCountSlider.getValue();
+			}
+		});
+		
+		JPanel ballCountJPanel = new JPanel();
+		ballCountJPanel.add(new JLabel("Number of Balls : "));
+		ballCountJPanel.add(ballCountSlider);
+		
+		final JSlider lifeCountSlider = new JSlider(0,50,5);
+		lifeCountSlider.setMajorTickSpacing(5);
+		lifeCountSlider.setPaintTicks(true);
+		lifeCountSlider.setPaintLabels(true);
+		lifeCountSlider.addChangeListener(new ChangeListener() {
+			
+			public void stateChanged(ChangeEvent e) {
+				if(lifeCountSlider.getValue()==0)
+					lifeCountSlider.setValue(1);
+				Main.lifeCount=lifeCountSlider.getValue();
+			}
+		});
+		
+		JPanel lifeCountJPanel = new JPanel();
+		lifeCountJPanel.add(new JLabel("Number of Lives : "));
+		lifeCountJPanel.add(lifeCountSlider);
+		
 		jPanel.add(status);
 		jPanel.add(new JScrollPane(display));
 		jPanel.add(chatmsg);
+		jPanel.add(ballCountJPanel);
+		jPanel.add(lifeCountJPanel);
 		jPanel.add(playButton);
 		window.getContentPane().add(jPanel,"East");
 		window.pack();

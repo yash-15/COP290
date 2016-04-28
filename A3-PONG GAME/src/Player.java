@@ -26,6 +26,7 @@ class Player{
 	
 	public Player(){
 		paddle = new Paddle(this);
+		health = Main.lifeCount;
 	}
 	
 	public String _name()		{	return name;		}

@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.print.attribute.standard.Media;
@@ -65,19 +66,24 @@ public class Game implements ActionListener{
 				addHumanPlayer(network.users[i%4].name,j);
 		}
 		
-		Ball ball = new Ball(10,200,0,60,60);
-		ball.set_color(Color.DARK_GRAY);
-		ball.set_id(0);
-		data.addBall(ball);System.out.println("zero: "+data.balls.get(0)._id());
-		/*
-		ball = new Ball(10,20,0,70,400);
-		ball.set_color(Color.BLUE);
-		ball.set_id(1);
-		data.addBall(ball);System.out.println("one: "+data.balls.get(1)._id());
-		ball = new Ball(10,20,0,20,300);
-		ball.set_color(Color.GREEN);
-		ball.set_id(2);
-		data.addBall(ball);*/
+		Random random = new Random(System.currentTimeMillis());
+		Ball ball;
+		int q1,q2,x1,x2,v1,v2;
+		for(int i=0;i<Main.ballCount;i++){
+			q1=random.nextInt(2);
+			if(q1==0)q1--;
+			q2=random.nextInt(2);
+			if(q2==0)q2--;
+			x1=40*i+random.nextInt(20*(i+1));
+			x2=40*i+random.nextInt(20*(i+1));
+			v1=250+random.nextInt(100);
+			v2=250+random.nextInt(100);
+			ball = new Ball(10,x1*q1,x2*q2,-v1*q1,-v2*q2);
+			ball.set_id(i);
+			ball.set_color(Color.getHSBColor(random.nextFloat(),0.9f,1.0f));
+			data.addBall(ball);
+			System.out.println(i+" : "+data.balls.get(i)._id());
+		}
 		UI.set_localUser(localUser);//System.out.println("two: "+data.balls.get(2)._id());
 	}
 	

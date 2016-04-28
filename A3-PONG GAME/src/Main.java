@@ -15,7 +15,7 @@ public class Main{
 	public static JLabel statusBar;
 	public static Game game;
 	public static boolean ready;
-	
+	public static int ballCount,lifeCount;
 	/**
 	 * This initializes the components and calls createWindow()
 	 */
@@ -87,7 +87,7 @@ public class Main{
 	
 	public JLabel _statusBar() {	return statusBar;	}
 	
-	public static void main(String[] args) {
+	public static void main(String args) {
 		SwingUtilities.invokeLater(new Runnable() { 
 			public void run() {
 				try{
