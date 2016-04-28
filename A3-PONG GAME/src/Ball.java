@@ -5,7 +5,7 @@ class Ball{
 	private int id; // Same as the index of the Ball ArrayList
 	private	double x=0,y=0,rad=0,vx=0,vy=0,ax=0,ay=0,theta=0,omega=0,alpha=0;
 	private Color color=Color.RED;
-	
+	private final static double MAXSPEED=300;
 	public Ball(){
 	}
 	public Ball(double _rad){
@@ -37,8 +37,8 @@ class Ball{
 	public void set_x(double t)		{	x=t;	}
 	public void set_y(double t)		{	y=t;	}
 	public void set_rad(double t)	{	rad=t;	}
-	public void set_vx(double t)	{	vx=t;	}
-	public void set_vy(double t)	{	vy=t;	}
+	public void set_vx(double t)	{	vx=(Math.abs(t)<=MAXSPEED)?t:MAXSPEED;	}
+	public void set_vy(double t)	{	vy=(Math.abs(t)<=MAXSPEED)?t:MAXSPEED;	}
 	public void set_ax(double t)	{	ax=t;	}
 	public void set_ay(double t)	{	ay=t;	}
 	public void set_theta(double t)	{	theta=t;}

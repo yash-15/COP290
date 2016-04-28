@@ -52,7 +52,7 @@ public class Game implements ActionListener{
 		this.localUser = 0;
 		
 		//TODO : Verify size below
-		this.size = UI.getWidth()-60;
+		this.size = 550;//UI.getWidth()-60;
 		//UI.getToolkit().getScreenSize();
 		
 		System.out.println(size +" is the size of box");
@@ -76,8 +76,8 @@ public class Game implements ActionListener{
 			if(q2==0)q2--;
 			x1=40*i+random.nextInt(20*(i+1));
 			x2=40*i+random.nextInt(20*(i+1));
-			v1=250+random.nextInt(100);
-			v2=250+random.nextInt(100);
+			v1=100+random.nextInt(100);
+			v2=100+random.nextInt(100);
 			ball = new Ball(10,x1*q1,x2*q2,-v1*q1,-v2*q2);
 			ball.set_id(i);
 			ball.set_color(Color.getHSBColor(random.nextFloat(),0.9f,1.0f));

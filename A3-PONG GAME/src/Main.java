@@ -44,9 +44,9 @@ public class Main{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
-		int minDim = (int)Math.min(width, height)-100-15;
+		int minDim = 650;
 		//TODO: Please check the height
-		frame.setSize(minDim,minDim+40);
+		frame.setSize(minDim-10,minDim+10);
 		//frame.setResizable(false);
 		//frame.setPreferredSize(new Dimension(400, 400));
 		System.out.println(minDim+" is the dim at "+System.currentTimeMillis());
@@ -59,7 +59,7 @@ public class Main{
 		frame.getContentPane().setLayout(bLayout);
 		
 		frame.getContentPane().add(game._UI());
-		frame.getContentPane().add(statusBar,BorderLayout.SOUTH);
+		//frame.getContentPane().add(statusBar,BorderLayout.SOUTH);
 		statusBar.setText("status");
 		//TODO on Game Over
 		

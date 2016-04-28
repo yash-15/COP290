@@ -19,7 +19,7 @@ import javax.swing.event.ChangeListener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.omg.CORBA.PUBLIC_MEMBER;
+
 
 import java.awt.Color;
 import java.awt.Frame;
@@ -54,6 +54,7 @@ public class network {
 	static int secretKey=0;
 	static int goodClient=0;
 	static String serverAddress,port;//Stores the IP address and port of the server
+	//static long time;
 	public static boolean initialized=true;// To see that we do not read JSON before initialization
 	/**
 	 * @param
@@ -66,8 +67,8 @@ public class network {
 	static void startDialogBox(){
 		ButtonGroup rButtonGroup =new ButtonGroup();
 		
-		final JRadioButton rButton1=new JRadioButton("Run as Server");
-		final JRadioButton rButton2=new JRadioButton("Run as Client");
+		final JRadioButton rButton1=new JRadioButton("Start a New Game Network");
+		final JRadioButton rButton2=new JRadioButton("Join a Network");
 		
 		final JLabel jLabelExposeIP=new JLabel("Expose IP:");
 		final JLabel jLabelServerIP=new JLabel("Server IP:");
@@ -108,7 +109,7 @@ public class network {
 				jLabelServerPort,
 				jTextFieldServerPort
 		};
-		JOptionPane.showMessageDialog(null,comps,"How do you want to run this application?",JOptionPane.QUESTION_MESSAGE);
+		JOptionPane.showMessageDialog(null,comps,"COP290: Ping Pong by SPYCODERS",JOptionPane.QUESTION_MESSAGE);
 		if (rButtonGroup.getSelection()==null)
 		{
 			System.exit(0);
@@ -137,6 +138,7 @@ public class network {
 	static void initWindow()
 	{
 		window= new JFrame("Peer Chat");
+		window.setSize(300,300);
 		jPanel=new JPanel();
 		BoxLayout bl=new BoxLayout(jPanel,BoxLayout.Y_AXIS);
 		jPanel.setLayout(bl);
@@ -156,7 +158,15 @@ public class network {
 							try{
 								System.out.println("Writing to user "+users[j].conn.socket.getRemoteSocketAddress().toString());
 							PrintWriter prTemp=users[j].conn.ptWriter;
-							prTemp.println(me.name+":"+chatmsg.getText());
+							JSONObject msgJsonObject=new JSONObject();
+							if(chatmsg.getText().equals("PING"))
+							{msgJsonObject.put("PROTOCOL", "PING");
+							msgJsonObject.put("TIME",System.currentTimeMillis());}
+							else {
+								msgJsonObject.put("PROTOCOL", "CHAT");
+								msgJsonObject.put("MSG", me.name+":"+chatmsg.getText());
+								}
+							prTemp.println(msgJsonObject.toString());
 							}catch(Exception e){display.append("Could not sent to "+users[j].name+"\n");}
 						}
 					}
@@ -527,7 +537,7 @@ public class network {
 		window.setVisible(true);
 		if (expose_server)
 		{
-			display.append("Server Started by "+users[0].name+"\n");
+			display.append("New Game Network started by "+users[0].name+"\n");
 		}
 		
 		
@@ -642,8 +652,24 @@ public class network {
 								try{
 								msgJsonObjectFrom=new JSONObject(x);
 					}catch(Exception e){}
-						
-								if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
+								if (msgJsonObjectFrom.optString("PROTOCOL").equals("CHAT")){
+									display.append(msgJsonObjectFrom.optString("MSG")+"\n");
+								}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("PING")){
+									msgJsonObjectTo=new JSONObject();
+									msgJsonObjectTo.put("PROTOCOL", "PINGRESPONSE");
+									msgJsonObjectTo.put("TIME",msgJsonObjectFrom.optLong("TIME"));
+									msgJsonObjectTo.put("USER_ID", me.id);
+									to.println(msgJsonObjectTo.toString());
+								}
+								else if (msgJsonObjectFrom.optString("PROTOCOL").equals("PINGRESPONSE")){
+									display.append("PING @ "+
+									users[msgJsonObjectFrom.optInt("USER_ID")-1].name+" = "+
+											(System.currentTimeMillis()-msgJsonObjectFrom.optLong("TIME"))
+											+" ms\n");
+									
+								}
+								else if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
 								{
 									int t_p_index=((msgJsonObjectFrom.optInt("USER_ID")-me.id)+4) %4;
 									System.out.println("Paddle Index: "+t_p_index);
@@ -826,6 +852,14 @@ public class network {
 						to.println(msgJsonObjectTo);
 						display.append("Sent UserData to "+users[i].name+"\n");
 						testprint();
+						msgJsonObjectTo=new JSONObject();
+						msgJsonObjectTo.put("PROTOCOL", "BALL_COUNT");
+						msgJsonObjectTo.put("NUM", Main.ballCount);
+						to.println(msgJsonObjectTo);
+						msgJsonObjectTo=new JSONObject();
+						msgJsonObjectTo.put("PROTOCOL", "LIFE_COUNT");
+						msgJsonObjectTo.put("NUM", Main.lifeCount);
+						to.println(msgJsonObjectTo);
 					}
 					else {
 						///Disconnects if any other info is sent
@@ -889,6 +923,7 @@ public class network {
 						msgJsonObjectTo=new JSONObject();
 						msgJsonObjectTo.put("PROTOCOL","CONNECTED");
 						to.println(msgJsonObjectTo);
+						
 					}
 					
 					}
@@ -915,7 +950,24 @@ public class network {
 						try{
 							msgJsonObjectFrom=new JSONObject(x);
 				}catch(Exception e){}
-								if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
+						if (msgJsonObjectFrom.optString("PROTOCOL").equals("CHAT")){
+							display.append(msgJsonObjectFrom.optString("MSG")+"\n");
+						}
+						else if (msgJsonObjectFrom.optString("PROTOCOL").equals("PING")){
+							msgJsonObjectTo=new JSONObject();
+							msgJsonObjectTo.put("PROTOCOL", "PINGRESPONSE");
+							msgJsonObjectTo.put("TIME",msgJsonObjectFrom.optLong("TIME"));
+							msgJsonObjectTo.put("USER_ID", me.id);
+							to.println(msgJsonObjectTo.toString());
+						}
+						else if (msgJsonObjectFrom.optString("PROTOCOL").equals("PINGRESPONSE")){
+							display.append("PING @ "+
+							users[msgJsonObjectFrom.optInt("USER_ID")-1].name+" = "+
+									(System.currentTimeMillis()-msgJsonObjectFrom.optLong("TIME"))
+									+" ms\n");
+							
+						}
+							else if(msgJsonObjectFrom.optString("PROTOCOL").equals("PADDLE_UPDATE"))
 								{
 									int t_p_index=((msgJsonObjectFrom.optInt("USER_ID")-me.id)+4) %4;
 									Paddle t_paddle=GameData.players[t_p_index]._paddle();
