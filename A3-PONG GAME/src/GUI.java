@@ -127,7 +127,7 @@ public class GUI extends JPanel{
 			
 			else	sub_info="DEAD";
 				
-			String info=sub_info+" "+i+" "+data._player(i)._name()+" LIVES: "+data._player(i)._health();
+			String info=sub_info + " -- "+data._player(i)._name()+" LIVES: "+data._player(i)._health();
 			graphics2d.drawString(info,(int)(rel_co_or[0]-metrics.stringWidth(info)/2.0),
 					 				(int)rel_co_or[1]);
 			at.rotate(((i%2==0)?1:-1)*Math.PI/2);

@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 
 public class AI {
 	Paddle paddle;
@@ -17,6 +19,10 @@ public class AI {
 		x = paddle._x();
 		count = paddle._positionID();
 		len = paddle._len();
+		
+		double minReachTime=-1,temp_bx=0,temp_x=0;boolean is_hitting=false;
+		Color color=null;
+		// for storing the data of the ball scheduled to be arriving first
 		
 		for(Ball ball : data._balls()){
 			
@@ -40,25 +46,32 @@ public class AI {
 			
 			//Tentative position of ball at time of landing
 			bx+=(bvx* reachTime);
-			
-	//		if(paddle._pos()==Position.RIGHT)
-		//		Main.statusBar.setText(count+" "+(int)ball._x()+" "+(int)ball._y()+" :: "+bx+" Yo");
-			if(paddle._pos()==Position.UP) 
-				{//Main.statusBar.setText("Tentative : "+(int)bx+"\nPaddle at :"+(int)x+"\nReachTime: "+reachTime);
-				//Main.statusBar.setText("Paddle Velocity: "+paddle._vx()+" Accn: "+paddle._ax());}
-				}
-			if(reachTime>=0 && Math.abs(bx-x)>0.3*paddle._len()){
-				if(bx>x)
-					paddle.moveRight();
-				else
-					paddle.moveLeft();
+			boolean yes=false;
+			//Check if the ball will hit your wall
+			if(reachTime>0 && Math.abs(bx)<=(sz/2.0- sz/20))
+			{
+				if(!is_hitting || reachTime<minReachTime) {is_hitting=true;yes=true;}
 			}
-			else
-				paddle.stop();
-			
-			return;
+			//Check if it approaches in the vicinity of your wall
+			else if (reachTime>0)
+			{
+				if(!is_hitting && Math.abs(bx)<Math.abs(temp_bx)) {yes=true;}
+			}
+			if(yes) {minReachTime=reachTime;temp_bx=bx;temp_x=x;
+			}
 		}
 			
+		
+		if(minReachTime>0 && Math.abs(temp_bx-temp_x)>0.3*paddle._len()){
+			if(temp_bx>temp_x)
+				paddle.moveRight();
+			else
+				paddle.moveLeft();
+		}
+		else
+			paddle.stop();
+		
+		return;
 		
 	}
 }

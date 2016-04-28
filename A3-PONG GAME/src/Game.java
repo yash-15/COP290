@@ -121,8 +121,9 @@ public class Game implements ActionListener{
 		System.out.println("Adding bot player at index "+data._numberOfPlayers()+" as "+Position.values()[pos]);
 		Player t = new Player();
 		t.id=data._numberOfPlayers();
-		data.set_player(data._numberOfPlayers(),t);	
-		t.set_name(name);
+		data.set_player(data._numberOfPlayers(),t);
+		int t_user_id=(t.id+network.me.id)>4?t.id+network.me.id-4:t.id+network.me.id;
+		t.set_name(network.giveName("BOT"+String.valueOf(t_user_id), t_user_id));
 		t.set_isAlive(true);
 		t.set_isBot(true);
 		t.set_isHuman(false);
@@ -349,7 +350,7 @@ public class Game implements ActionListener{
 			t_json.put("THETA",t_ball._theta());
 			t_json.put("OMEGA",t_ball._omega());
 			t_json.put("ALPHA",t_ball._alpha());
-			t_json.put("COLOR",t_ball._color());
+			t_json.put("COLOR",t_ball._color().getRGB());
 			for(int j=0;j<4;j++)
 			{
 				if(network.users[j].id!=network.me.id && network.users[j].priority!=-1){
